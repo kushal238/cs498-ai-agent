@@ -1,0 +1,94 @@
+{
+  "_comment": "Fully synthetic patient record for development and unit testing. NOT real patient data.",
+  "patient_id": "SYNTH-001",
+  "demographics": {
+    "age": 45,
+    "sex": "male",
+    "race_ethnicity": "not_specified",
+    "zip_prefix": "XXXXX"
+  },
+  "encounter": {
+    "encounter_id": "ENC-20260303-001",
+    "encounter_date": "2026-03-03",
+    "encounter_type": "outpatient",
+    "chief_complaint": "acute chest pain, left-sided, onset 2 hours ago with exertion",
+    "setting": "primary_care_clinic"
+  },
+  "vitals": {
+    "blood_pressure_systolic_mmhg": 148,
+    "blood_pressure_diastolic_mmhg": 92,
+    "heart_rate_bpm": 88,
+    "respiratory_rate_per_min": 16,
+    "oxygen_saturation_percent": 97,
+    "temperature_celsius": 36.8,
+    "weight_kg": 88,
+    "height_cm": 178,
+    "bmi": 27.8
+  },
+  "medical_history": {
+    "known_conditions": [
+      "atrial fibrillation (paroxysmal, diagnosed 2022)",
+      "hypertension (diagnosed 2019)"
+    ],
+    "surgical_history": [],
+    "family_history": [
+      "father: myocardial infarction at age 58",
+      "mother: hypertension"
+    ],
+    "social_history": {
+      "smoking": "former smoker, quit 5 years ago",
+      "alcohol": "occasional, <2 drinks/week",
+      "occupation": "accountant",
+      "exercise": "light activity, lawn mowing, walking"
+    }
+  },
+  "allergies": [
+    {
+      "allergen": "penicillin",
+      "reaction": "rash",
+      "severity": "moderate"
+    }
+  ],
+  "medications": [
+    {
+      "name": "warfarin",
+      "dose": "5 mg",
+      "route": "oral",
+      "frequency": "daily",
+      "indication": "stroke prevention for atrial fibrillation"
+    },
+    {
+      "name": "aspirin",
+      "dose": "81 mg",
+      "route": "oral",
+      "frequency": "daily",
+      "indication": "cardiovascular risk reduction"
+    },
+    {
+      "name": "lisinopril",
+      "dose": "10 mg",
+      "route": "oral",
+      "frequency": "daily",
+      "indication": "hypertension"
+    }
+  ],
+  "labs_ordered": [
+    "CBC with differential",
+    "BMP (basic metabolic panel)",
+    "PT/INR",
+    "Troponin I (high sensitivity)",
+    "BNP"
+  ],
+  "imaging_ordered": [
+    "12-lead EKG (stat)",
+    "Chest X-ray (PA and lateral)"
+  ],
+  "physical_exam_findings": {
+    "general": "Alert and oriented x3, mild distress due to pain",
+    "cardiovascular": "Irregular rhythm, no murmurs or rubs",
+    "respiratory": "Clear to auscultation bilaterally",
+    "abdomen": "Soft, non-tender, non-distended",
+    "extremities": "Unexplained ecchymosis left forearm, no edema",
+    "skin": "Mild diaphoresis"
+  }
+}

@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  benchmark:
+    build:
+      context: ../..        # repo root
+      dockerfile: benchmark/docker/Dockerfile
+    volumes:
+      # Mount the benchmark directory so edits on the host are reflected
+      # immediately without rebuilding the image.
+      - ../../benchmark:/app/benchmark
+    environment:
+      # Optional: set NCBI_API_KEY for higher PubMed rate limits (>3 req/s)
+      # NCBI_API_KEY: ""
+      PYTHONUNBUFFERED: "1"
+    command: ["python", "benchmark/runner/evaluate.py"]

@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BenchmarkCaseGroundTruth",
+  "description": "Schema for the expected outputs of each workflow stage (ground_truth.json).",
+  "type": "object",
+  "required": [
+    "case_id",
+    "transcription_cleaned",
+    "clinical_summary",
+    "differential_diagnosis",
+    "normalized_medications",
+    "drug_interactions",
+    "final_report"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Must match the case_id in input.json."
+    },
+    "transcription_cleaned": {
+      "type": "string",
+      "description": "Stage 1 output: cleaned, readable version of the patient transcript."
+    },
+    "clinical_summary": {
+      "type": "string",
+      "description": "Stage 2 output: concise clinical summary suitable for physician review."
+    },
+    "differential_diagnosis": {
+      "type": "array",
+      "description": "Stage 3 output: ranked list of differential diagnoses, each backed by a PubMed citation.",
+      "items": {
+        "type": "object",
+        "required": ["condition", "pmid", "rationale"],
+        "additionalProperties": false,
+        "properties": {
+          "condition": { "type": "string" },
+          "pmid": {
+            "type": ["string", "null"],
+            "description": "PubMed ID of the supporting citation, or null if not yet found."
+          },
+          "rationale": {
+            "type": "string",
+            "description": "One-sentence explanation of why this condition is on the differential."
+          }
+        }
+      }
+    },
+    "normalized_medications": {
+      "type": "array",
+      "description": "Stage 4 output: each medication mapped to its RxNorm concept.",
+      "items": {
+        "type": "object",
+        "required": ["original", "rxnorm_id", "ingredient"],
+        "additionalProperties": false,
+        "properties": {
+          "original": {
+            "type": "string",
+            "description": "Medication name as it appeared in medication_list."
+          },
+          "rxnorm_id": {
+            "type": ["string", "null"],
+            "description": "RxNorm CUI, or null if not yet resolved."
+          },
+          "ingredient": {
+            "type": ["string", "null"],
+            "description": "Normalized generic ingredient name."
+          }
+        }
+      }
+    },
+    "drug_interactions": {
+      "type": "array",
+      "description": "Stage 5 output: clinically significant drug-drug interactions identified via NIH RxNav.",
+      "items": {
+        "type": "object",
+        "required": ["drug_a", "drug_b", "severity", "recommendation"],
+        "additionalProperties": false,
+        "properties": {
+          "drug_a": { "type": "string" },
+          "drug_b": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["minor", "moderate", "major", "contraindicated", "unknown"]
+          },
+          "recommendation": {
+            "type": "string",
+            "description": "Clinical action recommended (e.g. 'monitor INR closely')."
+          }
+        }
+      }
+    },
+    "final_report": {
+      "type": "object",
+      "description": "Stage 6 output: physician-ready SOAP note.",
+      "required": ["subjective", "objective", "assessment", "plan"],
+      "additionalProperties": false,
+      "properties": {
+        "subjective": {
+          "type": "string",
+          "description": "Patient's reported symptoms and history in their own words."
+        },
+        "objective": {
+          "type": "string",
+          "description": "Measurable clinical findings (vitals, labs, exam)."
+        },
+        "assessment": {
+          "type": "string",
+          "description": "Clinician's interpretation and working diagnosis."
+        },
+        "plan": {
+          "type": "string",
+          "description": "Proposed treatment, follow-up, and patient instructions."
+        }
+      }
+    }
+  }
+}

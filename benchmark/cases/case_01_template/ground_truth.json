@@ -1,0 +1,53 @@
+{
+  "case_id": "case_01_template",
+  "transcription_cleaned": "TODO: Provide a cleaned, punctuated, de-stuttered version of the patient transcript with speaker turns clearly labeled.",
+  "clinical_summary": "TODO: Write a 2-4 sentence clinician-facing summary covering chief complaint, relevant history, current medications, and key physical findings.",
+  "differential_diagnosis": [
+    {
+      "condition": "TODO: Primary differential diagnosis (e.g. 'Unstable angina')",
+      "pmid": null,
+      "rationale": "TODO: One sentence explaining why this tops the differential given the patient's presentation."
+    },
+    {
+      "condition": "TODO: Secondary differential diagnosis (e.g. 'Musculoskeletal chest pain')",
+      "pmid": null,
+      "rationale": "TODO: One sentence rationale."
+    },
+    {
+      "condition": "TODO: Tertiary differential diagnosis (e.g. 'Pulmonary embolism')",
+      "pmid": null,
+      "rationale": "TODO: One sentence rationale."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "warfarin 5mg daily",
+      "rxnorm_id": null,
+      "ingredient": "TODO: Normalized ingredient name (e.g. 'warfarin')"
+    },
+    {
+      "original": "aspirin 81mg daily",
+      "rxnorm_id": null,
+      "ingredient": "TODO: Normalized ingredient name (e.g. 'aspirin')"
+    },
+    {
+      "original": "lisinopril 10mg daily",
+      "rxnorm_id": null,
+      "ingredient": "TODO: Normalized ingredient name (e.g. 'lisinopril')"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "warfarin",
+      "drug_b": "aspirin",
+      "severity": "major",
+      "recommendation": "TODO: Provide the clinical recommendation from RxNav (e.g. 'Monitor INR closely; concurrent use increases bleeding risk significantly')."
+    }
+  ],
+  "final_report": {
+    "subjective": "TODO: Summarize the patient's self-reported symptoms, history, and medication adherence in SOAP Subjective format.",
+    "objective": "TODO: Populate with objective findings — vitals, EKG results, lab values — once available.",
+    "assessment": "TODO: Record the working diagnosis and clinical reasoning in SOAP Assessment format.",
+    "plan": "TODO: Detail the treatment plan, ordered tests, referrals, and follow-up instructions in SOAP Plan format."
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BenchmarkCaseInput",
+  "description": "Schema for a single benchmark case input file (input.json).",
+  "type": "object",
+  "required": [
+    "case_id",
+    "data_source",
+    "patient_transcript",
+    "chart_notes",
+    "medication_list",
+    "patient_history",
+    "difficulty"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Unique identifier for this benchmark case, e.g. 'case_01_template'."
+    },
+    "data_source": {
+      "type": "string",
+      "enum": ["synthetic", "agbonnet", "mimic_iv"],
+      "description": "Origin of the data. 'mimic_iv' requires PhysioNet credentialing."
+    },
+    "patient_transcript": {
+      "type": "string",
+      "description": "Raw doctor-patient dialogue, verbatim or lightly de-identified."
+    },
+    "chart_notes": {
+      "type": "string",
+      "description": "Raw clinical notes as entered by the clinician; may be noisy or incomplete."
+    },
+    "medication_list": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Human-entered medication names, not yet normalized. May include brand/generic variants and typos."
+    },
+    "patient_history": {
+      "type": "object",
+      "required": ["age", "sex", "chief_complaint", "known_conditions", "known_allergies"],
+      "additionalProperties": false,
+      "properties": {
+        "age": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 130
+        },
+        "sex": {
+          "type": "string",
+          "enum": ["male", "female", "other", "unknown"]
+        },
+        "chief_complaint": {
+          "type": "string"
+        },
+        "known_conditions": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "known_allergies": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["simple", "moderate", "complex"],
+      "description": "Estimated clinical complexity of the case."
+    }
+  }
+}

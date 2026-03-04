@@ -1,0 +1,24 @@
+{
+  "case_id": "case_01_template",
+  "data_source": "synthetic",
+  "difficulty": "simple",
+  "patient_history": {
+    "age": 45,
+    "sex": "male",
+    "chief_complaint": "chest pain, sharp, onset 2 hours ago",
+    "known_conditions": [
+      "atrial fibrillation",
+      "hypertension"
+    ],
+    "known_allergies": [
+      "penicillin"
+    ]
+  },
+  "medication_list": [
+    "warfarin 5mg daily",
+    "aspirin 81mg daily",
+    "lisinopril 10mg daily"
+  ],
+  "patient_transcript": "Doctor: Good morning, Mr. Smith. What brings you in today?\nPatient: I've been having this sharp chest pain for about two hours now. It started when I was mowing the lawn.\nDoctor: Can you point to where the pain is?\nPatient: Right here, on the left side. It doesn't go anywhere else.\nDoctor: Is it constant or does it come and go?\nPatient: It comes and goes, maybe every few minutes. It's like a stabbing feeling.\nDoctor: On a scale of one to ten, how bad is the pain?\nPatient: I'd say about a six right now. It was worse earlier, maybe an eight.\nDoctor: Do you have any shortness of breath, sweating, or nausea?\nPatient: A little bit of sweating, yeah. Not really nauseous though.\nDoctor: Are you taking all of your medications as prescribed — the warfarin, aspirin, and lisinopril?\nPatient: Yes, I take them every morning with breakfast. I haven't missed any.\nDoctor: Any recent falls, cuts, or unusual bruising?\nPatient: Actually, I noticed some bruising on my arm last week and I don't remember bumping it.\nDoctor: Okay, that's important to note. Let's check your vitals and run an EKG.",
+  "chart_notes": "Pt is 45yo M w/ hx of AFib + HTN presenting c/o acute onset L-sided CP x2h. Onset w/ exertion (lawn mowing). Describes as sharp/stabbing, 6/10, episodic. Assoc sx: diaphoresis. Denies N/V, radiation, palpitations. Meds: warfarin 5mg QD, ASA 81mg QD, lisinopril 10mg QD. Allergies: PCN. No missed doses. Unexplained ecchymosis L forearm noted on exam. Vitals pending. Plan: EKG, CBC, BMP, PT/INR stat."
+}

@@ -1,0 +1,17 @@
+{
+  "case_id": "case_01_template",
+  "title": "Chest Pain with Warfarin-Aspirin Interaction (Reference Case)",
+  "description": "A 45-year-old male with atrial fibrillation and hypertension presents with acute exertional chest pain. He is concurrently on warfarin and aspirin — a well-documented major drug interaction. This reference case exercises all six workflow stages and serves as the template for additional cases.",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "synthetic",
+  "difficulty": "simple",
+  "created_by": "team-scaffold",
+  "notes": "All patient data is fully synthetic — no real patient information. Ground truth values are placeholders marked with 'TODO'; teammates should populate them before running the benchmark evaluator. The warfarin + aspirin interaction is the primary drug-interaction signal for this case."
+}

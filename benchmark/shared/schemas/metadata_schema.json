@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BenchmarkCaseMetadata",
+  "description": "Schema for case-level metadata (metadata.json).",
+  "type": "object",
+  "required": [
+    "case_id",
+    "title",
+    "description",
+    "workflow_stages_tested",
+    "data_source",
+    "difficulty",
+    "created_by",
+    "notes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "description": "Short human-readable title for the case."
+    },
+    "description": {
+      "type": "string",
+      "description": "1-3 sentence summary of what this case tests."
+    },
+    "workflow_stages_tested": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "transcription_cleanup",
+          "clinical_summarization",
+          "differential_diagnosis",
+          "medication_normalization",
+          "drug_interaction_check",
+          "final_report_generation"
+        ]
+      },
+      "minItems": 1,
+      "description": "Which pipeline stages are exercised by this case."
+    },
+    "data_source": {
+      "type": "string",
+      "enum": ["synthetic", "agbonnet", "mimic_iv"]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["simple", "moderate", "complex"]
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Name or identifier of the team member who authored this case."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-text field for caveats, known issues, or TODOs for this case."
+    }
+  }
+}
