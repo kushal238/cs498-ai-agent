@@ -1,0 +1,17 @@
+{
+  "case_id": "case_03",
+  "title": "High-grade pleomorphic sarcoma of the left hip with pulmonary nodules",
+  "description": "A 67-year-old woman with a rapidly enlarging left hip mass after a fall was ultimately diagnosed with a high-grade undifferentiated pleomorphic sarcoma (13.5 cm, negative margins) and later developed multiple pulmonary nodules concerning for metastases. This case exercises all six workflow stages on an oncology and rehabilitation scenario with complex imaging, treatment decisions, pain management, and functional limitations. Source text is drawn from the AGBonnet augmented-clinical-notes dataset (idx 12514; conversation and full_note columns).",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "created_by": "team-scaffold",
+  "notes": "From (idx:12514) (augmented-clinical-notes). All patient data is fully synthetic — no real patient information."
+}

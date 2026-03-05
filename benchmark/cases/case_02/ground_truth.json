@@ -1,0 +1,53 @@
+{
+  "case_id": "case_02",
+  "transcription_cleaned": "Doctor: Good morning, sir. I'm Dr. Smith. How can I help you today?\nPatient: Good morning, doctor. I came here to report my diabetes.\nDoctor: I see. Can you tell me more about your diagnosis?\nPatient: Yes, I was diagnosed with type 2 diabetes mellitus when I was 25 years old.\nDoctor: I see. And what is your prior medical history?\nPatient: Well, I had a dilated cardiomyopathy and was treated with a pacemaker when I was 42.\nDoctor: Hmm, I see. And what about your family history?\nPatient: My mother and maternal grandfather had type 2 diabetes, but my father died of natural causes and wasn't affected by diabetes. My brother and sister are healthy and don't have any signs of hyperglycaemia.\nDoctor: Are you experiencing any diabetic complications such as nephropathy, neuropathy, or retinopathy?\nPatient: No, I'm not experiencing any of those complications.\nDoctor: Okay, that's good to hear. And have you been experiencing any diabetic symptoms recently?\nPatient: No, I haven't experienced any symptoms.\nDoctor: I see. And what treatment have you been following for your diabetes?\nPatient: I've been following a regular treatment with basal-bolus insulin and metformin.\nDoctor: Okay, I understand. And have you had any tests done to detect insulin resistance?\nPatient: No, I haven't had any tests done for that.\nDoctor: I see. Well, we'll need to schedule an examination for you to monitor your blood glucose levels. Can you keep a diary of your morning and pre-meal levels?\nPatient: Sure, I can do that.\nDoctor: Great. And we'll also need to detect beta-cell antibodies to investigate the possibility of an autoimmune etiology of your diabetes.\nPatient: Okay, I understand.\nDoctor: Good morning, sir. How are you today?\nPatient: Good morning, doctor. I'm doing well.\nDoctor: Great to hear. And have you been monitoring your blood glucose levels?\nPatient: Yes, I have.\nDoctor: Okay, let's take a look at the results. I see that your blood test results were not significant for autoimmune diabetes. And your capillary blood glucose levels showed an acceptable trend for diabetes.\nPatient: Okay.\nDoctor: So, based on the reasonable glycemic control, we'll modify your treatment plan.\nPatient: Okay, I understand.\nDoctor: Great. I'll see you in another month for a follow-up appointment.\nPatient: Okay, thank you, doctor.",
+  "clinical_summary": "48-year-old man with type 2 diabetes since age 25 and prior dilated cardiomyopathy (pacemaker at 42) presents for diabetes follow-up. Family history positive for type 2 diabetes in mother and maternal grandfather. No diabetic complications or current symptoms. Initially on basal-bolus insulin and metformin with poor control; beta-cell antibodies negative. Genetic testing confirmed MODY6 (NEUROD1 p.Met114Leu). Current regimen: insulin glargine, metformin, and gliclazide with improved glycaemic control, one daily injection, no hypoglycaemia, and no complications.",
+  "differential_diagnosis": [
+    {
+      "condition": "MODY6 (NEUROD1-related monogenic diabetes)",
+      "pmid": 39264012,
+      "rationale": "Genetic testing showed heterozygosity for pathogenic NEUROD1 variant p.Met114Leu; autosomal dominant family history and clinical course support MODY6."
+    },
+    {
+      "condition": "Type 2 diabetes mellitus",
+      "pmid": 37968955,
+      "rationale": "Initial presentation and family history are consistent with type 2 diabetes; retained in differential until genetic confirmation of MODY6."
+    },
+    {
+      "condition": "Autoimmune (type 1) diabetes",
+      "pmid": 29487039,
+      "rationale": "Beta-cell antibodies were obtained to rule out autoimmune etiology; results were not significant for autoimmune diabetes."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "insulin glargine daily",
+      "rxnorm_id": "253182",
+      "ingredient": "insulin glargine"
+    },
+    {
+      "original": "metformin 500mg three times daily",
+      "rxnorm_id": "6809",
+      "ingredient": "metformin"
+    },
+    {
+      "original": "gliclazide 60mg daily",
+      "rxnorm_id": "4816",
+      "ingredient": "gliclazide"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "insulin glargine",
+      "drug_b": "metformin",
+      "severity": "Significant interaction possible (monitoring by your doctor required).",
+      "recommendation": "metformin , insulin glargine . Either increases the level of the other by added drug effects. Additional Information: Antidiabetic drugs are often taken together; Your doctor may need to adjust your dosage when starting or stopping antidiabetic drugs."
+    }
+  ],
+  "final_report": {
+    "subjective": "48-year-old male with type 2 diabetes mellitus diagnosed at age 25; history of dilated cardiomyopathy with pacemaker at 42. Family history: mother and maternal grandfather with type 2 diabetes; father deceased, no diabetes; brother and sister healthy. No diabetic complications (nephropathy, neuropathy, retinopathy) and no current diabetic symptoms. Previously on basal-bolus insulin and metformin; poor glycaemic control prompted home glucose monitoring and beta-cell antibody testing. Blood tests not significant for autoimmune diabetes; capillary glucose trend acceptable. Treatment modified over time; currently reports improved quality of life on insulin glargine, metformin, and gliclazide with one injection per day and no need to measure glucose after every meal.",
+    "objective": "Genetic testing: heterozygosity for NEUROD1 p.Met114Leu c.340A>C (MODY6). Capillary blood glucose values largely 90–130 mg/dL on current regimen. HbA1c improved by Oct 2020. No hypoglycaemia reported during follow-up. No diabetic complications to date. C-peptide was low when on sulphonylurea alone (March 2020); improved with addition of basal insulin.",
+    "assessment": "48-year-old with MODY6 (NEUROD1 mutation) and prior type 2 diabetes phenotype. Dilated cardiomyopathy with pacemaker. Glycaemic control achieved with basal insulin, gliclazide, and metformin after trial of sulphonylurea monotherapy failed. No autoimmune diabetes. No diabetic complications. Quality of life improved on current regimen.",
+    "plan": "Continue insulin glargine, metformin, and gliclazide; monitor for hypoglycaemia. Regular HbA1c and capillary glucose review. Maintain cardiovascular protection (metformin). Family counselling for autosomal dominant MODY; consider genetic testing for at-risk relatives. Follow up for glycaemic control and complications screening."
+  }
+}
