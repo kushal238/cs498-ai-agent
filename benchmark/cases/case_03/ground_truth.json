@@ -1,0 +1,48 @@
+{
+  "case_id": "case_03",
+  "transcription_cleaned": "Doctor: Hi, I'm your doctor. Can you tell me about your symptoms?\nPatient: I had a bump on my hip and a lot of pain after I fell 11 months ago.\nDoctor: What did the emergency room diagnose you with at that time?\nPatient: They said it was a hematoma around my hip.\nDoctor: And since then, have your symptoms worsened?\nPatient: Yes, I have had recurrent falls and the pain has continued.\nDoctor: Did you have any imaging done before the cancer diagnosis?\nPatient: Yes, I had a CT scan without intravenous contrast about six weeks before I was diagnosed with cancer.\nDoctor: What did that CT scan show?\nPatient: It did not show a displaced fracture, but there was a tissue collection that looked like a hematoma.\nDoctor: After that, did you have an MRI?\nPatient: Yes. The MRI showed a soft-tissue mass in my left hip that was suspicious for sarcoma.\nDoctor: You then saw an orthopedic oncologic specialist and had surgery the next day, correct?\nPatient: Yes, I had a radical resection of the mass.\nDoctor: The pathology report shows a high-grade undifferentiated pleomorphic sarcoma with negative margins, the closest tumor being 2 mm from the edge.\nPatient: Okay.\nDoctor: A staging chest CT after surgery showed two tiny lung nodules, the largest 4 mm, and a small splenic lesion, with follow-up recommended in three to six months.\nPatient: I understand.\nDoctor: You have also had follow-up with the surgeon and consultations at a sarcoma clinic, where adjuvant chemotherapy and radiation were recommended.\nPatient: Yes, that is correct.",
+  "clinical_summary": "A 67-year-old woman presented with an 11-month history of left hip pain and a progressively enlarging mass after a fall, initially misdiagnosed as a hematoma. Imaging ultimately revealed a soft-tissue mass, and she underwent radical resection of a 13.5 cm high-grade undifferentiated pleomorphic sarcoma of the left hip with negative margins. Postoperative staging CT identified small pulmonary nodules and a splenic lesion requiring surveillance; she subsequently received adjuvant radiation, and adjuvant chemotherapy was recommended but delayed due to patient anxiety and indecision. She now has chronic pain, lymphedema, and functional limitations requiring physical therapy while being monitored for possible metastatic disease.",
+  "differential_diagnosis": [
+    {
+      "condition": "High-grade undifferentiated pleomorphic sarcoma with pulmonary metastases",
+      "pmid": 34033374,
+      "rationale": "Large high-grade superficial soft-tissue sarcoma with new multiple pulmonary nodules on follow-up CT is highly suggestive of metastatic spread."
+    },
+    {
+      "condition": "Postoperative seroma or chronic hematoma at the surgical site",
+      "pmid": 15007612,
+      "rationale": "Large fluid collection in the left hip operative bed with a history of prior hematoma and surgery is compatible with seroma or chronic hematoma."
+    },
+    {
+      "condition": "Soft-tissue abscess in the left hip region",
+      "pmid": 33981885,
+      "rationale": "A large postoperative fluid collection could represent abscess, although systemic infectious signs are not emphasized in the current description."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+      "rxnorm_id": 214183,
+      "ingredient": "oxycodone; acetaminophen"
+    },
+    {
+      "original": "acetaminophen 500mg as needed for pain",
+      "rxnorm_id": 161,
+      "ingredient": "acetaminophen"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "oxycodone/acetaminophen (Percocet 10/325 mg)",
+      "drug_b": "acetaminophen 500mg",
+      "severity": "Not found",
+      "recommendation": "Not found"
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient is a 67-year-old woman with a history of left hip trauma 11 months ago followed by progressive hip pain, recurrent falls, and an enlarging mass. She reports that the mass was initially diagnosed as a hematoma around the proximal femur in the emergency department, but the pain and instability persisted. Subsequent imaging and biopsy led to the diagnosis of a high-grade undifferentiated pleomorphic sarcoma of the left hip. She underwent radical resection, adjuvant radiation, and is now followed for possible metastatic disease. She complains of persistent left hip, flank, and shoulder pain, difficulty sleeping, standing to perform household chores, dressing, and sitting long enough to watch television with her son. She takes Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed but is concerned about her quality of life and weight gain after surgery and radiation.",
+    "objective": "Pathology: 13.5 cm superficial left hip undifferentiated high-grade pleomorphic sarcoma with 50-60% necrosis, negative margins (closest tumor 2 mm). Staging chest CT: two tiny lung nodules (largest 4 mm) and a small hypodense splenic lesion, with recommended imaging follow-up. Subsequent chest/abdomen/pelvis CT: interval development of multiple new pulmonary nodules concerning for metastases and a large left hip fluid collection (seroma vs chronic hematoma vs abscess). Exam and PT evaluation: left hip, flank, and shoulder pain; lymphedema involving the left lower extremity and abdomen; decreased range of motion and strength; functional limitations in sleep, standing, dressing, grooming, and sitting tolerance. Vital signs and detailed neurologic exam not explicitly abnormal in the provided note.",
+    "assessment": "High-grade undifferentiated pleomorphic sarcoma of the left hip (Stage III, pT2a cN0 cM0) status post radical resection with negative margins and adjuvant radiation, now with imaging findings concerning for pulmonary metastases and a large postoperative hip fluid collection. She has significant cancer-related pain, lymphedema, and functional impairment, compounded by anxiety about adjuvant chemotherapy and survivorship decisions. Chronic opioid and acetaminophen use provides partial relief but raises concern for polypharmacy and long-term toxicity. Overall, this represents a complex oncology and rehabilitation case requiring coordinated oncologic, surgical, and rehabilitative care.",
+    "plan": "Continue oncologic surveillance with repeat chest/abdomen/pelvis imaging to further characterize pulmonary nodules and hip fluid collection; consider biopsy or drainage of the hip collection if clinically indicated. Revisit the recommendation for adjuvant systemic therapy in a multidisciplinary sarcoma board setting, addressing the patient's concerns and providing psychosocial support through social work and mental health services. Optimize pain management with careful monitoring of total daily acetaminophen dose, consideration of adjuvant analgesics, and non-pharmacologic interventions (physical therapy, positioning, activity modification). Maintain and progress physical therapy focusing on lymphedema management, range of motion, strength, gait training, and functional goals (sleep, standing tolerance, self-care, household tasks). Arrange close follow-up with oncology, surgery, and rehabilitation medicine, and provide resources for caregiver support and advance care planning as appropriate."
+  }
+}

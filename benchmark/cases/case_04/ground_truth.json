@@ -1,0 +1,48 @@
+{
+  "case_id": "case_04",
+  "transcription_cleaned": "Doctor: Hi, how are you today?\nParent: I'm good, thanks.\nDoctor: Great. What brought you and your baby in today?\nParent: My baby has a rapidly enlarging mass on his right arm.\nDoctor: How old is he and when did you first notice the mass?\nParent: He is 41 days old, and we noticed the mass about 5 hours ago. It has been getting bigger since then.\nDoctor: I understand. Does he have any other medical problems or previous procedures on that arm?\nParent: He has hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome without status epilepticus. He had a PICC line placed in that arm during the neonatal period.\nDoctor: On exam, the mass feels pulsatile but his pulses, capillary refill, and limb color all look normal, and he is moving his arms and legs well.\nParent: Yes, he moves normally.\nDoctor: We obtained a CT angiogram, which shows a pseudoaneurysm of the right distal brachial artery. An MRI confirms a vascular mass along the brachial artery.\nParent: Okay.\nDoctor: Because we are concerned this is a vascular injury from the prior line, we admitted him to the NICU for observation. The mass has continued to grow, so plastic surgery and vascular surgery have been consulted, and we are planning microscope-assisted brachial artery repair.\nParent: Thank you for explaining.",
+  "clinical_summary": "A 39-week term, 41-day-old male infant with hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome (without status epilepticus) presented with a rapidly enlarging pulsatile mass on the medial aspect of the right upper extremity. Physical examination showed a warm, well-perfused limb with normal pulses and capillary refill despite the mass. CT angiography and MRI demonstrated a pseudoaneurysm of the right distal brachial artery with vascular flow, likely related to prior PICC placement. The infant underwent successful microscope-assisted resection of the pseudoaneurysm and end-to-end brachial artery repair, followed by a short course of low-dose intravenous heparin and outpatient follow-up with good functional recovery of the right arm.",
+  "differential_diagnosis": [
+    {
+      "condition": "Iatrogenic pseudoaneurysm of the right distal brachial artery",
+      "pmid": 30459975,
+      "rationale": "Rapidly enlarging pulsatile mass at a prior PICC site with CT angiography and MRI confirming a vascular outpouching communicating with the brachial artery is most consistent with a pseudoaneurysm."
+    },
+    {
+      "condition": "Arteriovenous malformation or congenital vascular malformation",
+      "pmid": 2054808,
+      "rationale": "A pulsatile upper extremity mass in an infant could represent AVM or other vascular malformation, but the focal post-line location and imaging features favor pseudoaneurysm."
+    },
+    {
+      "condition": "Soft-tissue tumor or hemangioma",
+      "pmid": 37883305,
+      "rationale": "A rapidly enlarging soft-tissue mass may represent a vascular tumor or hemangioma; however, clear arterial communication and pseudoaneurysm morphology on imaging make this less likely."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "intravenous heparin 10 U/kg/h for 48 hours",
+      "rxnorm_id": 5224,
+      "ingredient": "heparin"
+    },
+    {
+      "original": "oral acetaminophen 160mg/5mL suspension as needed",
+      "rxnorm_id": 161,
+      "ingredient": "acetaminophen"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "intravenous heparin 10 U/kg/h for 48 hours",
+      "drug_b": "oral acetami nophen 160mg/5mL suspension as needed",
+      "severity": "Minor",
+      "recommendation": "acetaminophen increases effects of heparin by unknown mechanism."
+    }
+  ],
+  "final_report": {
+    "subjective": "Parents of a 41-day-old male infant report a rapidly enlarging mass on the medial aspect of the right upper extremity, first noticed about 5 hours before arrival. The infant has a history of hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome (without status epilepticus) and previously had a PICC line placed in the right upper extremity. Parents state that the infant has otherwise been feeding and moving normally, with no reported color change or weakness of the limb.",
+    "objective": "On exam, there is a pulsatile mass on the medial right upper extremity. Capillary refill is under 2 seconds, brachial/radial/ulnar pulses are 2+ bilaterally, extremities are warm, and there is no discoloration or edema. CT angiography shows a pseudoaneurysm of the right distal brachial artery measuring approximately 1.8 × 1.6 × 2.1 cm with communication to the arterial lumen and no other vascular abnormalities. MRI confirms a 2.1 × 1.7 × 1.1 cm vascular mass along the right brachial artery. Intraoperative findings include a focal pseudoaneurysm with diseased arterial segment successfully resected and a tension-free end-to-end microvascular anastomosis of the brachial artery at 2 mm diameter. Postoperatively, the infant receives low-dose IV heparin for 48 hours and is discharged on postoperative day 3 with stable pulses, warm extremities, and an arm splint; follow-up at 2 years shows a well-healed surgical site and normal right upper extremity function.",
+    "assessment": "Right distal brachial artery pseudoaneurysm in a 41-day-old infant, most likely iatrogenic from prior PICC placement, successfully treated with surgical resection and end-to-end brachial artery repair. The infant has underlying hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome but currently shows good right arm perfusion and function postoperatively. Short-course anticoagulation with low-dose heparin has been tolerated without bleeding complications.",
+    "plan": "Continue standard postoperative care with careful monitoring of right upper extremity perfusion, pulses, and wound healing. Maintain the arm splint as directed and provide oral acetaminophen suspension for pain control as needed, avoiding additional anticoagulants or NSAIDs that might increase bleeding risk. Arrange follow-up with plastic/vascular surgery to assess arterial patency and limb growth, and continue neurology follow-up for underlying hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome. Educate parents on signs of recurrent swelling, color change, or decreased movement in the arm and when to seek urgent evaluation."
+  }
+}

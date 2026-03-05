@@ -1,0 +1,24 @@
+{
+  "case_id": "case_02",
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "patient_history": {
+    "age": 48,
+    "sex": "male",
+    "chief_complaint": "diabetes follow-up, poor glycaemic control on prior regimen",
+    "known_conditions": [
+      "type 2 diabetes mellitus (diagnosed age 25)",
+      "dilated cardiomyopathy",
+      "pacemaker (implanted age 42)",
+      "MODY6 (NEUROD1 mutation)"
+    ],
+    "known_allergies": []
+  },
+  "medication_list": [
+    "insulin glargine daily",
+    "metformin 500mg three times daily",
+    "gliclazide 60mg daily"
+  ],
+  "patient_transcript": "Doctor: Good morning, sir. I'm Dr. Smith. How can I help you today?\nPatient: Good morning, doctor. I came here to report my diabetes.\nDoctor: I see. Can you tell me more about your diagnosis?\nPatient: Yes, I was diagnosed with type 2 diabetes mellitus when I was 25 years old.\nDoctor: I see. And what is your prior medical history?\nPatient: Well, I had a dilated cardiomyopathy and was treated with a pacemaker when I was 42.\nDoctor: Hmm, I see. And what about your family history?\nPatient: My mother and maternal grandfather had type 2 diabetes, but my father died of natural causes and wasn't affected by diabetes. My brother and sister are healthy and don't have any signs of hyperglycaemia.\nDoctor: Are you experiencing any diabetic complications such as nephropathy, neuropathy, or retinopathy?\nPatient: No, I'm not experiencing any of those complications.\nDoctor: Okay, that's good to hear. And have you been experiencing any diabetic symptoms recently?\nPatient: No, I haven't experienced any symptoms.\nDoctor: I see. And what treatment have you been following for your diabetes?\nPatient: I've been following a regular treatment with basal-bolus insulin and metformin.\nDoctor: Okay, I understand. And have you had any tests done to detect insulin resistance?\nPatient: No, I haven't had any tests done for that.\nDoctor: I see. Well, we'll need to schedule an examination for you to monitor your blood glucose levels. Can you keep a diary of your morning and pre-meal levels?\nPatient: Sure, I can do that.\nDoctor: Great. And we'll also need to detect beta-cell antibodies to investigate the possibility of an autoimmune etiology of your diabetes.\nPatient: Okay, I understand.\nDoctor: Good morning, sir. How are you today?\nPatient: Good morning, doctor. I'm doing well.\nDoctor: Great to hear. And have you been monitoring your blood glucose levels?\nPatient: Yes, I have.\nDoctor: Okay, let's take a look at the results. I see that your blood test results were not significant for autoimmune diabetes. And your capillary blood glucose levels showed an acceptable trend for diabetes.\nPatient: Okay.\nDoctor: So, based on the reasonable glycemic control, we'll modify your treatment plan.\nPatient: Okay, I understand.\nDoctor: Great. I'll see you in another month for a follow-up appointment.\nPatient: Okay, thank you, doctor.",
+  "chart_notes": "48yo M, type 2 diabetes from age 25. Hx dilated cardiomyopathy, pacemaker at 42. Family hx: mother and maternal grandfather type 2 DM; father deceased, no diabetes; brother and sister healthy, no hyperglycaemia. First visit Sept 2017: no diabetic complications (no nephropathy, neuropathy, retinopathy), no diabetic symptoms. Tx: basal-bolus insulin + metformin (set at another clinic). Poor glycaemic control; pt to monitor capillary BG at home (morning and pre-meal), diary. Beta-cell antibodies requested (autoimmune etiology). Oct 2017: beta-cell antibodies not significant for autoimmune diabetes; capillary BG acceptable (most 90–130 mg/dL). Tx changed: stopped lispro before meals, added dapagliflozin/metformin 5/1000 mg 2 tab daily. Pt stopped dapagliflozin/metformin ~10 days later due to severe abdominal pain (resolved off drug). Continued metformin 500 mg 3 tab daily + insulin glargine; glycaemic control excellent (90–130 mg/dL). March 2018: HbA1c still high. NGS performed (14 MODY genes, WFS1, INSR). Sept 2019: genetic test heterozygosity p.Met114Leu c.340A>C in NEUROD1 (MODY6). Started gliclazide RM 60 mg, insulin suspended. March 2020: inadequate glycaemic control on sulphonylurea, low C-peptide; resumed basal insulin + gliclazide + metformin. Oct 2020: glycaemic control much improved; one injection/day, no need to measure BG after every meal. No hypoglycaemia, no diabetic complications. Family counselling re autosomal dominant MODY; brother and sister no hyperglycaemia, no NEUROD1 mutation; mother T2DM, declined genetic testing."
+}

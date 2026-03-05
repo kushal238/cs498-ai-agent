@@ -1,0 +1,17 @@
+{
+  "case_id": "case_02",
+  "title": "MODY6 (NEUROD1) diabetes with prior type 2 phenotype and pacemaker",
+  "description": "A 48-year-old man with type 2 diabetes since age 25 and dilated cardiomyopathy (pacemaker at 42) presents for diabetes follow-up. Genetic testing confirmed MODY6 (NEUROD1 p.Met114Leu). Case covers all six workflow stages; data from AGBonnet augmented-clinical-notes (dataset idx 58230; conversation and full_note columns).",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "created_by": "team-scaffold",
+  "notes": "From (idx:58230) (augmented-clinical-notes). All patient data is fully synthetic — no real patient information."
+}

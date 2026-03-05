@@ -1,0 +1,17 @@
+{
+  "case_id": "case_04",
+  "title": "Neonatal brachial artery pseudoaneurysm after PICC placement",
+  "description": "A 39-week term, 41-day-old male infant with hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome developed a rapidly enlarging pulsatile mass on the medial right upper extremity. Imaging confirmed a pseudoaneurysm of the right distal brachial artery, likely related to prior PICC placement, which was treated with microscope-assisted resection and end-to-end arterial repair followed by short-course heparin. This case exercises all six workflow stages on a neonatal vascular surgery and neurology scenario derived from the AGBonnet augmented-clinical-notes dataset (idx 32955; conversation and full_note columns).",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "created_by": "team-scaffold",
+  "notes": "From (idx:32955) (augmented-clinical-notes). All patient data is fully synthetic — no real patient information."
+}
