@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -95,7 +96,7 @@ def build_image(image_name: str) -> None:
     )
 
 
-def run_agent(input_data: dict, image_name: str, timeout: int) -> dict | None:
+def run_agent(input_data: dict, image_name: str, timeout: int, network: str = "bridge") -> dict | None:
     """Run the agent container for one case and return its parsed JSON output.
 
     The container receives input as JSON on stdin and must print a single
@@ -104,14 +105,19 @@ def run_agent(input_data: dict, image_name: str, timeout: int) -> dict | None:
     Returns None on timeout, non-zero exit, or JSON parse failure.
     """
     input_json_str = json.dumps(input_data)
+    cmd = [
+        "docker", "run", "--rm",
+        f"--network={network}",
+        "-i",
+    ]
+    # Pass OPENAI_API_KEY into the container if set in host env
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if api_key:
+        cmd.extend(["-e", f"OPENAI_API_KEY={api_key}"])
+    cmd.append(image_name)
     try:
         result = subprocess.run(
-            [
-                "docker", "run", "--rm",
-                "--network=none",
-                "-i",
-                image_name,
-            ],
+            cmd,
             input=input_json_str,
             capture_output=True,
             text=True,
@@ -246,6 +252,8 @@ def main() -> None:
                         help="Seconds to wait per case container")
     parser.add_argument("--image", type=str, default=DEFAULT_IMAGE,
                         help="Docker image name/tag")
+    parser.add_argument("--network", type=str, default="bridge",
+                        help="Docker network mode (default: bridge, use 'none' for locked-down eval)")
     args = parser.parse_args()
 
     if args.build:
@@ -271,7 +279,7 @@ def main() -> None:
             all_scores[case_id] = {"error": "missing ground truth"}
             continue
 
-        predicted = run_agent(input_data, args.image, args.timeout)
+        predicted = run_agent(input_data, args.image, args.timeout, args.network)
         if predicted is None:
             all_scores[case_id] = {"error": "agent run failed"}
             continue

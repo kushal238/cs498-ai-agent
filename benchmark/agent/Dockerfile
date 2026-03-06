@@ -25,6 +25,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy only agent code and shared utilities
 COPY agent/agent_main.py        /app/agent_main.py
 COPY runner/langgraph_runner.py /app/langgraph_runner.py
+COPY runner/llm.py              /app/llm.py
 COPY shared/                    /app/shared/
 
 # Schema path resolution inside the container
