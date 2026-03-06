@@ -13,8 +13,8 @@ Install: pip install scikit-learn
 
 from __future__ import annotations
 
-import numpy as np  # noqa: F401  (imported to validate install)
-from sklearn.metrics import ndcg_score  # noqa: F401
+import numpy as np
+from sklearn.metrics import ndcg_score
 
 
 def score_differential_ndcg(
@@ -32,15 +32,38 @@ def score_differential_ndcg(
 
     Returns:
         nDCG score as a float in [0.0, 1.0].
-
-    Raises:
-        NotImplementedError: Always — scoring logic not yet implemented.
-
-    TODO:
-        1. Build a relevance score vector for the predicted list:
-           relevance[i] = (len(expected) - expected_rank) if condition in expected else 0
-           where expected_rank is the 0-based position in the expected list.
-        2. Build the ideal relevance vector from the expected list order.
-        3. Reshape both into 2D arrays and call sklearn.metrics.ndcg_score(ideal, predicted, k=k).
     """
-    raise NotImplementedError("TODO: implement nDCG scoring for ranked differential diagnosis")
+    if not predicted or not expected:
+        return 0.0
+
+    # Build relevance lookup: condition -> score (higher = more relevant)
+    # Rank 0 in expected = most relevant = highest relevance score
+    n = len(expected)
+    expected_relevance = {
+        d.get("condition", "").lower().strip(): (n - i)
+        for i, d in enumerate(expected)
+    }
+
+    # Build relevance vector aligned to predicted order
+    pred_relevances = [
+        expected_relevance.get(d.get("condition", "").lower().strip(), 0)
+        for d in predicted
+    ]
+
+    # Build ideal relevance vector (expected order, descending)
+    ideal_relevances = sorted(expected_relevance.values(), reverse=True)
+    # Pad or truncate to match predicted length
+    ideal_padded = (ideal_relevances + [0] * len(predicted))[:len(predicted)]
+
+    # Edge cases: all-zero relevance or single-item list
+    if not any(ideal_padded) or not any(pred_relevances):
+        return 0.0
+    if len(ideal_padded) < 2:
+        return 1.0 if pred_relevances[0] > 0 else 0.0
+
+    y_true  = np.array([ideal_padded])
+    y_score = np.array([pred_relevances])
+
+    if k is not None:
+        return float(ndcg_score(y_true, y_score, k=k))
+    return float(ndcg_score(y_true, y_score))

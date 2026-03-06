@@ -12,7 +12,7 @@ Install: pip install rouge-score
 
 from __future__ import annotations
 
-from rouge_score import rouge_scorer  # noqa: F401  (imported to validate install)
+from rouge_score import rouge_scorer
 
 
 def score_rouge(
@@ -30,16 +30,16 @@ def score_rouge(
     Returns:
         Dict mapping each metric name to its F1 score, e.g.
         {"rouge1": 0.72, "rouge2": 0.61, "rougeL": 0.68}.
-
-    Raises:
-        NotImplementedError: Always — scoring logic not yet implemented.
-
-    TODO: Instantiate rouge_scorer.RougeScorer(metrics, use_stemmer=True),
-          call .score(reference, hypothesis), and return {m: scores[m].fmeasure ...}.
     """
     if metrics is None:
         metrics = ["rouge1", "rouge2", "rougeL"]
-    raise NotImplementedError("TODO: implement ROUGE scoring with rouge_scorer.RougeScorer")
+
+    if not hypothesis or not reference:
+        return {m: 0.0 for m in metrics}
+
+    scorer = rouge_scorer.RougeScorer(metrics, use_stemmer=True)
+    raw = scorer.score(reference, hypothesis)  # score(target, prediction)
+    return {m: raw[m].fmeasure for m in metrics}
 
 
 def score_stage_text(stage_name: str, hypothesis: str, reference: str) -> dict:
@@ -52,10 +52,6 @@ def score_stage_text(stage_name: str, hypothesis: str, reference: str) -> dict:
 
     Returns:
         Dict with keys "stage", "rouge1", "rouge2", "rougeL".
-
-    Raises:
-        NotImplementedError: Always — delegates to score_rouge which is not yet implemented.
-
-    TODO: Call score_rouge() and merge the result with {"stage": stage_name}.
     """
-    raise NotImplementedError("TODO: implement stage-level ROUGE wrapper")
+    scores = score_rouge(hypothesis, reference)
+    return {"stage": stage_name, **scores}
