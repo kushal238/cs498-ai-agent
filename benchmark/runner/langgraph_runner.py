@@ -122,7 +122,11 @@ def load_case(case_dir: str | Path) -> dict:
 # ---------------------------------------------------------------------------
 
 def node_transcription_cleanup(state: dict) -> dict:
-    """Stage 1: Clean raw patient transcript."""
+    """Stage 1: Clean raw patient transcript.
+
+    Input state keys:  patient_transcript
+    Output key:        transcription_cleaned (str)
+    """
     print("[Stage 1] transcription_cleanup", file=sys.stderr)
     llm = get_llm()
     response = llm.invoke([
@@ -139,7 +143,11 @@ def node_transcription_cleanup(state: dict) -> dict:
 
 
 def node_clinical_summarization(state: dict) -> dict:
-    """Stage 2: Summarize the cleaned transcript + chart notes."""
+    """Stage 2: Summarize the cleaned transcript + chart notes.
+
+    Input state keys:  transcription_cleaned, chart_notes, patient_history
+    Output key:        clinical_summary (str)
+    """
     print("[Stage 2] clinical_summarization", file=sys.stderr)
     llm = get_llm()
     context = (
@@ -170,7 +178,11 @@ class DiagnosisList(BaseModel):
 
 
 def node_differential_diagnosis(state: dict) -> dict:
-    """Stage 3: Generate a PubMed-backed differential diagnosis list."""
+    """Stage 3: Generate a PubMed-backed differential diagnosis list.
+
+    Input state keys:  clinical_summary, patient_history
+    Output key:        differential_diagnosis (list[dict])
+    """
     print("[Stage 3] differential_diagnosis", file=sys.stderr)
     llm = get_llm()
     structured_llm = llm.with_structured_output(DiagnosisList)
@@ -200,14 +212,22 @@ def node_differential_diagnosis(state: dict) -> dict:
 
 
 def node_medication_normalization(state: dict) -> dict:
-    """Stage 4: Normalize medication list via RxNorm."""
+    """Stage 4: Normalize medication list via RxNorm.
+
+    Input state keys:  medication_list
+    Output key:        normalized_medications (list[dict])
+    """
     print("[Stage 4] medication_normalization", file=sys.stderr)
     normalized = normalize_medication_list(state.get("medication_list", []))
     return {"normalized_medications": normalized}
 
 
 def node_drug_interaction_check(state: dict) -> dict:
-    """Stage 5: Check for drug-drug interactions via NIH RxNav."""
+    """Stage 5: Check for drug-drug interactions via NIH RxNav.
+
+    Input state keys:  normalized_medications
+    Output key:        drug_interactions (list[dict])
+    """
     print("[Stage 5] drug_interaction_check", file=sys.stderr)
     normalized = state.get("normalized_medications", [])
     rxcui_list = [m["rxnorm_id"] for m in normalized if m.get("rxnorm_id")]
@@ -227,7 +247,11 @@ class SOAPReport(BaseModel):
 
 
 def node_final_report_generation(state: dict) -> dict:
-    """Stage 6: Generate a SOAP-format clinical report."""
+    """Stage 6: Generate a SOAP-format clinical report.
+
+    Input state keys:  all prior stage outputs + patient_history + chart_notes
+    Output key:        final_report (dict with keys: subjective, objective, assessment, plan)
+    """
     print("[Stage 6] final_report_generation", file=sys.stderr)
     llm = get_llm()
     structured_llm = llm.with_structured_output(SOAPReport)
