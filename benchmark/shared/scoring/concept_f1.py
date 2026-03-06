@@ -31,16 +31,20 @@ def concept_f1(predicted: list[str], expected: list[str]) -> dict[str, float]:
 
     Returns:
         Dict with keys "precision", "recall", "f1".
-
-    Raises:
-        NotImplementedError: Always — scoring logic not yet implemented.
-
-    TODO: Lowercase both lists, compute set intersection, then:
-          precision = len(intersection) / len(predicted) if predicted else 0.0
-          recall    = len(intersection) / len(expected)  if expected  else 0.0
-          f1        = 2*p*r / (p+r) if (p+r) > 0 else 0.0
     """
-    raise NotImplementedError("TODO: implement concept-level F1 scoring")
+    pred_set = {s.lower().strip() for s in predicted if s}
+    exp_set  = {s.lower().strip() for s in expected if s}
+
+    if not pred_set and not exp_set:
+        return {"precision": 1.0, "recall": 1.0, "f1": 1.0}
+
+    intersection = pred_set & exp_set
+    precision = len(intersection) / len(pred_set) if pred_set else 0.0
+    recall    = len(intersection) / len(exp_set)  if exp_set  else 0.0
+    f1 = (2 * precision * recall / (precision + recall)
+          if (precision + recall) > 0 else 0.0)
+
+    return {"precision": precision, "recall": recall, "f1": f1}
 
 
 def score_differential_diagnosis(
@@ -55,13 +59,10 @@ def score_differential_diagnosis(
 
     Returns:
         Dict with keys "precision", "recall", "f1".
-
-    Raises:
-        NotImplementedError: Always — delegates to concept_f1.
-
-    TODO: Extract condition names from both lists, call concept_f1().
     """
-    raise NotImplementedError("TODO: implement differential diagnosis concept F1")
+    pred_conditions = [d.get("condition", "") for d in predicted]
+    exp_conditions  = [d.get("condition", "") for d in expected]
+    return concept_f1(pred_conditions, exp_conditions)
 
 
 def score_normalized_medications(
@@ -76,13 +77,10 @@ def score_normalized_medications(
 
     Returns:
         Dict with keys "precision", "recall", "f1".
-
-    Raises:
-        NotImplementedError: Always — delegates to concept_f1.
-
-    TODO: Extract ingredient names (lowercased) from both lists, call concept_f1().
     """
-    raise NotImplementedError("TODO: implement medication normalization concept F1")
+    pred_ingredients = [d.get("ingredient") or "" for d in predicted]
+    exp_ingredients  = [d.get("ingredient") or "" for d in expected]
+    return concept_f1(pred_ingredients, exp_ingredients)
 
 
 def score_drug_interactions(
@@ -97,12 +95,13 @@ def score_drug_interactions(
 
     Returns:
         Dict with keys "precision", "recall", "f1".
-
-    Raises:
-        NotImplementedError: Always — delegates to concept_f1.
-
-    TODO: Represent each interaction as a frozenset({drug_a, drug_b}) for
-          order-insensitive matching, then call concept_f1() on the string
-          representations.
     """
-    raise NotImplementedError("TODO: implement drug interaction pair concept F1")
+    def pair_key(d: dict) -> str:
+        return "|".join(sorted([
+            d.get("drug_a", "").lower().strip(),
+            d.get("drug_b", "").lower().strip(),
+        ]))
+
+    pred_pairs = [pair_key(d) for d in predicted]
+    exp_pairs  = [pair_key(d) for d in expected]
+    return concept_f1(pred_pairs, exp_pairs)

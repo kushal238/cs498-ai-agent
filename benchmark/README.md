@@ -1,29 +1,19 @@
 # Clinical Workflow AI Benchmark
 
-A benchmark scaffold for evaluating an agentic AI system that takes a
-patient dialogue + chart notes as input and produces a physician-ready
-clinical report as output.
-
-> **Status**: Scaffold only — workflow nodes and scoring functions are stubs.
-> See the TODO comments throughout the codebase for what to implement next.
+A SWE-bench-style benchmark for evaluating clinical AI agents. An agent receives a raw patient dialogue and chart notes, runs them through a six-stage pipeline, and returns a physician-ready SOAP report — all inside an isolated Docker container. The harness scores the output on the host without ever exposing the answer key to the agent.
 
 ---
 
-## What this repo is
+## Pipeline stages
 
-This project benchmarks a six-stage clinical AI pipeline:
-
-| # | Stage | Input | Output |
-|---|-------|-------|--------|
-| 1 | Transcription cleanup | Raw dialogue | Cleaned transcript |
-| 2 | Clinical summarization | Cleaned transcript + chart notes | Clinical summary |
-| 3 | Differential diagnosis | Summary | Ranked DDx list (PubMed-backed) |
-| 4 | Medication normalization | Medication list | RxNorm-mapped medications |
-| 5 | Drug-drug interaction check | Normalized medications | Interaction list (NIH RxNav) |
-| 6 | Final report generation | All prior outputs | SOAP-format report |
-
-There are 10 benchmark cases (only `case_01_template` is populated). Each
-case runs the full pipeline and is scored against a human-curated ground truth.
+| # | Stage | Input | Output | Metric |
+|---|-------|-------|--------|--------|
+| 1 | Transcription cleanup | Raw dialogue | Cleaned transcript | ROUGE |
+| 2 | Clinical summarization | Transcript + chart notes | Clinical summary | ROUGE |
+| 3 | Differential diagnosis | Summary | Ranked DDx list (PubMed-backed) | Concept F1 + nDCG |
+| 4 | Medication normalization | Medication list | RxNorm-mapped medications | Concept F1 |
+| 5 | Drug-drug interaction check | Normalized medications | Interaction list (OpenFDA) | Concept F1 |
+| 6 | Final report generation | All prior outputs | SOAP-format report | ROUGE-L per section |
 
 ---
 
@@ -34,29 +24,121 @@ benchmark/
 ├── cases/
 │   └── case_01_template/      ← reference case (copy to add new cases)
 │       ├── input.json         ← patient data (validated against input_schema.json)
-│       ├── ground_truth.json  ← expected outputs (fill in TODOs)
 │       └── metadata.json      ← case metadata
+├── ground_truths/             ← answer keys (host-side only, never enter container)
+│   └── case_01_template.json
 ├── shared/
 │   ├── schemas/
 │   │   ├── input_schema.json
 │   │   ├── ground_truth_schema.json
 │   │   └── metadata_schema.json
 │   ├── tools/
-│   │   ├── rxnorm.py          ← NIH RxNav API wrapper (stub)
-│   │   └── pubmed.py          ← NCBI E-utilities wrapper (stub)
-│   ├── scoring/
-│   │   ├── rouge_score.py     ← ROUGE scoring (stub)
-│   │   ├── concept_f1.py      ← Concept-level F1 (stub)
-│   │   └── ndcg.py            ← nDCG for ranked DDx (stub)
-│   └── mock_data/
-│       └── synthetic_patient_01.json
+│   │   ├── pubmed.py          ← NCBI E-utilities wrapper
+│   │   └── rxnorm.py          ← NIH RxNav + OpenFDA wrapper
+│   └── scoring/
+│       ├── rouge_score.py     ← ROUGE scoring
+│       ├── concept_f1.py      ← Concept-level F1
+│       └── ndcg.py            ← nDCG for ranked DDx
 ├── runner/
-│   ├── langgraph_runner.py    ← LangGraph pipeline runner (stub nodes)
-│   └── evaluate.py            ← Batch evaluator + results table
-└── docker/
-    ├── Dockerfile
-    └── docker-compose.yml
+│   └── langgraph_runner.py   ← LangGraph pipeline stub nodes + run_pipeline()
+├── agent/
+│   ├── agent_main.py          ← container entrypoint
+│   └── Dockerfile             ← agent image (no ground_truths/, no harness/)
+├── harness/
+│   └── harness.py             ← host-side orchestrator (scores, never enters container)
+├── tests/
+│   ├── test_scoring.py        ← unit tests for ROUGE / F1 / nDCG
+│   ├── test_pipeline.py       ← unit tests for schema validation + stub nodes
+│   ├── test_harness.py        ← unit tests for case discovery + score_case()
+│   └── test_tools.py          ← integration tests for PubMed + RxNorm (needs network)
+└── requirements.txt
 ```
+
+---
+
+## Quickstart
+
+### 1. Install dependencies
+
+```bash
+pip install -r benchmark/requirements.txt
+```
+
+### 2. Run unit tests (no network, no Docker)
+
+```bash
+pytest benchmark/tests/ -m "not integration" -v
+```
+
+### 3. Build the agent Docker image
+
+```bash
+docker build -t clinical-agent:latest -f benchmark/agent/Dockerfile benchmark/
+```
+
+### 4. Run the full harness
+
+```bash
+# Run all cases and print a results table
+python benchmark/harness/harness.py
+
+# Build image and run in one step
+python benchmark/harness/harness.py --build
+
+# Options
+python benchmark/harness/harness.py --help
+```
+
+Expected output (stubs, no agent implemented):
+
+```
+[Harness] Found 1 case(s): ['case_01_template']
+[Harness] Running case: case_01_template
+
+========================================================================
+BENCHMARK RESULTS
+========================================================================
+
+Case: case_01_template
+----------------------------------------------------
+  transcription_cleanup      rouge1=0.000  rouge2=0.000  rougeL=0.000
+  clinical_summarization     rouge1=0.000  rouge2=0.000  rougeL=0.000
+  differential_diagnosis     precision=0.000  recall=0.000  f1=0.000  ndcg=0.000
+  medication_normalization   precision=0.000  recall=0.000  f1=0.000
+  drug_interaction_check     precision=0.000  recall=0.000  f1=0.000
+  final_report_generation    subjective_rougeL=0.000  ...
+```
+
+---
+
+## How to implement an agent
+
+The benchmark defines the interface; you write the agent. Implement the six node functions in `benchmark/runner/langgraph_runner.py`:
+
+```python
+def node_transcription_cleanup(state: dict) -> dict:
+    # state["patient_transcript"] → return {"transcription_cleaned": "..."}
+
+def node_clinical_summarization(state: dict) -> dict:
+    # state["transcription_cleaned"], state["chart_notes"] → return {"clinical_summary": "..."}
+
+def node_differential_diagnosis(state: dict) -> dict:
+    # use find_supporting_citations() from shared/tools/pubmed.py
+    # return {"differential_diagnosis": [{"condition": ..., "pmid": ..., "rationale": ...}]}
+
+def node_medication_normalization(state: dict) -> dict:
+    # use normalize_medication_list() from shared/tools/rxnorm.py
+    # return {"normalized_medications": [{"original": ..., "rxnorm_id": ..., "ingredient": ...}]}
+
+def node_drug_interaction_check(state: dict) -> dict:
+    # use check_interactions() from shared/tools/rxnorm.py
+    # return {"drug_interactions": [{"drug_a": ..., "drug_b": ..., "severity": ..., "recommendation": ...}]}
+
+def node_final_report_generation(state: dict) -> dict:
+    # return {"final_report": {"subjective": ..., "objective": ..., "assessment": ..., "plan": ...}}
+```
+
+The tools in `shared/tools/` are available inside the container and make real API calls to PubMed and NIH RxNav.
 
 ---
 
@@ -67,95 +149,37 @@ benchmark/
    cp -r benchmark/cases/case_01_template benchmark/cases/case_XX_your_name
    ```
 
-2. **Edit `input.json`:**
-   - Set a unique `case_id` (e.g. `"case_02_diabetes_polyp"`)
-   - Fill in `data_source`, `difficulty`, `patient_history`, `patient_transcript`,
-     `chart_notes`, and `medication_list`
-   - Validate against the schema:
-     ```bash
-     python -c "
-     import json, jsonschema, pathlib
-     schema = json.loads(pathlib.Path('benchmark/shared/schemas/input_schema.json').read_text())
-     data   = json.loads(pathlib.Path('benchmark/cases/case_XX_your_name/input.json').read_text())
-     jsonschema.validate(data, schema)
-     print('Valid!')
-     "
-     ```
+2. **Edit `input.json`** — set a unique `case_id`, fill in all fields, validate:
+   ```bash
+   python -c "
+   import json, jsonschema, pathlib
+   schema = json.loads(pathlib.Path('benchmark/shared/schemas/input_schema.json').read_text())
+   data   = json.loads(pathlib.Path('benchmark/cases/case_XX_your_name/input.json').read_text())
+   jsonschema.validate(data, schema)
+   print('Valid!')
+   "
+   ```
 
-3. **Fill in `ground_truth.json`:**
-   - Replace every `"TODO: ..."` string with the real expected output
-   - Replace every `null` with the correct typed value
-   - Keep `case_id` consistent with `input.json`
+3. **Create `benchmark/ground_truths/case_XX_your_name.json`** with the expected outputs for all six stages.
 
-4. **Fill in `metadata.json`:**
-   - Set `title`, `description`, `workflow_stages_tested`, `created_by`, and `notes`
-
-5. **Run the reference case** (see below) to confirm the runner loads your case
-   without schema errors.
+4. **Run the harness** to confirm the case loads and scores without errors:
+   ```bash
+   python benchmark/harness/harness.py --cases-dir benchmark/cases/case_XX_your_name
+   ```
 
 ---
 
-## How to run the reference case
-
-**With Python directly:**
+## Running integration tests (live API calls)
 
 ```bash
-# From the repo root
-cd /path/to/cs498-ai-agent
-
-pip install langgraph langchain jsonschema requests rouge-score scikit-learn numpy pytest
-
-python benchmark/runner/langgraph_runner.py benchmark/cases/case_01_template
+# Requires internet access — hits NCBI PubMed and NIH RxNav
+pytest benchmark/tests/test_tools.py -m integration -v
 ```
 
-Expected output (until workflow nodes are implemented):
-
-```
-[Runner] Loaded and validated case: case_01_template
-[Stage 1] transcription_cleanup — NOT IMPLEMENTED
-[Stage 2] clinical_summarization — NOT IMPLEMENTED
-[Stage 3] differential_diagnosis — NOT IMPLEMENTED
-[Stage 4] medication_normalization — NOT IMPLEMENTED
-[Stage 5] drug_interaction_check — NOT IMPLEMENTED
-[Stage 6] final_report_generation — NOT IMPLEMENTED
-
-[Runner] Pipeline complete for case: case_01_template
-```
-
-**With Docker:**
-
+Set `NCBI_API_KEY` to increase PubMed rate limits from 3 → 10 req/s:
 ```bash
-cd benchmark/docker
-docker compose up --build
+export NCBI_API_KEY=your_key_here   # get one at https://www.ncbi.nlm.nih.gov/account/
 ```
-
----
-
-## How to run all cases with evaluate.py
-
-```bash
-python benchmark/runner/evaluate.py
-# or specify a custom cases directory:
-python benchmark/runner/evaluate.py --cases-dir benchmark/cases
-```
-
-This will discover every folder under `benchmark/cases/` that contains
-`input.json`, run the pipeline, score against `ground_truth.json`, and
-print a results table.
-
----
-
-## Data source notes
-
-| Source | Description | Access |
-|--------|-------------|--------|
-| `synthetic` | Fully synthetic, no real patients | Open |
-| `agbonnet` | Agbonnet et al. anonymized dataset | Check paper for terms |
-| `mimic_iv` | MIMIC-IV clinical notes | **Requires PhysioNet credentialing** — see https://physionet.org/content/mimiciv/ |
-
-**Do not commit any real patient data.** All cases in this repo must use
-`data_source: "synthetic"` or be de-identified in accordance with HIPAA
-Safe Harbor / MIMIC data use agreements.
 
 ---
 
@@ -163,15 +187,11 @@ Safe Harbor / MIMIC data use agreements.
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `NCBI_API_KEY` | No | Increases PubMed rate limit from 3 to 10 req/s. Get one at https://www.ncbi.nlm.nih.gov/account/ |
+| `NCBI_API_KEY` | No | PubMed rate limit: 3 req/s without, 10 req/s with |
+| `BENCHMARK_ROOT` | No | Override benchmark root path (set automatically in container) |
 
 ---
 
-## Running tests
+## Data source policy
 
-```bash
-pytest benchmark/
-```
-
-(No tests are written yet — add them under `benchmark/tests/` as you
-implement workflow nodes and scoring functions.)
+**Do not commit real patient data.** All cases must use `data_source: "synthetic"` or be de-identified per HIPAA Safe Harbor. MIMIC-IV data requires PhysioNet credentialing — see https://physionet.org/content/mimiciv/
