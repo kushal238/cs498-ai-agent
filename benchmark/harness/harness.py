@@ -3,7 +3,7 @@ harness.py — Host-side benchmark orchestrator (SWE-bench style).
 
 Runs on the HOST, never inside a container. For each case:
   1. Loads input.json from benchmark/cases/{case_id}/
-  2. Runs: docker run --rm --network=none -e INPUT_JSON='...' <image>
+  2. Runs: docker run --rm --network=none -i <image>  (input piped via stdin)
   3. Captures stdout, parses as JSON (the agent's prediction)
   4. Loads ground_truth from benchmark/ground_truths/{case_id}.json
   5. Scores prediction vs ground truth using shared/scoring/
@@ -98,7 +98,7 @@ def build_image(image_name: str) -> None:
 def run_agent(input_data: dict, image_name: str, timeout: int) -> dict | None:
     """Run the agent container for one case and return its parsed JSON output.
 
-    The container receives input via INPUT_JSON env var and must print a single
+    The container receives input as JSON on stdin and must print a single
     JSON object to stdout. All other output should go to stderr inside the container.
 
     Returns None on timeout, non-zero exit, or JSON parse failure.
@@ -109,9 +109,10 @@ def run_agent(input_data: dict, image_name: str, timeout: int) -> dict | None:
             [
                 "docker", "run", "--rm",
                 "--network=none",
-                "-e", f"INPUT_JSON={input_json_str}",
+                "-i",
                 image_name,
             ],
+            input=input_json_str,
             capture_output=True,
             text=True,
             timeout=timeout,
