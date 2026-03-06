@@ -40,6 +40,7 @@ import sys
 from pathlib import Path
 
 import jsonschema
+from pydantic import BaseModel, Field
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -50,6 +51,13 @@ import jsonschema
 BENCHMARK_ROOT = Path(os.environ.get("BENCHMARK_ROOT", Path(__file__).resolve().parent.parent))
 SCHEMAS_DIR = BENCHMARK_ROOT / "shared" / "schemas"
 INPUT_SCHEMA_PATH = SCHEMAS_DIR / "input_schema.json"
+
+# Ensure shared/ is importable (works both in container /app/ and on host)
+sys.path.insert(0, str(BENCHMARK_ROOT))
+
+from llm import get_llm  # noqa: E402
+from shared.tools.rxnorm import normalize_medication_list, check_interactions  # noqa: E402
+from shared.tools.pubmed import search_pubmed  # noqa: E402
 
 WORKFLOW_STAGES = [
     "transcription_cleanup",
@@ -118,13 +126,20 @@ def node_transcription_cleanup(state: dict) -> dict:
 
     Input state keys:  patient_transcript
     Output key:        transcription_cleaned (str)
-
-    Expected behaviour:
-        - Fix transcription errors and remove filler words (um, uh, like).
-        - Add punctuation and label speaker turns as 'Doctor:' / 'Patient:'.
     """
-    print("[Stage 1] transcription_cleanup — NOT IMPLEMENTED", file=sys.stderr)
-    return {"transcription_cleaned": None}
+    print("[Stage 1] transcription_cleanup", file=sys.stderr)
+    llm = get_llm()
+    response = llm.invoke([
+        {"role": "system", "content": (
+            "You are a medical transcription editor. Clean up the following "
+            "raw patient-doctor transcript. Fix transcription errors, remove "
+            "filler words (um, uh, like, you know), add proper punctuation, "
+            "and label each speaker turn as 'Doctor:' or 'Patient:'. "
+            "Return ONLY the cleaned transcript text, nothing else."
+        )},
+        {"role": "user", "content": state["patient_transcript"]},
+    ])
+    return {"transcription_cleaned": response.content}
 
 
 def node_clinical_summarization(state: dict) -> dict:
@@ -132,13 +147,34 @@ def node_clinical_summarization(state: dict) -> dict:
 
     Input state keys:  transcription_cleaned, chart_notes, patient_history
     Output key:        clinical_summary (str)
-
-    Expected behaviour:
-        - Produce a concise 2-4 sentence clinician-facing summary covering
-          chief complaint, relevant history, current medications, and key findings.
     """
-    print("[Stage 2] clinical_summarization — NOT IMPLEMENTED", file=sys.stderr)
-    return {"clinical_summary": None}
+    print("[Stage 2] clinical_summarization", file=sys.stderr)
+    llm = get_llm()
+    context = (
+        f"Cleaned Transcript:\n{state.get('transcription_cleaned', '')}\n\n"
+        f"Chart Notes:\n{state.get('chart_notes', '')}\n\n"
+        f"Patient History:\n{state.get('patient_history', '')}"
+    )
+    response = llm.invoke([
+        {"role": "system", "content": (
+            "You are a clinical summarization assistant. Produce a concise "
+            "2-4 sentence clinician-facing summary covering the chief "
+            "complaint, relevant history, current medications, and key "
+            "findings. Return ONLY the summary text."
+        )},
+        {"role": "user", "content": context},
+    ])
+    return {"clinical_summary": response.content}
+
+
+class DiagnosisList(BaseModel):
+    """Structured output for differential diagnosis."""
+
+    class Diagnosis(BaseModel):
+        condition: str = Field(description="Name of the clinical condition")
+        rationale: str = Field(description="One-sentence explanation of why this condition is on the differential")
+
+    diagnoses: list[Diagnosis] = Field(description="Top 3 candidate conditions ranked by likelihood")
 
 
 def node_differential_diagnosis(state: dict) -> dict:
@@ -146,15 +182,33 @@ def node_differential_diagnosis(state: dict) -> dict:
 
     Input state keys:  clinical_summary, patient_history
     Output key:        differential_diagnosis (list[dict])
-
-    Each item: {"condition": str, "pmid": str | None, "rationale": str}
-
-    Expected behaviour:
-        - Rank the top 3 candidate conditions by likelihood.
-        - Attach a real PubMed PMID to each via shared/tools/pubmed.py.
     """
-    print("[Stage 3] differential_diagnosis — NOT IMPLEMENTED", file=sys.stderr)
-    return {"differential_diagnosis": []}
+    print("[Stage 3] differential_diagnosis", file=sys.stderr)
+    llm = get_llm()
+    structured_llm = llm.with_structured_output(DiagnosisList)
+    context = (
+        f"Clinical Summary:\n{state.get('clinical_summary', '')}\n\n"
+        f"Patient History:\n{state.get('patient_history', '')}"
+    )
+    result = structured_llm.invoke([
+        {"role": "system", "content": (
+            "You are a diagnostic reasoning assistant. Given the clinical "
+            "summary and patient history, produce the top 3 most likely "
+            "differential diagnoses ranked by probability. For each, give "
+            "the condition name and a one-sentence rationale."
+        )},
+        {"role": "user", "content": context},
+    ])
+
+    diagnoses = []
+    for dx in result.diagnoses:
+        pmids = search_pubmed(f"{dx.condition} diagnosis", max_results=1)
+        diagnoses.append({
+            "condition": dx.condition,
+            "pmid": pmids[0] if pmids else None,
+            "rationale": dx.rationale,
+        })
+    return {"differential_diagnosis": diagnoses}
 
 
 def node_medication_normalization(state: dict) -> dict:
@@ -162,14 +216,10 @@ def node_medication_normalization(state: dict) -> dict:
 
     Input state keys:  medication_list
     Output key:        normalized_medications (list[dict])
-
-    Each item: {"original": str, "rxnorm_id": str | None, "ingredient": str | None}
-
-    Expected behaviour:
-        - Call normalize_medication_list() from shared/tools/rxnorm.py.
     """
-    print("[Stage 4] medication_normalization — NOT IMPLEMENTED", file=sys.stderr)
-    return {"normalized_medications": []}
+    print("[Stage 4] medication_normalization", file=sys.stderr)
+    normalized = normalize_medication_list(state.get("medication_list", []))
+    return {"normalized_medications": normalized}
 
 
 def node_drug_interaction_check(state: dict) -> dict:
@@ -177,30 +227,53 @@ def node_drug_interaction_check(state: dict) -> dict:
 
     Input state keys:  normalized_medications
     Output key:        drug_interactions (list[dict])
-
-    Each item: {"drug_a": str, "drug_b": str, "severity": str, "recommendation": str}
-
-    Expected behaviour:
-        - Extract RxCUIs from normalized_medications.
-        - Call check_interactions() from shared/tools/rxnorm.py.
     """
-    print("[Stage 5] drug_interaction_check — NOT IMPLEMENTED", file=sys.stderr)
-    return {"drug_interactions": []}
+    print("[Stage 5] drug_interaction_check", file=sys.stderr)
+    normalized = state.get("normalized_medications", [])
+    rxcui_list = [m["rxnorm_id"] for m in normalized if m.get("rxnorm_id")]
+    interactions = check_interactions(rxcui_list)
+    # Strip "description" key -- ground_truth_schema has additionalProperties: false
+    for interaction in interactions:
+        interaction.pop("description", None)
+    return {"drug_interactions": interactions}
+
+
+class SOAPReport(BaseModel):
+    """Structured output for the final SOAP report."""
+    subjective: str = Field(description="Patient's reported symptoms and history in their own words")
+    objective: str = Field(description="Measurable clinical findings (vitals, labs, exam)")
+    assessment: str = Field(description="Clinician's interpretation and working diagnosis")
+    plan: str = Field(description="Proposed treatment, follow-up, and patient instructions")
 
 
 def node_final_report_generation(state: dict) -> dict:
     """Stage 6: Generate a SOAP-format clinical report.
 
     Input state keys:  all prior stage outputs + patient_history + chart_notes
-    Output key:        final_report (dict)
-
-    Keys: {"subjective": str, "objective": str, "assessment": str, "plan": str}
-
-    Expected behaviour:
-        - Aggregate all prior stage outputs into a physician-ready SOAP note.
+    Output key:        final_report (dict with keys: subjective, objective, assessment, plan)
     """
-    print("[Stage 6] final_report_generation — NOT IMPLEMENTED", file=sys.stderr)
-    return {"final_report": {"subjective": None, "objective": None, "assessment": None, "plan": None}}
+    print("[Stage 6] final_report_generation", file=sys.stderr)
+    llm = get_llm()
+    structured_llm = llm.with_structured_output(SOAPReport)
+    context = (
+        f"Cleaned Transcript:\n{state.get('transcription_cleaned', '')}\n\n"
+        f"Clinical Summary:\n{state.get('clinical_summary', '')}\n\n"
+        f"Patient History:\n{state.get('patient_history', '')}\n\n"
+        f"Chart Notes:\n{state.get('chart_notes', '')}\n\n"
+        f"Differential Diagnosis:\n{json.dumps(state.get('differential_diagnosis', []), indent=2)}\n\n"
+        f"Normalized Medications:\n{json.dumps(state.get('normalized_medications', []), indent=2)}\n\n"
+        f"Drug Interactions:\n{json.dumps(state.get('drug_interactions', []), indent=2)}"
+    )
+    result = structured_llm.invoke([
+        {"role": "system", "content": (
+            "You are a physician writing a SOAP note. Using all the clinical "
+            "data provided, generate a comprehensive SOAP note with four "
+            "sections: Subjective, Objective, Assessment, and Plan. Each "
+            "section should be a detailed paragraph."
+        )},
+        {"role": "user", "content": context},
+    ])
+    return {"final_report": result.model_dump()}
 
 
 # ---------------------------------------------------------------------------
