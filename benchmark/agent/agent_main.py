@@ -1,19 +1,18 @@
 """
 agent_main.py — Container entrypoint for the clinical AI benchmark agent.
 
-Reads the INPUT_JSON environment variable (a JSON-serialized benchmark case
-input), runs it through the 6-stage clinical workflow pipeline, and prints
-the result as a single JSON line to stdout.
+Reads a JSON-serialized benchmark case input from stdin, runs it through
+the 6-stage clinical workflow pipeline, and prints the result as a single
+JSON line to stdout.
 
-The harness captures stdout to extract the agent's prediction.
-ALL diagnostic/logging output goes to stderr to avoid corrupting the stdout
-JSON stream.
+The harness pipes input via `docker run -i` and captures stdout to extract
+the agent's prediction. ALL diagnostic/logging output goes to stderr to
+avoid corrupting the stdout JSON stream.
 """
 
 from __future__ import annotations
 
 import json
-import os
 import sys
 from pathlib import Path
 
@@ -27,15 +26,15 @@ from langgraph_runner import run_pipeline  # noqa: E402
 
 
 def main() -> None:
-    raw = os.environ.get("INPUT_JSON")
+    raw = sys.stdin.read()
     if not raw:
-        print(json.dumps({"error": "INPUT_JSON environment variable not set"}))
+        print(json.dumps({"error": "No input received on stdin"}), file=sys.stderr)
         sys.exit(1)
 
     try:
         input_data = json.loads(raw)
     except json.JSONDecodeError as exc:
-        print(json.dumps({"error": f"Failed to parse INPUT_JSON: {exc}"}))
+        print(json.dumps({"error": f"Failed to parse stdin JSON: {exc}"}), file=sys.stderr)
         sys.exit(1)
 
     result = run_pipeline(input_data)
