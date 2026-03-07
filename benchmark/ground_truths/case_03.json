@@ -5,40 +5,35 @@
   "differential_diagnosis": [
     {
       "condition": "High-grade undifferentiated pleomorphic sarcoma with pulmonary metastases",
-      "pmid": 34033374,
+      "pmid": "34033374",
       "rationale": "Large high-grade superficial soft-tissue sarcoma with new multiple pulmonary nodules on follow-up CT is highly suggestive of metastatic spread."
     },
     {
       "condition": "Postoperative seroma or chronic hematoma at the surgical site",
-      "pmid": 15007612,
+      "pmid": "15007612",
       "rationale": "Large fluid collection in the left hip operative bed with a history of prior hematoma and surgery is compatible with seroma or chronic hematoma."
     },
     {
       "condition": "Soft-tissue abscess in the left hip region",
-      "pmid": 33981885,
+      "pmid": "33981885",
       "rationale": "A large postoperative fluid collection could represent abscess, although systemic infectious signs are not emphasized in the current description."
     }
   ],
   "normalized_medications": [
     {
-      "original": "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
-      "rxnorm_id": 214183,
-      "ingredient": "oxycodone; acetaminophen"
+      "original": "oxycodone (Percocet 10/325 mg) twice daily",
+      "rxnorm_id": "214183",
+      "ingredient": "oxycodone",
+      "openfda_application_number": "ANDA207418"
     },
     {
       "original": "acetaminophen 500mg as needed for pain",
-      "rxnorm_id": 161,
-      "ingredient": "acetaminophen"
+      "rxnorm_id": "161",
+      "ingredient": "acetaminophen",
+      "openfda_application_number": "ANDA207229"
     }
   ],
-  "drug_interactions": [
-    {
-      "drug_a": "oxycodone/acetaminophen (Percocet 10/325 mg)",
-      "drug_b": "acetaminophen 500mg",
-      "severity": "Not found",
-      "recommendation": "Not found"
-    }
-  ],
+  "drug_interactions": [],
   "final_report": {
     "subjective": "The patient is a 67-year-old woman with a history of left hip trauma 11 months ago followed by progressive hip pain, recurrent falls, and an enlarging mass. She reports that the mass was initially diagnosed as a hematoma around the proximal femur in the emergency department, but the pain and instability persisted. Subsequent imaging and biopsy led to the diagnosis of a high-grade undifferentiated pleomorphic sarcoma of the left hip. She underwent radical resection, adjuvant radiation, and is now followed for possible metastatic disease. She complains of persistent left hip, flank, and shoulder pain, difficulty sleeping, standing to perform household chores, dressing, and sitting long enough to watch television with her son. She takes Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed but is concerned about her quality of life and weight gain after surgery and radiation.",
     "objective": "Pathology: 13.5 cm superficial left hip undifferentiated high-grade pleomorphic sarcoma with 50-60% necrosis, negative margins (closest tumor 2 mm). Staging chest CT: two tiny lung nodules (largest 4 mm) and a small hypodense splenic lesion, with recommended imaging follow-up. Subsequent chest/abdomen/pelvis CT: interval development of multiple new pulmonary nodules concerning for metastases and a large left hip fluid collection (seroma vs chronic hematoma vs abscess). Exam and PT evaluation: left hip, flank, and shoulder pain; lymphedema involving the left lower extremity and abdomen; decreased range of motion and strength; functional limitations in sleep, standing, dressing, grooming, and sitting tolerance. Vital signs and detailed neurologic exam not explicitly abnormal in the provided note.",
