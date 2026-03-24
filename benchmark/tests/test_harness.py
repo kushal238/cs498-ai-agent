@@ -195,3 +195,105 @@ class TestScoreCase:
         assert scores["transcription_cleanup"]["rouge1"] == 0.0
         assert scores["clinical_summarization"]["rouge1"] == 0.0
         assert scores["differential_diagnosis"]["f1"] == 0.0
+
+
+# ---------------------------------------------------------------------------
+# Multi-trial and CSV
+# ---------------------------------------------------------------------------
+
+class TestMultiTrialAndCSV:
+    def test_flatten_scores_returns_rows(self):
+        """flatten_scores() converts a stage->metrics dict to a list of (stage, metric, value) tuples."""
+        from benchmark.harness.harness import flatten_scores
+        scores = {
+            "transcription_cleanup": {"rouge1": 0.9, "rouge2": 0.8, "rougeL": 0.85},
+            "differential_diagnosis": {"precision": 0.5, "recall": 0.5, "f1": 0.5, "ndcg": 0.7},
+        }
+        rows = flatten_scores(scores)
+        assert ("transcription_cleanup", "rouge1", 0.9) in rows
+        assert ("differential_diagnosis", "ndcg", 0.7) in rows
+        assert len(rows) == 7  # 3 + 4
+
+    def test_flatten_scores_skips_error_stages(self):
+        """flatten_scores() skips stages that contain an 'error' key."""
+        from benchmark.harness.harness import flatten_scores
+        scores = {"transcription_cleanup": {"error": "agent failed"}}
+        assert flatten_scores(scores) == []
+
+    def test_flatten_scores_skips_stage_label(self):
+        """flatten_scores() skips the 'stage' key that score_stage_text() adds."""
+        from benchmark.harness.harness import flatten_scores
+        scores = {"transcription_cleanup": {"stage": "transcription_cleaned", "rouge1": 0.9}}
+        rows = flatten_scores(scores)
+        assert all(metric != "stage" for _, metric, _ in rows)
+
+    def test_average_trial_scores_mean(self):
+        """average_trial_scores() computes correct mean across trials."""
+        from benchmark.harness.harness import average_trial_scores
+        trial_scores = [
+            {"transcription_cleanup": {"rouge1": 0.8}},
+            {"transcription_cleanup": {"rouge1": 1.0}},
+        ]
+        summary = average_trial_scores(trial_scores)
+        assert summary["transcription_cleanup"]["rouge1"]["mean"] == pytest.approx(0.9)
+
+    def test_average_trial_scores_stddev(self):
+        """average_trial_scores() computes sample stddev (divides by n-1)."""
+        from benchmark.harness.harness import average_trial_scores
+        trial_scores = [
+            {"transcription_cleanup": {"rouge1": 0.8}},
+            {"transcription_cleanup": {"rouge1": 1.0}},
+        ]
+        summary = average_trial_scores(trial_scores)
+        # statistics.stdev([0.8, 1.0]) = sqrt(0.02) ≈ 0.1414
+        assert summary["transcription_cleanup"]["rouge1"]["stddev"] == pytest.approx(0.1414, abs=1e-3)
+
+    def test_average_trial_scores_single_trial_stddev_zero(self):
+        """With only one trial, stddev is 0.0."""
+        from benchmark.harness.harness import average_trial_scores
+        trial_scores = [{"transcription_cleanup": {"rouge1": 0.9}}]
+        summary = average_trial_scores(trial_scores)
+        assert summary["transcription_cleanup"]["rouge1"]["stddev"] == 0.0
+
+    def test_average_trial_scores_skips_errors(self):
+        """average_trial_scores() skips trial dicts that contain an error key."""
+        from benchmark.harness.harness import average_trial_scores
+        trial_scores = [
+            {"transcription_cleanup": {"rouge1": 0.8}},
+            {"error": "agent failed"},
+        ]
+        summary = average_trial_scores(trial_scores)
+        assert summary["transcription_cleanup"]["rouge1"]["mean"] == pytest.approx(0.8)
+
+    def test_write_csv_creates_files(self, tmp_path):
+        """write_results_csv() creates both raw and summary CSV files."""
+        import csv as csv_mod
+        from benchmark.harness.harness import write_results_csv
+        all_trial_scores = {
+            "case_02": [
+                {"transcription_cleanup": {"rouge1": 0.9}},
+                {"transcription_cleanup": {"rouge1": 1.0}},
+            ]
+        }
+        raw_path, summary_path = write_results_csv(
+            all_trial_scores, tmp_path, run_id="test_run"
+        )
+        assert raw_path.exists()
+        assert summary_path.exists()
+
+    def test_write_csv_raw_contains_correct_rows(self, tmp_path):
+        """Raw CSV contains one row per (case, trial, stage, metric)."""
+        import csv as csv_mod
+        from benchmark.harness.harness import write_results_csv
+        all_trial_scores = {
+            "case_02": [{"transcription_cleanup": {"rouge1": 0.9}}]
+        }
+        raw_path, _ = write_results_csv(all_trial_scores, tmp_path, run_id="test_run")
+        with raw_path.open() as f:
+            rows = list(csv_mod.DictReader(f))
+        assert len(rows) == 1
+        assert rows[0]["case_id"] == "case_02"
+        assert rows[0]["trial"] == "1"
+        assert rows[0]["stage"] == "transcription_cleanup"
+        assert rows[0]["metric"] == "rouge1"
+        assert float(rows[0]["value"]) == pytest.approx(0.9)

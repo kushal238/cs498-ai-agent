@@ -26,10 +26,13 @@ Options:
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import os
+import statistics
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 
 BENCHMARK_ROOT = Path(__file__).resolve().parent.parent
@@ -239,6 +242,102 @@ def print_results_table(all_scores: dict[str, dict]) -> None:
 
 
 # ---------------------------------------------------------------------------
+# Multi-trial helpers
+# ---------------------------------------------------------------------------
+
+def flatten_scores(stage_scores: dict) -> list[tuple[str, str, float]]:
+    """Convert {stage: {metric: value}} to [(stage, metric, value), ...].
+
+    Skips stages with an 'error' key and skips the 'stage' label key that
+    score_stage_text() adds to its return dict.
+    """
+    rows = []
+    for stage, metrics in stage_scores.items():
+        if isinstance(metrics, dict) and "error" not in metrics:
+            for metric, value in metrics.items():
+                if metric != "stage" and isinstance(value, (int, float)):
+                    rows.append((stage, metric, float(value)))
+    return rows
+
+
+def average_trial_scores(trial_scores: list[dict]) -> dict:
+    """Average a list of per-trial score dicts across trials.
+
+    Args:
+        trial_scores: List of {stage: {metric: value}} dicts, one per trial.
+                      Dicts containing an 'error' key are skipped.
+
+    Returns:
+        {stage: {metric: {"mean": float, "stddev": float}}}
+    """
+    combined: dict[str, dict[str, list[float]]] = {}
+    for scores in trial_scores:
+        if "error" in scores:
+            continue
+        for stage, metrics in scores.items():
+            if not isinstance(metrics, dict) or "error" in metrics:
+                continue
+            combined.setdefault(stage, {})
+            for metric, value in metrics.items():
+                if metric != "stage" and isinstance(value, (int, float)):
+                    combined[stage].setdefault(metric, []).append(float(value))
+    return {
+        stage: {
+            metric: {
+                "mean": statistics.mean(vals),
+                "stddev": statistics.stdev(vals) if len(vals) > 1 else 0.0,
+            }
+            for metric, vals in metrics.items()
+        }
+        for stage, metrics in combined.items()
+    }
+
+
+def write_results_csv(
+    all_trial_scores: dict[str, list[dict]],
+    output_dir: Path,
+    run_id: str,
+) -> tuple[Path, Path]:
+    """Write raw and summary CSVs to output_dir.
+
+    Args:
+        all_trial_scores: {case_id: [trial_score_dict, ...]}
+        output_dir:       Directory to write CSV files into (created if needed).
+        run_id:           Identifier string for this run, used in filenames.
+
+    Returns:
+        (raw_path, summary_path)
+    """
+    output_dir.mkdir(parents=True, exist_ok=True)
+    raw_path     = output_dir / f"{run_id}_raw.csv"
+    summary_path = output_dir / f"{run_id}_summary.csv"
+
+    with raw_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["run_id", "case_id", "trial", "stage", "metric", "value"])
+        for case_id, trial_scores in all_trial_scores.items():
+            for trial_num, scores in enumerate(trial_scores, start=1):
+                if "error" in scores:
+                    continue
+                for stage, metric, value in flatten_scores(scores):
+                    writer.writerow([run_id, case_id, trial_num, stage, metric, value])
+
+    with summary_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(["run_id", "case_id", "stage", "metric", "mean", "stddev"])
+        for case_id, trial_scores in all_trial_scores.items():
+            summary = average_trial_scores(trial_scores)
+            for stage, metrics in summary.items():
+                for metric, stats in metrics.items():
+                    writer.writerow([
+                        run_id, case_id, stage, metric,
+                        round(stats["mean"], 4), round(stats["stddev"], 4),
+                    ])
+
+    return raw_path, summary_path
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -254,6 +353,12 @@ def main() -> None:
                         help="Docker image name/tag")
     parser.add_argument("--network", type=str, default="bridge",
                         help="Docker network mode (default: bridge, use 'none' for locked-down eval)")
+    parser.add_argument("--trials", type=int, default=1,
+                        help="Number of trials per case (scores are averaged across trials)")
+    parser.add_argument("--output-dir", type=Path, default=BENCHMARK_ROOT / "results",
+                        help="Directory to write CSV results (default: benchmark/results/)")
+    parser.add_argument("--save-predictions", action="store_true",
+                        help="Save each agent's raw JSON output to output-dir/predictions/")
     args = parser.parse_args()
 
     if args.build:
@@ -264,9 +369,11 @@ def main() -> None:
         print(f"No cases found in {args.cases_dir}")
         sys.exit(0)
 
-    print(f"[Harness] Found {len(cases)} case(s): {[c.name for c in cases]}\n")
+    print(f"[Harness] Found {len(cases)} case(s): {[c.name for c in cases]}")
+    print(f"[Harness] Trials per case: {args.trials}\n")
 
-    all_scores: dict[str, dict] = {}
+    run_id = f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    all_trial_scores: dict[str, list[dict]] = {}
 
     for case_dir in cases:
         case_id = case_dir.name
@@ -276,22 +383,45 @@ def main() -> None:
         ground_truth = load_ground_truth(case_id)
 
         if ground_truth is None:
-            all_scores[case_id] = {"error": "missing ground truth"}
+            all_trial_scores[case_id] = [{"error": "missing ground truth"}]
             continue
 
-        predicted = run_agent(input_data, args.image, args.timeout, args.network)
-        if predicted is None:
-            all_scores[case_id] = {"error": "agent run failed"}
-            continue
+        trial_scores = []
+        for trial in range(1, args.trials + 1):
+            if args.trials > 1:
+                print(f"  Trial {trial}/{args.trials}")
 
-        try:
-            scores = score_case(predicted, ground_truth)
-            all_scores[case_id] = scores
-        except Exception as exc:
-            print(f"  ERROR scoring {case_id}: {exc}", file=sys.stderr)
-            all_scores[case_id] = {"error": str(exc)}
+            predicted = run_agent(input_data, args.image, args.timeout, args.network)
+            if predicted is None:
+                trial_scores.append({"error": "agent run failed"})
+                continue
 
-    print_results_table(all_scores)
+            if args.save_predictions:
+                pred_dir = args.output_dir / "predictions"
+                pred_dir.mkdir(parents=True, exist_ok=True)
+                pred_path = pred_dir / f"{run_id}_{case_id}_trial{trial}.json"
+                with pred_path.open("w", encoding="utf-8") as f:
+                    json.dump(predicted, f, indent=2)
+
+            try:
+                scores = score_case(predicted, ground_truth)
+                trial_scores.append(scores)
+            except Exception as exc:
+                print(f"  ERROR scoring {case_id} trial {trial}: {exc}", file=sys.stderr)
+                trial_scores.append({"error": str(exc)})
+
+        all_trial_scores[case_id] = trial_scores
+
+    # Print results table using first trial scores for display
+    display_scores = {
+        cid: ts[0] if ts else {"error": "no trials completed"}
+        for cid, ts in all_trial_scores.items()
+    }
+    print_results_table(display_scores)
+
+    # Write CSVs
+    raw_path, summary_path = write_results_csv(all_trial_scores, args.output_dir, run_id)
+    print(f"[Harness] Results written to:\n  {raw_path}\n  {summary_path}")
 
 
 if __name__ == "__main__":
