@@ -23,14 +23,12 @@
     {
       "original": "oxycodone (Percocet 10/325 mg) twice daily",
       "rxnorm_id": "214183",
-      "ingredient": "oxycodone",
-      "openfda_application_number": "ANDA207418"
+      "ingredient": "oxycodone"
     },
     {
       "original": "acetaminophen 500mg as needed for pain",
       "rxnorm_id": "161",
-      "ingredient": "acetaminophen",
-      "openfda_application_number": "ANDA207229"
+      "ingredient": "acetaminophen"
     }
   ],
   "drug_interactions": [],

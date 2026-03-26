@@ -1,0 +1,28 @@
+{
+  "case_id": "case_05",
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "patient_history": {
+    "age": 60,
+    "sex": "female",
+    "chief_complaint": "one week of shortness of breath, low-grade fever, and right-sided pleuritic chest pain",
+    "known_conditions": [
+      "rheumatoid arthritis",
+      "osteopenia",
+      "gastroesophageal reflux disease",
+      "hypercholesterolemia",
+      "limited granulomatosis with polyangiitis presenting as lung nodules"
+    ],
+    "known_allergies": []
+  },
+  "medication_list": [
+    "azithromycin",
+    "hydroxychloroquine",
+    "prednisone",
+    "risedronate",
+    "omeprazole",
+    "atorvastatin"
+  ],
+  "patient_transcript": "Doctor: Hi, how are you feeling today?\nPatient: I've been feeling short of breath for a week now, and I have a low-grade fever and some chest pain on the right side.\nDoctor: Okay, let me take a look at your medical history. You've been treated for bronchitis with azithromycin, but it didn't seem to help?\nPatient: Yes, that's right.\nDoctor: And you have a positive diagnosis of rheumatoid arthritis, which you've been managing well with hydroxychloroquine and low-dose prednisone.\nPatient: Yes, that's correct.\nDoctor: And you have some other medical problems, including osteopenia, reflux disease, and hypercholesterolemia.\nPatient: Yes, I take risedronate, calcium and vitamin D supplements, omeprazole and atorvastatin for those.\nDoctor: Okay, let's take a look at your examination. Your vital signs are stable, and you don't have a fever right now. Your oxygen saturation is 95% on room air.\nPatient: Yes.\nDoctor: You look tired, but not in any distress. When I listened to your lungs, I heard wheezes bilaterally and a few crackles at the right base.\nPatient: Hmm, okay.\nDoctor: Your examination is otherwise unremarkable. You don't have any synovitis in your joints, and your range of motion is normal in all joints with no muscle wasting.\nPatient: That's good to hear.\nDoctor: I noticed some old hypopigmented macules over your neck and face, but no skin nodules.\nPatient: Yes, I've had those for a while.\nDoctor: Your white count was 7.8 with neutrophils of 84%. The ESR by Westergren's method was 46 mm at the end of one hour. The comprehensive metabolic profile was normal, and the urine analysis didn't show any sediment.\nPatient: Okay.\nDoctor: The chest radiograph showed streaky infiltrates at the right base. A high-resolution CT scan showed three lung nodules.\nPatient: Oh no.\nDoctor: An FDG PET scan was done, which showed avid uptake in all the nodules with an SUV value of 8.\nPatient: What does that mean?\nDoctor: A CT-guided lung biopsy of the right lung nodule was performed, and the lung biopsy showed fibrosis with acute and chronic inflammation and necrotizing vasculitis.\nPatient: Is that serious?\nDoctor: The biopsy specimen was examined for aerobic and anaerobic bacteria, acid-fast bacilli, and fungus, but it was negative on smear and culture. We also did a complete vasculitis panel, which included antinuclear antibodies, anti-dsDNA, anti-Smith, and anti-SSA.\nPatient: What happens next?\nDoctor: We need to monitor the situation and see if there are any changes. I'll schedule follow-up appointments with you to check on your progress.",
+  "chart_notes": "60-year-old woman with rheumatoid arthritis on hydroxychloroquine and low-dose prednisone presented with one week of dyspnea, low-grade fever, and right-sided pleuritic chest pain after failing azithromycin for presumed bronchitis. Additional history includes osteopenia, gastroesophageal reflux disease, and hypercholesterolemia treated with risedronate, calcium/vitamin D, omeprazole, and atorvastatin. Exam showed oxygen saturation 95% on room air, bilateral wheezes, and right basilar crackles without active synovitis. ESR was 46 mm/h; comprehensive metabolic profile and urinalysis were unremarkable. Chest radiograph showed streaky right basilar infiltrates; high-resolution CT demonstrated three lung nodules, and FDG PET showed avid uptake with SUV 8. CT-guided biopsy demonstrated fibrosis with acute and chronic inflammation plus necrotizing vasculitis, while bacterial, mycobacterial, and fungal studies were negative. Vasculitis serologies were notable for cANCA 1:640 and anti-proteinase 3 antibody 118 units, with normal sinus CT and normal echocardiogram. Findings supported limited Wegener's granulomatosis, now termed granulomatosis with polyangiitis, presenting as lung nodules. Methotrexate was started and low-dose prednisone was continued, with marked symptom improvement and complete radiographic resolution by 3 months."
+}

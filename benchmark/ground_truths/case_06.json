@@ -1,0 +1,70 @@
+{
+  "case_id": "case_06",
+  "transcription_cleaned": "Doctor: Good morning. How can I help you today?\nPatient: Good morning. I have been having increasing shortness of breath, dizziness, and weakness lately.\nDoctor: I see. Can you tell me a little about your medical history?\nPatient: Sure. I am an African American man with non-ischemic cardiomyopathy, and I underwent orthotopic heart transplantation 5 years ago.\nDoctor: Okay, that's helpful. What happened before these symptoms started?\nPatient: Six months ago, I was diagnosed with cryptococcal meningitis.\nDoctor: What treatment did you receive for that?\nPatient: I was given amphotericin B and flucytosine initially, and then I was maintained on chronic suppressive fluconazole therapy.\nDoctor: Did your immunosuppression change after that infection?\nPatient: Yes. My mycophenolate mofetil dose was reduced from 750 mg twice daily to 500 mg twice daily, and my cyclosporine dose was reduced from 125 mg twice daily to 75 mg twice daily.\nDoctor: And what were your cyclosporine levels on admission and discharge?\nPatient: It was 90 ng/mL on admission and 142 ng/mL on discharge.\nDoctor: Did you have other symptoms before you came in with shortness of breath, dizziness, and weakness?\nPatient: Five months ago, I developed bilateral hand numbness and tingling, and two weeks ago I developed imbalance.\nDoctor: During this evaluation, were you found to have atrial flutter with rapid ventricular response?\nPatient: Yes, that's correct.\nDoctor: And was that controlled with diltiazem?\nPatient: Yes.\nDoctor: What did the echocardiogram show?\nPatient: It showed normal left and right ventricular size and systolic function, with normal diastolic function.\nDoctor: And while you were in the hospital, did any other symptoms develop?\nPatient: Yes. I developed progressive dysphagia, gait instability, and profound weakness of both lower extremities.\nDoctor: Were the head CT and brain MRI unremarkable?\nPatient: Yes, they were.\nDoctor: What did the lumbar puncture show?\nPatient: It showed clear, colorless fluid with an elevated protein level of 147 mg/dL, a normal glucose level of 67 mg/dL, and 5 nucleated cells/mL, 85% of which were lymphocytes.\nDoctor: And what did the nerve conduction studies and electromyogram show?\nPatient: They showed conduction block and prolonged distal latencies, which was suggestive of IDP.\nDoctor: Did you also have a positive TS-HDS IgM antibody?\nPatient: Yes, I did.\nDoctor: So you underwent four sessions of plasmapheresis and started high-dose oral dexamethasone for IDP, correct?\nPatient: Yes, that's correct.\nDoctor: And did your neurologic symptoms improve?\nPatient: Yes, they improved significantly.\nDoctor: Okay. You were then discharged to physical rehabilitation with close follow-up.\nPatient: Yes. Thank you.",
+  "clinical_summary": "58-year-old heart-transplant recipient with prior cryptococcal meningitis on chronic suppressive fluconazole presented with worsening dyspnea, dizziness, generalized weakness, paresthesias, imbalance, dysphagia, gait instability, and profound lower-extremity weakness. CSF showed albuminocytologic dissociation, and nerve conduction studies plus electromyography showed conduction block and prolonged distal latencies with positive TS-HDS IgM antibody, supporting demyelinating polyneuropathy that improved after plasmapheresis and high-dose dexamethasone. He was readmitted within two weeks with anasarca, renal failure, and graft dysfunction; endomyocardial biopsy showed C4d-positive chronic inflammation consistent with pAMR2 antibody-mediated cardiac allograft rejection, which improved after plasmapheresis and IVIG.",
+  "differential_diagnosis": [
+    {
+      "condition": "Demyelinating polyneuropathy",
+      "pmid": "41322367",
+      "rationale": "Progressive paresthesias, gait instability, dysphagia, elevated CSF protein with limited pleocytosis, and electrodiagnostic conduction block most strongly support demyelinating polyneuropathy."
+    },
+    {
+      "condition": "Antibody-mediated cardiac allograft rejection",
+      "pmid": "37745639",
+      "rationale": "Subsequent anasarca, worsening ventricular function, donor-specific antibody against HLA-DR53, and C4d-positive endomyocardial biopsy support pAMR2 antibody-mediated rejection of the transplanted heart."
+    },
+    {
+      "condition": "Cryptococcal meningitis relapse",
+      "pmid": "38997136",
+      "rationale": "His prior cryptococcal meningitis and chronic immunosuppression made recurrent CNS infection an important alternative during the neurologic workup, although the CSF profile and imaging were less supportive."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "fluconazole",
+      "rxnorm_id": "4450",
+      "ingredient": "fluconazole"
+    },
+    {
+      "original": "cyclosporine",
+      "rxnorm_id": "3008",
+      "ingredient": "cyclosporine"
+    },
+    {
+      "original": "diltiazem",
+      "rxnorm_id": "3443",
+      "ingredient": "diltiazem"
+    },
+    {
+      "original": "dexamethasone",
+      "rxnorm_id": "3264",
+      "ingredient": "dexamethasone"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "fluconazole",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "recommendation": "Cyclosporine: Fluconazole significantly increases cyclosporine levels in renal transplant patients with or without renal impairment."
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "diltiazem",
+      "severity": "moderate",
+      "recommendation": "Increase Cyclosporine Concentrations Calcium Channel Blockers Antifungals Antibiotics Glucocorticoids Other Drugs diltiazem fluconazole azithromycin methylprednisolone Allopurinol nicardipine itraconazole clarithromycin Amiodarone verapamil ketoconazole erythromycin Bromocriptine voriconazole quinupristin/"
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "dexamethasone",
+      "severity": "moderate",
+      "recommendation": "Cyclosporine: Increased activity of both cyclosporine and corticosteroids may occur when the two are used concurrently."
+    }
+  ],
+  "final_report": {
+    "subjective": "58-year-old African American man with non-ischemic cardiomyopathy status post orthotopic heart transplantation reported increasing shortness of breath, dizziness, and generalized weakness. He had cryptococcal meningitis 6 months earlier treated with amphotericin B and flucytosine followed by chronic suppressive fluconazole, and his immunosuppression was reduced afterward. Over several months he developed bilateral hand numbness, tingling, imbalance, dysphagia, gait instability, and profound lower-extremity weakness. He was also found to have atrial flutter that responded to diltiazem.",
+    "objective": "Initial echocardiogram showed preserved biventricular size and systolic function with normal diastolic function. Head CT and brain MRI were unremarkable. Lumbar puncture showed elevated protein 147 mg/dL, normal glucose 67 mg/dL, and 5 nucleated cells/mL with 85% lymphocytes. Nerve conduction studies and electromyography showed conduction block and prolonged distal latencies, and TS-HDS IgM antibody was positive. He improved after four plasmapheresis sessions plus high-dose oral dexamethasone. On readmission with anasarca, echocardiography showed worsening right and left ventricular function, cyclosporine trough dropped to 53 ng/mL, renal failure developed, and endomyocardial biopsy showed C4d-positive chronic inflammation consistent with pAMR2 antibody-mediated rejection with donor-specific antibody against HLA-DR53.",
+    "assessment": "Demyelinating polyneuropathy in a heart-transplant recipient with recent cryptococcal meningitis and reduced immunosuppression, initially responsive to plasmapheresis and dexamethasone. The course was later complicated by pAMR2 antibody-mediated cardiac allograft rejection causing heart failure, renal dysfunction, and anasarca. Ongoing fluconazole therapy also creates an important medication interaction risk with cyclosporine that can complicate transplant management.",
+    "plan": "Continue close transplant cardiology and neurology follow-up. Monitor cyclosporine troughs and renal function carefully while fluconazole is continued. Manage antibody-mediated rejection with transplant-directed therapy, reassess graft function with repeat echocardiography, and continue rehabilitation for residual neurologic weakness. Maintain vigilance for recurrent opportunistic infection and other complications of immunosuppression."
+  }
+}

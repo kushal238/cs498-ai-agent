@@ -18,12 +18,25 @@ Install: pip install scikit-learn
 
 from __future__ import annotations
 
+import re
+
 import numpy as np  # noqa: F401  (imported to validate install)
 from sklearn.metrics import precision_recall_fscore_support  # noqa: F401
 
 
+def _tokenize_concepts(concepts: list[str]) -> set[str]:
+    """Convert concept strings into a normalized alphanumeric token set."""
+    tokens: set[str] = set()
+    for concept in concepts:
+        if not concept:
+            continue
+        normalized = concept.lower().strip()
+        tokens.update(re.findall(r"[a-z0-9]+", normalized))
+    return tokens
+
+
 def concept_f1(predicted: list[str], expected: list[str]) -> dict[str, float]:
-    """Compute precision, recall, and F1 for a flat list of predicted vs expected concepts.
+    """Compute precision, recall, and F1 over whitespace-tokenized concept strings.
 
     Args:
         predicted: List of predicted concept strings (e.g. condition names, ingredient names).
@@ -32,8 +45,8 @@ def concept_f1(predicted: list[str], expected: list[str]) -> dict[str, float]:
     Returns:
         Dict with keys "precision", "recall", "f1".
     """
-    pred_set = {s.lower().strip() for s in predicted if s}
-    exp_set  = {s.lower().strip() for s in expected if s}
+    pred_set = _tokenize_concepts(predicted)
+    exp_set  = _tokenize_concepts(expected)
 
     if not pred_set and not exp_set:
         return {"precision": 1.0, "recall": 1.0, "f1": 1.0}

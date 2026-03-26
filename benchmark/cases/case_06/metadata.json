@@ -1,0 +1,17 @@
+{
+  "case_id": "case_06",
+  "title": "Heart Transplant Recipient With Demyelinating Polyneuropathy and Allograft Rejection",
+  "description": "A 58-year-old heart-transplant recipient with prior cryptococcal meningitis developed progressive weakness, gait instability, and bulbar symptoms; CSF and electrodiagnostic testing supported demyelinating polyneuropathy, and a later readmission revealed pAMR2 cardiac allograft rejection. This case stresses multistage reasoning and a verified fluconazole-cyclosporine interaction from the AGBonnet augmented-clinical-notes dataset (idx 74918; conversation and full_note columns).",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "created_by": "codex",
+  "notes": "Derived from dataset row idx 74918. The original dataset row is copied into case_06_source.json. All patient data comes from the synthetic augmented-clinical-notes dataset."
+}

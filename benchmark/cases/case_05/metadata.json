@@ -1,0 +1,17 @@
+{
+  "case_id": "case_05",
+  "title": "Limited Granulomatosis With Polyangiitis Presenting as Lung Nodules",
+  "description": "A 60-year-old woman with rheumatoid arthritis presented with dyspnea, pleuritic chest pain, and FDG-avid pulmonary nodules after failing azithromycin for presumed bronchitis. Biopsy and serologies supported limited granulomatosis with polyangiitis. This case stresses pulmonary vasculitis vs infection reasoning plus medication normalization on a multi-drug outpatient regimen from the AGBonnet augmented-clinical-notes dataset (idx 90861; conversation and full_note columns).",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "created_by": "codex",
+  "notes": "Derived from dataset row idx 90861. The original dataset row is copied into case_05_source.json. All patient data comes from the synthetic augmented-clinical-notes dataset."
+}

@@ -13,14 +13,12 @@
     {
       "original": "intravenous heparin 10 U/kg/h for 48 hours",
       "rxnorm_id": "5224",
-      "ingredient": "heparin",
-      "openfda_application_number": "ANDA211007"
+      "ingredient": "heparin"
     },
     {
       "original": "oral acetaminophen 160mg/5mL suspension as needed",
       "rxnorm_id": "161",
-      "ingredient": "acetaminophen",
-      "openfda_application_number": "ANDA207229"
+      "ingredient": "acetaminophen"
     }
   ],
   "drug_interactions": [],

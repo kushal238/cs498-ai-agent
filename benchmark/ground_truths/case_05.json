@@ -1,0 +1,61 @@
+{
+  "case_id": "case_05",
+  "transcription_cleaned": "Doctor: Hi, how are you feeling today?\nPatient: I've been feeling short of breath for a week now, and I have a low-grade fever and chest pain on the right side.\nDoctor: Okay, let me review your medical history. You were treated with azithromycin for bronchitis, but it didn't seem to help?\nPatient: Yes, that's right.\nDoctor: And you have rheumatoid arthritis that has been managed with hydroxychloroquine and low-dose prednisone.\nPatient: Yes, that's correct.\nDoctor: And you also have osteopenia, reflux disease, and hypercholesterolemia.\nPatient: Yes, I take risedronate, calcium and vitamin D supplements, omeprazole, and atorvastatin for those.\nDoctor: Okay, let's review your examination. Your vital signs are stable, and your oxygen saturation is 95% on room air.\nPatient: Yes.\nDoctor: You look tired but not in distress. On lung exam, I heard wheezes bilaterally and a few crackles at the right base.\nPatient: Okay.\nDoctor: The rest of your examination is unremarkable. You do not have active synovitis, and your range of motion is normal.\nPatient: That's good to hear.\nDoctor: I also noticed some old hypopigmented macules over your neck and face, but no skin nodules.\nPatient: Yes, I've had those for a while.\nDoctor: Your white count was 7.8 with neutrophils of 84%. Your ESR was 46 mm at one hour, and your metabolic profile and urinalysis were normal.\nPatient: Okay.\nDoctor: The chest radiograph showed streaky infiltrates at the right base, and the high-resolution CT scan showed three lung nodules.\nPatient: Oh no.\nDoctor: The FDG PET scan showed avid uptake in all the nodules with an SUV of 8.\nPatient: What does that mean?\nDoctor: A CT-guided biopsy of the right lung nodule showed fibrosis with acute and chronic inflammation and necrotizing vasculitis.\nPatient: Is that serious?\nDoctor: The biopsy cultures were negative for aerobic and anaerobic bacteria, acid-fast bacilli, and fungus. We also sent a vasculitis panel.\nPatient: What happens next?\nDoctor: We need to monitor you closely and plan follow-up based on the biopsy and serology results.",
+  "clinical_summary": "60-year-old woman with rheumatoid arthritis on hydroxychloroquine and low-dose prednisone presented with one week of dyspnea, low-grade fever, and right-sided pleuritic chest pain after azithromycin failed for presumed bronchitis. Imaging showed three FDG-avid pulmonary nodules, and CT-guided biopsy demonstrated necrotizing vasculitis with negative bacterial, mycobacterial, and fungal studies. Serologies were notable for cANCA 1:640 and anti-proteinase 3 antibody 118 units, supporting limited granulomatosis with polyangiitis presenting as lung nodules. Methotrexate was started with continuation of low-dose prednisone, and symptoms and imaging improved on follow-up.",
+  "differential_diagnosis": [
+    {
+      "condition": "Granulomatosis with polyangiitis",
+      "pmid": "41722161",
+      "rationale": "Necrotizing vasculitis on lung biopsy together with strongly positive cANCA and anti-proteinase 3 antibodies most strongly support limited granulomatosis with polyangiitis."
+    },
+    {
+      "condition": "Rheumatoid pulmonary nodules",
+      "pmid": "39603247",
+      "rationale": "Her established rheumatoid arthritis makes rheumatoid nodules a plausible explanation for pulmonary nodules, although the biopsy and vasculitis serologies point away from this as the primary diagnosis."
+    },
+    {
+      "condition": "Pulmonary infection",
+      "pmid": "12886125",
+      "rationale": "Low-grade fever, pleuritic chest pain, and lung infiltrates initially raised concern for infection, but azithromycin failure and negative cultures argued against a bacterial, fungal, or mycobacterial process."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "azithromycin",
+      "rxnorm_id": "18631",
+      "ingredient": "azithromycin"
+    },
+    {
+      "original": "hydroxychloroquine",
+      "rxnorm_id": "5521",
+      "ingredient": "hydroxychloroquine"
+    },
+    {
+      "original": "prednisone",
+      "rxnorm_id": "8640",
+      "ingredient": "prednisone"
+    },
+    {
+      "original": "risedronate",
+      "rxnorm_id": "73056",
+      "ingredient": "risedronate"
+    },
+    {
+      "original": "omeprazole",
+      "rxnorm_id": "7646",
+      "ingredient": "omeprazole"
+    },
+    {
+      "original": "atorvastatin",
+      "rxnorm_id": "83367",
+      "ingredient": "atorvastatin"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "60-year-old woman with rheumatoid arthritis reported one week of shortness of breath, low-grade fever, and right-sided pleuritic chest pain despite a trial of azithromycin for presumed bronchitis. She takes hydroxychloroquine and low-dose prednisone for rheumatoid arthritis and also uses risedronate, calcium/vitamin D, omeprazole, and atorvastatin for chronic comorbidities. She denied improvement with empiric antibiotics.",
+    "objective": "Vital signs were stable with oxygen saturation 95% on room air. Lung exam revealed bilateral wheezes and right basilar crackles without active synovitis. ESR was 46 mm/h; metabolic profile and urinalysis were unremarkable. Chest radiograph showed streaky right basilar infiltrates, high-resolution CT showed three pulmonary nodules, FDG PET showed avid uptake with SUV 8, and CT-guided biopsy showed fibrosis with acute and chronic inflammation plus necrotizing vasculitis. Bacterial, mycobacterial, and fungal studies were negative. Vasculitis serologies showed cANCA 1:640 and anti-proteinase 3 antibody 118 units. Sinus CT and echocardiogram were normal.",
+    "assessment": "Pulmonary-limited granulomatosis with polyangiitis, historically termed limited Wegener's granulomatosis, presenting as FDG-avid lung nodules with biopsy-proven necrotizing vasculitis. Rheumatoid pulmonary nodules and infectious pulmonary nodules were considered but are less likely given the serologies, biopsy findings, and negative cultures. She also has stable rheumatoid arthritis and other chronic comorbidities.",
+    "plan": "Start methotrexate and continue low-dose prednisone. Monitor closely for renal, sinonasal, or other systemic vasculitic involvement and for methotrexate toxicity. Repeat chest imaging to document response and continue routine management of rheumatoid arthritis, osteopenia, reflux disease, and hypercholesterolemia."
+  }
+}

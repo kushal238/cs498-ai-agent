@@ -23,20 +23,17 @@
     {
       "original": "insulin glargine daily",
       "rxnorm_id": "253182",
-      "ingredient": "insulin glargine",
-      "openfda_application_number": "NDA216743"
+      "ingredient": "insulin glargine"
     },
     {
       "original": "metformin 500mg three times daily",
       "rxnorm_id": "6809",
-      "ingredient": "metformin",
-      "openfda_application_number": "NDA020357"
+      "ingredient": "metformin"
     },
     {
       "original": "gliclazide 60mg daily",
       "rxnorm_id": "4816",
-      "ingredient": "gliclazide",
-      "openfda_application_number": null
+      "ingredient": "gliclazide"
     }
   ],
   "final_report": {
@@ -45,12 +42,5 @@
     "assessment": "48-year-old with MODY6 (NEUROD1 mutation) and prior type 2 diabetes phenotype. Dilated cardiomyopathy with pacemaker. Glycaemic control achieved with basal insulin, gliclazide, and metformin after trial of sulphonylurea monotherapy failed. No autoimmune diabetes. No diabetic complications. Quality of life improved on current regimen.",
     "plan": "Continue insulin glargine, metformin, and gliclazide; monitor for hypoglycaemia. Regular HbA1c and capillary glucose review. Maintain cardiovascular protection (metformin). Family counselling for autosomal dominant MODY; consider genetic testing for at-risk relatives. Follow up for glycaemic control and complications screening."
   },
-  "drug_interactions": [
-    {
-      "drug_a": "insulin glargine",
-      "drug_b": "metformin",
-      "severity": "unknown",
-      "recommendation": "Drugs that Reduce Metformin Clearance Clinical Impact: Concomitant use of drugs that interfere with common renal tubular transport systems involved in the renal elimination of metformin (e.g., organic cationic transporter-2 [OCT 2 ] / multidrug and toxin extrusion [MATE] inhibitors) could increase systemic exposure to metformin and may increase the risk for lactic acidosis [see Clinical Pharmacology ( 12.3 )]"
-    }
-  ]
+  "drug_interactions": []
 }
