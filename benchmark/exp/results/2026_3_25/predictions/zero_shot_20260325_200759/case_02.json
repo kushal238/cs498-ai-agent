@@ -1,0 +1,115 @@
+{
+  "input": {
+    "case_id": "case_02",
+    "data_source": "agbonnet",
+    "difficulty": "complex",
+    "patient_history": {
+      "age": 48,
+      "sex": "male",
+      "chief_complaint": "diabetes follow-up, poor glycaemic control on prior regimen",
+      "known_conditions": [
+        "type 2 diabetes mellitus (diagnosed age 25)",
+        "dilated cardiomyopathy",
+        "pacemaker (implanted age 42)",
+        "MODY6 (NEUROD1 mutation)"
+      ],
+      "known_allergies": []
+    },
+    "medication_list": [
+      "insulin glargine daily",
+      "metformin 500mg three times daily",
+      "gliclazide 60mg daily"
+    ],
+    "patient_transcript": "Doctor: Good morning, sir. I'm Dr. Smith. How can I help you today?\nPatient: Good morning, doctor. I came here to report my diabetes.\nDoctor: I see. Can you tell me more about your diagnosis?\nPatient: Yes, I was diagnosed with type 2 diabetes mellitus when I was 25 years old.\nDoctor: I see. And what is your prior medical history?\nPatient: Well, I had a dilated cardiomyopathy and was treated with a pacemaker when I was 42.\nDoctor: Hmm, I see. And what about your family history?\nPatient: My mother and maternal grandfather had type 2 diabetes, but my father died of natural causes and wasn't affected by diabetes. My brother and sister are healthy and don't have any signs of hyperglycaemia.\nDoctor: Are you experiencing any diabetic complications such as nephropathy, neuropathy, or retinopathy?\nPatient: No, I'm not experiencing any of those complications.\nDoctor: Okay, that's good to hear. And have you been experiencing any diabetic symptoms recently?\nPatient: No, I haven't experienced any symptoms.\nDoctor: I see. And what treatment have you been following for your diabetes?\nPatient: I've been following a regular treatment with basal-bolus insulin and metformin.\nDoctor: Okay, I understand. And have you had any tests done to detect insulin resistance?\nPatient: No, I haven't had any tests done for that.\nDoctor: I see. Well, we'll need to schedule an examination for you to monitor your blood glucose levels. Can you keep a diary of your morning and pre-meal levels?\nPatient: Sure, I can do that.\nDoctor: Great. And we'll also need to detect beta-cell antibodies to investigate the possibility of an autoimmune etiology of your diabetes.\nPatient: Okay, I understand.\nDoctor: Good morning, sir. How are you today?\nPatient: Good morning, doctor. I'm doing well.\nDoctor: Great to hear. And have you been monitoring your blood glucose levels?\nPatient: Yes, I have.\nDoctor: Okay, let's take a look at the results. I see that your blood test results were not significant for autoimmune diabetes. And your capillary blood glucose levels showed an acceptable trend for diabetes.\nPatient: Okay.\nDoctor: So, based on the reasonable glycemic control, we'll modify your treatment plan.\nPatient: Okay, I understand.\nDoctor: Great. I'll see you in another month for a follow-up appointment.\nPatient: Okay, thank you, doctor.",
+    "chart_notes": "48yo M, type 2 diabetes from age 25. Hx dilated cardiomyopathy, pacemaker at 42. Family hx: mother and maternal grandfather type 2 DM; father deceased, no diabetes; brother and sister healthy, no hyperglycaemia. First visit Sept 2017: no diabetic complications (no nephropathy, neuropathy, retinopathy), no diabetic symptoms. Tx: basal-bolus insulin + metformin (set at another clinic). Poor glycaemic control; pt to monitor capillary BG at home (morning and pre-meal), diary. Beta-cell antibodies requested (autoimmune etiology). Oct 2017: beta-cell antibodies not significant for autoimmune diabetes; capillary BG acceptable (most 90\u2013130 mg/dL). Tx changed: stopped lispro before meals, added dapagliflozin/metformin 5/1000 mg 2 tab daily. Pt stopped dapagliflozin/metformin ~10 days later due to severe abdominal pain (resolved off drug). Continued metformin 500 mg 3 tab daily + insulin glargine; glycaemic control excellent (90\u2013130 mg/dL). March 2018: HbA1c still high. NGS performed (14 MODY genes, WFS1, INSR). Sept 2019: genetic test heterozygosity p.Met114Leu c.340A>C in NEUROD1 (MODY6). Started gliclazide RM 60 mg, insulin suspended. March 2020: inadequate glycaemic control on sulphonylurea, low C-peptide; resumed basal insulin + gliclazide + metformin. Oct 2020: glycaemic control much improved; one injection/day, no need to measure BG after every meal. No hypoglycaemia, no diabetic complications. Family counselling re autosomal dominant MODY; brother and sister no hyperglycaemia, no NEUROD1 mutation; mother T2DM, declined genetic testing."
+  },
+  "prediction": {
+    "case_id": "case_02",
+    "transcription_cleaned": "Doctor: Good morning, sir. I'm Dr. Smith. How can I help you today?\nPatient: Good morning, doctor. I came here regarding my diabetes.\nDoctor: I see. Can you tell me more about your diagnosis?\nPatient: Yes. I was diagnosed with type 2 diabetes mellitus when I was 25 years old.\nDoctor: I see. What is your prior medical history?\nPatient: I had dilated cardiomyopathy and was treated with a pacemaker when I was 42.\nDoctor: And what about your family history?\nPatient: My mother and maternal grandfather had type 2 diabetes, but my father died of natural causes and was not affected by diabetes. My brother and sister are healthy and do not have any signs of hyperglycaemia.\nDoctor: Are you experiencing any diabetic complications such as nephropathy, neuropathy, or retinopathy?\nPatient: No, I am not experiencing any of those complications.\nDoctor: Okay, that is good to hear. Have you been experiencing any diabetic symptoms recently?\nPatient: No, I have not experienced any symptoms.\nDoctor: I see. What treatment have you been following for your diabetes?\nPatient: I have been following regular treatment with basal-bolus insulin and metformin.\nDoctor: Have you had any tests done to detect insulin resistance?\nPatient: No, I have not had any tests done for that.\nDoctor: We will need to schedule an examination to monitor your blood glucose levels. Can you keep a diary of your morning and pre-meal levels?\nPatient: Sure, I can do that.\nDoctor: Great. We will also need to check beta-cell antibodies to investigate the possibility of an autoimmune etiology of your diabetes.\nPatient: Okay, I understand.\nDoctor: Good morning, sir. How are you today?\nPatient: Good morning, doctor. I am doing well.\nDoctor: Great to hear. Have you been monitoring your blood glucose levels?\nPatient: Yes, I have.\nDoctor: Okay, let us look at the results. Your blood test results were not significant for autoimmune diabetes, and your capillary blood glucose levels showed an acceptable trend.\nPatient: Okay.\nDoctor: So, based on the reasonable glycaemic control, we will modify your treatment plan.\nPatient: Okay, I understand.\nDoctor: Great. I will see you in another month for a follow-up appointment.\nPatient: Okay, thank you, doctor.",
+    "clinical_summary": "48-year-old man with diabetes diagnosed at age 25, later found to have MODY6 due to a heterozygous NEUROD1 mutation, with a history of dilated cardiomyopathy and pacemaker placement. Initial concern included poor glycaemic control and possible autoimmune diabetes, but beta-cell antibodies were not significant and home capillary glucose readings were generally acceptable. He has no nephropathy, neuropathy, retinopathy, or hypoglycaemia, and his current regimen includes insulin glargine, metformin, and gliclazide with improved control.",
+    "differential_diagnosis": [
+      {
+        "condition": "MODY6 (NEUROD1-related monogenic diabetes)",
+        "pmid": null,
+        "rationale": "Most likely diagnosis given confirmed heterozygous NEUROD1 mutation, young-adult onset diabetes at age 25, family history of diabetes, negative beta-cell antibody testing, and partial response to sulfonylurea/insulin-based therapy."
+      },
+      {
+        "condition": "Type 2 diabetes mellitus",
+        "pmid": null,
+        "rationale": "Originally labeled as type 2 diabetes based on adult onset and positive family history, and metformin was part of treatment; however, monogenic diabetes better explains the overall course."
+      },
+      {
+        "condition": "Latent autoimmune diabetes in adults or other autoimmune diabetes",
+        "pmid": null,
+        "rationale": "Considered because of relatively early onset and insulin requirement, but this is less likely given beta-cell antibodies were not significant for autoimmune diabetes."
+      }
+    ],
+    "normalized_medications": [
+      {
+        "original": "insulin glargine daily",
+        "rxnorm_id": null,
+        "ingredient": "insulin glargine"
+      },
+      {
+        "original": "metformin 500mg three times daily",
+        "rxnorm_id": null,
+        "ingredient": "metformin"
+      },
+      {
+        "original": "gliclazide 60mg daily",
+        "rxnorm_id": null,
+        "ingredient": "gliclazide"
+      }
+    ],
+    "drug_interactions": [
+      {
+        "drug_a": "insulin glargine",
+        "drug_b": "gliclazide",
+        "severity": "moderate",
+        "recommendation": "Concomitant insulin and sulfonylurea therapy may increase hypoglycaemia risk. Continue only with close glucose monitoring, patient education on hypoglycaemia symptoms, and dose adjustment if low readings occur."
+      }
+    ],
+    "final_report": {
+      "subjective": "48-year-old male seen for diabetes follow-up. Diabetes was diagnosed at age 25 and was initially managed as type 2 diabetes. He reports no current diabetic symptoms and no history of nephropathy, neuropathy, or retinopathy. Past medical history is significant for dilated cardiomyopathy and pacemaker implantation at age 42. Family history includes mother and maternal grandfather with diabetes; siblings have no hyperglycaemia. He has monitored home capillary blood glucose with most reported values in the acceptable range. No known allergies.",
+      "objective": "Known conditions: diabetes mellitus later genetically characterized as MODY6 (NEUROD1 mutation), dilated cardiomyopathy, pacemaker in situ. Beta-cell antibodies were not significant for autoimmune diabetes. Home capillary blood glucose values were reported mostly around 90-130 mg/dL. Prior HbA1c remained elevated in March 2018 despite good home readings. Current medications: insulin glargine daily, metformin 500 mg three times daily, gliclazide 60 mg daily. Previously trialed dapagliflozin/metformin 5/1000 mg twice daily but stopped after severe abdominal pain that resolved on discontinuation. No documented diabetic complications or hypoglycaemia.",
+      "assessment": "1. MODY6 (NEUROD1-related monogenic diabetes), currently the best unifying diagnosis for diabetes initially labeled as type 2; autoimmune diabetes evaluation was negative. 2. Diabetes currently improved on basal insulin plus metformin and gliclazide, though prior HbA1c elevation suggests need for continued longitudinal monitoring. 3. History of dilated cardiomyopathy with pacemaker, clinically stable per available documentation. 4. No evidence of diabetic microvascular complications at present.",
+      "plan": "Continue current diabetes regimen with insulin glargine, metformin, and gliclazide. Monitor fasting and pre-meal capillary blood glucose and review logs at follow-up; continue periodic HbA1c assessment to reconcile with home readings. Monitor for hypoglycaemia given combined basal insulin and sulfonylurea therapy, and educate patient on symptoms and treatment of low glucose. Avoid re-challenge with dapagliflozin/metformin given prior severe abdominal pain unless a clear alternative explanation emerges. Continue routine surveillance for diabetic complications including eye, renal, and neuropathy screening. Maintain follow-up for cardiomyopathy/pacemaker care as appropriate. Reinforce family counseling regarding autosomal dominant inheritance of MODY6."
+    }
+  },
+  "scores": {
+    "transcription_cleanup": {
+      "stage": "transcription_cleaned",
+      "rouge1": 0.9112271540469975,
+      "rouge2": 0.8324607329842931,
+      "rougeL": 0.9112271540469975
+    },
+    "clinical_summarization": {
+      "stage": "clinical_summary",
+      "rouge1": 0.5222929936305732,
+      "rouge2": 0.21935483870967742,
+      "rougeL": 0.34394904458598724
+    },
+    "differential_diagnosis": {
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "f1": 0.6666666666666666,
+      "ndcg": 1.0
+    },
+    "medication_normalization": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "drug_interaction_check": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "final_report_generation": {
+      "subjective_rougeL": 0.31249999999999994,
+      "objective_rougeL": 0.19444444444444445,
+      "assessment_rougeL": 0.21818181818181817,
+      "plan_rougeL": 0.2571428571428572
+    }
+  }
+}

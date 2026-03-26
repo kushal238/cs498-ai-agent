@@ -1,0 +1,112 @@
+{
+  "scores": {
+    "case_02": {
+      "transcription_cleanup": {
+        "stage": "transcription_cleaned",
+        "rouge1": 0.9112271540469975,
+        "rouge2": 0.8324607329842931,
+        "rougeL": 0.9112271540469975
+      },
+      "clinical_summarization": {
+        "stage": "clinical_summary",
+        "rouge1": 0.5222929936305732,
+        "rouge2": 0.21935483870967742,
+        "rougeL": 0.34394904458598724
+      },
+      "differential_diagnosis": {
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "ndcg": 1.0
+      },
+      "medication_normalization": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "drug_interaction_check": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "final_report_generation": {
+        "subjective_rougeL": 0.31249999999999994,
+        "objective_rougeL": 0.19444444444444445,
+        "assessment_rougeL": 0.21818181818181817,
+        "plan_rougeL": 0.2571428571428572
+      }
+    },
+    "case_03": {
+      "transcription_cleanup": {
+        "stage": "transcription_cleaned",
+        "rouge1": 0.7670364500792393,
+        "rouge2": 0.5405405405405406,
+        "rougeL": 0.6275752773375595
+      },
+      "clinical_summarization": {
+        "stage": "clinical_summary",
+        "rouge1": 0.6126126126126126,
+        "rouge2": 0.3363636363636364,
+        "rougeL": 0.4774774774774775
+      },
+      "differential_diagnosis": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "ndcg": 0.0
+      },
+      "medication_normalization": {
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      "drug_interaction_check": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "final_report_generation": {
+        "subjective_rougeL": 0.3665338645418326,
+        "objective_rougeL": 0.4140625,
+        "assessment_rougeL": 0.33532934131736525,
+        "plan_rougeL": 0.2702702702702703
+      }
+    },
+    "case_04": {
+      "transcription_cleanup": {
+        "stage": "transcription_cleaned",
+        "rouge1": 0.65748031496063,
+        "rouge2": 0.41897233201581024,
+        "rougeL": 0.5236220472440944
+      },
+      "clinical_summarization": {
+        "stage": "clinical_summary",
+        "rouge1": 0.6336633663366337,
+        "rouge2": 0.38999999999999996,
+        "rougeL": 0.5247524752475248
+      },
+      "differential_diagnosis": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "ndcg": 0.0
+      },
+      "medication_normalization": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "drug_interaction_check": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "final_report_generation": {
+        "subjective_rougeL": 0.5753424657534246,
+        "objective_rougeL": 0.6153846153846153,
+        "assessment_rougeL": 0.2956521739130435,
+        "plan_rougeL": 0.24719101123595505
+      }
+    }
+  }
+}

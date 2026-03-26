@@ -1,0 +1,122 @@
+{
+  "input": {
+    "case_id": "case_03",
+    "data_source": "agbonnet",
+    "difficulty": "complex",
+    "patient_history": {
+      "age": 67,
+      "sex": "female",
+      "chief_complaint": "left hip pain and enlarging mass with recurrent falls",
+      "known_conditions": [
+        "high-grade undifferentiated pleomorphic sarcoma of left hip",
+        "acromegaly (pituitary tumor resection)",
+        "hypertension",
+        "recurrent vertigo"
+      ],
+      "known_allergies": []
+    },
+    "medication_list": [
+      "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+      "acetaminophen 500mg as needed for pain"
+    ],
+    "patient_transcript": "Doctor: Hi, I'm your doctor. Can you tell me about your symptoms?\nPatient: Yes, I had a bump on my hip and felt a lot of pain after I fell 11 months ago.\nDoctor: Hmm, I see. What did the emergency room diagnose you with?\nPatient: They said it was a hematoma around my hip.\nDoctor: I understand. And did your symptoms worsen over time?\nPatient: Yes, I had recurrent falls.\nDoctor: Okay. Did you have any radiographic imaging done?\nPatient: Yes, I had a CT scan without intravenous contrast done six weeks before I was diagnosed with cancer.\nDoctor: And what did the CT scan show?\nPatient: It confirmed that I didn't have a displaced fracture, but it indicated a tissue collection that was suspicious for a hematoma.\nDoctor: I see. And then, did you have an MRI done?\nPatient: Yes, I did. The MRI demonstrated a soft-tissue mass in my left hip that was suspicious for sarcoma.\nDoctor: Okay, got it. And then you had a consultation with an orthopedic oncologic specialist, right?\nPatient: Yes, I did. And I underwent a radical resection of the sarcoma the next day.\nDoctor: Okay. I have your pathology report here. It says that you were diagnosed with a high-grade undifferentiated pleomorphic sarcoma. The margins were negative and the closest evidence of cancer was 2 mm within surgical margins.\nPatient: Hmm.\nDoctor: And after the surgery, you had a chest CT that showed two tiny lung nodules with the larger nodule measuring 4 mm. This indicates a recommended follow-up of three to six months.\nPatient: Okay.\nDoctor: Also, there was a small hypodense lesion in your spleen that was inadequately visualized.\nPatient: Hmm.\nDoctor: The tumor stage was established to be Stage III measuring 13.5 cm at its greatest dimension. And the TNM staging was established to be pT2a, cN0, cM0 without evidence of lymph node involvement or distant metastases.\nPatient: Okay.\nDoctor: You had two follow-up appointments with the surgeon, who recommended a consult to medical and radiation oncology. And you had consultations at two other institutions including a sarcoma clinic.\nPatient: Yes, I did.\nDoctor: And they recommended adjuvant chemotherapy for you.\nPatient: Yes, they did.\nDoctor: Okay, I will schedule a follow-up appointment for you. It's important that you follow the recommendations of the medical and radiation oncologists.\nPatient: Yes, I will. Thank you, doctor.",
+    "chart_notes": "67-year-old woman with a rapidly enlarging left hip mass after a fall 11 months earlier. Initially diagnosed as a hematoma around the proximal femur in the emergency department, but symptoms worsened with recurrent falls. CT without contrast showed a nonspecific left thigh tissue collection; subsequent MRI demonstrated a soft-tissue mass in the subcutaneous tissue of the left hip suspicious for sarcoma. She underwent radical resection of the mass one week after MRI. Pathology revealed a 13.5 cm superficial left hip undifferentiated high-grade pleomorphic sarcoma with 50-60% necrosis and negative margins (closest tumor 2 mm). Staging chest CT one week post-op showed two tiny lung nodules (largest 4 mm) and a small hypodense splenic lesion; staged pT2a cN0 cM0 (Stage III). She later received adjuvant radiation (60 Gy) and was followed by oncology; surveillance imaging demonstrated new pulmonary nodules concerning for metastasis and a large left hip fluid collection (seroma vs chronic hematoma vs abscess). She presents to physical therapy with left shoulder, flank, and hip pain, lymphedema of the left lower extremity and abdomen, and functional limitations in sleep, standing, dressing, and household activities; current pain control uses Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed."
+  },
+  "prediction": {
+    "case_id": "case_03",
+    "data_source": "agbonnet",
+    "difficulty": "complex",
+    "patient_history": {
+      "age": 67,
+      "sex": "female",
+      "chief_complaint": "left hip pain and enlarging mass with recurrent falls",
+      "known_conditions": [
+        "high-grade undifferentiated pleomorphic sarcoma of left hip",
+        "acromegaly (pituitary tumor resection)",
+        "hypertension",
+        "recurrent vertigo"
+      ],
+      "known_allergies": []
+    },
+    "medication_list": [
+      "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+      "acetaminophen 500mg as needed for pain"
+    ],
+    "patient_transcript": "Doctor: Hi, I'm your doctor. Can you tell me about your symptoms?\nPatient: Yes, I had a bump on my hip and felt a lot of pain after I fell 11 months ago.\nDoctor: Hmm, I see. What did the emergency room diagnose you with?\nPatient: They said it was a hematoma around my hip.\nDoctor: I understand. And did your symptoms worsen over time?\nPatient: Yes, I had recurrent falls.\nDoctor: Okay. Did you have any radiographic imaging done?\nPatient: Yes, I had a CT scan without intravenous contrast done six weeks before I was diagnosed with cancer.\nDoctor: And what did the CT scan show?\nPatient: It confirmed that I didn't have a displaced fracture, but it indicated a tissue collection that was suspicious for a hematoma.\nDoctor: I see. And then, did you have an MRI done?\nPatient: Yes, I did. The MRI demonstrated a soft-tissue mass in my left hip that was suspicious for sarcoma.\nDoctor: Okay, got it. And then you had a consultation with an orthopedic oncologic specialist, right?\nPatient: Yes, I did. And I underwent a radical resection of the sarcoma the next day.\nDoctor: Okay. I have your pathology report here. It says that you were diagnosed with a high-grade undifferentiated pleomorphic sarcoma. The margins were negative and the closest evidence of cancer was 2 mm within surgical margins.\nPatient: Hmm.\nDoctor: And after the surgery, you had a chest CT that showed two tiny lung nodules with the larger nodule measuring 4 mm. This indicates a recommended follow-up of three to six months.\nPatient: Okay.\nDoctor: Also, there was a small hypodense lesion in your spleen that was inadequately visualized.\nPatient: Hmm.\nDoctor: The tumor stage was established to be Stage III measuring 13.5 cm at its greatest dimension. And the TNM staging was established to be pT2a, cN0, cM0 without evidence of lymph node involvement or distant metastases.\nPatient: Okay.\nDoctor: You had two follow-up appointments with the surgeon, who recommended a consult to medical and radiation oncology. And you had consultations at two other institutions including a sarcoma clinic.\nPatient: Yes, I did.\nDoctor: And they recommended adjuvant chemotherapy for you.\nPatient: Yes, they did.\nDoctor: Okay, I will schedule a follow-up appointment for you. It's important that you follow the recommendations of the medical and radiation oncologists.\nPatient: Yes, I will. Thank you, doctor.",
+    "chart_notes": "67-year-old woman with a rapidly enlarging left hip mass after a fall 11 months earlier. Initially diagnosed as a hematoma around the proximal femur in the emergency department, but symptoms worsened with recurrent falls. CT without contrast showed a nonspecific left thigh tissue collection; subsequent MRI demonstrated a soft-tissue mass in the subcutaneous tissue of the left hip suspicious for sarcoma. She underwent radical resection of the mass one week after MRI. Pathology revealed a 13.5 cm superficial left hip undifferentiated high-grade pleomorphic sarcoma with 50-60% necrosis and negative margins (closest tumor 2 mm). Staging chest CT one week post-op showed two tiny lung nodules (largest 4 mm) and a small hypodense splenic lesion; staged pT2a cN0 cM0 (Stage III). She later received adjuvant radiation (60 Gy) and was followed by oncology; surveillance imaging demonstrated new pulmonary nodules concerning for metastasis and a large left hip fluid collection (seroma vs chronic hematoma vs abscess). She presents to physical therapy with left shoulder, flank, and hip pain, lymphedema of the left lower extremity and abdomen, and functional limitations in sleep, standing, dressing, and household activities; current pain control uses Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed.",
+    "transcription_cleaned": "Doctor: Hi, I'm your doctor. Can you tell me about your symptoms?\n\nPatient: Yes, I had a bump on my hip and felt a lot of pain after I fell 11 months ago.\n\nDoctor: I see. What did the emergency room diagnose you with?\n\nPatient: They said it was a hematoma around my hip.\n\nDoctor: I understand. Did your symptoms worsen over time?\n\nPatient: Yes, I had recurrent falls.\n\nDoctor: Okay. Did you have any radiographic imaging done?\n\nPatient: Yes, I had a CT scan without intravenous contrast done six weeks before I was diagnosed with cancer.\n\nDoctor: And what did the CT scan show?\n\nPatient: It confirmed that I did not have a displaced fracture, but it indicated a tissue collection that was suspicious for a hematoma.\n\nDoctor: I see. Did you then have an MRI done?\n\nPatient: Yes, I did. The MRI demonstrated a soft-tissue mass in my left hip that was suspicious for sarcoma.\n\nDoctor: Okay, got it. Then you had a consultation with an orthopedic oncologic specialist, right?\n\nPatient: Yes, I did, and I underwent a radical resection of the sarcoma the next day.\n\nDoctor: Okay. I have your pathology report here. It says that you were diagnosed with a high-grade undifferentiated pleomorphic sarcoma. The margins were negative, and the closest evidence of cancer was 2 mm within the surgical margins.\n\nPatient: Mm-hmm.\n\nDoctor: After the surgery, you had a chest CT that showed two tiny lung nodules, with the larger nodule measuring 4 mm. This indicates a recommended follow-up in three to six months.\n\nPatient: Okay.\n\nDoctor: Also, there was a small hypodense lesion in your spleen that was inadequately visualized.\n\nPatient: Mm-hmm.\n\nDoctor: The tumor stage was established as Stage III, measuring 13.5 cm at its greatest dimension. The TNM staging was established as pT2a, cN0, cM0, without evidence of lymph node involvement or distant metastases.\n\nPatient: Okay.\n\nDoctor: You had two follow-up appointments with the surgeon, who recommended consultations with medical and radiation oncology. You also had consultations at two other institutions, including a sarcoma clinic.\n\nPatient: Yes, I did.\n\nDoctor: And they recommended adjuvant chemotherapy for you.\n\nPatient: Yes, they did.\n\nDoctor: Okay, I will schedule a follow-up appointment for you. It is important that you follow the recommendations of the medical and radiation oncologists.\n\nPatient: Yes, I will. Thank you, doctor.",
+    "clinical_summary": "67-year-old woman with 11 months of left hip pain and rapidly enlarging mass after a fall, initially treated as a hematoma, with worsening symptoms and recurrent falls. Imaging evolved from CT showing a nonspecific left thigh/hip tissue collection without displaced fracture to MRI showing a left hip soft-tissue mass suspicious for sarcoma; she underwent radical resection, and pathology showed a 13.5 cm superficial high-grade undifferentiated pleomorphic sarcoma with 50\u201360% necrosis, negative margins (closest 2 mm), staged pT2a cN0 cM0, Stage III. Post-op chest CT showed two tiny pulmonary nodules (largest 4 mm) and a small hypodense splenic lesion; she received adjuvant radiation (60 Gy), and later surveillance imaging showed new pulmonary nodules concerning for metastases plus a large left hip fluid collection. Relevant history includes acromegaly status post pituitary tumor resection, hypertension, and recurrent vertigo; current pain medications are Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed, and she currently has left shoulder/flank/hip pain, left lower-extremity and abdominal lymphedema, and functional limitations.",
+    "differential_diagnosis": [
+      {
+        "condition": "Metastatic pulmonary recurrence of high-grade undifferentiated pleomorphic sarcoma",
+        "pmid": "39720829",
+        "rationale": "She has a resected stage III high-grade UPS of the left hip and surveillance imaging now shows new pulmonary nodules, the most common site of distant spread for soft-tissue sarcoma, making metastatic recurrence most likely."
+      },
+      {
+        "condition": "Postoperative/radiation-related seroma or chronic fluid collection of the left hip",
+        "pmid": "31941460",
+        "rationale": "The large left hip fluid collection developing after radical resection and adjuvant radiation is highly compatible with a postoperative seroma, hematoma, or treatment-related fluid collection contributing to pain and swelling."
+      },
+      {
+        "condition": "Local recurrence of undifferentiated pleomorphic sarcoma at the left hip",
+        "pmid": "34621848",
+        "rationale": "Despite negative margins, the tumor was large and high grade with close margins, so persistent hip pain, enlarging local symptoms, and lymphedema raise concern for locoregional recurrence."
+      }
+    ],
+    "normalized_medications": [
+      {
+        "original": "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+        "rxnorm_id": null,
+        "ingredient": null
+      },
+      {
+        "original": "acetaminophen 500mg as needed for pain",
+        "rxnorm_id": "161",
+        "ingredient": "acetaminophen"
+      }
+    ],
+    "drug_interactions": [],
+    "final_report": {
+      "subjective": "67-year-old woman reports an 11-month history of left hip pain and a progressively enlarging bump/mass that began after a fall and was initially diagnosed in the emergency department as a hematoma. She states that symptoms worsened over time and were associated with recurrent falls. Since treatment, she continues to have pain involving the left hip as well as the left shoulder and flank. She also reports left lower-extremity and abdominal swelling consistent with lymphedema and significant functional limitations affecting sleep, prolonged standing, dressing, and household activities. She has been evaluated by orthopedic oncology and additional oncology specialists, including a sarcoma clinic, and understands that adjuvant therapy has been recommended. Current pain regimen includes Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed. Relevant past medical history includes acromegaly status post pituitary tumor resection, hypertension, and recurrent vertigo. No known allergies were reported.",
+      "objective": "Prior imaging after the initial injury included CT of the left hip/thigh without intravenous contrast, which showed no displaced fracture but did demonstrate a nonspecific tissue collection suspicious for hematoma. Subsequent MRI of the left hip demonstrated a soft-tissue mass in the subcutaneous tissue suspicious for sarcoma. She underwent radical resection of the left hip mass shortly thereafter. Surgical pathology showed a 13.5 cm superficial high-grade undifferentiated pleomorphic sarcoma with 50-60% necrosis and negative surgical margins, with the closest tumor 2 mm from the margin. Staging was pT2a cN0 cM0, AJCC Stage III, with no evidence of nodal disease or distant metastases at that time. Postoperative chest CT demonstrated two tiny pulmonary nodules, the largest measuring 4 mm, for which interval follow-up in 3-6 months was recommended, and also noted a small hypodense splenic lesion that was inadequately characterized. She subsequently received adjuvant radiation therapy to the left hip totaling 60 Gy. Later surveillance imaging showed new pulmonary nodules concerning for metastatic disease and a large left hip fluid collection, with differential including seroma, chronic hematoma, or abscess. Current documented clinical issues also include left lower-extremity and abdominal lymphedema and persistent pain with functional impairment.",
+      "assessment": "This is a 67-year-old woman with resected Stage III (pT2a cN0 cM0) high-grade undifferentiated pleomorphic sarcoma of the left hip, status post radical resection with negative but close margins and adjuvant radiation, now with persistent local symptoms and surveillance findings concerning for disease progression. Most concerning is probable metastatic pulmonary recurrence given the development of new pulmonary nodules on follow-up imaging in the setting of high-grade soft-tissue sarcoma, for which the lungs are the most common site of metastasis. She also has a symptomatic large postoperative/radiation-related left hip fluid collection, which may represent seroma, chronic hematoma, or less likely abscess, and this likely contributes to ongoing hip pain, swelling, and functional limitation. Local recurrence at the left hip remains an important consideration despite negative margins because of the original tumor size, high grade, close margin distance, and ongoing local pain and edema. Additional active problems include cancer-related pain, lymphedema of the left lower extremity and abdomen, recurrent falls, hypertension, history of acromegaly status post pituitary tumor resection, and recurrent vertigo.",
+      "plan": "Continue close multidisciplinary oncologic follow-up with orthopedic oncology, medical oncology, and radiation oncology, with emphasis on adhering to prior recommendations for adjuvant/systemic sarcoma management and interval surveillance. Obtain or review repeat chest imaging to further characterize the new pulmonary nodules and determine extent of suspected metastatic disease; management should be guided by oncology and may include additional staging studies and discussion of systemic therapy options. Further evaluate the large left hip fluid collection with appropriate imaging and surgical/oncologic assessment to distinguish postoperative seroma/chronic hematoma from abscess or local recurrence, and manage based on symptoms and findings. Continue current pain control regimen of Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed, while monitoring efficacy, sedation, constipation, and fall risk; consider referral to supportive care/palliative medicine or pain management if pain remains inadequately controlled. Continue physical therapy/rehabilitation as tolerated for mobility, gait safety, and functional limitations, and address lymphedema with appropriate therapy and compression strategies if not contraindicated. Reinforce fall precautions given recurrent falls, pain, vertigo, and opioid use. Monitor the previously noted splenic lesion as clinically indicated on future imaging. Schedule follow-up promptly, and instruct the patient to report worsening pain, fevers, increasing swelling, drainage, shortness of breath, or other new symptoms immediately."
+    }
+  },
+  "scores": {
+    "transcription_cleanup": {
+      "stage": "transcription_cleaned",
+      "rouge1": 0.7267267267267268,
+      "rouge2": 0.4969879518072289,
+      "rougeL": 0.6006006006006006
+    },
+    "clinical_summarization": {
+      "stage": "clinical_summary",
+      "rouge1": 0.5140845070422535,
+      "rouge2": 0.2695035460992908,
+      "rougeL": 0.4436619718309859
+    },
+    "differential_diagnosis": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ndcg": 0.0
+    },
+    "medication_normalization": {
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666
+    },
+    "drug_interaction_check": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "final_report_generation": {
+      "subjective_rougeL": 0.31972789115646255,
+      "objective_rougeL": 0.35514018691588783,
+      "assessment_rougeL": 0.2814814814814815,
+      "plan_rougeL": 0.1871345029239766
+    }
+  }
+}
