@@ -1,0 +1,17 @@
+{
+  "case_id": "case_07",
+  "title": "High-Grade Vaginal Sarcoma (ER/PR+) Diagnosed During and After Pregnancy",
+  "description": "A 31-year-old gravida 4 para 0 African American woman at 22-weeks gestation expelled an 11 cm pelvic mass with pathology showing a highly cellular spindle-cell tumor; the differential included endometrial stromal sarcoma, undifferentiated uterine sarcoma, and primary vaginal sarcoma. She underwent cesarean hysterectomy at 36 weeks with benign final pathology, but a high-grade ER/PR-positive vaginal sarcoma recurred at 3 months postpartum and was treated with upper vaginectomy and HDR vaginal brachytherapy, with 58-month disease-free survival.",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "created_by": "team-scaffold",
+  "notes": "Derived from dataset row idx 177170. The original dataset row is copied into case_07_source.json. All patient data comes from the synthetic augmented-clinical-notes dataset. The primary diagnostic challenge is distinguishing primary vaginal sarcoma from endometrial stromal sarcoma and undifferentiated uterine sarcoma in a pregnant patient, with a pregnancy-interval benign hysterectomy pathology preceding confirmed postpartum recurrence."
+}
