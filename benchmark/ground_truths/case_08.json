@@ -1,0 +1,46 @@
+{
+  "case_id": "case_08",
+  "transcription_cleaned": "Doctor: Hello, how can I help you today?\nPatient: Hi, doctor. I have some lumps on my head that are painful and have pus discharge.\nDoctor: Can you show me where they are?\nPatient: Yes, they are on the back of my head.\nDoctor: I see. Have you had any rashes or itching as well?\nPatient: Yes, I have had rashes and itching for the past two weeks. They are especially severe in the afternoon and evening.\nDoctor: Have you received any treatment for this?\nPatient: No, I haven't.\nDoctor: Did your mother notice any changes recently?\nPatient: Yes, she noticed that the hair loss in the itchy area and the rash had gotten worse. I also started having pain in my head.\nDoctor: Is that what brought you in today?\nPatient: Yes, that's right.\nDoctor: Do you have a history of fever?\nPatient: No, I don't.\nDoctor: Does your twin have similar complaints?\nPatient: Yes. They have hair loss, red lumps, and pus discharge too. But no other family members have the same problem.\nDoctor: Have you been playing with stray cats near your home?\nPatient: Yes, I have. My family also says I have poor hygiene.\nDoctor: On examination, I found multiple red nodules with openings in the scalp at the back of your head and hair loss. The area is tender to touch. There is no swelling of the lymph nodes and no lesions elsewhere on your body.\nPatient: Okay.\nDoctor: Based on the history and examination, the possibilities are kerion-type tinea capitis and impetigenic scabies. We examined skin scrapings under the microscope with KOH, which did not show any fungal elements, and the culture was also negative.\nPatient: Okay.\nDoctor: I am going to prescribe some medication for you. Please use it as directed and return for a follow-up.\nPatient: Okay, doctor. Thank you.",
+  "clinical_summary": "8-year-old boy presented with a 2-week history of painful erythematous scalp nodules with pus discharge, alopecia, and pruritus (worse in the afternoon and evening) over the parieto-occipital scalp. His twin had identical symptoms. History was notable for contact with stray cats and poor hygiene. Dermatological examination showed multiple erythematous nodules with sinuses, alopecia, and tenderness; no lymphadenopathy. KOH preparation and fungal culture were negative; skin scraping microscopy identified Sarcoptes scabiei, confirming impetigenic scabies. Both twins were treated with permethrin 5% cream, cetirizine, and amoxicillin, with complete hair regrowth by the final follow-up visit.",
+  "differential_diagnosis": [
+    {
+      "condition": "Impetigenic scabies",
+      "pmid": "36320284",
+      "rationale": "Sarcoptes scabiei mite was identified on skin scraping microscopy; the pruritus worse in the evening, household contact (twin), and secondary bacterial superinfection causing pus discharge are all consistent with this diagnosis."
+    },
+    {
+      "condition": "Kerion type tinea capitis",
+      "pmid": "34738935",
+      "rationale": "Inflammatory scalp nodules with alopecia and pus discharge in a child with stray cat contact raised suspicion for kerion, but KOH preparation showed no fungal elements and fungal culture was negative, excluding this diagnosis."
+    },
+    {
+      "condition": "Bacterial scalp folliculitis",
+      "pmid": "35483912",
+      "rationale": "Purulent nodules with sinus tracts and alopecia can result from primary bacterial folliculitis, though the mite identification on microscopy, nocturnal pruritus, and twin involvement made scabies superinfection the confirmed diagnosis."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "permethrin 5% cream topical",
+      "rxnorm_id": "33199",
+      "ingredient": "permethrin"
+    },
+    {
+      "original": "cetirizine syrup",
+      "rxnorm_id": "1014673",
+      "ingredient": "cetirizine"
+    },
+    {
+      "original": "amoxicillin oral",
+      "rxnorm_id": "723",
+      "ingredient": "amoxicillin"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "8-year-old male presented with a 2-week history of painful red lumps, pus discharge, alopecia, and intense pruritus over the back of his scalp, worsening in the afternoon and evening. No prior treatment had been given. His mother noted progressive hair loss and rash enlargement over the preceding week with onset of pain. No fever. His twin brother had identical complaints. The family reported contact with stray cats and poor hygiene practices. No other family members were affected.",
+    "objective": "Dermatological examination: multiple erythematous nodules with sinuses in the parieto-occipital scalp, patchy alopecia, and tenderness over lesions. No lymphadenopathy. No cutaneous lesions elsewhere. KOH 10% preparation of skin scrapings: no fungal elements identified. Fungal culture: negative. Skin scraping microscopy: Sarcoptes scabiei mite identified. Diagnosis confirmed as impetigenic scabies.",
+    "assessment": "Impetigenic scabies in an 8-year-old boy, confirmed by identification of Sarcoptes scabiei on microscopy, presenting with scalp nodules, pus discharge, and alopecia. Kerion-type tinea capitis was excluded by negative KOH and fungal culture. Bacterial superinfection accounted for the purulent discharge and inflammatory nodules. Identical presentation in his twin is consistent with close-contact transmission.",
+    "plan": "Apply permethrin 5% cream once for 8 hours; treat twin simultaneously to prevent reinfection. Cetirizine syrup once daily for pruritus relief. Amoxicillin orally for secondary bacterial superinfection. Weekly follow-up to monitor for response, hair regrowth, and resolution of lesions. Counsel family on hygiene improvement and avoidance of further contact with stray animals. Screen remaining household contacts for scabies."
+  }
+}

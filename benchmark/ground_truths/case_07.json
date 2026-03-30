@@ -1,0 +1,36 @@
+{
+  "case_id": "case_07",
+  "transcription_cleaned": "Doctor: Good morning. How can I help you today?\nPatient: Good morning, doctor. I was referred here from another hospital. I am 27 weeks pregnant and I had a very scary episode a few weeks ago.\nDoctor: I am glad you came in. Can you walk me through what happened?\nPatient: At 22 weeks, I started having vaginal bleeding. I went to the emergency room and they admitted me for bedrest. About two days later, I developed terrible pelvic pain and contractions, and I passed a large mass vaginally.\nDoctor: Were there any fetal parts in the mass?\nPatient: No. The doctors said there were no fetal contents. The baby was fine — they checked the heart tones and everything was okay.\nDoctor: Do you know what the pathology showed?\nPatient: Yes. They told me it was an aggressive-looking tumor with spindle-shaped cells and giant cells under the microscope. The pathologist said it could be an endometrial stromal sarcoma or an undifferentiated uterine sarcoma, but they were not certain.\nDoctor: What happened after that at the outside hospital?\nPatient: They took me to the operating room and found a hole in the back wall of my vagina that was bleeding. They stitched it closed. My cervix was closed and the baby was still okay.\nDoctor: Can you tell me about your obstetric history?\nPatient: This is my fourth pregnancy. I have had two therapeutic abortions and one miscarriage.\nDoctor: Any prior gynecologic problems — abnormal pap smears, fibroids, or infertility?\nPatient: No, nothing like that. My periods were always regular and I had no pain with intercourse before this pregnancy.\nDoctor: Any family history of cancer?\nPatient: Yes. Two of my family members had cervical cancer and two had endometrial cancer.\nDoctor: Has the fetus had any issues noted on ultrasound?\nPatient: Yes. One of the baby's kidneys looks abnormal — they said it is dysplastic.\nDoctor: And how are you feeling now at 27 weeks?\nPatient: I feel okay. No more bleeding or pelvic pain. I am just worried about what this mass was.\nDoctor: We are going to coordinate with our gynecologic oncology and maternal-fetal medicine teams to make the best plan for you and your baby.\nPatient: Thank you, doctor. I just want to make sure we are both safe.",
+  "clinical_summary": "31-year-old gravida 4 para 0 African American woman with a family history of cervical and endometrial cancer expelled an 11 × 9 × 5 cm pelvic mass at 22 weeks gestation; pathology showed a highly cellular spindle-cell tumor (CD10+, SMA+, ER+, PR+, EMA+, mitoses >50/hpf) with a differential of endometrial stromal sarcoma versus undifferentiated uterine sarcoma. MRI at 27 weeks showed no metastatic disease. She underwent cesarean hysterectomy and bilateral salpingectomy at 36 weeks with benign final pathology, but surveillance at 3 months postpartum identified a 1 cm posterior vaginal wall lesion confirmed as high-grade ER/PR-positive sarcoma; she was treated with upper vaginectomy followed by adjuvant HDR vaginal brachytherapy and remains disease-free at 58 months.",
+  "differential_diagnosis": [
+    {
+      "condition": "Primary vaginal sarcoma (high-grade, ER/PR positive)",
+      "pmid": "37486558",
+      "rationale": "Confirmed high-grade sarcoma arising from the posterior vaginal wall, morphologically consistent across the original expelled mass and the postpartum recurrence, with ER and PR positivity and no primary uterine or cervical source identified on final hysterectomy pathology."
+    },
+    {
+      "condition": "Endometrial stromal sarcoma",
+      "pmid": "36450121",
+      "rationale": "Initial pathology differential given CD10 positivity, ER/PR positivity, and spindle-cell morphology, though benign hysterectomy pathology and the vaginal wall origin made this less likely than a primary vaginal sarcoma."
+    },
+    {
+      "condition": "Undifferentiated uterine sarcoma",
+      "pmid": "35732901",
+      "rationale": "Included in the initial differential due to high mitotic count (>50/hpf) and bizarre multinucleated giant cells, but excluded after the uterus showed no malignancy on final surgical pathology."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "betamethasone 12 mg intramuscularly",
+      "rxnorm_id": "1514",
+      "ingredient": "betamethasone"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "31-year-old gravida 4 para 0 African American woman with a family history of cervical cancer (two members) and endometrial cancer (two members) presented at 22 weeks gestation with vaginal bleeding and subsequently expelled a large 11 × 9 × 5 cm pelvic mass with no fetal contents. She denied prior abnormal pap smears, dyspareunia, bulk symptoms, or infertility. Obstetric history included two therapeutic abortions and one spontaneous abortion. A fetal dysplastic kidney was identified on prenatal ultrasound. At 27 weeks she reported no further bleeding or pelvic pain and was referred for multidisciplinary management.",
+    "objective": "Outside hospital pathology: highly cellular tumor with spindle-shaped cells, bizarre multinucleated giant cells, focal myxomatous change, mitotic count >50/10 hpf; IHC positive for CD10, SMA, ER, PR, and EMA. EUA at 22 weeks: 3 × 3 cm posterior vaginal wall defect sutured for hemostasis; cervix closed; fetal heart tones normal. MRI at 27 weeks: Nabothian cyst in cervix, fetal multi-cystic dysplastic kidney, anterior placenta, no metastatic disease. Pap smear at 27 weeks: normal, HPV negative; pelvic exam: no residual vaginal mass; ultrasound: no intrauterine myomas. Cesarean hysterectomy at 36 weeks: normal pelvic organs, no lymphadenopathy, no metastatic disease; final pathology benign. Postpartum biopsy at 3 months: 1 cm posterior vaginal wall lesion — high-grade sarcoma, ER/PR positive. CT: no metastatic disease. Vaginectomy pathology: 1.5 cm high-grade sarcoma with negative margins, morphologically similar to original specimen.",
+    "assessment": "High-grade primary vaginal sarcoma (ER/PR positive) in a young pregnant woman, initially presenting as an expelled pelvic mass with a pathologic differential of endometrial stromal sarcoma versus undifferentiated uterine sarcoma. Benign uterine pathology on hysterectomy localized the tumor origin to the vagina. Postpartum recurrence was confirmed and treated with upper vaginectomy and adjuvant HDR brachytherapy with sustained disease-free response.",
+    "plan": "Continue surveillance CT imaging per gynecologic oncology protocol. Monitor for local vaginal recurrence with regular pelvic exams and surveillance imaging. Genetic counseling is recommended given the family history of cervical and endometrial cancers. Counsel patient regarding long-term brachytherapy sequelae including vaginal stenosis. Address fetal/neonatal follow-up needs for right multi-cystic dysplastic kidney per pediatric urology."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "case_id": "case_08",
+  "title": "Impetigenic Scabies Mimicking Kerion Tinea Capitis in an 8-Year-Old Boy",
+  "description": "An 8-year-old boy with a twin presented with 2 weeks of painful erythematous scalp nodules, pus discharge, and alopecia in the parieto-occipital region after contact with stray cats. KOH preparation and fungal culture were negative; microscopy confirmed Sarcoptes scabiei mite, establishing a diagnosis of impetigenic scabies. Both twins were treated with topical permethrin, cetirizine, and amoxicillin with complete hair regrowth by follow-up. Derived from AGBonnet augmented-clinical-notes dataset (idx 104203).",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "simple",
+  "created_by": "team-scaffold",
+  "notes": "Derived from dataset row idx 104203. The original dataset row is copied into case_08_source.json. All patient data comes from the synthetic augmented-clinical-notes dataset. The key diagnostic challenge is distinguishing impetigenic scabies from kerion-type tinea capitis; the mite identification on skin scraping microscopy is the confirming finding."
+}
