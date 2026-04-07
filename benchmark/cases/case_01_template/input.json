@@ -1,24 +1,23 @@
 {
   "case_id": "case_01_template",
-  "data_source": "synthetic",
+  "data_source": "agbonnet",
   "difficulty": "simple",
   "patient_history": {
-    "age": 45,
+    "age": 11,
     "sex": "male",
-    "chief_complaint": "chest pain, sharp, onset 2 hours ago",
+    "chief_complaint": "persistent right cheek pain for 6 weeks, recurring after initial antibiotic treatment",
     "known_conditions": [
-      "atrial fibrillation",
-      "hypertension"
+      "allergic rhinitis",
+      "chronic sinusitis (treated by otolaryngologist until 3 months prior)"
     ],
-    "known_allergies": [
-      "penicillin"
-    ]
+    "known_allergies": []
   },
   "medication_list": [
-    "warfarin 5mg daily",
-    "aspirin 81mg daily",
-    "lisinopril 10mg daily"
+    "amoxicillin",
+    "cefditoren pivoxil",
+    "clarithromycin oral",
+    "carbamazepine 50mg twice daily"
   ],
-  "patient_transcript": "Doctor: Good morning, Mr. Smith. What brings you in today?\nPatient: I've been having this sharp chest pain for about two hours now. It started when I was mowing the lawn.\nDoctor: Can you point to where the pain is?\nPatient: Right here, on the left side. It doesn't go anywhere else.\nDoctor: Is it constant or does it come and go?\nPatient: It comes and goes, maybe every few minutes. It's like a stabbing feeling.\nDoctor: On a scale of one to ten, how bad is the pain?\nPatient: I'd say about a six right now. It was worse earlier, maybe an eight.\nDoctor: Do you have any shortness of breath, sweating, or nausea?\nPatient: A little bit of sweating, yeah. Not really nauseous though.\nDoctor: Are you taking all of your medications as prescribed — the warfarin, aspirin, and lisinopril?\nPatient: Yes, I take them every morning with breakfast. I haven't missed any.\nDoctor: Any recent falls, cuts, or unusual bruising?\nPatient: Actually, I noticed some bruising on my arm last week and I don't remember bumping it.\nDoctor: Okay, that's important to note. Let's check your vitals and run an EKG.",
-  "chart_notes": "Pt is 45yo M w/ hx of AFib + HTN presenting c/o acute onset L-sided CP x2h. Onset w/ exertion (lawn mowing). Describes as sharp/stabbing, 6/10, episodic. Assoc sx: diaphoresis. Denies N/V, radiation, palpitations. Meds: warfarin 5mg QD, ASA 81mg QD, lisinopril 10mg QD. Allergies: PCN. No missed doses. Unexplained ecchymosis L forearm noted on exam. Vitals pending. Plan: EKG, CBC, BMP, PT/INR stat."
+  "patient_transcript": "Doctor: Hello, how can I help you today?\nPatient: I have complaints of persistent right cheek pain.\nDoctor: Okay, let's take a look at your history. Was there anything unusual about your medical history?\nPatient: I have allergic rhinitis and chronic sinusitis that had been treated until 3 months previously by an otolaryngologist.\nDoctor: I see. And what about your family history? Anything to note?\nPatient: Yes, my father had severe hearing impairment.\nDoctor: Thank you for letting me know. When did your symptoms start?\nPatient: I had high fever, sore throat, and comorbid right cheek pain and mild swelling 6 weeks previously.\nDoctor: Did you visit a dental clinic at any point?\nPatient: Yes, I had a checkup at a dental clinic performed on the day before my initial visit.\nDoctor: Were there any abnormal findings?\nPatient: No, there were no abnormal findings.\nDoctor: After your initial visit, what were you diagnosed with?\nPatient: I was diagnosed with streptococcal infection.\nDoctor: I see. And what about facial cellulitis?\nPatient: Facial cellulitis was also suspected and treatment with amoxicillin helped improve symptoms.\nDoctor: Did the facial pain come back at any point?\nPatient: Yes, it recurred within 4 weeks of the initial visit.\nDoctor: And what did you do at that point?\nPatient: I visited another department and they suspected recurrence of cellulitis with sinusitis and initiated cefditoren pivoxil treatment.\nDoctor: And did that help with the pain?\nPatient: No, the pain persisted so I came back for further treatment.\nDoctor: I see. Based on your physical examination and laboratory tests, you have been clinically diagnosed with TN.\nPatient: TN?\nDoctor: Yes, trigeminal neuralgia. We will prescribe you oral clarithromycin to help with the sinusitis that might have caused or exacerbated TN.\nPatient: Okay, thank you.\nDoctor: You're welcome. If the clarithromycin doesn't work, we may need to consider other treatment options.",
+  "chart_notes": "11yo M w/ hx allergic rhinitis and chronic sinusitis (f/u w/ ENT until 3mo ago) presenting w/ persistent R cheek pain x6wks. Father w/ severe hearing impairment. Initial presentation 6wks ago: high fever, sore throat, R cheek pain/swelling; dental eval unremarkable; rapid strep Ag positive; dx streptococcal pharyngitis + suspected facial cellulitis; amoxicillin initiated with initial improvement. Recurrence at 4wks: mild R cheek tenderness/swelling; head CT showed mild bilateral sinus mucous membrane swelling and effusion; suspected cellulitis recurrence w/ sinusitis; cefditoren pivoxil started — pain persisted. Current exam: R cheek tenderness in V2 (maxillary nerve) distribution; no hyperalgesia, no trigger points, no facial palsy, no oral pathology; blood tests normal. Clinical dx TN; clarithromycin oral x1wk initiated for possible sinusitis-exacerbated TN — not effective. Brain MRI: no neurovascular compression; classical TN excluded. Pain re-characterized by patient as persistent, nagging, dull — inconsistent w/ TN; PIFP diagnosed (wk 2). Carbamazepine 50mg BID initiated; ceased after first dose due to general fatigue. Psychosocial stressors identified (wk 6): stalled swim performance, finger injury, strained relationship w/ hearing-impaired father. Psychological counseling initiated twice weekly."
 }

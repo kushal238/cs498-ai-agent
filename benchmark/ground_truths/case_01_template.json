@@ -1,53 +1,58 @@
 {
   "case_id": "case_01_template",
-  "transcription_cleaned": "TODO: Provide a cleaned, punctuated, de-stuttered version of the patient transcript with speaker turns clearly labeled.",
-  "clinical_summary": "TODO: Write a 2-4 sentence clinician-facing summary covering chief complaint, relevant history, current medications, and key physical findings.",
+  "transcription_cleaned": "Doctor: Hello, how can I help you today?\nPatient: I have persistent right cheek pain.\nDoctor: Can you tell me about your medical history?\nPatient: I have allergic rhinitis and chronic sinusitis, treated by an otolaryngologist until about three months ago.\nDoctor: And your family history?\nPatient: My father has severe hearing impairment.\nDoctor: When did the pain start?\nPatient: Six weeks ago I had a high fever, sore throat, and right cheek pain with mild swelling. A dental checkup the day before found nothing abnormal.\nDoctor: What were you diagnosed with at that initial visit?\nPatient: Streptococcal infection. Facial cellulitis was also suspected, and amoxicillin helped the symptoms initially.\nDoctor: Did the pain return?\nPatient: Yes, within four weeks. I went to another department where they suspected recurrent cellulitis with sinusitis and started cefditoren pivoxil, but the pain continued.\nDoctor: Based on your examination and tests, we believe you have trigeminal neuralgia. We are going to start oral clarithromycin to treat the sinusitis that may be causing or worsening it.\nPatient: Thank you, doctor.\nDoctor: If clarithromycin does not resolve the pain, we will reassess and consider other options.",
+  "clinical_summary": "An 11-year-old boy with a background of allergic rhinitis and chronic sinusitis presents with six weeks of persistent right cheek pain following a confirmed streptococcal pharyngitis episode. Sequential antibiotic courses with amoxicillin and cefditoren pivoxil provided only transient or no relief. Physical examination revealed tenderness in the V2 (maxillary nerve) distribution without hyperalgesia or trigger points; brain MRI excluded classical trigeminal neuralgia. The final diagnosis is persistent idiopathic facial pain (PIFP) with a somatoform component; carbamazepine was not tolerated and psychological counseling was initiated with eventual full resolution of symptoms.",
   "differential_diagnosis": [
     {
-      "condition": "TODO: Primary differential diagnosis (e.g. 'Unstable angina')",
-      "pmid": null,
-      "rationale": "TODO: One sentence explaining why this tops the differential given the patient's presentation."
+      "condition": "Persistent idiopathic facial pain (PIFP) with somatoform component",
+      "pmid": "36404082",
+      "rationale": "Pain characterized as persistent, nagging, and dull without hyperalgesia or trigger points, negative brain MRI for neurovascular compression, failure of three antibiotic courses, and identified psychosocial stressors all support a diagnosis of PIFP with somatoform etiology."
     },
     {
-      "condition": "TODO: Secondary differential diagnosis (e.g. 'Musculoskeletal chest pain')",
-      "pmid": null,
-      "rationale": "TODO: One sentence rationale."
+      "condition": "Secondary trigeminal neuralgia due to sinusitis",
+      "pmid": "28247110",
+      "rationale": "Initial clinical diagnosis given V2-distribution tenderness coinciding with CT-confirmed sinusitis; excluded by negative brain MRI and the non-lancinating, dull character of the pain inconsistent with TN."
     },
     {
-      "condition": "TODO: Tertiary differential diagnosis (e.g. 'Pulmonary embolism')",
-      "pmid": null,
-      "rationale": "TODO: One sentence rationale."
+      "condition": "Recurrent facial cellulitis with sinusitis",
+      "pmid": "29261970",
+      "rationale": "Recurrent facial swelling and tenderness following confirmed streptococcal pharyngitis with CT sinusitis findings supported this diagnosis until antibiotic therapy repeatedly failed to resolve the pain."
     }
   ],
   "normalized_medications": [
     {
-      "original": "warfarin 5mg daily",
-      "rxnorm_id": null,
-      "ingredient": "TODO: Normalized ingredient name (e.g. 'warfarin')"
+      "original": "amoxicillin",
+      "rxnorm_id": "723",
+      "ingredient": "amoxicillin"
     },
     {
-      "original": "aspirin 81mg daily",
-      "rxnorm_id": null,
-      "ingredient": "TODO: Normalized ingredient name (e.g. 'aspirin')"
+      "original": "cefditoren pivoxil",
+      "rxnorm_id": "83682",
+      "ingredient": "cefditoren"
     },
     {
-      "original": "lisinopril 10mg daily",
-      "rxnorm_id": null,
-      "ingredient": "TODO: Normalized ingredient name (e.g. 'lisinopril')"
+      "original": "clarithromycin oral",
+      "rxnorm_id": "21212",
+      "ingredient": "clarithromycin"
+    },
+    {
+      "original": "carbamazepine 50mg twice daily",
+      "rxnorm_id": "2002",
+      "ingredient": "carbamazepine"
     }
   ],
   "drug_interactions": [
     {
-      "drug_a": "warfarin",
-      "drug_b": "aspirin",
+      "drug_a": "clarithromycin",
+      "drug_b": "carbamazepine",
       "severity": "major",
-      "recommendation": "TODO: Provide the clinical recommendation from RxNav (e.g. 'Monitor INR closely; concurrent use increases bleeding risk significantly')."
+      "recommendation": "Avoid concurrent use; clarithromycin is a strong CYP3A4 inhibitor that significantly raises carbamazepine plasma levels, increasing risk of toxicity (ataxia, diplopia, nausea, vomiting). If co-administration is unavoidable, reduce carbamazepine dose and monitor plasma levels closely."
     }
   ],
   "final_report": {
-    "subjective": "TODO: Summarize the patient's self-reported symptoms, history, and medication adherence in SOAP Subjective format.",
-    "objective": "TODO: Populate with objective findings — vitals, EKG results, lab values — once available.",
-    "assessment": "TODO: Record the working diagnosis and clinical reasoning in SOAP Assessment format.",
-    "plan": "TODO: Detail the treatment plan, ordered tests, referrals, and follow-up instructions in SOAP Plan format."
+    "subjective": "11-year-old male presenting with a 6-week history of persistent right cheek pain. Background of allergic rhinitis and chronic sinusitis previously managed by an otolaryngologist. Initial episode included high fever, sore throat, and right cheek swelling; rapid strep antigen positive; amoxicillin prescribed for suspected facial cellulitis with initial improvement. Pain recurred within 4 weeks; cefditoren pivoxil started for suspected sinusitis recurrence without relief. Pain described by patient as persistent, nagging, and dull; no lancinating quality; no triggers identified. Father has severe hearing impairment; patient is a competitive swimmer with a plateaued performance and a recent finger injury limiting training; strained communication with father noted.",
+    "objective": "Physical examination: right cheek tenderness in the V2 (maxillary nerve) distribution; no hyperalgesia; no facial nerve palsy; no oral pathology. Blood tests: normal. Rapid strep antigen (6 weeks prior): positive. Head CT: mild bilateral sinus mucous membrane swelling and effusion. Brain MRI: no neurovascular compression, excluding classical trigeminal neuralgia. Orthostatic tolerance test: negative. Carbamazepine 50 mg twice daily initiated for PIFP; ceased after first dose due to general fatigue.",
+    "assessment": "Persistent idiopathic facial pain (PIFP) with suspected somatoform etiology in an 11-year-old male. Classical trigeminal neuralgia excluded by MRI. Secondary TN due to sinusitis and recurrent facial cellulitis excluded by antibiotic failure and pain characteristics. Identified psychosocial stressors — competitive swimming pressure, finger injury, and strained paternal relationship — suggest somatoform contribution. Carbamazepine was not tolerated.",
+    "plan": "Discontinue antibiotic therapy; no further antibiotics indicated for pain management. Initiate psychological counseling and psychotherapy twice weekly targeting identified psychosocial stressors. Manage sinusitis recurrences medically as needed; resolution of sinusitis without recurrence of facial pain would further confirm PIFP. Reassess pharmacological options for pain if counseling alone is insufficient (carbamazepine not tolerated; consider alternative agents). Reduce counseling frequency gradually as symptoms resolve. Long-term follow-up to confirm sustained remission."
   }
 }
