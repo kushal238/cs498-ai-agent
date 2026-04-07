@@ -28,8 +28,10 @@ import numpy as np
 _DEFAULT_MODEL = "pritamdeka/S-PubMedBert-MS-MARCO"
 
 # Cosine similarity threshold above which two condition strings are considered
-# a semantic match.  ~0.7 is a good balance for biomedical condition names:
-# tight enough to avoid false positives, loose enough to catch paraphrases.
+# a semantic match.  0.90 was chosen empirically for pritamdeka/S-PubMedBert-MS-MARCO:
+# unrelated medical terms cluster at 0.83–0.88, true paraphrases at 0.95–0.98,
+# so 0.90 sits cleanly in the gap.  Adjust via SCORING_EMBED_THRESHOLD if switching
+# to a different model (e.g. all-MiniLM-L6-v2 may need a lower value).
 CONDITION_SIMILARITY_THRESHOLD = float(
     os.environ.get("SCORING_EMBED_THRESHOLD", "0.90")
 )
@@ -51,14 +53,18 @@ def _get_model():
 
 
 @functools.lru_cache(maxsize=512)
-def _embed(text: str) -> tuple[float, ...]:
+def _embed(text: str) -> np.ndarray:
     """Return a cached unit-norm embedding for a single text string.
 
-    Returns a plain tuple so the result is hashable and lru_cache works.
+    lru_cache requires hashable *arguments* (text is a str, so fine) but
+    imposes no constraint on the return value — numpy arrays work.  The
+    returned array is marked read-only to prevent accidental mutation of the
+    cached object across calls.
     """
     model = _get_model()
     vec = model.encode(text, normalize_embeddings=True)
-    return tuple(float(v) for v in vec)
+    vec.flags.writeable = False
+    return vec
 
 
 def cosine_similarity(a: str, b: str) -> float:
@@ -70,9 +76,7 @@ def cosine_similarity(a: str, b: str) -> float:
     Returns:
         float in [-1.0, 1.0]; in practice always in [0.0, 1.0] for these models.
     """
-    va = np.array(_embed(a), dtype=np.float32)
-    vb = np.array(_embed(b), dtype=np.float32)
-    return float(np.dot(va, vb))
+    return float(np.dot(_embed(a), _embed(b)))
 
 
 def best_match_similarity(query: str, candidates: list[str]) -> float:

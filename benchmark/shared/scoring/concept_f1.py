@@ -188,6 +188,12 @@ def score_drug_interactions(
         else:
             rouge_scores.append(0.0)
 
-    rec_rougeL = (sum(rouge_scores) / len(rouge_scores)) if rouge_scores else 1.0
+    # If there were no predicted interactions, score depends on whether any were expected.
+    # predicted=[] + expected=[] → both correct → 1.0
+    # predicted=[] + expected!=[] → agent missed everything → 0.0
+    if not rouge_scores:
+        rec_rougeL = 0.0 if expected else 1.0
+    else:
+        rec_rougeL = sum(rouge_scores) / len(rouge_scores)
 
     return {**pair_scores, "recommendation_rougeL": rec_rougeL}
