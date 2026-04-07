@@ -13,9 +13,16 @@ def get_llm():
     if _llm is None:
         from langchain_openai import ChatOpenAI
 
+        api_key = os.environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise EnvironmentError(
+                "OPENAI_API_KEY is not set. "
+                "Export it on the host before running the harness:\n"
+                "  export OPENAI_API_KEY=sk-..."
+            )
         _llm = ChatOpenAI(
             model="gpt-4o",
             temperature=0,
-            api_key=os.environ["OPENAI_API_KEY"],
+            api_key=api_key,
         )
     return _llm

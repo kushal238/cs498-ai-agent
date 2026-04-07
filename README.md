@@ -8,11 +8,15 @@ The benchmark is modeled after SWE-bench. We run three comparison agents (baseli
 
 ## Setup
 
-**Clone and install dependencies on the host (required for the harness and tests):**
+**Clone and install host-side dependencies (harness, scoring, and tests):**
 
 ```powershell
 pip install -r benchmark/requirements.txt
 ```
+
+> The Docker containers use a separate, minimal `benchmark/agent/requirements.txt` that excludes
+> large scoring-only libraries (e.g. `sentence-transformers`) to keep image sizes small.
+> You don't need to manage this manually — the Dockerfiles reference it automatically.
 
 **Set your OpenAI API key** (all agents use GPT-4o):
 
@@ -177,7 +181,8 @@ benchmark/
 │   └── llm.py                ← shared GPT-4o client
 ├── agent/
 │   ├── agent_main.py         ← container entrypoint for main agent
-│   └── Dockerfile
+│   ├── Dockerfile
+│   └── requirements.txt      ← minimal container deps (no scoring libs)
 ├── baselines/
 │   ├── zero_shot/            ← single-prompt baseline
 │   └── no_tools/             ← pipeline without API calls
@@ -185,7 +190,7 @@ benchmark/
 │   └── harness.py            ← host-side orchestrator
 ├── tests/                    ← unit and integration tests
 ├── results/                  ← CSV outputs from harness runs (gitignored except .gitkeep)
-└── requirements.txt
+└── requirements.txt          ← host-side deps (harness, scoring, tests)
 ```
 
 ---
@@ -197,3 +202,5 @@ benchmark/
 | `OPENAI_API_KEY` | Yes | All agents — passed from host into container by the harness |
 | `NCBI_API_KEY` | No | PubMed — increases rate limit from 3 to 10 req/s. Get one at ncbi.nlm.nih.gov/account |
 | `BENCHMARK_ROOT` | No | Set automatically to `/app` inside containers. Override on host if running outside the repo root |
+| `SCORING_EMBED_MODEL` | No | HuggingFace model for differential diagnosis semantic scoring. Default: `pritamdeka/S-PubMedBert-MS-MARCO`. Set to `all-MiniLM-L6-v2` for a lighter alternative |
+| `SCORING_EMBED_THRESHOLD` | No | Cosine similarity threshold for condition matching. Default: `0.90`. Lower = more partial credit |

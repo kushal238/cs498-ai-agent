@@ -37,13 +37,15 @@ benchmark/
 │   │   └── rxnorm.py          ← NIH RxNav + OpenFDA wrapper
 │   └── scoring/
 │       ├── rouge_score.py     ← ROUGE scoring
-│       ├── concept_f1.py      ← Concept-level F1
-│       └── ndcg.py            ← nDCG for ranked DDx
+│       ├── concept_f1.py      ← Concept-level F1 (embedding-based for DDx)
+│       ├── ndcg.py            ← nDCG for ranked DDx (embedding-based)
+│       └── embeddings.py      ← shared sentence-transformer model + cosine similarity
 ├── runner/
 │   └── langgraph_runner.py   ← LangGraph pipeline stub nodes + run_pipeline()
 ├── agent/
 │   ├── agent_main.py          ← container entrypoint
-│   └── Dockerfile             ← agent image (no ground_truths/, no harness/)
+│   ├── Dockerfile             ← agent image (no ground_truths/, no harness/)
+│   └── requirements.txt       ← minimal container deps (no scoring libs)
 ├── harness/
 │   └── harness.py             ← host-side orchestrator (scores, never enters container)
 ├── tests/
@@ -51,7 +53,7 @@ benchmark/
 │   ├── test_pipeline.py       ← unit tests for schema validation + stub nodes
 │   ├── test_harness.py        ← unit tests for case discovery + score_case()
 │   └── test_tools.py          ← integration tests for PubMed + RxNorm (needs network)
-└── requirements.txt
+└── requirements.txt           ← host-side deps (harness, scoring, sentence-transformers, tests)
 ```
 
 ---
@@ -187,8 +189,11 @@ export NCBI_API_KEY=your_key_here   # get one at https://www.ncbi.nlm.nih.gov/ac
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `NCBI_API_KEY` | No | PubMed rate limit: 3 req/s without, 10 req/s with |
-| `BENCHMARK_ROOT` | No | Override benchmark root path (set automatically in container) |
+| `OPENAI_API_KEY` | Yes | Required by all agents. Passed from host into container by the harness |
+| `NCBI_API_KEY` | No | PubMed rate limit: 3 req/s without, 10 req/s with. Get one at ncbi.nlm.nih.gov/account |
+| `BENCHMARK_ROOT` | No | Override benchmark root path (set automatically to `/app` in container) |
+| `SCORING_EMBED_MODEL` | No | HuggingFace model for DDx semantic scoring. Default: `pritamdeka/S-PubMedBert-MS-MARCO` (~400 MB, downloaded automatically). Set to `all-MiniLM-L6-v2` for a lighter option |
+| `SCORING_EMBED_THRESHOLD` | No | Cosine similarity cutoff for condition matching. Default: `0.90`. Lower = more partial credit for paraphrases |
 
 ---
 
