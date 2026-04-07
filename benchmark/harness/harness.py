@@ -133,7 +133,7 @@ def run_agent(input_data: dict, image_name: str, timeout: int, network: str = "b
     if result.returncode != 0:
         print(f"  ERROR: container exited {result.returncode}", file=sys.stderr)
         if result.stderr:
-            print(f"  STDERR: {result.stderr[:500]}", file=sys.stderr)
+            print(f"  STDERR: {result.stderr[:5000]}", file=sys.stderr)
         return None
 
     stdout = result.stdout.strip()

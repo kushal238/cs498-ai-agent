@@ -56,7 +56,7 @@ INPUT_SCHEMA_PATH = SCHEMAS_DIR / "input_schema.json"
 sys.path.insert(0, str(BENCHMARK_ROOT))
 
 from llm import get_llm  # noqa: E402
-from shared.tools.rxnorm import normalize_medication_list, check_interactions  # noqa: E402
+from shared.tools.rxnorm import get_rxcui, normalize_medication_list, check_interactions  # noqa: E402
 from shared.tools.pubmed import search_pubmed  # noqa: E402
 
 WORKFLOW_STAGES = [
@@ -211,14 +211,62 @@ def node_differential_diagnosis(state: dict) -> dict:
     return {"differential_diagnosis": diagnoses}
 
 
+def _extract_drug_names(medication_string: str, llm) -> list[str]:
+    """Use the LLM to extract generic drug name(s) from a medication string.
+
+    Handles both single drugs and combination products (e.g.
+    'oxycodone/acetaminophen (Percocet 10/325 mg)' → ['oxycodone', 'acetaminophen']).
+    Also strips dose, route, frequency, weight-based rates (e.g. '10 U/kg/h'),
+    and concentration qualifiers (e.g. '160mg/5mL').
+
+    Returns a list of one or more lower-stripped drug name strings.
+    Falls back to [medication_string] if the LLM call fails.
+    """
+    try:
+        response = llm.invoke([
+            {"role": "system", "content": (
+                "You are a pharmacist. Extract the generic drug name(s) from the "
+                "medication description. If it is a combination product (e.g. "
+                "'oxycodone/acetaminophen'), return each ingredient on its own line. "
+                "Strip all doses, routes, frequencies, weight-based rates, "
+                "concentrations, and brand names. Return only the drug name(s), "
+                "one per line, nothing else."
+            )},
+            {"role": "user", "content": medication_string},
+        ])
+        names = [n.strip().lower() for n in response.content.strip().splitlines() if n.strip()]
+        return names if names else [medication_string]
+    except Exception as exc:
+        print(f"[Stage 4] _extract_drug_names failed for {medication_string!r}: {exc}", file=sys.stderr)
+        return [medication_string]
+
+
 def node_medication_normalization(state: dict) -> dict:
     """Stage 4: Normalize medication list via RxNorm.
+
+    An LLM preprocessing step first extracts the bare generic drug name(s) from
+    each free-text medication string. Combination products (e.g.
+    'oxycodone/acetaminophen (Percocet 10/325 mg)') are split into separate
+    entries so each ingredient gets its own RxNorm lookup and appears
+    individually in the output — matching the ground truth schema which stores
+    one ingredient per entry.
 
     Input state keys:  medication_list
     Output key:        normalized_medications (list[dict])
     """
     print("[Stage 4] medication_normalization", file=sys.stderr)
-    normalized = normalize_medication_list(state.get("medication_list", []))
+    llm = get_llm()
+    raw_meds = state.get("medication_list", [])
+    normalized = []
+    for med in raw_meds:
+        drug_names = _extract_drug_names(med, llm)
+        for drug_name in drug_names:
+            lookup = get_rxcui(drug_name)
+            normalized.append({
+                "original": med,
+                "rxnorm_id": lookup["rxnorm_id"],
+                "ingredient": lookup["ingredient"],
+            })
     return {"normalized_medications": normalized}
 
 
