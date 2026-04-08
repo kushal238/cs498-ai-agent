@@ -79,7 +79,7 @@ def score_differential_diagnosis(
     Each predicted condition is embedded with a biomedical sentence encoder and
     matched to the closest expected condition by cosine similarity.  A pair is
     counted as a match when similarity meets or exceeds CONDITION_SIMILARITY_THRESHOLD
-    (default 0.70, overridable via SCORING_EMBED_THRESHOLD env var).
+    (default 0.90, overridable via SCORING_EMBED_THRESHOLD env var).
 
     This handles paraphrases, abbreviations, and different specificity levels,
     e.g. "type 2 DM" matching "Type 2 diabetes mellitus", or "brachial artery

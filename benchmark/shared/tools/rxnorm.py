@@ -50,6 +50,11 @@ def _clean_drug_query(drug_name: str) -> str:
     text = re.sub(r"[(),]", " ", text)
     text = re.sub(r"\s+", " ", text).strip()
 
+    # Normalize slash-separated combos (e.g. "oxycodone/acetaminophen") into
+    # space-separated form so individual components become separate tokens.
+    text = re.sub(r"/", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+
     tokens = []
     for token in text.split():
         bare = token.strip()
@@ -88,6 +93,13 @@ def get_rxcui(drug_name: str) -> dict:
             query = (query or "").strip()
             if query and query not in candidates:
                 candidates.append(query)
+        # For combo drugs (e.g. "oxycodone acetaminophen"), also try each
+        # individual component so at least one resolves to an RxCUI.
+        cleaned_parts = cleaned_query.split()
+        if len(cleaned_parts) > 1:
+            for part in cleaned_parts:
+                if part and part not in candidates:
+                    candidates.append(part)
 
         # Try the original string first, then progressively cleaner fallbacks.
         for query in candidates:

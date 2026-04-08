@@ -1,0 +1,313 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2026_conference,times}
+
+\input{math_commands.tex}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\title{ClinBench: A Docker-Isolated Benchmark for Evaluating\\Multi-Stage Clinical AI Agents}
+
+\author{Keshav Trikha, Avi Dhir, Kushal Agrawal, Cheong Kin Ngai \\
+Department of Computer Science \\
+University of Illinois Urbana-Champaign \\
+}
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+%\iclrfinalcopy
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We introduce ClinBench, a structured evaluation benchmark for assessing AI agents on multi-stage clinical workflows. The benchmark models a six-stage pipeline---transcription cleanup, clinical summarization, differential diagnosis, medication normalization, drug interaction detection, and SOAP report generation---drawing direct inspiration from SWE-Bench's container-isolated execution model. Each of ten clinical cases executes inside a Docker container with ground truth held exclusively on the host, preventing data leakage. Cases are drawn from the AGBonnet augmented clinical notes dataset and one synthetic reference case, spanning ten medical specialties at simple, moderate, and complex difficulty tiers. Evaluation combines ROUGE for generative text stages, embedding-based Concept F1 (PubMed-fine-tuned sentence encoder) for structured medical concept extraction, and nDCG for differential diagnosis ranking. External APIs---RxNorm, OpenFDA, and PubMed---are provided as callable tools. We describe the benchmark design, metrics, case collection, evaluation protocol, and preliminary results.
+\end{abstract}
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+Large language models have demonstrated strong capabilities in isolated clinical NLP tasks, yet real medical workflows require a sequence of tightly coupled reasoning steps. A clinician begins with a raw transcript, distills it into a summary, reasons about differential diagnoses with literature support, normalizes medications to canonical identifiers, checks for drug--drug interactions, and produces a structured SOAP note---all in a single encounter. Evaluating whether an AI agent can execute this full chain, and measuring where it fails, requires a benchmark that mirrors this interdependence.
+
+Existing clinical NLP benchmarks largely address single tasks in isolation: question answering \citep{jin2019pubmedqa}, named entity recognition \citep{uzuner2011i2b2}, or medication extraction. An agent that excels on each task individually may still fail when errors in transcription cleanup corrupt a downstream differential diagnosis, or when medication normalization failures silently propagate into the drug interaction stage. No existing benchmark measures this pipeline-level reliability in a controlled, reproducible setting.
+
+ClinBench addresses this gap. Following the SWE-Bench \citep{jimenez2024swebench} framework of container-isolated execution-grounded evaluation---adapted from software engineering to clinical workflows---we make the following contributions:
+\begin{enumerate}
+    \item A six-stage clinical workflow benchmark with ten cases spanning diverse medical specialties and difficulty levels.
+    \item A host-side scoring harness that runs agents in Docker containers with ground truth excluded from the build context, preventing data leakage.
+    \item A composite metric suite---ROUGE, embedding-based Concept F1, nDCG, and drug interaction pair scoring---each targeting the appropriate stage type.
+    \item Preliminary results characterizing per-stage performance across all ten cases.
+\end{enumerate}
+
+% ============================================================
+\section{Related Work}
+% ============================================================
+
+\paragraph{Clinical NLP benchmarks.}
+PubMedQA \citep{jin2019pubmedqa} and MedQA \citep{jin2021medqa} evaluate isolated question answering on biomedical text. i2b2 shared tasks \citep{uzuner2011i2b2} focus on information extraction from clinical notes. MultiMedBench \citep{tu2024multimedqa} aggregates multiple clinical tasks but scores each independently. None of these benchmarks require an agent to execute tasks as a connected pipeline; ClinBench requires errors in early stages to be handled correctly before later stages can succeed.
+
+\paragraph{Agent evaluation frameworks.}
+SWE-Bench \citep{jimenez2024swebench} established the principle of container-isolated, execution-grounded evaluation for software engineering agents, where the agent's output is verified by running tests rather than by human review. We directly adopt this architecture: ground truth is held on the host, the agent runs in a container with only inputs available, and a deterministic scoring harness computes all metrics. AgentBench \citep{liu2023agentbench} evaluates agents across eight interactive environments but does not address clinical domains or multi-stage pipeline execution.
+
+\paragraph{Medical knowledge APIs.}
+RxNorm \citep{nelson2011rxnorm} provides canonical drug concept identifiers; the OpenFDA label API provides FDA drug interaction text (the RxNav interaction endpoint was discontinued by NLM in 2024). PubMed's E-utilities API provides biomedical literature access. ClinBench makes all three available to agents and uses them to construct ground truth, ensuring consistency between agent tooling and the reference standard.
+
+% ============================================================
+\section{Benchmark Design}
+% ============================================================
+
+\subsection{Task Domain, Scope, and Framework}
+
+ClinBench evaluates agents on \textit{multi-stage clinical documentation}---the workflow a physician follows to convert a raw patient encounter into a structured clinical record. The benchmark covers six interdependent stages: transcription cleanup, clinical summarization, differential diagnosis with literature grounding, medication normalization, drug--drug interaction detection, and SOAP report generation.
+
+\textbf{In scope:} multi-step reasoning over patient transcripts; integration of external medical knowledge APIs; structured output conforming to a JSON schema; end-to-end pipeline reliability.
+
+\textbf{Out of scope:} imaging or lab result interpretation; real-time patient monitoring; procedural or surgical decision-making; patient-facing communication.
+
+ClinBench explicitly follows the \textbf{SWE-Bench} evaluation framework: agents run in isolated Docker containers, inputs arrive via stdin, outputs are captured from stdout, and a host-side harness scores outputs against ground truth that never enters the container. The six pipeline stages play the role of SWE-Bench's code patches, and the JSON schema validator plays the role of the test suite.
+
+\subsection{Task Descriptions}
+
+Each benchmark \textit{case} is one full clinical encounter that exercises all six pipeline stages. The benchmark currently includes ten cases. Three representative cases are described in detail below.
+
+\paragraph{Input format.}
+Every case receives a JSON object with seven fields: \texttt{case\_id}, \texttt{data\_source} (origin of the clinical data), \texttt{difficulty} (simple, moderate, or complex), \texttt{patient\_history} (age, sex, chief complaint, known conditions, allergies), \texttt{medication\_list} (list of free-text medication strings), \texttt{patient\_transcript} (raw doctor--patient dialogue), and \texttt{chart\_notes} (physician-authored clinical notes). This JSON is piped to the agent container via stdin at evaluation time.
+
+\paragraph{Expected output format.}
+The agent must print to stdout a single JSON object containing all six stage outputs: \texttt{transcription\_cleaned} (str), \texttt{clinical\_summary} (str), \texttt{differential\_diagnosis} (list of \{condition, pmid, rationale\}), \texttt{normalized\_medications} (list of \{original, rxnorm\_id, ingredient\}), \texttt{drug\_interactions} (list of \{drug\_a, drug\_b, severity, recommendation\}), and \texttt{final\_report} (\{subjective, objective, assessment, plan\}). The output is validated against a strict JSON schema with \texttt{additionalProperties: false} before scoring; any invalid output receives zero scores across all stages.
+
+\vspace{0.5em}
+\noindent\textbf{Case 1 --- Cardiology Reference Case (Simple).}
+A 65-year-old male with atrial fibrillation, hypertension, and recent transient ischemic attack presents for anticoagulation management. Medication list: \texttt{warfarin 5mg daily}, \texttt{aspirin 81mg daily}, \texttt{lisinopril 10mg daily}.
+
+\textit{Expected outputs:} Transcription cleanup of a short structured consultation; a two-sentence summary noting anticoagulation status; differential diagnosis including thromboembolic and hemorrhagic risk conditions; medication normalization to warfarin, aspirin, lisinopril; one major drug interaction (warfarin $\times$ aspirin, bleeding risk); a SOAP note emphasizing INR monitoring and stroke prophylaxis.
+
+\textit{Success criteria:} ROUGE-L $\geq 0.70$ on cleaned transcript; medication F1 $= 1.0$; interaction pair F1 $= 1.0$; nDCG $\geq 0.80$.
+
+\textit{Why challenging:} The warfarin--aspirin interaction is clinically well-known, but the agent must (1) correctly parse free-text dosing strings to extract ingredient names for RxNorm lookup, and (2) extract the interaction recommendation from the FDA label text rather than hallucinating a generic warning. The SOAP plan must balance stroke prevention against bleeding risk---a judgment that ROUGE alone cannot verify.
+
+\vspace{0.5em}
+\noindent\textbf{Case 2 --- MODY6 Diabetes with Dilated Cardiomyopathy (Complex).}
+A 48-year-old male with type 2 diabetes since age 25, dilated cardiomyopathy, and pacemaker presents for diabetes follow-up. Genetic testing revealed a heterozygous NEUROD1 p.Met114Leu variant (MODY6). Medication list: \texttt{insulin glargine daily}, \texttt{metformin 500mg three times daily}, \texttt{gliclazide 60mg daily}.
+
+\textit{Expected outputs:} Cleaned multi-visit transcript spanning 2017--2020; summary covering MODY6 genetic confirmation and treatment evolution; differential diagnoses: MODY6 (NEUROD1-related monogenic diabetes), Type 2 diabetes mellitus, Autoimmune (type 1) diabetes; medication normalization to insulin glargine, metformin, gliclazide; no clinically significant drug interactions; SOAP note covering genetic counseling, C-peptide monitoring, and sulphonylurea therapy.
+
+\textit{Success criteria:} Concept F1 $\geq 0.80$ on differential diagnosis using embedding similarity; medication F1 $= 1.0$; ROUGE-L $\geq 0.45$ on SOAP subjective section.
+
+\textit{Why challenging:} MODY6 is rare ($<$1\% of diabetes cases); a model relying on frequency will rank Type 2 DM highest. Correctly placing NEUROD1-related monogenic diabetes at the top of the differential requires integrating the genetic test result from the chart notes. The multi-visit transcript spans three years and two treatment regimens, demanding accurate summarization of a long, temporally ordered dialogue.
+
+\vspace{0.5em}
+\noindent\textbf{Case 6 --- Heart Transplant with Demyelinating Polyneuropathy (Complex).}
+A heart transplant recipient presents with new demyelinating polyneuropathy and concurrent cryptococcal infection. Medication list: \texttt{fluconazole}, \texttt{cyclosporine}, \texttt{diltiazem}, \texttt{dexamethasone}.
+
+\textit{Expected outputs:} Differential diagnoses: Demyelinating polyneuropathy, Antibody-mediated cardiac allograft rejection, Cryptococcal meningitis relapse; medication normalization to fluconazole, cyclosporine, diltiazem, dexamethasone; three moderate drug interactions---fluconazole$\times$cyclosporine (CYP3A4 inhibition, elevated cyclosporine levels), cyclosporine$\times$diltiazem (increased cyclosporine exposure), cyclosporine$\times$dexamethasone (immunosuppression modulation); comprehensive SOAP note.
+
+\textit{Success criteria:} Drug interaction pair F1 $= 1.0$ (all three pairs identified); Concept F1 $\geq 0.80$; nDCG $\geq 0.90$.
+
+\textit{Why challenging:} All three interactions involve cyclosporine's narrow therapeutic window and CYP3A4 metabolism; missing any one pair fails the interaction F1. The differential requires distinguishing transplant rejection from infection-related neuropathy---two clinically distinct entities that present similarly. The agent must integrate immunosuppression history, neurological findings, and fungal infection context simultaneously.
+
+\subsection{Task Design Principles}
+
+\textbf{Pipeline interdependence.} Tasks are designed so that early-stage failures cascade: a transcription cleanup that drops medication names will degrade medication normalization F1, which will degrade interaction detection. This differs from independent task benchmarks where stages can be evaluated in isolation.
+
+\textbf{API-groundedness.} Ground truth for medication normalization and drug interaction stages is constructed using live RxNorm and OpenFDA API responses, then manually verified against authoritative drug references. This ensures that the same tools available to agents are also the source of the reference standard, rewarding correct API use rather than hallucinated drug information.
+
+\textbf{Diversity across specialties and complexity tiers.} Cases were selected to cover distinct clinical domains (no two cases share a primary specialty) and to include simple cases (2--3 medications, straightforward differential), moderate cases (common conditions with polypharmacy), and complex cases (4--6+ medications, rare or overlapping diagnoses). This prevents a single clinical pattern from dominating the benchmark.
+
+\textbf{Schema rigidity.} The strict JSON schema with \texttt{additionalProperties: false} at every level was intentional: agents that output well-formed but schema-invalid JSON receive zero scores rather than partial credit. This tests not just clinical reasoning but also the ability to conform to a precisely specified output contract, which is a real deployment requirement.
+
+\subsection{Difficulty Distribution}
+
+Difficulty is assigned based on two criteria: (1) the number and complexity of medications (combination products, weight-based dosing, narrow therapeutic index drugs), and (2) the rarity and overlap of the expected differential diagnoses.
+
+\begin{table}[h]
+\caption{Benchmark case summary. Medication count and difficulty tier for each case.}
+\label{tab:cases}
+\begin{center}
+\small
+\begin{tabular}{lllcc}
+\toprule
+\textbf{Case} & \textbf{Primary Domain} & \textbf{Source} & \textbf{Meds} & \textbf{Difficulty} \\
+\midrule
+case\_01 & Cardiology              & Synthetic & 3 & Simple   \\
+case\_02 & Endocrinology/Genetics  & AGBonnet  & 3 & Complex  \\
+case\_03 & Oncology                & AGBonnet  & 2 & Complex  \\
+case\_04 & Neonatal Vascular       & AGBonnet  & 2 & Complex  \\
+case\_05 & Pulmonology             & AGBonnet  & 6 & Complex  \\
+case\_06 & Neurology/Transplant    & AGBonnet  & 4 & Complex  \\
+case\_07 & Oncology (Obstetric)    & AGBonnet  & 1 & Complex  \\
+case\_08 & Pediatric Infectious    & AGBonnet  & 3 & Simple   \\
+case\_09 & Rheumatology            & AGBonnet  & 7 & Complex  \\
+case\_10 & Gastroenterology        & AGBonnet  & 9 & Moderate \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+Of the ten cases, two are Simple (straightforward differentials, common medications, no narrow therapeutic index), one is Moderate (common conditions but significant polypharmacy requiring nine-drug normalization), and seven are Complex (rare or overlapping diagnoses, polypharmacy or weight-based dosing, significant drug interaction burden). Cases 03 and 04 are Complex despite having only two medications because the diagnosis is rare (high-grade pleomorphic sarcoma; neonatal brachial pseudoaneurysm after PICC placement) and the transcripts require sophisticated reasoning over unusual presentations.
+
+% ============================================================
+\section{Evaluation Protocol}
+% ============================================================
+
+\subsection{Metrics}
+
+\textbf{Task Success Rate (TSR)} measures pipeline-level reliability. A case is successful if: all six stages complete without runtime error; the output is valid JSON; the container does not time out (default 120s); and the output passes schema validation. $\text{TSR} = \text{successes} / \text{total cases}$.
+
+\textbf{ROUGE} \citep{lin2004rouge} (ROUGE-1, ROUGE-2, ROUGE-L F1 with Porter stemming) is applied to the three generative text stages: Stage 1 (transcription\_cleaned), Stage 2 (clinical\_summary), and Stage 6 (each SOAP section independently).
+
+\textbf{Embedding-based Concept F1} is applied to structured concept lists:
+\begin{itemize}
+    \item \textit{Stage 3 --- Differential diagnosis:} Condition names are embedded with \textbf{pritamdeka/S-PubMedBert-MS-MARCO}, a PubMed-fine-tuned sentence encoder \citep{pubmedbert}. Two conditions match when cosine similarity $\geq \tau = 0.90$ (calibrated empirically: unrelated conditions score 0.83--0.88; paraphrases score 0.95--0.98). Precision, recall, and F1 follow standard set-overlap formulas over this soft-matched set.
+    \item \textit{Stage 4 --- Medication normalization:} RxNorm returns canonical ingredient strings; exact token-bag matching on lowercased alphanumeric tokens is used.
+    \item \textit{Stage 5 --- Drug interactions:} Pair F1 over order-insensitive (drug\_a, drug\_b) string pairs, plus Recommendation ROUGE-L averaged over matched pairs to distinguish clinically appropriate recommendations from raw FDA label excerpts.
+\end{itemize}
+
+\textbf{nDCG} (via scikit-learn \texttt{ndcg\_score}) evaluates ranking quality for Stage 3. Relevance weights are assigned by ground-truth position (rank 1 = highest weight); predicted conditions are matched to ground truth using the same PubMed sentence encoder.
+
+$$\text{NDCG}@k = \frac{\text{DCG}@k}{\text{IDCG}@k}, \quad \text{DCG}@k = \sum_{i=1}^{k} \frac{2^{\text{rel}_i} - 1}{\log_2(i+1)}$$
+
+\subsection{Scoring and Aggregation}
+
+All scoring runs host-side via deterministic Python functions; no LLM is used as a judge. Malformed outputs receive zero scores rather than being skipped. To account for LLM non-determinism, the harness supports $N$ trials per case (\texttt{--trials N}); per-case mean and standard deviation are reported across trials.
+
+Scores are aggregated at two levels: (1) \textit{per-case, per-stage}---the primary unit of analysis, identifying which stage fails on which case; and (2) \textit{macro-average across cases}---a single summary number per metric. Both raw trial scores and per-case summaries are written to CSV for further analysis.
+
+\subsection{Reporting}
+
+Papers using ClinBench should report: TSR; per-stage ROUGE-L averages (Stages 1, 2, and SOAP sections); Concept F1 and nDCG for Stage 3; Concept F1 for Stage 4; Pair F1 and Recommendation ROUGE-L for Stage 5. Per-case breakdowns are recommended alongside aggregate means to identify domain-specific failure modes.
+
+% ============================================================
+\section{Benchmark Validation}
+% ============================================================
+
+\paragraph{Schema and harness validation.}
+All ten ground truth files were validated against the ground truth JSON schema before release; any case with a schema violation was corrected. The reference case (case\_01) was constructed with fully specified ground truth to serve as a sanity check: a correct agent implementation should score near-perfectly on all stages of case\_01. The harness was tested end-to-end on all ten cases using the reference pipeline before evaluating any baseline.
+
+\paragraph{Ground truth quality.}
+Medication normalization and drug interaction ground truth was constructed by running live RxNorm and OpenFDA API calls and manually verifying each result against the medication list. For drug interactions, the extracted FDA label sentences were reviewed for clinical plausibility. Differential diagnosis ground truth for AGBonnet cases was derived from the physician-authored full notes and cross-referenced with current clinical guidelines for each condition.
+
+\paragraph{Embedding threshold calibration.}
+The cosine similarity threshold $\tau = 0.90$ for Stage 3 matching was calibrated by embedding pairs of (a) known paraphrases (e.g., ``type 2 DM'' vs.\ ``Type 2 diabetes mellitus'', scoring 0.95--0.98) and (b) semantically adjacent but distinct conditions (e.g., ``MODY6'' vs.\ ``Type 2 DM'', scoring 0.83--0.87) using the PubMed sentence encoder. The threshold sits cleanly in the gap between these clusters.
+
+\paragraph{Preliminary results.}
+Table~\ref{tab:results} reports scores from a single-trial run of an initial agent implementation on the first eight cases; cases 09--10 were added after this run and will be included in the final evaluation. Medication normalization achieves perfect F1 on all seven non-template cases, confirming that the RxNorm tool reliably normalizes ingredients when given a preprocessed drug name. Drug interaction pair detection also scores F1 $= 1.000$ across all seven cases, validating the OpenFDA-based pipeline. Differential diagnosis Concept F1 is the most variable metric (0.333--1.000), confirming it is the most discriminating stage for comparing agent strategies.
+
+\begin{table}[h]
+\caption{Per-case scores from a single-trial agent run. Trans.\ = Transcription ROUGE-L; Summ.\ = Summary ROUGE-L; Dx F1 / nDCG = Stage 3; Med F1 = Stage 4; DDI F1 = Stage 5.}
+\label{tab:results}
+\begin{center}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Case} & \textbf{Trans.} & \textbf{Summ.} & \textbf{Dx F1} & \textbf{nDCG} & \textbf{Med F1} & \textbf{DDI F1} \\
+\midrule
+case\_01 & 0.046 & 0.073 & 0.000 & 0.000 & 0.500 & 1.000 \\
+case\_02 & 0.998 & 0.481 & 0.800 & 1.000 & 1.000 & 1.000 \\
+case\_03 & 0.586 & 0.492 & 0.333 & 0.986 & 1.000 & 1.000 \\
+case\_04 & 0.522 & 0.439 & 0.800 & 0.816 & 1.000 & 1.000 \\
+case\_05 & 0.786 & 0.564 & 1.000 & 1.000 & 1.000 & 1.000 \\
+case\_06 & 0.804 & 0.416 & 1.000 & 1.000 & 1.000 & 1.000 \\
+case\_07 & 0.899 & 0.360 & 0.800 & 1.000 & 1.000 & 1.000 \\
+case\_08 & 0.661 & 0.578 & 1.000 & 1.000 & 1.000 & 1.000 \\
+\midrule
+\textbf{Mean (02--08)} & \textbf{0.751} & \textbf{0.476} & \textbf{0.819} & \textbf{0.972} & \textbf{1.000} & \textbf{1.000} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+
+Case\_01's near-zero ROUGE scores reflect incomplete ground truth in the template (TODO placeholders in the differential diagnosis field)---this will be resolved before final release. Clinical summarization ROUGE-L averages 0.476, consistent with the inherent paraphrase variability of the task. SOAP report ROUGE-L (not shown) ranges from 0.10 to 0.46 across sections, with the Subjective section scoring highest and the Plan section lowest.
+
+% ============================================================
+\section{Limitations}
+% ============================================================
+
+\textbf{ROUGE for clinical text.} ROUGE measures lexical overlap and cannot detect medical hallucinations. An agent paraphrasing a dangerous treatment recommendation using vocabulary similar to the reference will score well on ROUGE. We recommend human expert spot-checks of SOAP plan sections alongside automated scoring.
+
+\textbf{Singular ground truth.} Medicine admits multiple valid clinical interpretations. Strict Concept F1 may penalize an agent for a medically valid alternative diagnosis that falls just below the similarity threshold, or for citing a different but equally appropriate PubMed article.
+
+\textbf{Small sample size.} Ten cases cannot cover the full space of clinical presentations; the current set is weighted toward complex AGBonnet cases. Future work will expand to additional specialties and increase the proportion of moderate difficulty cases.
+
+\textbf{Data contamination.} AGBonnet cases derive from physician-authored notes that may share stylistic patterns with text in GPT-4o's pretraining data, potentially inflating transcription cleanup scores.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+ClinBench provides a container-isolated, execution-grounded benchmark for evaluating AI agents on multi-stage clinical workflows. By directly following the SWE-Bench evaluation framework and adapting it to clinical documentation, the benchmark enforces strict ground-truth isolation, deterministic host-side scoring, and a composite metric suite that measures both generative text quality and structured medical concept accuracy. Preliminary results confirm that medication normalization and drug interaction detection are reliably scored by the external API pipeline, while differential diagnosis Concept F1 and clinical summarization ROUGE provide the most discriminating signal for agent comparison. We release all ten cases, ground truth, harness code, scoring functions, and API tool wrappers to support reproducible evaluation of clinical AI agents.
+
+\subsubsection*{Acknowledgments}
+All benchmark cases are fully synthetic clinical narratives. No real patient information is contained in any benchmark case.
+
+% ============================================================
+% REFERENCES — replace with your .bib file
+% ============================================================
+% TODO: Create a references.bib file with entries for:
+%   jin2019pubmedqa    — PubMedQA (Jin et al., 2019)
+%   jin2021medqa       — MedQA (Jin et al., 2021)
+%   uzuner2011i2b2     — i2b2 shared tasks (Uzuner et al., 2011)
+%   tu2024multimedqa   — MultiMedBench / Med-PaLM (Tu et al., 2024)
+%   jimenez2024swebench — SWE-Bench (Jimenez et al., 2024)
+%   liu2023agentbench  — AgentBench (Liu et al., 2023)
+%   nelson2011rxnorm   — RxNorm (Nelson et al., 2011)
+%   lin2004rouge       — ROUGE (Lin, 2004)
+%   pubmedbert         — PubMedBERT / S-PubMedBert-MS-MARCO
+%
+% Then uncomment:
+% \bibliographystyle{iclr2026_conference}
+% \bibliography{references}
+
+
+\appendix
+\section{Ground Truth Schema (Abbreviated)}
+\label{app:schema}
+
+\begin{verbatim}
+{
+  "case_id": string,
+  "transcription_cleaned": string,
+  "clinical_summary": string,
+  "differential_diagnosis": [
+    { "condition": string, "pmid": string|null, "rationale": string }
+  ],
+  "normalized_medications": [
+    { "original": string, "rxnorm_id": string|null,
+      "ingredient": string|null }
+  ],
+  "drug_interactions": [
+    { "drug_a": string, "drug_b": string,
+      "severity": enum["minor","moderate","major",
+                       "contraindicated","unknown"],
+      "recommendation": string }
+  ],
+  "final_report": {
+    "subjective": string, "objective": string,
+    "assessment": string, "plan": string
+  }
+}
+\end{verbatim}
+
+\section{Harness Invocation}
+\label{app:harness}
+
+\begin{verbatim}
+python benchmark/harness/harness.py
+  [--cases-dir PATH]    # default: benchmark/cases/
+  [--build]             # rebuild Docker image
+  [--timeout N]         # seconds per container (default: 120)
+  [--image NAME]        # Docker image tag
+  [--network MODE]      # bridge (default) or none
+  [--trials N]          # trials per case
+  [--output-dir PATH]   # CSV output directory
+  [--save-predictions]  # save raw agent JSON per trial
+\end{verbatim}
+
+Input is piped via stdin as JSON. The agent must print a single JSON object as the last non-empty line of stdout; all diagnostic output goes to stderr.
+
+\end{document}

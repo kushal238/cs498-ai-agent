@@ -1,0 +1,41 @@
+{
+  "case_id": "case_04",
+  "transcription_cleaned": "Doctor: Hi, how are you today?  \nPatient: I'm good, thanks.  \nDoctor: Great. Can you tell me what brought you here today?  \nPatient: My baby is here for evaluation of a rapidly enlarging mass on his right arm.  \nDoctor: I see. Can you tell me a bit more about your baby?  \nPatient: He's a 41-day-old male infant with hypoxic-ischemic encephalopathy.  \nDoctor: And when was the mass first noticed?  \nPatient: It was about 5 hours ago.  \nDoctor: And has it been rapidly enlarging since then?  \nPatient: Yes, it has been getting bigger.  \nDoctor: Has your baby had any previous medical procedures on that arm?  \nPatient: Yes, he had a PICC line placed there during the neonatal period for treatment of Lennox-Gastaut syndrome without status epilepticus.  \nDoctor: Understood. What did you notice on the physical examination?  \nPatient: The mass was pulsatile, but his capillary refill was within 2 seconds, pulses were good in all extremities, his arms and legs were warm, and there was no discoloration or swelling.  \nDoctor: We obtained a CT angiogram, which showed a pseudoaneurysm of the right distal brachial artery measuring about 1.8 by 1.6 by 2.1 cm.  \nPatient: Okay.  \nDoctor: An MRI then showed a 2.1 by 1.7 by 1.1 cm mass along the right brachial artery with vascular flow, consistent with a pseudoaneurysm.  \nPatient: I see.  \nDoctor: Because of concern for a vascular abnormality related to the prior line, we admitted him to the neonatal intensive care unit for observation. Over the next two days, the mass continued to grow, and plastic surgery and vascular surgery were consulted. Your baby is scheduled for microscope-assisted brachial artery repair with both teams involved.  \nPatient: Thank you for explaining.",
+  "clinical_summary": "A 41-day-old male infant with a history of hypoxic-ischemic encephalopathy and previous PICC line placement for Lennox-Gastaut syndrome presented with a rapidly enlarging, pulsatile mass on the right arm. Imaging revealed a pseudoaneurysm of the right distal brachial artery. The infant was admitted to the NICU, and surgical intervention was performed to repair the artery. Postoperatively, the infant was stable and discharged with an arm splint and oral acetaminophen for pain management.",
+  "differential_diagnosis": [
+    {
+      "condition": "Pseudoaneurysm",
+      "pmid": "41945539",
+      "rationale": "The rapidly enlarging, pulsatile mass on the infant's arm, along with imaging confirmation, is consistent with a pseudoaneurysm, likely related to previous PICC line placement."
+    },
+    {
+      "condition": "Arteriovenous fistula",
+      "pmid": "41924663",
+      "rationale": "The pulsatile nature of the mass could suggest an arteriovenous fistula, which can occur as a complication of vascular access procedures like PICC line placement."
+    },
+    {
+      "condition": "Hematoma",
+      "pmid": "41945975",
+      "rationale": "A hematoma could present as a mass following vascular injury or intervention, but the pulsatile nature makes this less likely than a pseudoaneurysm or arteriovenous fistula."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "intravenous heparin 10 U/kg/h for 48 hours",
+      "rxnorm_id": "235473",
+      "ingredient": "heparin"
+    },
+    {
+      "original": "oral acetaminophen 160mg/5mL suspension as needed",
+      "rxnorm_id": "161",
+      "ingredient": "acetaminophen"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient is a 41-day-old male infant who presented with a rapidly enlarging mass on his right arm. The mass was first noticed by the parents approximately 5 hours prior to the visit. The infant has a medical history of hypoxic-ischemic encephalopathy and had a peripherally inserted central catheter (PICC) line placed in the same arm during the neonatal period for the treatment of Lennox-Gastaut syndrome without status epilepticus. The parents reported that the mass was pulsatile but did not notice any discoloration or swelling of the arm.",
+    "objective": "On physical examination, the infant's right arm showed a pulsatile mass on the medial aspect of the upper extremity. The neurovascular examination revealed a warm, well-perfused limb with 2+ brachial, radial, and ulnar pulses, and capillary refill was less than 2 seconds. There was no discoloration or edema, and the infant demonstrated age-appropriate movement of all extremities. A CT angiogram revealed a pseudoaneurysm of the right distal brachial artery measuring approximately 1.8 \u00d7 1.6 \u00d7 2.1 cm. An MRI confirmed a 2.1 \u00d7 1.7 \u00d7 1.1 cm mass along the right brachial artery with vascular flow, consistent with a pseudoaneurysm.",
+    "assessment": "The clinical presentation and imaging findings are consistent with a pseudoaneurysm of the right distal brachial artery, likely related to the previous PICC line placement. The rapidly enlarging, pulsatile nature of the mass supports this diagnosis. Differential diagnoses considered included an arteriovenous fistula and a hematoma, but the imaging and clinical findings were most consistent with a pseudoaneurysm. The infant was admitted to the NICU for observation due to the potential for complications associated with the vascular abnormality.",
+    "plan": "The infant was scheduled for surgical intervention to repair the pseudoaneurysm. Under general anesthesia, a microscope-assisted brachial artery repair was performed, involving resection of the diseased segment and a tension-free end-to-end microvascular anastomosis. Postoperatively, the infant was managed with low-dose intravenous heparin for 48 hours to prevent thrombosis and was monitored for any signs of bleeding or compromised perfusion. The infant was discharged on postoperative day 3 with an arm splint and oral acetaminophen for pain management. Follow-up care includes monitoring the surgical site for healing and ensuring normal function of the right upper extremity."
+  }
+}
