@@ -1,0 +1,17 @@
+{
+  "case_id": "case_09",
+  "title": "Libman-Sacks Endocarditis with Papillary Muscle Rupture in Postpartum SLE",
+  "description": "A 29-year-old woman with long-standing systemic lupus erythematosus, triple-positive antiphospholipid syndrome, and Class IV lupus nephritis presented acutely postpartum with chest pain and dyspnea. Rapid deterioration led to discovery of papillary muscle rupture from Libman-Sacks endocarditis requiring emergency mitral valve replacement and VA-ECMO. The case tests the agent's ability to distinguish acute cardiac catastrophe from pulmonary embolism in a complex autoimmune and anticoagulation context.",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "complex",
+  "created_by": "team-scaffold",
+  "notes": "Derived from dataset row idx 96376. The original dataset row is copied into case_09_source.json. All patient data comes from the synthetic augmented-clinical-notes dataset. The primary diagnostic challenge is distinguishing Libman-Sacks endocarditis with papillary muscle rupture from pulmonary embolism in a postpartum patient with known antiphospholipid syndrome."
+}

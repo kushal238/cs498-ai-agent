@@ -1,0 +1,66 @@
+{
+  "case_id": "case_09",
+  "transcription_cleaned": "Doctor: Hi, I am Dr. [Name]. How are you feeling today?\nPatient: Not so good, I have chest pain and shortness of breath.\nDoctor: I see. Can you tell me a bit about your history?\nPatient: I was diagnosed with lupus when I was 12 years old and I have severe thrombocytopenic purpura.\nDoctor: Okay. And how long have you been experiencing these symptoms?\nPatient: Just today, when I was visiting my baby in the Neonatal Intensive Care Unit.\nDoctor: I see. And what happened during the examination?\nPatient: They found that I had tachycardia, but my blood pressure and oxygen saturation were normal.\nDoctor: Okay. And what medications were you taking at the time?\nPatient: I was taking enoxaparin and aspirin, and I was going to transition to warfarin in two weeks.\nDoctor: Okay. And what was your immunosuppression regimen like?\nPatient: I was taking hydroxychloroquine, azathioprine, and prednisone, and some other medications like calcitriol and calcium carbonate.\nDoctor: I see. And what did the electrocardiogram show?\nPatient: It showed sinus tachycardia but no ischemic changes.\nDoctor: Okay. And the chest X-ray?\nPatient: It showed cardiomegaly with increased interstitial markings.\nDoctor: I see. And what happened after that?\nPatient: I deteriorated rapidly over the next hour with climbing oxygen requirements and hypotension.\nDoctor: Okay. And were you investigated for pulmonary embolism?\nPatient: Yes, I was. And I was treated with morphine and enoxaparin.\nDoctor: Okay. And then you had a CT pulmonary angiography?\nPatient: Yes, I did.\nDoctor: And what did that show?\nPatient: It showed pulmonary edema but no PE.\nDoctor: Okay. And then you were admitted to the cardiovascular intensive care unit?\nPatient: Yes, I was.\nDoctor: And were you intubated for respiratory distress?\nPatient: Yes, I was.\nDoctor: And did you have a transthoracic echocardiogram?\nPatient: No, I did not. But I had a transesophageal echocardiogram which demonstrated posterolateral papillary muscle rupture and a flail anterior leaflet.\nDoctor: I see. And then you proceeded to emergency mitral valve replacement?\nPatient: Yes, I did.\nDoctor: And what happened during the operation?\nPatient: I had a pulseless electrical activity arrest and was resuscitated with adrenaline and CPR.\nDoctor: I see. And what was the result of the intervention?\nPatient: The posterolateral papillary muscle was pale and sheared off the ventricular wall, and they replaced my mitral valve with a mechanical valve.\nDoctor: And after the procedure?\nPatient: They had to put me on ECMO because of severe pulmonary edema and heart failure.\nDoctor: Okay. And the histology of the valve?\nPatient: It showed deposits consistent with Libman-Sacks endocarditis, and the papillary muscle showed infarction several days old.\nDoctor: I see. And after ECMO was removed?\nPatient: I had some abnormal movements so they did an MRI which showed hypoxic brain injury, but my neurological function recovered to normal before discharge.\nDoctor: And your medications at discharge?\nPatient: They added metoprolol and cilazapril, and transitioned me from heparin to warfarin with aspirin.",
+  "clinical_summary": "29-year-old postpartum woman with long-standing SLE, triple-positive antiphospholipid syndrome, and Class IV lupus nephritis presented acutely with chest pain and dyspnea. Rapid hemodynamic deterioration with pulmonary edema (CTPA negative for PE) led to intubation; transesophageal echocardiography revealed posterolateral papillary muscle rupture with torrential mitral regurgitation. Emergency mechanical mitral valve replacement was performed after intraoperative PEA arrest, with postoperative VA-ECMO for biventricular failure. Histopathology confirmed chronic Libman-Sacks endocarditis with papillary muscle infarction from intramyocardial artery thrombi.",
+  "differential_diagnosis": [
+    {
+      "condition": "Libman-Sacks endocarditis with papillary muscle rupture",
+      "pmid": "32099964",
+      "rationale": "Histopathology confirmed fibrinous deposits and focal vegetation without organisms consistent with Libman-Sacks endocarditis, with papillary muscle necrosis from intramyocardial artery thrombi, in the context of known SLE and antiphospholipid syndrome."
+    },
+    {
+      "condition": "Pulmonary embolism",
+      "pmid": "41439077",
+      "rationale": "Acute chest pain, dyspnea, tachycardia, and hypotension in a postpartum patient with known antiphospholipid syndrome raised strong clinical suspicion for PE, but CTPA was negative."
+    },
+    {
+      "condition": "Peripartum cardiomyopathy",
+      "pmid": "38929983",
+      "rationale": "Postpartum presentation with acute heart failure and pulmonary edema is consistent with peripartum cardiomyopathy, though echocardiography showed preserved LV function with a structural valve lesion rather than primary myocardial dysfunction."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "enoxaparin 100mg daily",
+      "rxnorm_id": "67108",
+      "ingredient": "enoxaparin"
+    },
+    {
+      "original": "aspirin 100mg daily",
+      "rxnorm_id": "1191",
+      "ingredient": "aspirin"
+    },
+    {
+      "original": "hydroxychloroquine 400mg daily",
+      "rxnorm_id": "5521",
+      "ingredient": "hydroxychloroquine"
+    },
+    {
+      "original": "azathioprine 150mg daily",
+      "rxnorm_id": "1256",
+      "ingredient": "azathioprine"
+    },
+    {
+      "original": "prednisone 5mg daily",
+      "rxnorm_id": "8640",
+      "ingredient": "prednisone"
+    },
+    {
+      "original": "calcitriol 0.25 mcg daily",
+      "rxnorm_id": "1894",
+      "ingredient": "calcitriol"
+    },
+    {
+      "original": "calcium carbonate 1.25g daily",
+      "rxnorm_id": "1897",
+      "ingredient": "calcium carbonate"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "29-year-old postpartum woman with SLE (diagnosed age 12), severe ITP, triple-positive antiphospholipid syndrome, Class IV lupus nephritis, and prior spontaneous DVT reported sudden onset chest pain and shortness of breath while visiting her baby in the NICU. She was on enoxaparin 100mg and aspirin 100mg daily with planned transition to warfarin at 2 weeks postpartum. Her immunosuppression regimen included hydroxychloroquine 400mg, azathioprine 150mg, and prednisone 5mg daily, along with calcitriol and calcium carbonate.",
+    "objective": "Initially tachycardic, normotensive, normal O2 saturation with clear chest and dual heart sounds. ECG: sinus tachycardia without ischemic changes. CXR: cardiomegaly with increased interstitial markings. Rapid deterioration with climbing O2 requirements and hypotension over one hour. CTPA: pulmonary edema, no PE. TEE: posterolateral papillary muscle rupture with flail anterior mitral leaflet and torrential mitral regurgitation, preserved LV function. Intraoperative: PEA arrest resuscitated, pale papillary muscle sheared from ventricular wall. MV replaced with 29mm St Jude mechanical valve. VA-ECMO required for 2 days for biventricular failure. Histology: fibrinous deposits and focal vegetation consistent with chronic Libman-Sacks endocarditis; papillary muscle with extensive central necrosis and intramyocardial artery thrombi consistent with infarction. MRI brain: widespread hypoxic injury. Post-ECMO: paroxysmal atrial fibrillation, mild LV impairment. Neurological function normalized prior to discharge.",
+    "assessment": "Acute mitral valve failure secondary to posterolateral papillary muscle rupture caused by infarction from intramyocardial artery thrombosis in the setting of chronic Libman-Sacks endocarditis and antiphospholipid syndrome. Pulmonary embolism was excluded by CTPA. Peripartum cardiomyopathy was considered but echocardiography demonstrated a structural valve lesion with preserved baseline ventricular function. Postoperative complications included PEA arrest, biventricular failure requiring ECMO, hypoxic brain injury (resolved), and paroxysmal atrial fibrillation.",
+    "plan": "Discharge on mechanical mitral valve anticoagulation with warfarin and aspirin, metoprolol CR for rate control of paroxysmal atrial fibrillation and mild LV impairment, cilazapril for afterload reduction. Continue immunosuppression: hydroxychloroquine, azathioprine, prednisone at pre-admission doses. Continue calcitriol and calcium carbonate. Inpatient rehabilitation completed. Outpatient follow-up for INR monitoring, echocardiographic surveillance of mechanical valve, lupus nephritis monitoring, and neurological assessment."
+  }
+}

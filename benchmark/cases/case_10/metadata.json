@@ -1,0 +1,17 @@
+{
+  "case_id": "case_10",
+  "title": "Chronic Pancreatitis with Pseudocyst Complicated by Splenic Abscess",
+  "description": "A 53-year-old African American male with chronic pancreatitis, insulin-dependent diabetes, hypertension, peripheral arterial disease, and gout presented with acute abdominal pain from an enlarging pancreatic pseudocyst. After endoscopic cystogastrostomy, he developed respiratory distress, pleural effusion, and a splenic abscess requiring splenectomy. The case tests medication normalization across a nine-drug polypharmacy regimen and multi-system differential diagnosis reasoning.",
+  "workflow_stages_tested": [
+    "transcription_cleanup",
+    "clinical_summarization",
+    "differential_diagnosis",
+    "medication_normalization",
+    "drug_interaction_check",
+    "final_report_generation"
+  ],
+  "data_source": "agbonnet",
+  "difficulty": "moderate",
+  "created_by": "team-scaffold",
+  "notes": "Derived from dataset row idx 54828. The original dataset row is copied into case_10_source.json. All patient data comes from the synthetic augmented-clinical-notes dataset. The primary challenge is the nine-medication polypharmacy regimen and the evolving clinical picture from pseudocyst to splenic complications."
+}
