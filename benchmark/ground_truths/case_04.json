@@ -1,31 +1,41 @@
 {
   "case_id": "case_04",
-  "transcription_cleaned": "Doctor: Hi, how are you today?\nParent: I'm good, thanks.\nDoctor: Great. What brought you and your baby in today?\nParent: My baby has a rapidly enlarging mass on his right arm.\nDoctor: How old is he and when did you first notice the mass?\nParent: He is 41 days old, and we noticed the mass about 5 hours ago. It has been getting bigger since then.\nDoctor: I understand. Does he have any other medical problems or previous procedures on that arm?\nParent: He has hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome without status epilepticus. He had a PICC line placed in that arm during the neonatal period.\nDoctor: On exam, the mass feels pulsatile but his pulses, capillary refill, and limb color all look normal, and he is moving his arms and legs well.\nParent: Yes, he moves normally.\nDoctor: We obtained a CT angiogram, which shows a pseudoaneurysm of the right distal brachial artery. An MRI confirms a vascular mass along the brachial artery.\nParent: Okay.\nDoctor: Because we are concerned this is a vascular injury from the prior line, we admitted him to the NICU for observation. The mass has continued to grow, so plastic surgery and vascular surgery have been consulted, and we are planning microscope-assisted brachial artery repair.\nParent: Thank you for explaining.",
-  "clinical_summary": "A 39-week term, 41-day-old male infant with hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome (without status epilepticus) presented with a rapidly enlarging pulsatile mass on the medial aspect of the right upper extremity. Physical examination showed a warm, well-perfused limb with normal pulses and capillary refill despite the mass. CT angiography and MRI demonstrated a pseudoaneurysm of the right distal brachial artery with vascular flow, likely related to prior PICC placement. The infant underwent successful microscope-assisted resection of the pseudoaneurysm and end-to-end brachial artery repair, followed by a short course of low-dose intravenous heparin and outpatient follow-up with good functional recovery of the right arm.",
+  "transcription_cleaned": "Doctor: Hello. What brings you in today?\nPatient: I lost vision in my right eye after sinus surgery yesterday.\nDoctor: Did the vision loss happen immediately after the surgery?\nPatient: Yes. Right after the operation, I had no light perception in that eye.\nDoctor: Have you had sinus surgery before?\nPatient: Yes, I had endoscopic sinus surgery about 15 years ago and did not have any visual problems then.\nDoctor: Were any scans done at the outside clinic?\nPatient: Yes. Orbital CT showed a small right medial wall fracture and a thick bony septum in the ethmoid area.\nDoctor: Since admission, we started steroid pulse therapy because we are concerned about a severe postoperative orbital or optic nerve injury.\nPatient: Yes.\nDoctor: What did the other tests show?\nPatient: The visual evoked potential test showed no right optic nerve activity, and the MRI showed enhancement around the posterior optic nerve sheath with an abnormal focus near the medial rectus close to the orbital apex.\nDoctor: Has your vision improved at all after treatment?\nPatient: No. I still cannot perceive light in the right eye.",
+  "clinical_summary": "A 53-year-old woman developed acute no-light-perception vision loss in the right eye immediately after revision endoscopic sinus surgery performed under local anesthesia. Orbital CT showed a small right medial wall fracture, visual evoked potential testing demonstrated absent right optic nerve activity, and orbital MRI showed posterior optic nerve sheath enhancement with an abnormal focus near the medial rectus at the orbital apex. She was treated empirically with intravenous methylprednisolone pulse therapy followed by oral prednisolone, but vision remained absent at both 2-week and 2-month follow-up. The overall picture is most consistent with iatrogenic traumatic optic neuropathy after endoscopic sinus surgery, with compressive orbital hemorrhage and retinal arterial ischemia as alternative postoperative causes of acute blindness.",
   "differential_diagnosis": [
     {
-      "condition": "Iatrogenic pseudoaneurysm of the right distal brachial artery",
-      "pmid": "30459975",
-      "rationale": "Rapidly enlarging pulsatile mass at a prior PICC site with CT angiography and MRI confirming a vascular outpouching communicating with the brachial artery is most consistent with a pseudoaneurysm."
+      "condition": "Traumatic optic neuropathy due to iatrogenic optic nerve injury after endoscopic sinus surgery",
+      "pmid": "15861507",
+      "rationale": "Immediate no-light-perception vision loss after endoscopic sinus surgery, a small medial orbital wall fracture, absent visual evoked potential response, and MRI abnormalities along the optic nerve sheath most strongly support severe postoperative optic nerve injury."
+    },
+    {
+      "condition": "Retrobulbar hematoma with orbital compartment syndrome",
+      "pmid": "25974799",
+      "rationale": "Acute monocular blindness after sinonasal surgery can result from compressive orbital hemorrhage, although the record does not describe classic proptosis or a tense orbit and imaging favored optic nerve injury over a large hematoma."
+    },
+    {
+      "condition": "Central retinal artery occlusion from orbital vascular injury",
+      "pmid": "30203670",
+      "rationale": "Postoperative retinal arterial ischemia is a recognized rare cause of sudden blindness after endoscopic sinus surgery and remains an alternative ischemic mechanism for the patient's persistent no-light-perception vision."
     }
   ],
   "normalized_medications": [
     {
-      "original": "intravenous heparin 10 U/kg/h for 48 hours",
-      "rxnorm_id": "5224",
-      "ingredient": "heparin"
+      "original": "intravenous methylprednisolone pulse therapy",
+      "rxnorm_id": "6902",
+      "ingredient": "methylprednisolone"
     },
     {
-      "original": "oral acetaminophen 160mg/5mL suspension as needed",
-      "rxnorm_id": "161",
-      "ingredient": "acetaminophen"
+      "original": "oral prednisolone for 10 days",
+      "rxnorm_id": "8638",
+      "ingredient": "prednisolone"
     }
   ],
   "drug_interactions": [],
   "final_report": {
-    "subjective": "Parents of a 41-day-old male infant report a rapidly enlarging mass on the medial aspect of the right upper extremity, first noticed about 5 hours before arrival. The infant has a history of hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome (without status epilepticus) and previously had a PICC line placed in the right upper extremity. Parents state that the infant has otherwise been feeding and moving normally, with no reported color change or weakness of the limb.",
-    "objective": "On exam, there is a pulsatile mass on the medial right upper extremity. Capillary refill is under 2 seconds, brachial/radial/ulnar pulses are 2+ bilaterally, extremities are warm, and there is no discoloration or edema. CT angiography shows a pseudoaneurysm of the right distal brachial artery measuring approximately 1.8 × 1.6 × 2.1 cm with communication to the arterial lumen and no other vascular abnormalities. MRI confirms a 2.1 × 1.7 × 1.1 cm vascular mass along the right brachial artery. Intraoperative findings include a focal pseudoaneurysm with diseased arterial segment successfully resected and a tension-free end-to-end microvascular anastomosis of the brachial artery at 2 mm diameter. Postoperatively, the infant receives low-dose IV heparin for 48 hours and is discharged on postoperative day 3 with stable pulses, warm extremities, and an arm splint; follow-up at 2 years shows a well-healed surgical site and normal right upper extremity function.",
-    "assessment": "Right distal brachial artery pseudoaneurysm in a 41-day-old infant, most likely iatrogenic from prior PICC placement, successfully treated with surgical resection and end-to-end brachial artery repair. The infant has underlying hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome but currently shows good right arm perfusion and function postoperatively. Short-course anticoagulation with low-dose heparin has been tolerated without bleeding complications.",
-    "plan": "Continue standard postoperative care with careful monitoring of right upper extremity perfusion, pulses, and wound healing. Maintain the arm splint as directed and provide oral acetaminophen suspension for pain control as needed, avoiding additional anticoagulants or NSAIDs that might increase bleeding risk. Arrange follow-up with plastic/vascular surgery to assess arterial patency and limb growth, and continue neurology follow-up for underlying hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome. Educate parents on signs of recurrent swelling, color change, or decreased movement in the arm and when to seek urgent evaluation."
+    "subjective": "A 53-year-old woman presents after revision right endoscopic sinus surgery with sudden complete vision loss in the right eye. She reports that the loss of vision occurred immediately after the procedure and that she has had no light perception since then. She had undergone endoscopic sinus surgery about 15 years earlier without visual complications. Despite treatment with steroid pulse therapy followed by oral prednisolone, she reports no improvement in right eye vision.",
+    "objective": "Outside orbital CT demonstrated a small right medial orbital wall fracture and a thick bony septum in the right ethmoid region. Visual evoked potential testing showed absent right optic nerve activity, and orbital MRI demonstrated mild enhancement along the posterior right optic nerve sheath with an abnormal signal focus near the medial rectus at the orbital apex. She was treated with intravenous methylprednisolone pulse therapy followed by oral prednisolone for 10 days. Right eye vision remained no light perception after 2 weeks of treatment and was still absent at 2-month follow-up.",
+    "assessment": "The presentation is most consistent with iatrogenic traumatic optic neuropathy or direct optic nerve injury after endoscopic sinus surgery. Acute postoperative retrobulbar hematoma with orbital compartment syndrome and central retinal artery occlusion remain important alternative causes of sudden monocular blindness after sinonasal surgery, but the available imaging and electrophysiology data favor severe optic nerve injury. Prognosis is poor given the absent visual evoked potential response and lack of recovery after corticosteroid therapy.",
+    "plan": "Complete the prescribed corticosteroid course and continue urgent follow-up with ophthalmology and otolaryngology. Monitor closely for any delayed orbital complications, and if new evidence of compressive hemorrhage or orbital compartment syndrome emerges, pursue immediate decompression-directed management. Document the postoperative optic nerve injury clearly in the surgical record, counsel the patient on the poor likelihood of visual recovery, and avoid any future sinonasal intervention without careful preoperative imaging review and high-risk orbital anatomy assessment."
   }
 }

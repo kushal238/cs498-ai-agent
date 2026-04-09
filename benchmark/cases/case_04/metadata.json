@@ -1,7 +1,7 @@
 {
   "case_id": "case_04",
-  "title": "Neonatal brachial artery pseudoaneurysm after PICC placement",
-  "description": "A 39-week term, 41-day-old male infant with hypoxic-ischemic encephalopathy and Lennox-Gastaut syndrome developed a rapidly enlarging pulsatile mass on the medial right upper extremity. Imaging confirmed a pseudoaneurysm of the right distal brachial artery, likely related to prior PICC placement, which was treated with microscope-assisted resection and end-to-end arterial repair followed by short-course heparin. This case exercises all six workflow stages on a neonatal vascular surgery and neurology scenario derived from the AGBonnet augmented-clinical-notes dataset (idx 32955; conversation and full_note columns).",
+  "title": "Acute Monocular Blindness After Endoscopic Sinus Surgery",
+  "description": "A 53-year-old woman developed immediate no-light-perception vision loss in the right eye after revision endoscopic sinus surgery performed under local anesthesia. CT showed a small medial orbital wall fracture, visual evoked potential testing showed absent right optic nerve activity, and orbital MRI demonstrated posterior optic nerve sheath enhancement with an abnormal focus near the medial rectus at the orbital apex. This case tests whether the agent can distinguish postoperative traumatic optic neuropathy from retrobulbar hematoma and retinal arterial ischemia in a rare ophthalmology and otolaryngology complication scenario derived from the AGBonnet augmented-clinical-notes dataset (idx 126365).",
   "workflow_stages_tested": [
     "transcription_cleanup",
     "clinical_summarization",
@@ -12,6 +12,6 @@
   ],
   "data_source": "agbonnet",
   "difficulty": "complex",
-  "created_by": "team-scaffold",
-  "notes": "From (idx:32955) (augmented-clinical-notes). All patient data is fully synthetic — no real patient information."
+  "created_by": "codex",
+  "notes": "Derived from AGBonnet augmented-clinical-notes row idx 126365. The underlying case corresponds to a published report of optic nerve injury after endoscopic sinus surgery (PMID 15861507). Benchmark input text was lightly rewritten to remove discussion-only prose and reduce direct answer leakage while preserving the clinical facts."
 }

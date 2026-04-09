@@ -137,7 +137,7 @@ Difficulty is assigned based on two criteria: (1) the number and complexity of m
 case\_01 & Cardiology              & Synthetic & 3 & Simple   \\
 case\_02 & Endocrinology/Genetics  & AGBonnet  & 3 & Complex  \\
 case\_03 & Oncology                & AGBonnet  & 2 & Complex  \\
-case\_04 & Neonatal Vascular       & AGBonnet  & 2 & Complex  \\
+case\_04 & Ophthalmology/ENT       & AGBonnet  & 2 & Complex  \\
 case\_05 & Pulmonology             & AGBonnet  & 6 & Complex  \\
 case\_06 & Neurology/Transplant    & AGBonnet  & 4 & Complex  \\
 case\_07 & Oncology (Obstetric)    & AGBonnet  & 1 & Complex  \\
@@ -149,7 +149,7 @@ case\_10 & Gastroenterology        & AGBonnet  & 9 & Moderate \\
 \end{center}
 \end{table}
 
-Of the ten cases, two are Simple (straightforward differentials, common medications, no narrow therapeutic index), one is Moderate (common conditions but significant polypharmacy requiring nine-drug normalization), and seven are Complex (rare or overlapping diagnoses, polypharmacy or weight-based dosing, significant drug interaction burden). Cases 03 and 04 are Complex despite having only two medications because the diagnosis is rare (high-grade pleomorphic sarcoma; neonatal brachial pseudoaneurysm after PICC placement) and the transcripts require sophisticated reasoning over unusual presentations.
+Of the ten cases, two are Simple (straightforward differentials, common medications, no narrow therapeutic index), one is Moderate (common conditions but significant polypharmacy requiring nine-drug normalization), and seven are Complex (rare or overlapping diagnoses, polypharmacy or weight-based dosing, significant drug interaction burden). Cases 03 and 04 are Complex despite having only two medications because the diagnosis is rare (high-grade pleomorphic sarcoma; postoperative traumatic optic neuropathy after endoscopic sinus surgery) and the transcripts require sophisticated reasoning over unusual presentations.
 
 % ============================================================
 \section{Evaluation Protocol}
