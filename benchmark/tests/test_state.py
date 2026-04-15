@@ -76,3 +76,21 @@ def test_scratch_entry_has_timestamp():
 def test_log_entry_has_timestamp():
     entry = LogEntry(stage="transcription", event="success", detail="done")
     assert entry.timestamp is not None
+
+
+def test_plan_is_complete_false_when_empty():
+    assert not AgentPlan().is_complete()
+
+
+def test_plan_next_step_returns_none_when_all_running():
+    plan = AgentPlan(steps=[
+        PlanStep(stage="transcription", status=StepStatus.RUNNING),
+    ])
+    assert plan.next_step() is None
+
+
+def test_get_context_working_memory_wins_on_collision():
+    state = AgentState(task={"case_id": "original"})
+    state.memory.working_memory["case_id"] = "overwritten"
+    ctx = state.get_context()
+    assert ctx["case_id"] == "overwritten"

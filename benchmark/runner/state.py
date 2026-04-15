@@ -58,6 +58,8 @@ class AgentPlan:
 
     def is_complete(self) -> bool:
         """True when every step is in a terminal state (SUCCESS, SKIPPED, FAILED)."""
+        if not self.steps:
+            return False
         terminal = {StepStatus.SUCCESS, StepStatus.SKIPPED, StepStatus.FAILED}
         return all(s.status in terminal for s in self.steps)
 
@@ -71,10 +73,14 @@ class AgentMemory:
 
 @dataclass
 class AgentState:
-    task: dict                              # original input — never mutated
+    task: dict[str, Any]                    # original input — never mutated
     plan: AgentPlan = field(default_factory=AgentPlan)
     memory: AgentMemory = field(default_factory=AgentMemory)
 
     def get_context(self) -> dict:
-        """Merge original task inputs with all accumulated stage outputs."""
+        """Merge original task inputs with all accumulated stage outputs.
+
+        Returns a shallow copy — top-level keys from working_memory win on collision.
+        Callers must not mutate nested objects in the returned dict.
+        """
         return {**self.task, **self.memory.working_memory}
