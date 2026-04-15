@@ -16,13 +16,11 @@ import json
 import sys
 from pathlib import Path
 
-# In the container, langgraph_runner.py is copied to /app/ (same dir as this file).
-# On the host, it lives at benchmark/runner/langgraph_runner.py.
 _runner_dir = Path(__file__).resolve().parent.parent / "runner"
 if _runner_dir.exists():
     sys.path.insert(0, str(_runner_dir))
 
-from langgraph_runner import run_pipeline  # noqa: E402
+from agent import ClinicalAgent  # noqa: E402
 
 
 def main() -> None:
@@ -37,9 +35,15 @@ def main() -> None:
         print(json.dumps({"error": f"Failed to parse stdin JSON: {exc}"}), file=sys.stderr)
         sys.exit(1)
 
-    result = run_pipeline(input_data)
+    agent = ClinicalAgent()
+    result = agent.run(input_data)
 
-    # Emit only the fields that match ground_truth_schema.json
+    # Include execution log for debugging — harness ignores unknown keys
+    execution_log = [
+        {"stage": e.stage, "event": e.event, "detail": e.detail}
+        for e in agent._last_state.memory.execution_log
+    ] if agent._last_state else []
+
     output = {
         "case_id": input_data.get("case_id"),
         "transcription_cleaned": result.get("transcription_cleaned"),
@@ -48,6 +52,7 @@ def main() -> None:
         "normalized_medications": result.get("normalized_medications", []),
         "drug_interactions": result.get("drug_interactions", []),
         "final_report": result.get("final_report", {}),
+        "_debug_execution_log": execution_log,
     }
 
     print(json.dumps(output))

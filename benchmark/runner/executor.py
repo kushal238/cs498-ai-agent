@@ -87,6 +87,7 @@ def execute(step: PlanStep, state: AgentState) -> dict:
         except Exception as exc:
             last_error = str(exc)
             is_last = attempt >= step.max_attempts - 1
+            print(f"[Executor] {step.stage} attempt {step.attempts} failed: {last_error}", file=__import__('sys').stderr)
             state.memory.execution_log.append(LogEntry(
                 stage=step.stage,
                 event="error" if is_last else "retry",
