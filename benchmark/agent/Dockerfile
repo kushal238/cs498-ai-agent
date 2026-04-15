@@ -26,6 +26,18 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY agent/agent_main.py        /app/agent_main.py
 COPY runner/langgraph_runner.py /app/langgraph_runner.py
 COPY runner/llm.py              /app/llm.py
+COPY runner/agent.py            /app/agent.py
+COPY runner/planner.py          /app/planner.py
+COPY runner/executor.py         /app/executor.py
+COPY runner/validator.py        /app/validator.py
+COPY runner/state.py            /app/state.py
+COPY runner/llm_client.py       /app/llm_client.py
+COPY runner/stage_transcription.py  /app/stage_transcription.py
+COPY runner/stage_summarization.py  /app/stage_summarization.py
+COPY runner/stage_diagnosis.py      /app/stage_diagnosis.py
+COPY runner/stage_medications.py    /app/stage_medications.py
+COPY runner/stage_interactions.py   /app/stage_interactions.py
+COPY runner/stage_report.py         /app/stage_report.py
 COPY shared/                    /app/shared/
 
 # Schema path resolution inside the container
