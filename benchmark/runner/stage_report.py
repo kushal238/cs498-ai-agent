@@ -48,7 +48,7 @@ def run(context: dict) -> dict:
     content = (
         f"Cleaned Transcript:\n{context.get('transcription_cleaned', '')}\n\n"
         f"Clinical Summary:\n{context.get('clinical_summary', '')}\n\n"
-        f"Patient History:\n{context.get('patient_history', '')}\n\n"
+        f"Patient History:\n{json.dumps(context.get('patient_history', {}), indent=2)}\n\n"
         f"Chart Notes:\n{context.get('chart_notes', '')}\n\n"
         f"Differential Diagnosis:\n"
         f"{json.dumps(context.get('differential_diagnosis', []), indent=2)}\n\n"

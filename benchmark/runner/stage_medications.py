@@ -13,7 +13,7 @@ sys.path.insert(0, str(_benchmark_root))
 from shared.tools.rxnorm import get_rxcui  # noqa: E402
 
 
-def _extract_generic_names(medication_list: list[str]) -> dict[str, list[str]]:
+def _extract_generic_names(medication_list: list[str], validation_hint: str = "") -> dict[str, list[str]]:
     """Batch-extract generic drug name(s) for the entire medication list.
 
     Returns a dict mapping each original medication string to a list of one or
@@ -37,7 +37,7 @@ def _extract_generic_names(medication_list: list[str]) -> dict[str, list[str]]:
                 "numbering. Format: '1. drug1, drug2' or '1. drug1'. Nothing else."
             ),
         },
-        {"role": "user", "content": numbered},
+        {"role": "user", "content": numbered + validation_hint},
     ]
     try:
         raw = llm_client.chat(messages)
@@ -70,14 +70,20 @@ def run(context: dict) -> dict:
     """Normalize the medication list using an LLM + RxNorm API.
 
     Args:
-        context: Must contain 'medication_list'.
+        context: Must contain 'medication_list'. May contain '_validation_error'.
 
     Returns:
         {"reasoning": str, "confidence": str,
          "output": {"normalized_medications": list[dict]}}
     """
     raw_meds: list[str] = context.get("medication_list", [])
-    extracted = _extract_generic_names(raw_meds)
+    validation_hint = ""
+    if context.get("_validation_error"):
+        validation_hint = (
+            f"\n\nYour previous output was invalid: {context['_validation_error']}. "
+            "Please fix it."
+        )
+    extracted = _extract_generic_names(raw_meds, validation_hint)
     normalized = []
     for med in raw_meds:
         for drug_name in extracted.get(med, [med]):

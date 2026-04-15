@@ -1,6 +1,7 @@
 """Stage 2: Produce a clinician-facing clinical summary."""
 from __future__ import annotations
 
+import json
 from pydantic import BaseModel, Field
 import llm_client
 
@@ -31,7 +32,7 @@ def run(context: dict) -> dict:
     content = (
         f"Cleaned Transcript:\n{context.get('transcription_cleaned', '')}\n\n"
         f"Chart Notes:\n{context.get('chart_notes', '')}\n\n"
-        f"Patient History:\n{context.get('patient_history', '')}"
+        f"Patient History:\n{json.dumps(context.get('patient_history', {}), indent=2)}"
         + validation_hint
     )
     messages = [
