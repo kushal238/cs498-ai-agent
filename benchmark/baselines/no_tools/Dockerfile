@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY baselines/no_tools/no_tools_runner.py /app/no_tools_runner.py
 COPY baselines/no_tools/no_tools_main.py   /app/no_tools_main.py
-COPY runner/llm_client.py                  /app/llm_client.py
+COPY runner/llm.py                          /app/llm.py
 COPY shared/schemas/                        /app/shared/schemas/
 
 ENV BENCHMARK_ROOT=/app

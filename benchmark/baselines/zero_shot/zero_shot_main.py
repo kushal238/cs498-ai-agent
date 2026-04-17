@@ -17,13 +17,13 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 
-# Allow running from repo root or inside container (/app/llm_client.py copied flat)
+# Allow running from repo root or inside container (/app/llm.py copied flat)
 _here = Path(__file__).resolve().parent
 _runner_dir = _here.parent.parent / "runner"
 sys.path.insert(0, str(_runner_dir))
 sys.path.insert(0, str(_here.parent.parent))
 
-from llm_client import chat_structured  # noqa: E402
+from llm import get_llm  # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -91,6 +91,9 @@ def run_zero_shot(input_data: dict) -> dict:
     Returns:
         Dict with all six ground_truth_schema.json output keys.
     """
+    llm = get_llm()
+    structured_llm = llm.with_structured_output(ClinicalWorkflowOutput)
+
     prompt = (
         f"Patient Transcript:\n{input_data.get('patient_transcript', '')}\n\n"
         f"Chart Notes:\n{input_data.get('chart_notes', '')}\n\n"
@@ -105,14 +108,13 @@ def run_zero_shot(input_data: dict) -> dict:
         "6. A complete SOAP report"
     )
 
-    messages = [
+    result = structured_llm.invoke([
         {"role": "system", "content": (
             "You are an expert clinical documentation AI. Produce all six required "
             "outputs accurately and concisely based solely on the provided patient data."
         )},
         {"role": "user", "content": prompt},
-    ]
-    result = chat_structured(messages, ClinicalWorkflowOutput)
+    ])
     return result.model_dump()
 
 
