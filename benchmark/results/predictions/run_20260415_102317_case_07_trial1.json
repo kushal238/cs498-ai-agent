@@ -1,0 +1,68 @@
+{
+  "case_id": "case_07",
+  "transcription_cleaned": "Doctor: Good morning. How can I help you today?\nPatient: Good morning, doctor. I was referred here from another hospital. I'm 27 weeks pregnant and I had a very scary episode a few weeks ago.\nDoctor: I'm glad you came in. Can you walk me through what happened?\nPatient: At 22 weeks, I started having vaginal bleeding. I went to the emergency room and they admitted me for bedrest. About two days later, I got terrible pelvic pain and contractions, and I passed a large mass vaginally.\nDoctor: That sounds very distressing. Were there any fetal parts in the mass?\nPatient: No, the doctors said there were no fetal contents. The baby was fine \u2014 they checked the heart tones and everything was okay.\nDoctor: Do you know what the pathology showed on that mass?\nPatient: Yes, they told me it was a very aggressive-looking tumor under the microscope, with spindle-shaped cells and giant cells. The pathologist said it could be an endometrial stromal sarcoma or an undifferentiated uterine sarcoma, but they weren't sure.\nDoctor: I see. And what happened after that \u2014 did they do any procedure at the outside hospital?\nPatient: Yes, they took me to the operating room and found a hole in the back wall of my vagina that was bleeding. They stitched it closed. My cervix was closed and the baby was still okay.\nDoctor: Good. Can you tell me about your obstetric history?\nPatient: This is my fourth pregnancy. I've had two therapeutic abortions and one miscarriage.\nDoctor: Any prior gynecologic problems \u2014 abnormal pap smears, fibroids, infertility?\nPatient: No, nothing like that. My periods were always regular, no pain with sex, no unusual bleeding before this pregnancy.\nDoctor: Any family history of cancer?\nPatient: Yes, actually. Two of my family members had cervical cancer and two had endometrial cancer.\nDoctor: That's important to know. We'll order an MRI today to get a better picture of what's happening. Has the fetus had any issues noted on ultrasound?\nPatient: Yes, one of the baby's kidneys looks abnormal \u2014 they said it's dysplastic.\nDoctor: Okay. And how are you feeling now at 27 weeks?\nPatient: I feel okay. No more bleeding, no pelvic pain. I'm just worried about what this mass was.\nDoctor: Understood. We're going to coordinate with our gynecologic oncology and maternal-fetal medicine teams to make the best plan for you and your baby.\nPatient: Thank you, doctor. I just want to make sure we're both safe.",
+  "clinical_summary": "A 31-year-old G4P0 woman presented at 22 weeks gestation with vaginal bleeding and expulsion of a large mass, initially suspected to be a sarcoma. Pathology later confirmed a high-grade sarcoma postpartum, leading to upper vaginectomy and adjuvant brachytherapy. The patient underwent a cesarean hysterectomy at 36 weeks, delivering a healthy infant, and remains disease-free 58 months post-treatment.",
+  "differential_diagnosis": [
+    {
+      "condition": "Vaginal Sarcoma",
+      "pmid": "41939651",
+      "rationale": "The confirmed pathology of high-grade sarcoma postpartum aligns with the initial presentation of a large pelvic mass and vaginal bleeding during pregnancy."
+    },
+    {
+      "condition": "Gestational Trophoblastic Disease",
+      "pmid": "41978724",
+      "rationale": "Although less likely given the confirmed sarcoma diagnosis, the presentation of vaginal bleeding and mass expulsion during pregnancy could initially mimic gestational trophoblastic disease."
+    },
+    {
+      "condition": "Cervical Cancer",
+      "pmid": "41982108",
+      "rationale": "Cervical cancer can present with vaginal bleeding during pregnancy, but the confirmed diagnosis of vaginal sarcoma makes this less likely."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "betamethasone 12 mg intramuscularly",
+      "rxnorm_id": "1514",
+      "ingredient": "betamethasone"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient is a 31-year-old woman, currently 27 weeks pregnant, who was referred for further evaluation after experiencing a significant episode at 22 weeks gestation. She reported vaginal bleeding and the expulsion of a large mass, which was initially suspected to be a sarcoma. The patient was admitted for bedrest and subsequently underwent surgical intervention to repair a posterior vaginal wall defect. She has a history of two therapeutic abortions and one miscarriage, with no prior gynecologic issues. The patient expressed concern about the nature of the mass and the health of her baby, who has been noted to have a dysplastic kidney on ultrasound. She has a family history of cervical and endometrial cancer.",
+    "objective": "On examination, the patient appears well and reports no current bleeding or pelvic pain. Her vital signs are stable. A pelvic examination revealed no residual vaginal mass, and a recent Pap smear was normal with negative HPV testing. An MRI of the pelvis, abdomen, and chest showed no evidence of metastatic disease, but confirmed the presence of a Nabothian cyst in the cervix and a multiloculated cystic structure in the fetal kidney consistent with dysplasia. The placenta is anterior, and there are no intrauterine myomas. The patient has been referred to maternal-fetal medicine and gynecologic oncology for further management.",
+    "assessment": "The patient has a confirmed diagnosis of a high-grade vaginal sarcoma, initially presenting as a large pelvic mass during pregnancy. The differential diagnosis initially included endometrial stromal sarcoma and undifferentiated uterine sarcoma, but subsequent pathology confirmed a high-grade sarcoma. The patient underwent a cesarean hysterectomy at 36 weeks, delivering a healthy infant, and remains disease-free 58 months post-treatment. The current focus is on monitoring for any recurrence and managing the fetal renal anomaly.",
+    "plan": "The patient will continue to be monitored closely by the gynecologic oncology and maternal-fetal medicine teams. An MRI will be repeated as needed to assess for any signs of recurrence. The patient will receive betamethasone to promote fetal lung maturity in preparation for a planned cesarean delivery at 36 weeks. Postpartum, the patient will undergo regular follow-up visits to monitor her recovery and ensure there is no recurrence of the sarcoma. The neonate will be evaluated by a pediatric nephrologist for the dysplastic kidney, and appropriate management will be initiated based on the findings. The patient is advised to report any new symptoms immediately and to maintain regular follow-up appointments."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "case_id": "case_10",
+  "transcription_cleaned": "Doctor: Good morning, I am Dr. Smith. Can you tell me what brings you in today?\nPatient: Good morning, I have been having some abdominal pain for the past 4 days.\nDoctor: I see. Can you describe the pain for me?\nPatient: It's postprandial and sharp, and sometimes it radiates to my back.\nDoctor: Hmm, okay. Can you tell me a little bit about your past medical history?\nPatient: I am an African American male and I have a past medical history of chronic pancreatitis, insulin-dependent diabetes, hypertension, peripheral arterial disease, and gout.\nDoctor: I see. And what medications are you currently taking?\nPatient: I am taking insulin, metformin 500mg daily, lisinopril 40mg daily, amlodipine 10mg daily, metoprolol 25mg twice a day, rosuvastatin 40mg per day, aspirin 81mg, clopidogrel 75mg per day, and allopurinol 100mg.\nDoctor: Okay. And can you tell me about your family history?\nPatient: My mother had insulin-dependent diabetes and hypertension, and my father had hypertension.\nDoctor: Alright. Can you tell me about your alcohol and smoking habits?\nPatient: I used to smoke a few cigarettes a day, but I quit over 5 years prior to my initial presentation. I reported drinking around four alcoholic beverages daily.\nDoctor: Okay. And can you tell me about your previous visits to the emergency room?\nPatient: 18 months prior to my current presentation, I went to the emergency room with postprandial abdominal pain.\nDoctor: I see. And what was the outcome of that visit?\nPatient: I had a CT scan of my abdomen and it showed necrotizing acute pancreatitis and a fluid collection between my pancreas and stomach. I was managed supportively and discharged.\nDoctor: Alright. And did you have any other visits to the emergency room after that?\nPatient: A few months later, I was admitted for diabetic ketoacidosis secondary to pancreatic necrosis.\nDoctor: Okay. And did you have any abdominal imaging done at that visit?\nPatient: No, I didn't.\nDoctor: Alright. And did you have any follow-up CT scans after your initial episode of acute pancreatitis?\nPatient: Yes, I did. I had a repeat CT scan 5 months after my initial episode, or 2 months after my diabetic ketoacidosis admission, and it showed no change in size of the pancreatic pseudocyst.\nDoctor: Okay. And can you describe the pain you are experiencing now compared to the pain you experienced 18 months ago?\nPatient: The pain is of different character than the original episode of acute pancreatitis 18 months ago, but I am unable to specifically describe how.\nDoctor: Alright. I am going to do a physical examination now. Is that okay?\nPatient: Yes, that's fine.\nDoctor: Okay, I have finished the examination. You are an alert patient, but you are tachycardic to 110 beats per minute and have decreased breath sounds at the bilateral lung bases. Your abdomen is nontender but mildly distended. Your neurologic examination is unremarkable.\nPatient: Okay.\nDoctor: Based on your symptoms and medical history, I think you may be experiencing another episode of acute pancreatitis. I am going to order a CT scan of your abdomen to confirm the diagnosis.\nPatient: Okay.\nDoctor: In the meantime, I want you to rest and avoid eating solid foods. I will also adjust your medications to help manage your pain.\nDoctor: I will see you again after the results of the CT scan are back. Is there anything else you would like to ask me?\nPatient: No, that's all. Thank you.\nDoctor: You're welcome. Take care.",
+  "clinical_summary": "A 53-year-old African American male with a history of chronic pancreatitis, insulin-dependent diabetes, and hypertension presents with 4 days of postprandial sharp LUQ abdominal pain radiating to the back. He has a history of necrotizing pancreatitis with a pseudocyst, which has now enlarged, causing compression of the splenic vasculature. Endoscopic cystogastrostomy was performed, but complications led to a splenectomy due to a splenic abscess and laceration. The patient was managed with antibiotics and supportive care, and discharged after a protracted postoperative course.",
+  "differential_diagnosis": [
+    {
+      "condition": "Recurrent Pancreatitis",
+      "pmid": "41982569",
+      "rationale": "The patient's history of chronic pancreatitis and current symptoms of LUQ pain radiating to the back are classic for pancreatitis, especially given the recent surgical intervention."
+    },
+    {
+      "condition": "Pancreatic Pseudocyst Complication",
+      "pmid": "41894274",
+      "rationale": "The enlargement of the pseudocyst and its previous complications suggest that it could be causing the current symptoms, possibly due to further enlargement or infection."
+    },
+    {
+      "condition": "Splenic Infarction or Abscess",
+      "pmid": "41983149",
+      "rationale": "Given the recent splenectomy due to a splenic abscess and laceration, there could be residual or recurrent issues related to the splenic vasculature or infection."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "insulin",
+      "rxnorm_id": "253182",
+      "ingredient": "insulin"
+    },
+    {
+      "original": "metformin 500mg daily",
+      "rxnorm_id": "6809",
+      "ingredient": "metformin"
+    },
+    {
+      "original": "lisinopril 40mg daily",
+      "rxnorm_id": "29046",
+      "ingredient": "lisinopril"
+    },
+    {
+      "original": "amlodipine 10mg daily",
+      "rxnorm_id": "17767",
+      "ingredient": "amlodipine"
+    },
+    {
+      "original": "metoprolol 25mg twice per day",
+      "rxnorm_id": "6918",
+      "ingredient": "metoprolol"
+    },
+    {
+      "original": "rosuvastatin 40mg per day",
+      "rxnorm_id": "301542",
+      "ingredient": "rosuvastatin"
+    },
+    {
+      "original": "aspirin 81mg",
+      "rxnorm_id": "1191",
+      "ingredient": "aspirin"
+    },
+    {
+      "original": "clopidogrel 75mg per day",
+      "rxnorm_id": "32968",
+      "ingredient": "clopidogrel"
+    },
+    {
+      "original": "allopurinol 100mg",
+      "rxnorm_id": "519",
+      "ingredient": "allopurinol"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "insulin",
+      "drug_b": "metformin",
+      "severity": "unknown",
+      "recommendation": "Intervention: Patients receiving an insulin secretagogue or insulin may require lower doses of the insulin secretagogue or insulin."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, a 53-year-old African American male, reports experiencing sharp, postprandial left upper quadrant abdominal pain radiating to the back for the past four days. He has a significant medical history including chronic pancreatitis, insulin-dependent diabetes, hypertension, peripheral arterial disease, and gout. He recalls a previous episode of necrotizing pancreatitis 18 months ago, which resulted in a pancreatic pseudocyst. He also mentions a history of diabetic ketoacidosis secondary to pancreatic necrosis. The patient quit smoking over five years ago but continues to consume approximately four alcoholic beverages daily. His family history includes diabetes and hypertension in his mother and hypertension in his father.",
+    "objective": "On examination, the patient is alert but tachycardic with a heart rate of 110 beats per minute. His breath sounds are decreased at the bilateral lung bases, and his abdomen is mildly distended but nontender. Neurological examination is unremarkable. Vital signs reveal a temperature of 37.4\u00b0C, blood pressure of 161/88 mmHg, and oxygen saturation of 100% on room air. Laboratory tests show an elevated white blood cell count of 14.7 x 10^9/L, hemoglobin of 16.7 g/dL, glucose of 221 mg/dL, and HbA1c of 11.3%. Lipase is slightly elevated at 145 U/L. A CT scan of the abdomen reveals an enlarged pancreatic pseudocyst measuring 15.9 x 10.4 cm, displacing the stomach and compressing the splenic vasculature.",
+    "assessment": "The patient's symptoms and imaging findings are suggestive of a recurrent episode of acute pancreatitis, likely exacerbated by the enlarged pancreatic pseudocyst. The history of necrotizing pancreatitis and recent surgical interventions, including a splenectomy due to a splenic abscess and laceration, complicate the clinical picture. The current presentation may be due to further complications of the pseudocyst, such as infection or compression of surrounding structures. Differential diagnoses include recurrent pancreatitis, complications of the pancreatic pseudocyst, and potential splenic issues post-splenectomy.",
+    "plan": "The immediate plan involves confirming the diagnosis with a CT scan of the abdomen, which has already been ordered. The patient is advised to rest and avoid solid foods to minimize pancreatic stimulation. Pain management will be adjusted, including the use of acetaminophen and oxycodone as needed, with IV morphine available for severe pain. Clopidogrel has been held due to recent surgical history, while other home medications are continued. The patient will receive IV fluids and antibiotics, including levofloxacin and metronidazole, to address any potential infection. Follow-up will occur after the CT scan results are available, and further surgical intervention may be considered based on the findings."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}
