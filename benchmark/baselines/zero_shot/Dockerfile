@@ -11,7 +11,7 @@ COPY agent/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY baselines/zero_shot/zero_shot_main.py /app/zero_shot_main.py
-COPY runner/llm.py                          /app/llm.py
+COPY runner/llm_client.py                  /app/llm_client.py
 
 ENV PYTHONUNBUFFERED=1
 

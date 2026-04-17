@@ -2,6 +2,8 @@
 
 A SWE-bench-style benchmark for evaluating clinical AI agents. An agent receives a raw patient dialogue and chart notes, runs them through a six-stage pipeline, and returns a physician-ready SOAP report — all inside an isolated Docker container. The harness scores the output on the host without ever exposing the answer key to the agent.
 
+**Agent runtime (current):** The container entrypoint (`agent/agent_main.py`) runs **`ClinicalAgent`** (`runner/agent.py`) — a small agentic loop with a **conditional plan** (`runner/planner.py`), **per-stage execution** with retries and JSON-schema validation (`runner/executor.py`, `runner/validator.py`), and **memory** for outputs, reasoning, and an execution log (`runner/state.py`). Each clinical stage lives in **`runner/stage_*.py`** and calls the **OpenAI SDK** via **`runner/llm_client.py`** (Pydantic structured outputs). The older **`langgraph_runner.py`** stub remains for tests / reference but is not the container’s primary path.
+
 ---
 
 ## Pipeline stages
@@ -41,7 +43,14 @@ benchmark/
 │       ├── ndcg.py            ← nDCG for ranked DDx (embedding-based)
 │       └── embeddings.py      ← shared sentence-transformer model + cosine similarity
 ├── runner/
-│   └── langgraph_runner.py   ← LangGraph pipeline stub nodes + run_pipeline()
+│   ├── agent.py               ← ClinicalAgent: plan → execute → memory loop
+│   ├── planner.py             ← stage order + skip med stages if no medications
+│   ├── executor.py            ← retries, validation, scratchpad, fallbacks
+│   ├── state.py               ← AgentState, plan, working_memory, scratchpad, log
+│   ├── validator.py           ← per-stage output JSON Schema checks
+│   ├── llm_client.py          ← OpenAI + Pydantic structured chat
+│   ├── stage_transcription.py … stage_report.py  ← one module per pipeline stage
+│   └── langgraph_runner.py    ← legacy stub pipeline (tests / reference)
 ├── agent/
 │   ├── agent_main.py          ← container entrypoint
 │   ├── Dockerfile             ← agent image (no ground_truths/, no harness/)
@@ -87,60 +96,29 @@ python benchmark/harness/harness.py
 # Build image and run in one step
 python benchmark/harness/harness.py --build
 
+# Save each case’s raw JSON prediction (transcript, summary, DDx, SOAP, debug log)
+python benchmark/harness/harness.py --save-predictions
+
+# Custom results directory (CSVs + optional predictions/ subdirectory)
+python benchmark/harness/harness.py --output-dir path/to/results
+
 # Options
 python benchmark/harness/harness.py --help
 ```
 
-Expected output (stubs, no agent implemented):
+**Results layout:** By default the harness writes **`benchmark/results/run_<timestamp>_raw.csv`** and **`_summary.csv`**. With **`--save-predictions`**, it also writes **`benchmark/results/predictions/run_<timestamp>_<case_id>_trial<n>.json`** (full stdout payload per case, including optional **`_debug_execution_log`**).
 
-```
-[Harness] Found 1 case(s): ['case_01_template']
-[Harness] Running case: case_01_template
-
-========================================================================
-BENCHMARK RESULTS
-========================================================================
-
-Case: case_01_template
-----------------------------------------------------
-  transcription_cleanup      rouge1=0.000  rouge2=0.000  rougeL=0.000
-  clinical_summarization     rouge1=0.000  rouge2=0.000  rougeL=0.000
-  differential_diagnosis     precision=0.000  recall=0.000  f1=0.000  ndcg=0.000
-  medication_normalization   precision=0.000  recall=0.000  f1=0.000
-  drug_interaction_check     precision=0.000  recall=0.000  f1=0.000
-  final_report_generation    subjective_rougeL=0.000  ...
-```
+The harness discovers **every** subdirectory of `benchmark/cases/` that contains **`input.json`**. Set **`OPENAI_API_KEY`** on the host before running so the harness can inject it into the container.
 
 ---
 
-## How to implement an agent
+## How to implement or change the agent
 
-The benchmark defines the interface; you write the agent. Implement the six node functions in `benchmark/runner/langgraph_runner.py`:
+The benchmark defines the **stage interface**; production logic lives in **`benchmark/runner/stage_*.py`**. Each stage’s **`run(context)`** returns a dict with **`reasoning`**, **`confidence`**, and **`output`** (the slice validated by `validator.py` and merged into memory). Use **`llm_client.chat`** or **`llm_client.chat_structured`** for model calls; use **`shared/tools/pubmed.py`** and **`rxnorm.py`** where appropriate (real API calls when networked).
 
-```python
-def node_transcription_cleanup(state: dict) -> dict:
-    # state["patient_transcript"] → return {"transcription_cleaned": "..."}
+To register different behavior without editing `agent.py`, tests may assign **`executor.STAGE_MAP`** before importing **`ClinicalAgent`**.
 
-def node_clinical_summarization(state: dict) -> dict:
-    # state["transcription_cleaned"], state["chart_notes"] → return {"clinical_summary": "..."}
-
-def node_differential_diagnosis(state: dict) -> dict:
-    # use find_supporting_citations() from shared/tools/pubmed.py
-    # return {"differential_diagnosis": [{"condition": ..., "pmid": ..., "rationale": ...}]}
-
-def node_medication_normalization(state: dict) -> dict:
-    # use normalize_medication_list() from shared/tools/rxnorm.py
-    # return {"normalized_medications": [{"original": ..., "rxnorm_id": ..., "ingredient": ...}]}
-
-def node_drug_interaction_check(state: dict) -> dict:
-    # use check_interactions() from shared/tools/rxnorm.py
-    # return {"drug_interactions": [{"drug_a": ..., "drug_b": ..., "severity": ..., "recommendation": ...}]}
-
-def node_final_report_generation(state: dict) -> dict:
-    # return {"final_report": {"subjective": ..., "objective": ..., "assessment": ..., "plan": ...}}
-```
-
-The tools in `shared/tools/` are available inside the container and make real API calls to PubMed and NIH RxNav.
+The six **`node_*`** functions in **`langgraph_runner.py`** are a **legacy** linear stub; prefer **`stage_*.py`** + **`ClinicalAgent`** for the Docker agent.
 
 ---
 
