@@ -28,12 +28,12 @@ import numpy as np
 _DEFAULT_MODEL = "pritamdeka/S-PubMedBert-MS-MARCO"
 
 # Cosine similarity threshold above which two condition strings are considered
-# a semantic match.  0.90 was chosen empirically for pritamdeka/S-PubMedBert-MS-MARCO:
-# unrelated medical terms cluster at 0.83–0.88, true paraphrases at 0.95–0.98,
-# so 0.90 sits cleanly in the gap.  Adjust via SCORING_EMBED_THRESHOLD if switching
-# to a different model (e.g. all-MiniLM-L6-v2 may need a lower value).
+# a semantic match.  0.82 was chosen empirically for pritamdeka/S-PubMedBert-MS-MARCO:
+# unrelated medical terms cluster at 0.75–0.80, true paraphrases at 0.95–0.98,
+# so 0.82 sits cleanly in the gap.  Adjust via SCORING_EMBED_THRESHOLD if switching
+# to a different model (e.g. all-MiniLM-L6-v2 may need a different value).
 CONDITION_SIMILARITY_THRESHOLD = float(
-    os.environ.get("SCORING_EMBED_THRESHOLD", "0.90")
+    os.environ.get("SCORING_EMBED_THRESHOLD", "0.82")
 )
 
 

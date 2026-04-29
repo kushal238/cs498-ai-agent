@@ -6,7 +6,9 @@ import traceback
 from typing import Callable
 
 import jsonschema
+from pydantic import BaseModel, Field
 
+import llm_client
 from state import AgentState, PlanStep, StepStatus, ScratchEntry, LogEntry
 from validator import validate
 
@@ -30,6 +32,80 @@ _FALLBACKS: dict[str, dict] = {
 }
 
 
+class _ToolCallRequest(BaseModel):
+    name: str = Field(description="Tool name from the manifest")
+    args: dict = Field(description="Arguments to pass to the tool", default_factory=dict)
+
+
+class _ToolDecision(BaseModel):
+    reasoning: str = Field(description="Why these tools are or are not needed")
+    tool_calls: list[_ToolCallRequest] = Field(
+        description="Tool calls to make before running this stage. Empty list means no calls needed.",
+        default_factory=list,
+    )
+
+
+# Stage-level tool manifests — empty dict means no tools available for that stage
+TOOL_MANIFESTS: dict[str, dict[str, str]] = {
+    "transcription":  {},
+    "summarization":  {},
+    "diagnosis":      {"pubmed_search": "Search PubMed for supporting citations for a condition name. Args: {query: str}"},
+    "medications":    {"rxnorm_lookup": "Look up the RxNorm CUI and ingredient name for a drug. Args: {drug: str}"},
+    "interactions":   {"check_interactions": "Check drug interactions for a list of RxCUI IDs. Args: {rxcui_ids: list[str]}"},
+    "report":         {},
+}
+
+
+def _run_tool_decision(
+    stage: str,
+    context: dict,
+    tool_manifest: dict[str, str],
+) -> list[dict]:
+    """Ask the LLM whether it needs any tool calls before running a stage.
+
+    Args:
+        stage:         Stage name, used for logging.
+        context:       Current agent context dict.
+        tool_manifest: Map of tool_name → one-line description available to this stage.
+
+    Returns:
+        List of {"name": str, "args": dict} tool call requests.
+        Returns [] if no tools are needed or if the LLM call fails.
+    """
+    if not tool_manifest:
+        return []
+
+    manifest_text = "\n".join(f"- {name}: {desc}" for name, desc in tool_manifest.items())
+    context_summary = str(context)[:800]  # keep prompt short
+
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a tool-selection assistant. Decide whether any tool calls "
+                "are needed before running the next stage. Only request tools if they "
+                "will meaningfully improve the output. Return an empty tool_calls list "
+                "if no tools are needed."
+            ),
+        },
+        {
+            "role": "user",
+            "content": (
+                f"Stage: {stage}\n\n"
+                f"Available tools:\n{manifest_text}\n\n"
+                f"Current context (truncated):\n{context_summary}"
+            ),
+        },
+    ]
+    try:
+        decision = llm_client.chat_structured(messages, _ToolDecision, model="gpt-4o-mini")
+        return [{"name": tc.name, "args": tc.args} for tc in decision.tool_calls]
+    except Exception as exc:
+        import sys
+        print(f"[Executor] _run_tool_decision({stage}) failed: {exc}", file=sys.stderr)
+        return []
+
+
 def execute(step: PlanStep, state: AgentState) -> dict:
     """Run a single PlanStep, handling retries and memory updates.
 
@@ -50,7 +126,7 @@ def execute(step: PlanStep, state: AgentState) -> dict:
         step.attempts += 1
         try:
             context = state.get_context()
-            if step.stage == "report":
+            if step.stage != "transcription" and state.memory.scratchpad:
                 context["scratchpad_summary"] = _format_scratchpad(state.memory.scratchpad)
             if "_validation_error" in state.task:
                 context["_validation_error"] = state.task.pop("_validation_error")

@@ -118,3 +118,146 @@ def test_execute_writes_execution_log():
     executor.execute(step, state)
     assert len(state.memory.execution_log) == 1
     assert state.memory.execution_log[0].event == "success"
+
+
+def test_execute_injects_scratchpad_for_non_transcription_stage():
+    """Stages after transcription should receive scratchpad_summary in context."""
+    from state import ScratchEntry
+
+    captured = {}
+
+    def capture_fn(context):
+        captured.update(context)
+        return {
+            "reasoning": "ok",
+            "confidence": "high",
+            "output": {"clinical_summary": "test summary"},
+        }
+
+    executor.STAGE_MAP = {"summarization": capture_fn}
+    step = _make_pending_step("summarization")
+    state = _make_state()
+    state.memory.scratchpad.append(
+        ScratchEntry(stage="transcription", reasoning="cleaned dialogue", confidence="high")
+    )
+    executor.execute(step, state)
+
+    assert "scratchpad_summary" in captured
+    assert "transcription" in captured["scratchpad_summary"]
+    assert "cleaned dialogue" in captured["scratchpad_summary"]
+
+
+def test_execute_does_not_inject_scratchpad_for_transcription_stage():
+    """The transcription stage runs first and should not receive a scratchpad."""
+    captured = {}
+
+    def capture_fn(context):
+        captured.update(context)
+        return {
+            "reasoning": "ok",
+            "confidence": "high",
+            "output": {"transcription_cleaned": "clean text"},
+        }
+
+    executor.STAGE_MAP = {"transcription": capture_fn}
+    step = _make_pending_step("transcription")
+    state = _make_state()
+    executor.execute(step, state)
+
+    assert "scratchpad_summary" not in captured
+
+
+def test_execute_does_not_inject_scratchpad_for_transcription_stage_even_when_populated():
+    """Transcription must not receive scratchpad even if prior entries exist."""
+    from state import ScratchEntry
+    captured = {}
+
+    def capture_fn(context):
+        captured.update(context)
+        return {
+            "reasoning": "ok",
+            "confidence": "high",
+            "output": {"transcription_cleaned": "clean text"},
+        }
+
+    executor.STAGE_MAP = {"transcription": capture_fn}
+    step = _make_pending_step("transcription")
+    state = _make_state()
+    state.memory.scratchpad.append(
+        ScratchEntry(stage="some_prior", reasoning="some reasoning", confidence="high")
+    )
+    executor.execute(step, state)
+
+    assert "scratchpad_summary" not in captured
+
+
+def test_execute_does_not_inject_empty_scratchpad():
+    """If the scratchpad is empty, scratchpad_summary should not be injected."""
+    captured = {}
+
+    def capture_fn(context):
+        captured.update(context)
+        return {
+            "reasoning": "ok",
+            "confidence": "high",
+            "output": {"clinical_summary": "summary"},
+        }
+
+    executor.STAGE_MAP = {"summarization": capture_fn}
+    step = _make_pending_step("summarization")
+    state = _make_state()
+    # scratchpad is empty — no entries
+    executor.execute(step, state)
+
+    assert "scratchpad_summary" not in captured
+
+
+def test_run_tool_decision_returns_empty_list_when_llm_requests_no_tools():
+    """If LLM decides no tools are needed, returns an empty list."""
+    from unittest.mock import MagicMock
+
+    class _NoTools:
+        tool_calls = []
+        reasoning = "no tools needed"
+
+    with patch("llm_client.chat_structured", return_value=_NoTools()):
+        result = executor._run_tool_decision(
+            stage="summarization",
+            context={"clinical_summary": "test"},
+            tool_manifest={"pubmed_search": "Search PubMed for a condition"},
+        )
+    assert result == []
+
+
+def test_run_tool_decision_returns_requested_tool_calls():
+    """If LLM requests tools, they are returned as a list of dicts."""
+    from unittest.mock import MagicMock
+
+    class _ToolCall:
+        name = "pubmed_search"
+        args = {"query": "unstable angina"}
+
+    class _WithTools:
+        tool_calls = [_ToolCall()]
+        reasoning = "need citation"
+
+    with patch("llm_client.chat_structured", return_value=_WithTools()):
+        result = executor._run_tool_decision(
+            stage="diagnosis",
+            context={"clinical_summary": "test"},
+            tool_manifest={"pubmed_search": "Search PubMed"},
+        )
+    assert len(result) == 1
+    assert result[0]["name"] == "pubmed_search"
+    assert result[0]["args"] == {"query": "unstable angina"}
+
+
+def test_run_tool_decision_returns_empty_list_on_llm_error():
+    """If the LLM call fails, returns empty list (no-op fallback)."""
+    with patch("llm_client.chat_structured", side_effect=Exception("API error")):
+        result = executor._run_tool_decision(
+            stage="diagnosis",
+            context={},
+            tool_manifest={"pubmed_search": "Search PubMed"},
+        )
+    assert result == []

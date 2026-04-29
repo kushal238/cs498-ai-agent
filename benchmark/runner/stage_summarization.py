@@ -17,7 +17,7 @@ def run(context: dict) -> dict:
 
     Args:
         context: Must contain 'transcription_cleaned', 'chart_notes', 'patient_history'.
-                 May contain '_validation_error'.
+                 May contain 'scratchpad_summary' and '_validation_error'.
 
     Returns:
         {"reasoning": str, "confidence": str, "output": {"clinical_summary": str}}
@@ -29,10 +29,17 @@ def run(context: dict) -> dict:
             "Please fix it."
         )
 
+    scratchpad_section = ""
+    if context.get("scratchpad_summary"):
+        scratchpad_section = (
+            f"\n\nPrior stage reasoning:\n{context['scratchpad_summary']}"
+        )
+
     content = (
         f"Cleaned Transcript:\n{context.get('transcription_cleaned', '')}\n\n"
         f"Chart Notes:\n{context.get('chart_notes', '')}\n\n"
         f"Patient History:\n{json.dumps(context.get('patient_history', {}), indent=2)}"
+        + scratchpad_section
         + validation_hint
     )
     messages = [
