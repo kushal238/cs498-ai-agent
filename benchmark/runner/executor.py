@@ -1,6 +1,7 @@
 """Executes a single PlanStep with retry logic, scratchpad writing, and fallback."""
 from __future__ import annotations
 
+import sys
 import time
 import traceback
 from typing import Callable
@@ -99,9 +100,13 @@ def _run_tool_decision(
     ]
     try:
         decision = llm_client.chat_structured(messages, _ToolDecision, model="gpt-4o-mini")
-        return [{"name": tc.name, "args": tc.args} for tc in decision.tool_calls]
+        valid_names = set(tool_manifest)
+        return [
+            {"name": tc.name, "args": tc.args}
+            for tc in decision.tool_calls
+            if tc.name in valid_names
+        ]
     except Exception as exc:
-        import sys
         print(f"[Executor] _run_tool_decision({stage}) failed: {exc}", file=sys.stderr)
         return []
 
@@ -163,7 +168,7 @@ def execute(step: PlanStep, state: AgentState) -> dict:
         except Exception as exc:
             last_error = str(exc)
             is_last = attempt >= step.max_attempts - 1
-            print(f"[Executor] {step.stage} attempt {step.attempts} failed: {last_error}", file=__import__('sys').stderr)
+            print(f"[Executor] {step.stage} attempt {step.attempts} failed: {last_error}", file=sys.stderr)
             state.memory.execution_log.append(LogEntry(
                 stage=step.stage,
                 event="error" if is_last else "retry",

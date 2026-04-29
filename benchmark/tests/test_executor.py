@@ -214,8 +214,6 @@ def test_execute_does_not_inject_empty_scratchpad():
 
 def test_run_tool_decision_returns_empty_list_when_llm_requests_no_tools():
     """If LLM decides no tools are needed, returns an empty list."""
-    from unittest.mock import MagicMock
-
     class _NoTools:
         tool_calls = []
         reasoning = "no tools needed"
@@ -231,8 +229,6 @@ def test_run_tool_decision_returns_empty_list_when_llm_requests_no_tools():
 
 def test_run_tool_decision_returns_requested_tool_calls():
     """If LLM requests tools, they are returned as a list of dicts."""
-    from unittest.mock import MagicMock
-
     class _ToolCall:
         name = "pubmed_search"
         args = {"query": "unstable angina"}
