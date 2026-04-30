@@ -42,5 +42,12 @@
     "assessment": "48-year-old with MODY6 (NEUROD1 mutation) and prior type 2 diabetes phenotype. Dilated cardiomyopathy with pacemaker. Glycaemic control achieved with basal insulin, gliclazide, and metformin after trial of sulphonylurea monotherapy failed. No autoimmune diabetes. No diabetic complications. Quality of life improved on current regimen.",
     "plan": "Continue insulin glargine, metformin, and gliclazide; monitor for hypoglycaemia. Regular HbA1c and capillary glucose review. Maintain cardiovascular protection (metformin). Family counselling for autosomal dominant MODY; consider genetic testing for at-risk relatives. Follow up for glycaemic control and complications screening."
   },
-  "drug_interactions": []
+  "drug_interactions": [
+    {
+      "drug_a": "metformin",
+      "drug_b": "insulin glargine subq",
+      "severity": "moderate",
+      "recommendation": "metformin oral , insulin glargine subq . Either increases effects of the other by pharmacodynamic synergism. Antidiabetic agents are often used in combination; dosage adjustments may be required when initiating or discontinuing antidiabetic agents"
+    }
+  ]
 }
