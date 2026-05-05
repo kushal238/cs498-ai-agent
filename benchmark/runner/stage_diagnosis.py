@@ -2,6 +2,7 @@
 """Stage 3: Generate a PubMed-backed differential diagnosis."""
 from __future__ import annotations
 
+import json
 import os
 import sys
 from pathlib import Path
@@ -31,7 +32,7 @@ def run(context: dict) -> dict:
 
     Args:
         context: Must contain 'clinical_summary' and 'patient_history'.
-                 May contain '_validation_error'.
+                 May contain 'scratchpad_summary' and '_validation_error'.
 
     Returns:
         {"reasoning": str, "confidence": str,
@@ -44,9 +45,16 @@ def run(context: dict) -> dict:
             "Please fix it."
         )
 
+    scratchpad_section = ""
+    if context.get("scratchpad_summary"):
+        scratchpad_section = (
+            f"\n\nPrior stage reasoning:\n{context['scratchpad_summary']}"
+        )
+
     content = (
         f"Clinical Summary:\n{context.get('clinical_summary', '')}\n\n"
-        f"Patient History:\n{context.get('patient_history', '')}"
+        f"Patient History:\n{json.dumps(context.get('patient_history', {}), indent=2)}"
+        + scratchpad_section
         + validation_hint
     )
     messages = [
