@@ -53,6 +53,7 @@ from shared.scoring.concept_f1 import (                          # noqa: E402
     score_drug_interactions,
 )
 from shared.scoring.ndcg import score_differential_ndcg          # noqa: E402
+from shared.scoring.bertscore import score_bertscore             # noqa: E402
 
 
 # ---------------------------------------------------------------------------
@@ -162,19 +163,21 @@ def score_case(predicted: dict, ground_truth: dict) -> dict[str, dict]:
     """Score all pipeline stages for one case against ground truth."""
     scores: dict[str, dict] = {}
 
-    # Stage 1 — ROUGE on cleaned transcript
-    scores["transcription_cleanup"] = score_stage_text(
-        "transcription_cleaned",
-        hypothesis=predicted.get("transcription_cleaned") or "",
-        reference=ground_truth.get("transcription_cleaned") or "",
-    )
+    # Stage 1 — ROUGE + BERTScore on cleaned transcript
+    s1_hyp = predicted.get("transcription_cleaned") or ""
+    s1_ref = ground_truth.get("transcription_cleaned") or ""
+    scores["transcription_cleanup"] = {
+        **score_stage_text("transcription_cleaned", hypothesis=s1_hyp, reference=s1_ref),
+        **score_bertscore(s1_hyp, s1_ref),
+    }
 
-    # Stage 2 — ROUGE on clinical summary
-    scores["clinical_summarization"] = score_stage_text(
-        "clinical_summary",
-        hypothesis=predicted.get("clinical_summary") or "",
-        reference=ground_truth.get("clinical_summary") or "",
-    )
+    # Stage 2 — ROUGE + BERTScore on clinical summary
+    s2_hyp = predicted.get("clinical_summary") or ""
+    s2_ref = ground_truth.get("clinical_summary") or ""
+    scores["clinical_summarization"] = {
+        **score_stage_text("clinical_summary", hypothesis=s2_hyp, reference=s2_ref),
+        **score_bertscore(s2_hyp, s2_ref),
+    }
 
     # Stage 3 — Concept F1 + nDCG on differential diagnosis
     pred_dx = predicted.get("differential_diagnosis", [])
@@ -196,17 +199,17 @@ def score_case(predicted: dict, ground_truth: dict) -> dict[str, dict]:
         ground_truth.get("drug_interactions", []),
     )
 
-    # Stage 6 — ROUGE-L per SOAP section
+    # Stage 6 — ROUGE-L + BERTScore F1 per SOAP section
     pred_report = predicted.get("final_report") or {}
     gt_report   = ground_truth.get("final_report") or {}
-    soap_scores = {}
+    soap_scores: dict[str, float] = {}
     for section in ("subjective", "objective", "assessment", "plan"):
-        s = score_stage_text(
-            section,
-            hypothesis=pred_report.get(section) or "",
-            reference=gt_report.get(section) or "",
-        )
-        soap_scores[f"{section}_rougeL"] = s.get("rougeL", 0.0)
+        hyp = pred_report.get(section) or ""
+        ref = gt_report.get(section) or ""
+        rouge = score_stage_text(section, hypothesis=hyp, reference=ref)
+        bert = score_bertscore(hyp, ref)
+        soap_scores[f"{section}_rougeL"] = rouge.get("rougeL", 0.0)
+        soap_scores[f"{section}_bertscore_f1"] = bert.get("bertscore_f1", 0.0)
     scores["final_report_generation"] = soap_scores
 
     return scores
@@ -359,6 +362,8 @@ def main() -> None:
                         help="Directory to write CSV results (default: benchmark/results/)")
     parser.add_argument("--save-predictions", action="store_true",
                         help="Save each agent's raw JSON output to output-dir/predictions/")
+    parser.add_argument("--run-tag", type=str, default="",
+                        help="Optional system tag prepended to run_id (e.g. agent, zs, nt)")
     args = parser.parse_args()
 
     if args.build:
@@ -372,7 +377,8 @@ def main() -> None:
     print(f"[Harness] Found {len(cases)} case(s): {[c.name for c in cases]}")
     print(f"[Harness] Trials per case: {args.trials}\n")
 
-    run_id = f"run_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    tag = f"{args.run_tag}_" if args.run_tag else ""
+    run_id = f"run_{tag}{datetime.now().strftime('%Y%m%d_%H%M%S')}"
     all_trial_scores: dict[str, list[dict]] = {}
 
     for case_dir in cases:
