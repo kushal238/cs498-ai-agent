@@ -1,0 +1,70 @@
+{
+  "case_id": "case_06",
+  "transcription_cleaned": "Doctor: Good morning, how can I help you today?\n\nPatient: Good morning, I have been having some increasing shortness of breath, dizziness, and weakness lately.\n\nDoctor: I see. Can you tell me a little bit about your medical history?\n\nPatient: Sure, I am an African American male and I have a history of non-ischemic cardiomyopathy. I underwent orthotopic heart transplantation 5 years ago.\n\nDoctor: Okay, that's good to know. And what happened before you started experiencing these symptoms?\n\nPatient: Six months ago, I was diagnosed with cryptococcal meningitis.\n\nDoctor: I see. What kind of treatment did you receive for that?\n\nPatient: I was given amphotericin B and flucytosine initially, and then I was put on chronic suppressive fluconazole therapy.\n\nDoctor: Okay, and did you have any changes to your immunosuppression as a result of the infection?\n\nPatient: Yes, my mycophenolate mofetil dose was reduced from 750 mg BID to 500 mg BID, and my cyclosporine dose from 125 mg BID to 75 mg BID.\n\nDoctor: I see. And what was your cyclosporine level on admission and discharge?\n\nPatient: On admission, it was 90 ng/mL, and on discharge, it was 142 ng/mL.\n\nDoctor: Okay, and did you have any other symptoms before you presented with shortness of breath, dizziness, and weakness?\n\nPatient: Five months ago, I started to have bilateral hand numbness and tingling, and two weeks ago, I developed imbalance.\n\nDoctor: I see. During your evaluation, were you found to be in atrial flutter with rapid ventricular response?\n\nPatient: Yes, that's correct.\n\nDoctor: And was that rate controlled with diltiazem?\n\nPatient: Yes, it was.\n\nDoctor: And what did the echocardiogram show?\n\nPatient: It showed normal left and right ventricular size and systolic function, with normal diastolic function.\n\nDoctor: Okay, and while you were in the hospital, did you develop any other symptoms?\n\nPatient: Yes, I developed progressive dysphagia, gait instability, and profound weakness of my bilateral lower extremities.\n\nDoctor: I see. And were the head CT and brain MRI unremarkable?\n\nPatient: Yes, they were.\n\nDoctor: And what did the lumbar puncture reveal?\n\nPatient: It showed clear, colorless fluid with an elevated protein level of 147 mg/dL, a normal glucose level of 67 mg/dL, and 5 nucleated cells/mL, of which 85% were lymphocytes.\n\nDoctor: I see. And what did the nerve conduction studies and electromyogram show?\n\nPatient: They showed conduction block and prolonged distal latencies, which was suggestive of IDP.\n\nDoctor: And did you have a positive IgM antibody to Trisulfated Heparan Disaccharide (TS-HDS)?\n\nPatient: Yes, I did.\n\nDoctor: Okay, so as treatment for IDP, you underwent four sessions of plasmapheresis and started on high-dose oral dexamethasone, correct?\n\nPatient: Yes, that's correct.\n\nDoctor: And did you have significant improvement in your neurologic symptoms?\n\nPatient: Yes, I did.\n\nDoctor: Okay, that's great to hear. You were discharged one week later to a physical, correct?\n\nPatient: Yes, that's correct.\n\nDoctor: Okay, I would like to see you back in two weeks for a follow-up appointment. We will monitor your progress and make any necessary adjustments to your treatment plan.\n\nPatient: Okay, thank you.",
+  "clinical_summary": "A 58-year-old African American male with a history of non-ischemic cardiomyopathy and orthotopic heart transplantation presented with worsening dyspnea, dizziness, and generalized weakness. He was previously treated for cryptococcal meningitis and had reduced immunosuppression. Recent symptoms included bilateral hand paresthesias, imbalance, and profound lower extremity weakness, with atrial flutter managed by diltiazem. Diagnostic workup revealed demyelinating polyneuropathy, treated with plasmapheresis and dexamethasone, and subsequent readmission for antibody-mediated cardiac allograft rejection, treated with plasmapheresis and IVIG.",
+  "differential_diagnosis": [
+    {
+      "condition": "Chronic Inflammatory Demyelinating Polyneuropathy (CIDP)",
+      "pmid": null,
+      "rationale": "The patient's symptoms of bilateral hand paresthesias, imbalance, and profound lower extremity weakness, along with the finding of demyelinating polyneuropathy, are consistent with CIDP, especially given the response to plasmapheresis and dexamethasone."
+    },
+    {
+      "condition": "Antibody-Mediated Rejection (AMR) of Heart Transplant",
+      "pmid": null,
+      "rationale": "The patient's history of heart transplantation and recent treatment for antibody-mediated cardiac allograft rejection, along with symptoms of dyspnea and dizziness, suggest ongoing or recurrent AMR."
+    },
+    {
+      "condition": "Cryptococcal Meningitis Relapse",
+      "pmid": null,
+      "rationale": "Given the patient's history of cryptococcal meningitis and reduced immunosuppression, the neurological symptoms such as dizziness and imbalance could indicate a relapse or reactivation of the infection."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "fluconazole",
+      "rxnorm_id": null,
+      "ingredient": "fluconazole"
+    },
+    {
+      "original": "cyclosporine",
+      "rxnorm_id": null,
+      "ingredient": "cyclosporine"
+    },
+    {
+      "original": "diltiazem",
+      "rxnorm_id": null,
+      "ingredient": "diltiazem"
+    },
+    {
+      "original": "dexamethasone",
+      "rxnorm_id": null,
+      "ingredient": "dexamethasone"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "fluconazole",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "recommendation": "Monitor cyclosporine levels and adjust dose as necessary due to increased risk of nephrotoxicity."
+    },
+    {
+      "drug_a": "diltiazem",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "recommendation": "Monitor cyclosporine levels and adjust dose as necessary due to increased cyclosporine levels."
+    },
+    {
+      "drug_a": "dexamethasone",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "recommendation": "Monitor for reduced efficacy of cyclosporine due to increased metabolism by dexamethasone."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, a 58-year-old African American male, presented with complaints of increasing shortness of breath, dizziness, and generalized weakness. He has a significant medical history of non-ischemic cardiomyopathy and underwent orthotopic heart transplantation five years ago. Six months prior, he was diagnosed with cryptococcal meningitis and treated with amphotericin B and flucytosine, followed by chronic suppressive fluconazole therapy. His immunosuppressive regimen was adjusted due to the infection, with reductions in mycophenolate mofetil and cyclosporine doses. The patient also reported bilateral hand numbness and tingling starting five months ago, and more recently, imbalance and profound weakness in his lower extremities. He experienced atrial flutter with rapid ventricular response, which was managed with diltiazem. During hospitalization, he developed progressive dysphagia and gait instability.",
+    "objective": "On examination, the patient was found to have atrial flutter with a rapid ventricular response, which was controlled with diltiazem. An echocardiogram revealed normal left and right ventricular size and systolic function, with normal diastolic function. Neurological evaluation showed profound weakness in the bilateral lower extremities, and nerve conduction studies along with electromyography indicated conduction block and prolonged distal latencies, suggestive of demyelinating polyneuropathy. A lumbar puncture revealed clear, colorless cerebrospinal fluid with elevated protein levels, normal glucose, and a predominance of lymphocytes. Head CT and brain MRI were unremarkable. The patient tested positive for IgM antibody to Trisulfated Heparan Disaccharide (TS-HDS).",
+    "assessment": "The patient is diagnosed with Chronic Inflammatory Demyelinating Polyneuropathy (CIDP), as evidenced by his neurological symptoms and positive response to plasmapheresis and dexamethasone. Additionally, he has a history of antibody-mediated rejection (AMR) of his heart transplant, which was treated with plasmapheresis and IVIG. The differential diagnosis also considers the possibility of a relapse of cryptococcal meningitis, given his history and current neurological symptoms. Drug interactions between his current medications, including fluconazole, cyclosporine, diltiazem, and dexamethasone, require careful monitoring to prevent adverse effects and ensure therapeutic efficacy.",
+    "plan": "The patient will continue on high-dose oral dexamethasone for CIDP and will undergo regular follow-up to monitor his neurological status. Plasmapheresis sessions will be scheduled as needed based on symptom recurrence. For his heart transplant management, cyclosporine levels will be closely monitored and adjusted to maintain therapeutic levels, considering potential interactions with fluconazole and diltiazem. The patient will remain on chronic suppressive fluconazole therapy to prevent cryptococcal meningitis relapse. Regular cardiac evaluations will be conducted to monitor for signs of antibody-mediated rejection. The patient is advised to return for a follow-up appointment in two weeks to assess his progress and make any necessary adjustments to his treatment plan."
+  }
+}

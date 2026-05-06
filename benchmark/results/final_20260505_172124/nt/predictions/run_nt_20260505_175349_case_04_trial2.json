@@ -1,0 +1,41 @@
+{
+  "case_id": "case_04",
+  "transcription_cleaned": "Doctor: Hello, what brings you in today?  \nPatient: I lost vision in my right eye after sinus surgery yesterday.  \nDoctor: Did the vision loss happen immediately after the surgery?  \nPatient: Yes. Right after the operation, I had no light perception in that eye.  \nDoctor: Have you had sinus surgery before?  \nPatient: Yes, I had endoscopic sinus surgery about 15 years ago and did not have any vision problems then.  \nDoctor: Were any scans done at the outside clinic?  \nPatient: Yes, an orbital CT showed a small fracture in the medial wall on the right and a thick bony septum in the ethmoid area.  \nDoctor: Since admission, we started steroid pulse therapy because we are worried about a severe postoperative orbital or optic nerve injury.  \nPatient: Yes.  \nDoctor: What did the other tests show?  \nPatient: The visual evoked potential test showed no right optic nerve activity, and the MRI showed enhancement around the posterior optic nerve sheath with an abnormal focus near the medial rectus close to the orbital apex.  \nDoctor: Has your vision improved at all after treatment?  \nPatient: No, I still cannot perceive light in the right eye.",
+  "clinical_summary": "A 53-year-old female presented with acute complete vision loss in the right eye immediately following revision endoscopic sinus surgery. She has a history of chronic rhinosinusitis and prior sinus surgery without complications. Postoperative imaging revealed a small fracture in the right medial orbital wall and MRI showed enhancement around the posterior optic nerve sheath. Despite initiation of steroid pulse therapy for suspected optic nerve injury, there has been no improvement in vision.",
+  "differential_diagnosis": [
+    {
+      "condition": "Optic Nerve Injury",
+      "pmid": null,
+      "rationale": "The acute vision loss following sinus surgery, along with MRI findings of enhancement around the posterior optic nerve sheath, suggests direct or indirect trauma to the optic nerve."
+    },
+    {
+      "condition": "Orbital Hemorrhage",
+      "pmid": null,
+      "rationale": "The presence of a fracture in the medial orbital wall could lead to orbital hemorrhage, which can compress the optic nerve and cause sudden vision loss."
+    },
+    {
+      "condition": "Ischemic Optic Neuropathy",
+      "pmid": null,
+      "rationale": "Surgical manipulation and possible compromise of blood supply during sinus surgery could result in ischemic optic neuropathy, leading to acute vision loss."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "intravenous methylprednisolone pulse therapy",
+      "rxnorm_id": null,
+      "ingredient": "methylprednisolone"
+    },
+    {
+      "original": "oral prednisolone for 10 days",
+      "rxnorm_id": null,
+      "ingredient": "prednisolone"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient, a 53-year-old female, presented with acute complete vision loss in her right eye immediately following a revision endoscopic sinus surgery performed the previous day. She reported that the vision loss occurred right after the operation, with no light perception in the affected eye. She has a history of chronic rhinosinusitis and underwent a similar sinus surgery approximately 15 years ago without any visual complications. The patient has no known allergies and has not experienced any improvement in her vision since the onset of symptoms, despite receiving treatment.",
+    "objective": "Upon examination, the patient exhibits no light perception in the right eye, consistent with her report of complete vision loss. Imaging studies, including an orbital CT, revealed a small fracture in the right medial orbital wall and a thick bony septum in the ethmoid region. An MRI showed enhancement around the posterior optic nerve sheath and an abnormal focus near the medial rectus muscle close to the orbital apex. Visual evoked potential testing indicated no activity in the right optic nerve, suggesting significant impairment or damage.",
+    "assessment": "The patient is experiencing acute monocular blindness in the right eye following sinus surgery, likely due to optic nerve injury. The differential diagnosis includes direct optic nerve trauma, orbital hemorrhage secondary to the medial orbital wall fracture, and ischemic optic neuropathy due to compromised blood supply during surgery. The MRI findings of enhancement around the optic nerve sheath and the absence of visual evoked potentials support the suspicion of optic nerve damage. Despite aggressive steroid therapy, there has been no improvement in vision, indicating a potentially severe and irreversible injury.",
+    "plan": "The immediate plan involves continuing to monitor the patient's condition closely, although the lack of response to steroid therapy suggests limited options for further recovery of vision. Consultation with an ophthalmologist and possibly a neuro-ophthalmologist is recommended for further evaluation and management. Consideration of surgical intervention to address the orbital fracture may be warranted if there is evidence of ongoing compression or other complications. The patient should be counseled on the prognosis and potential for permanent vision loss, and supportive measures, including visual rehabilitation services, should be discussed to assist with adaptation to vision impairment."
+  }
+}

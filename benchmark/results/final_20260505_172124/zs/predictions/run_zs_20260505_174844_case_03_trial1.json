@@ -1,0 +1,41 @@
+{
+  "case_id": "case_03",
+  "transcription_cleaned": "Doctor: Hi, I'm your doctor. Can you tell me about your symptoms?\nPatient: Yes, I had a bump on my hip and felt a lot of pain after I fell 11 months ago.\nDoctor: Hmm, I see. What did the emergency room diagnose you with?\nPatient: They said it was a hematoma around my hip.\nDoctor: I understand. And did your symptoms worsen over time?\nPatient: Yes, I had recurrent falls.\nDoctor: Okay. Did you have any radiographic imaging done?\nPatient: Yes, I had a CT scan without intravenous contrast done six weeks before I was diagnosed with cancer.\nDoctor: And what did the CT scan show?\nPatient: It confirmed that I didn't have a displaced fracture, but it indicated a tissue collection that was suspicious for a hematoma.\nDoctor: I see. And then, did you have an MRI done?\nPatient: Yes, I did. The MRI demonstrated a soft-tissue mass in my left hip that was suspicious for sarcoma.\nDoctor: Okay, got it. And then you had a consultation with an orthopedic oncologic specialist, right?\nPatient: Yes, I did. And I underwent a radical resection of the sarcoma the next day.\nDoctor: Okay. I have your pathology report here. It says that you were diagnosed with a high-grade undifferentiated pleomorphic sarcoma. The margins were negative and the closest evidence of cancer was 2 mm within surgical margins.\nPatient: Hmm.\nDoctor: And after the surgery, you had a chest CT that showed two tiny lung nodules with the larger nodule measuring 4 mm. This indicates a recommended follow-up of three to six months.\nPatient: Okay.\nDoctor: Also, there was a small hypodense lesion in your spleen that was inadequately visualized.\nPatient: Hmm.\nDoctor: The tumor stage was established to be Stage III measuring 13.5 cm at its greatest dimension. And the TNM staging was established to be pT2a, cN0, cM0 without evidence of lymph node involvement or distant metastases.\nPatient: Okay.\nDoctor: You had two follow-up appointments with the surgeon, who recommended a consult to medical and radiation oncology. And you had consultations at two other institutions including a sarcoma clinic.\nPatient: Yes, I did.\nDoctor: And they recommended adjuvant chemotherapy for you.\nPatient: Yes, they did.\nDoctor: Okay, I will schedule a follow-up appointment for you. It's important that you follow the recommendations of the medical and radiation oncologists.\nPatient: Yes, I will. Thank you, doctor.",
+  "clinical_summary": "A 67-year-old woman presented with a rapidly enlarging left hip mass following a fall 11 months ago, initially diagnosed as a hematoma. Imaging revealed a soft-tissue mass suspicious for sarcoma, confirmed as a high-grade undifferentiated pleomorphic sarcoma post-resection. The tumor was staged as pT2a, cN0, cM0 (Stage III). Post-surgery, she received adjuvant radiation and was recommended for chemotherapy due to new pulmonary nodules suggestive of metastasis.",
+  "differential_diagnosis": [
+    {
+      "condition": "High-grade undifferentiated pleomorphic sarcoma",
+      "pmid": null,
+      "rationale": "Confirmed by pathology after resection of the left hip mass."
+    },
+    {
+      "condition": "Metastatic disease",
+      "pmid": null,
+      "rationale": "New pulmonary nodules on follow-up imaging suggest possible metastasis."
+    },
+    {
+      "condition": "Chronic hematoma or seroma",
+      "pmid": null,
+      "rationale": "Large left hip fluid collection noted on surveillance imaging, differential includes seroma or chronic hematoma."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+      "rxnorm_id": null,
+      "ingredient": "oxycodone"
+    },
+    {
+      "original": "acetaminophen 500mg as needed for pain",
+      "rxnorm_id": null,
+      "ingredient": "acetaminophen"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient reports left hip pain and a history of a rapidly enlarging mass following a fall 11 months ago. She experienced recurrent falls and underwent imaging that led to a diagnosis of sarcoma. She has undergone surgery and adjuvant radiation therapy.",
+    "objective": "Physical examination reveals lymphedema of the left lower extremity and abdomen. Imaging shows new pulmonary nodules and a large left hip fluid collection. Pathology confirmed a high-grade undifferentiated pleomorphic sarcoma with negative margins.",
+    "assessment": "The patient has a history of high-grade undifferentiated pleomorphic sarcoma of the left hip, now with concerning pulmonary nodules suggestive of metastasis. She also presents with lymphedema and functional limitations.",
+    "plan": "Continue follow-up with oncology for management of potential metastasis. Schedule follow-up imaging to monitor pulmonary nodules. Manage pain with current medications and consider physical therapy for functional limitations. Follow recommendations for adjuvant chemotherapy."
+  }
+}

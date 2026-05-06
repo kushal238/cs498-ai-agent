@@ -1,0 +1,41 @@
+{
+  "case_id": "case_03",
+  "transcription_cleaned": "Doctor: Hi, I'm your doctor. Can you tell me about your symptoms?  \nPatient: Yes, I had a bump on my hip and felt a lot of pain after I fell 11 months ago.  \nDoctor: Hmm, I see. What did the emergency room diagnose you with?  \nPatient: They said it was a hematoma around my hip.  \nDoctor: I understand. And did your symptoms worsen over time?  \nPatient: Yes, I had recurrent falls.  \nDoctor: Okay. Did you have any radiographic imaging done?  \nPatient: Yes, I had a CT scan without intravenous contrast done six weeks before I was diagnosed with cancer.  \nDoctor: And what did the CT scan show?  \nPatient: It confirmed that I didn't have a displaced fracture, but it indicated a tissue collection that was suspicious for a hematoma.  \nDoctor: I see. And then, did you have an MRI done?  \nPatient: Yes, I did. The MRI demonstrated a soft-tissue mass in my left hip that was suspicious for sarcoma.  \nDoctor: Okay, got it. And then you had a consultation with an orthopedic oncologic specialist, right?  \nPatient: Yes, I did. And I underwent a radical resection of the sarcoma the next day.  \nDoctor: Okay. I have your pathology report here. It says that you were diagnosed with a high-grade undifferentiated pleomorphic sarcoma. The margins were negative and the closest evidence of cancer was 2 mm within surgical margins.  \nPatient: Hmm.  \nDoctor: And after the surgery, you had a chest CT that showed two tiny lung nodules with the larger nodule measuring 4 mm. This indicates a recommended follow-up of three to six months.  \nPatient: Okay.  \nDoctor: Also, there was a small hypodense lesion in your spleen that was inadequately visualized.  \nPatient: Hmm.  \nDoctor: The tumor stage was established to be Stage III measuring 13.5 cm at its greatest dimension. And the TNM staging was established to be pT2a, cN0, cM0 without evidence of lymph node involvement or distant metastases.  \nPatient: Okay.  \nDoctor: You had two follow-up appointments with the surgeon, who recommended a consult to medical and radiation oncology. And you had consultations at two other institutions including a sarcoma clinic.  \nPatient: Yes, I did.  \nDoctor: And they recommended adjuvant chemotherapy for you.  \nPatient: Yes, they did.  \nDoctor: Okay, I will schedule a follow-up appointment for you. It's important that you follow the recommendations of the medical and radiation oncologists.  \nPatient: Yes, I will. Thank you, doctor.",
+  "clinical_summary": "A 67-year-old woman presents with left hip pain and an enlarging mass following a fall 11 months ago, initially diagnosed as a hematoma. Imaging revealed a high-grade undifferentiated pleomorphic sarcoma, which was surgically resected with negative margins. Post-operative staging indicated Stage III disease with two small lung nodules and a splenic lesion; she has been recommended adjuvant chemotherapy and radiation. Current medications include Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed for pain management.",
+  "differential_diagnosis": [
+    {
+      "condition": "Metastatic high-grade undifferentiated pleomorphic sarcoma",
+      "pmid": null,
+      "rationale": "The presence of lung nodules and a splenic lesion in a patient with a history of high-grade undifferentiated pleomorphic sarcoma suggests possible metastatic spread of the primary tumor."
+    },
+    {
+      "condition": "Recurrent hematoma",
+      "pmid": null,
+      "rationale": "Given the history of a fall and initial diagnosis of a hematoma, recurrent trauma or bleeding could lead to a new or persistent hematoma, especially in the context of anticoagulation or coagulopathy."
+    },
+    {
+      "condition": "Secondary malignancy",
+      "pmid": null,
+      "rationale": "The patient's history of acromegaly and previous pituitary tumor resection raises the possibility of a secondary malignancy, which could explain the new lesions if they are not metastases from the known sarcoma."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+      "rxnorm_id": null,
+      "ingredient": "oxycodone, acetaminophen"
+    },
+    {
+      "original": "acetaminophen 500mg as needed for pain",
+      "rxnorm_id": null,
+      "ingredient": "acetaminophen"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient, a 67-year-old woman, reports experiencing significant left hip pain and an enlarging mass following a fall approximately 11 months ago. Initially, she was diagnosed with a hematoma at the emergency department. Over time, her symptoms worsened, and she experienced recurrent falls. She underwent a CT scan which showed a tissue collection suspicious for a hematoma, and later an MRI revealed a soft-tissue mass in her left hip, raising suspicion for sarcoma. She has a history of acromegaly, hypertension, and recurrent vertigo, but no known allergies. Her current medications include Percocet 10/325 mg twice daily and acetaminophen 500 mg as needed for pain management.",
+    "objective": "On examination, the patient presents with a history of a high-grade undifferentiated pleomorphic sarcoma of the left hip, which was surgically resected with negative margins. The tumor was staged as Stage III, measuring 13.5 cm at its greatest dimension. Post-operative imaging revealed two small lung nodules, the largest measuring 4 mm, and a small hypodense lesion in the spleen. The TNM staging was pT2a, cN0, cM0, indicating no lymph node involvement or distant metastases. She has undergone adjuvant radiation therapy and is currently under surveillance for potential metastasis, with new pulmonary nodules noted on recent imaging.",
+    "assessment": "The primary concern is the management of a high-grade undifferentiated pleomorphic sarcoma of the left hip, with potential metastatic spread indicated by lung nodules and a splenic lesion. The differential diagnosis includes metastatic sarcoma, recurrent hematoma, and the possibility of a secondary malignancy given her history of acromegaly and previous pituitary tumor resection. The presence of new pulmonary nodules is concerning for metastasis, and the patient is experiencing functional limitations due to pain and lymphedema.",
+    "plan": "The patient will continue with adjuvant chemotherapy as recommended by oncology specialists. A follow-up appointment will be scheduled to monitor her response to treatment and assess the status of the lung nodules and splenic lesion. Pain management will continue with Percocet and acetaminophen as needed. She will also be referred to physical therapy to address functional limitations and improve mobility. Regular surveillance imaging will be conducted to monitor for any progression of disease or new metastases. Coordination with medical and radiation oncology will be maintained to ensure comprehensive care."
+  }
+}

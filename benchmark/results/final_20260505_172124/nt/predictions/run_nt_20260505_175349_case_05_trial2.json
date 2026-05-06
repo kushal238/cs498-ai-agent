@@ -1,0 +1,74 @@
+{
+  "case_id": "case_05",
+  "transcription_cleaned": "Doctor: Hi, how are you feeling today?  \nPatient: I've been feeling short of breath for a week now, and I have a low-grade fever and some chest pain on the right side.  \nDoctor: Okay, let me take a look at your medical history. You've been treated for bronchitis with azithromycin, but it didn't seem to help?  \nPatient: Yes, that's right.  \nDoctor: And you have a positive diagnosis of rheumatoid arthritis, which you've been managing well with hydroxychloroquine and low-dose prednisone.  \nPatient: Yes, that's correct.  \nDoctor: And you have some other medical problems, including osteopenia, reflux disease, and hypercholesterolemia.  \nPatient: Yes, I take risedronate, calcium and vitamin D supplements, omeprazole, and atorvastatin for those.  \nDoctor: Okay, let's take a look at your examination. Your vital signs are stable, and you don't have a fever right now. Your oxygen saturation is 95% on room air.  \nPatient: Yes.  \nDoctor: You look tired, but not in any distress. When I listened to your lungs, I heard wheezes bilaterally and a few crackles at the right base.  \nPatient: Hmm, okay.  \nDoctor: Your examination is otherwise unremarkable. You don't have any synovitis in your joints, and your range of motion is normal in all joints with no muscle wasting.  \nPatient: That's good to hear.  \nDoctor: I noticed some old hypopigmented macules over your neck and face, but no skin nodules.  \nPatient: Yes, I've had those for a while.  \nDoctor: Your white count was 7.8 with neutrophils of 84%. The ESR by Westergren's method was 46 mm at the end of one hour. The comprehensive metabolic profile was normal, and the urine analysis didn't show any sediment.  \nPatient: Okay.  \nDoctor: The chest radiograph showed streaky infiltrates at the right base. A high-resolution CT scan showed three lung nodules.  \nPatient: Oh no.  \nDoctor: An FDG PET scan was done, which showed avid uptake in all the nodules with an SUV value of 8.  \nPatient: What does that mean?  \nDoctor: A CT-guided lung biopsy of the right lung nodule was performed, and the lung biopsy showed fibrosis with acute and chronic inflammation and necrotizing vasculitis.  \nPatient: Is that serious?  \nDoctor: The biopsy specimen was examined for aerobic and anaerobic bacteria, acid-fast bacilli, and fungus, but it was negative on smear and culture. We also did a complete vasculitis panel, which included antinuclear antibodies, anti-dsDNA, anti-Smith, and anti-SSA.  \nPatient: What happens next?  \nDoctor: We need to monitor the situation and see if there are any changes. I'll schedule follow-up appointments with you to check on your progress.",
+  "clinical_summary": "A 60-year-old woman with rheumatoid arthritis on hydroxychloroquine and low-dose prednisone presented with one week of dyspnea, low-grade fever, and right-sided pleuritic chest pain after failing azithromycin for presumed bronchitis. Examination revealed bilateral wheezes and right basilar crackles, with imaging showing lung nodules and PET scan indicating avid uptake. A biopsy confirmed fibrosis with necrotizing vasculitis, and serologies were consistent with granulomatosis with polyangiitis. Methotrexate was initiated alongside continued low-dose prednisone, resulting in marked symptom improvement and radiographic resolution within three months.",
+  "differential_diagnosis": [
+    {
+      "condition": "Granulomatosis with Polyangiitis (GPA)",
+      "pmid": null,
+      "rationale": "The biopsy findings of fibrosis with necrotizing vasculitis and serologies consistent with GPA, along with the patient's known history of limited GPA, strongly suggest this diagnosis."
+    },
+    {
+      "condition": "Rheumatoid Arthritis-associated Lung Disease",
+      "pmid": null,
+      "rationale": "The patient's history of rheumatoid arthritis and lung involvement could indicate rheumatoid arthritis-associated lung disease, although the biopsy findings are more specific for GPA."
+    },
+    {
+      "condition": "Infectious Pneumonia",
+      "pmid": null,
+      "rationale": "The initial treatment with azithromycin for presumed bronchitis and the presence of fever and respiratory symptoms could suggest an infectious process, but the lack of response to antibiotics and biopsy findings make this less likely."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "azithromycin",
+      "rxnorm_id": null,
+      "ingredient": "azithromycin"
+    },
+    {
+      "original": "hydroxychloroquine",
+      "rxnorm_id": null,
+      "ingredient": "hydroxychloroquine"
+    },
+    {
+      "original": "prednisone",
+      "rxnorm_id": null,
+      "ingredient": "prednisone"
+    },
+    {
+      "original": "risedronate",
+      "rxnorm_id": null,
+      "ingredient": "risedronate"
+    },
+    {
+      "original": "omeprazole",
+      "rxnorm_id": null,
+      "ingredient": "omeprazole"
+    },
+    {
+      "original": "atorvastatin",
+      "rxnorm_id": null,
+      "ingredient": "atorvastatin"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "azithromycin",
+      "drug_b": "hydroxychloroquine",
+      "severity": "major",
+      "recommendation": "Avoid combination due to increased risk of QT prolongation and potential for serious cardiac arrhythmias."
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "azithromycin",
+      "severity": "moderate",
+      "recommendation": "Monitor for increased risk of myopathy and rhabdomyolysis; consider dose adjustment of atorvastatin."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, a 60-year-old woman, reports experiencing shortness of breath for the past week, accompanied by a low-grade fever and right-sided pleuritic chest pain. She has a history of rheumatoid arthritis, which she manages with hydroxychloroquine and low-dose prednisone. Despite previous treatment with azithromycin for presumed bronchitis, her symptoms have not improved. She also has a medical history of osteopenia, gastroesophageal reflux disease, and hypercholesterolemia, for which she takes risedronate, calcium and vitamin D supplements, omeprazole, and atorvastatin. The patient denies any new joint pain or swelling and has no known drug allergies.",
+    "objective": "On examination, the patient appears tired but is not in acute distress. Her vital signs are stable, with an oxygen saturation of 95% on room air. Lung auscultation reveals bilateral wheezes and crackles at the right base. There is no evidence of synovitis or muscle wasting, and her joint range of motion is normal. Skin examination shows old hypopigmented macules on the neck and face, with no nodules. Laboratory tests reveal a white blood cell count of 7.8 with 84% neutrophils and an elevated ESR of 46 mm/hr. Imaging studies, including a chest radiograph and high-resolution CT scan, show streaky infiltrates and three lung nodules with avid uptake on PET scan. A CT-guided biopsy of a lung nodule shows fibrosis with necrotizing vasculitis, and cultures for bacteria, mycobacteria, and fungi are negative.",
+    "assessment": "The clinical presentation and diagnostic findings are consistent with granulomatosis with polyangiitis (GPA), formerly known as Wegener's granulomatosis. This is supported by the biopsy results showing fibrosis with necrotizing vasculitis and the serological findings of cANCA and anti-proteinase 3 antibodies. The patient's history of rheumatoid arthritis and the presence of lung nodules initially raised the possibility of rheumatoid arthritis-associated lung disease, but the specific biopsy findings and serologies favor a diagnosis of GPA. Infectious pneumonia was considered but is less likely given the lack of response to antibiotics and negative cultures.",
+    "plan": "The treatment plan includes initiating methotrexate to manage the granulomatosis with polyangiitis, while continuing the current low-dose prednisone regimen. The patient will be closely monitored for symptom improvement and potential side effects of methotrexate. Regular follow-up appointments will be scheduled to assess clinical progress and repeat imaging studies to evaluate the resolution of lung nodules. The patient will be advised to avoid the combination of azithromycin and hydroxychloroquine due to the risk of QT prolongation. Additionally, the interaction between atorvastatin and azithromycin will be monitored to prevent myopathy. The patient will be educated on recognizing signs of potential complications and instructed to report any new or worsening symptoms immediately."
+  }
+}

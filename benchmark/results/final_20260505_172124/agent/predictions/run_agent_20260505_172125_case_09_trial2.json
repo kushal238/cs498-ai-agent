@@ -1,0 +1,98 @@
+{
+  "case_id": "case_09",
+  "transcription_cleaned": "Doctor: Hi, I am Dr. [Name]. How are you feeling today?\nPatient: Not so good. I have chest pain and shortness of breath.\nDoctor: I see. Can you tell me a bit about your history?\nPatient: I was diagnosed with lupus when I was 12 years old, and I have severe thrombocytopaenic purpura.\nDoctor: Hmm, okay. And how long have you been experiencing these symptoms?\nPatient: Just today, when I was visiting my baby in the Neonatal Intensive Care Unit.\nDoctor: I see. And what happened during the examination?\nPatient: They found that I had tachycardia, but my blood pressure and oxygen saturation were normal.\nDoctor: Okay. And what medications were you taking at the time?\nPatient: I was taking enoxaparin and aspirin, and I was going to transition to warfarin in 2 weeks.\nDoctor: Okay. And what was your immunosuppression regime like?\nPatient: I was taking hydroxychloroquine, azathioprine, and prednisone, and some other medications like calcitriol and calcium carbonate.\nDoctor: I see. And what did the Electrocardiogram show?\nPatient: It showed sinus tachycardia but no ischaemic changes.\nDoctor: Okay. And the Chest X-ray?\nPatient: It showed cardiomegaly with increased interstitial markings.\nDoctor: I see. And what happened after that?\nPatient: I deteriorated rapidly over the next hour with climbing oxygen requirements and hypotension.\nDoctor: Okay. And were you investigated for pulmonary embolism?\nPatient: Yes, I was. And I was treated with morphine and enoxaparin.\nDoctor: Okay. And then you had a CT pulmonary angiography, right?\nPatient: Yes, I did.\nDoctor: And what did that show?\nPatient: It showed pulmonary oedema but no PE.\nDoctor: Okay. And then you were admitted to the cardiovascular intensive care, right?\nPatient: Yes, I was.\nDoctor: And were you intubated for respiratory distress?\nPatient: Yes, I was.\nDoctor: And did you have a transthoracic echocardiogram?\nPatient: No, I didn't. But I had a transoesophageal echocardiogram which demonstrated the posterolateral papillary muscle rupture and flail anterior leaflet.\nDoctor: I see. And then you proceeded to emergency mitral valve replacement, right?\nPatient: Yes, I did.\nDoctor: And what happened during the operation?\nPatient: I had a pulseless electrical activity arrest and was resuscitated with adrenaline and CPR.\nDoctor: I see. And what was the result of the intervention?\nPatient: The posterolateral papillary muscle was pale and sheared off the ventricular wall, and they replaced my mitral valve with a mechanical valve.\nDoctor: And after the procedure?\nPatient: They had to put me on ECMO because of severe pulmonary oedema and heart failure.\nDoctor: Okay. And the histology of the valve?\nPatient: It showed deposits consistent with Libman-Sacks endocarditis, and the papillary muscle showed infarction several days old.\nDoctor: I see. And after ECMO was removed?\nPatient: I had some abnormal movements, so they did an MRI which showed hypoxic brain injury, but my neurological function recovered to normal before discharge.\nDoctor: And your medications at discharge?\nPatient: They added metoprolol and cilazapril, and transitioned me from heparin to warfarin with aspirin.",
+  "clinical_summary": "A 29-year-old woman with SLE, severe ITP, and antiphospholipid syndrome presented with acute chest pain and dyspnea postpartum. She experienced rapid deterioration with pulmonary edema and hypotension, leading to intubation and ECMO support. A transoesophageal echocardiogram revealed papillary muscle rupture, necessitating emergency mitral valve replacement. Postoperatively, she developed hypoxic brain injury but recovered neurologically and was discharged on metoprolol, cilazapril, warfarin, and aspirin.",
+  "differential_diagnosis": [
+    {
+      "condition": "Libman-Sacks endocarditis",
+      "pmid": "42084888",
+      "rationale": "The histological confirmation of Libman-Sacks endocarditis aligns with her SLE diagnosis and could explain the papillary muscle rupture leading to acute mitral valve failure."
+    },
+    {
+      "condition": "Acute mitral valve rupture secondary to papillary muscle rupture",
+      "pmid": "41366468",
+      "rationale": "The transoesophageal echocardiogram revealed papillary muscle rupture, a known complication of Libman-Sacks endocarditis, leading to acute mitral valve insufficiency and cardiogenic shock."
+    },
+    {
+      "condition": "Antiphospholipid syndrome-related thromboembolic event",
+      "pmid": "33957795",
+      "rationale": "Her history of antiphospholipid syndrome and postpartum state increases the risk of thromboembolic events, which could contribute to acute cardiac complications."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "enoxaparin 100mg daily",
+      "rxnorm_id": "67108",
+      "ingredient": "enoxaparin"
+    },
+    {
+      "original": "aspirin 100mg daily",
+      "rxnorm_id": "1191",
+      "ingredient": "aspirin"
+    },
+    {
+      "original": "hydroxychloroquine 400mg daily",
+      "rxnorm_id": "5521",
+      "ingredient": "hydroxychloroquine"
+    },
+    {
+      "original": "azathioprine 150mg daily",
+      "rxnorm_id": "1256",
+      "ingredient": "azathioprine"
+    },
+    {
+      "original": "prednisone 5mg daily",
+      "rxnorm_id": "8640",
+      "ingredient": "prednisone"
+    },
+    {
+      "original": "calcitriol 0.25 mcg daily",
+      "rxnorm_id": "1894",
+      "ingredient": "calcitriol"
+    },
+    {
+      "original": "calcium carbonate 1.25g daily",
+      "rxnorm_id": "1897",
+      "ingredient": "calcium carbonate"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient, a 29-year-old woman with a history of systemic lupus erythematosus (SLE) and severe idiopathic thrombocytopenic purpura (ITP), presented with sudden onset chest pain and shortness of breath while visiting her baby in the Neonatal Intensive Care Unit. She reported that these symptoms began acutely on the day of presentation. Her medical history is significant for SLE diagnosed at age 12, severe ITP, triple-positive antiphospholipid syndrome, Class IV lupus nephritis, and a history of spontaneous deep vein thrombosis. She was on a regimen of enoxaparin, aspirin, hydroxychloroquine, azathioprine, prednisone, calcitriol, and calcium carbonate. She was scheduled to transition from enoxaparin to warfarin in two weeks.",
+    "objective": "On examination, the patient was found to have tachycardia, but her blood pressure and oxygen saturation were initially normal. An electrocardiogram (ECG) showed sinus tachycardia without ischemic changes. A chest X-ray revealed cardiomegaly with increased interstitial markings. Despite initial stability, she rapidly deteriorated with increasing oxygen requirements and hypotension, necessitating intubation and ECMO support. A CT pulmonary angiography showed pulmonary edema but no pulmonary embolism. A transoesophageal echocardiogram revealed a posterolateral papillary muscle rupture with a flail anterior mitral leaflet, leading to torrential mitral regurgitation. During emergency mitral valve replacement surgery, she experienced a pulseless electrical activity arrest but was successfully resuscitated. Histology of the valve showed findings consistent with Libman-Sacks endocarditis, and the papillary muscle showed infarction several days old.",
+    "assessment": "The patient presented with acute chest pain and dyspnea postpartum, which rapidly progressed to severe cardiogenic shock due to papillary muscle rupture and acute mitral valve insufficiency. This was likely precipitated by Libman-Sacks endocarditis, a known complication of systemic lupus erythematosus. The patient's antiphospholipid syndrome may have contributed to thromboembolic events, exacerbating her cardiac condition. The histological findings confirmed the presence of Libman-Sacks endocarditis, and the papillary muscle infarction suggests a chronic process leading to acute decompensation. Her neurological recovery post-ECMO weaning was favorable, indicating no lasting deficits from the hypoxic brain injury.",
+    "plan": "The patient underwent successful emergency mitral valve replacement with a mechanical valve and was placed on ECMO for severe pulmonary edema and heart failure. Postoperatively, she was managed with metoprolol and cilazapril to support cardiac function, and transitioned from heparin to warfarin with continued aspirin therapy to manage her antiphospholipid syndrome. Her immunosuppressive regimen was maintained to control her SLE. She will require close follow-up with cardiology to monitor her cardiac function and anticoagulation status, as well as rheumatology to manage her lupus and associated conditions. Neurological follow-up is also recommended to ensure continued recovery from the hypoxic brain injury. Patient education on recognizing symptoms of cardiac distress and the importance of medication adherence will be crucial in her ongoing care."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}

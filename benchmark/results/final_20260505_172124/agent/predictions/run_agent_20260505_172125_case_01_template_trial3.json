@@ -1,0 +1,90 @@
+{
+  "case_id": "case_01_template",
+  "transcription_cleaned": "Doctor: Hello, how can I help you today?\nPatient: I have complaints of persistent right cheek pain.\nDoctor: Okay, let's take a look at your history. Was there anything unusual about your medical history?\nPatient: I have allergic rhinitis and chronic sinusitis that had been treated until 3 months previously by an otolaryngologist.\nDoctor: I see. And what about your family history? Anything to note?\nPatient: Yes, my father had severe hearing impairment.\nDoctor: Thank you for letting me know. When did your symptoms start?\nPatient: I had high fever, sore throat, and comorbid right cheek pain and mild swelling 6 weeks previously.\nDoctor: Did you visit a dental clinic at any point?\nPatient: Yes, I had a checkup at a dental clinic performed on the day before my initial visit.\nDoctor: Were there any abnormal findings?\nPatient: No, there were no abnormal findings.\nDoctor: After your initial visit, what were you diagnosed with?\nPatient: I was diagnosed with streptococcal infection.\nDoctor: I see. And what about facial cellulitis?\nPatient: Facial cellulitis was also suspected and treatment with amoxicillin helped improve symptoms.\nDoctor: Did the facial pain come back at any point?\nPatient: Yes, it recurred within 4 weeks of the initial visit.\nDoctor: And what did you do at that point?\nPatient: I visited another department and they suspected recurrence of cellulitis with sinusitis and initiated cefditoren pivoxil treatment.\nDoctor: And did that help with the pain?\nPatient: No, the pain persisted so I came back for further treatment.\nDoctor: I see. Based on your physical examination and laboratory tests, you have been clinically diagnosed with TN.\nPatient: TN?\nDoctor: Yes, trigeminal neuralgia. We will prescribe you oral clarithromycin to help with the sinusitis that might have caused or exacerbated TN.\nPatient: Okay, thank you.\nDoctor: You're welcome. If the clarithromycin doesn't work, we may need to consider other treatment options.",
+  "clinical_summary": "An 11-year-old male presents with persistent right cheek pain for 6 weeks, initially treated as streptococcal pharyngitis and suspected facial cellulitis with antibiotics. Despite treatment, pain persisted, leading to a diagnosis of trigeminal neuralgia, later revised to persistent idiopathic facial pain (PIFP) after MRI ruled out neurovascular compression. Psychological stressors were identified, and counseling was initiated.",
+  "differential_diagnosis": [
+    {
+      "condition": "Persistent Idiopathic Facial Pain (PIFP)",
+      "pmid": "41328507",
+      "rationale": "The pain's persistence despite antibiotic treatment and the exclusion of neurovascular compression on MRI align with PIFP, especially in the context of identified psychological stressors."
+    },
+    {
+      "condition": "Chronic Sinusitis",
+      "pmid": "42061107",
+      "rationale": "The patient's history of chronic sinusitis and allergic rhinitis could contribute to facial pain, particularly if there is residual or recurrent sinus inflammation."
+    },
+    {
+      "condition": "Atypical Trigeminal Neuralgia",
+      "pmid": "41842843",
+      "rationale": "Although MRI ruled out classic trigeminal neuralgia, atypical presentations can occur, especially in the absence of clear neurovascular compression."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "amoxicillin",
+      "rxnorm_id": "723",
+      "ingredient": "amoxicillin"
+    },
+    {
+      "original": "cefditoren pivoxil",
+      "rxnorm_id": "83682",
+      "ingredient": "cefditoren"
+    },
+    {
+      "original": "clarithromycin oral",
+      "rxnorm_id": "21212",
+      "ingredient": "clarithromycin"
+    },
+    {
+      "original": "carbamazepine 50mg twice daily",
+      "rxnorm_id": "2002",
+      "ingredient": "carbamazepine"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "clarithromycin",
+      "drug_b": "carbamazepine",
+      "severity": "moderate",
+      "recommendation": "Blood level monitoring of carbamazepine may be considered."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, an 11-year-old male, reports persistent right cheek pain that has been ongoing for six weeks. Initially, he experienced a high fever, sore throat, and right cheek pain with mild swelling. He has a history of allergic rhinitis and chronic sinusitis, which was managed by an otolaryngologist until three months ago. The patient was initially diagnosed with a streptococcal infection and suspected facial cellulitis, for which he received amoxicillin, resulting in temporary symptom improvement. However, the pain recurred within four weeks, leading to further treatment with cefditoren pivoxil, which did not alleviate the pain. The patient has no known allergies and reports a family history of severe hearing impairment in his father.",
+    "objective": "On examination, the patient exhibits tenderness in the right cheek, specifically in the distribution of the maxillary nerve (V2), without hyperalgesia, trigger points, or facial palsy. There is no evidence of oral pathology. Laboratory tests are within normal limits. A head CT scan revealed mild bilateral sinus mucous membrane swelling and effusion, suggesting sinusitis. An MRI of the brain ruled out neurovascular compression, excluding classical trigeminal neuralgia. The patient's pain is described as persistent, nagging, and dull, which is inconsistent with typical trigeminal neuralgia presentations.",
+    "assessment": "The clinical presentation and imaging findings suggest a diagnosis of Persistent Idiopathic Facial Pain (PIFP), given the exclusion of neurovascular compression and the nature of the pain. The patient's history of chronic sinusitis and allergic rhinitis may contribute to the facial pain, although the lack of response to antibiotics suggests a non-infectious etiology. Psychological stressors, including issues related to sports performance and family dynamics, have been identified and may exacerbate the pain. Atypical trigeminal neuralgia remains a consideration, although less likely given the MRI findings.",
+    "plan": "The patient will be started on carbamazepine 50mg twice daily to manage the facial pain, with close monitoring for side effects, particularly fatigue. Psychological counseling has been initiated to address identified stressors, with sessions scheduled twice weekly. The patient will continue clarithromycin for any residual sinusitis, with monitoring for potential drug interactions with carbamazepine. Follow-up will be scheduled in two weeks to assess the effectiveness of the current treatment plan and make any necessary adjustments. If symptoms persist or worsen, further evaluation and alternative therapies will be considered."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}

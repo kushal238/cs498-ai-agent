@@ -1,0 +1,36 @@
+{
+  "case_id": "case_07",
+  "transcription_cleaned": "Doctor: Good morning. How can I help you today?\n\nPatient: Good morning, doctor. I was referred here from another hospital. I'm 27 weeks pregnant and I had a very scary episode a few weeks ago.\n\nDoctor: I'm glad you came in. Can you walk me through what happened?\n\nPatient: At 22 weeks, I started having vaginal bleeding. I went to the emergency room and they admitted me for bedrest. About two days later, I got terrible pelvic pain and contractions, and I passed a large mass vaginally.\n\nDoctor: That sounds very distressing. Were there any fetal parts in the mass?\n\nPatient: No, the doctors said there were no fetal contents. The baby was fine \u2014 they checked the heart tones and everything was okay.\n\nDoctor: Do you know what the pathology showed on that mass?\n\nPatient: Yes, they told me it was a very aggressive-looking tumor under the microscope, with spindle-shaped cells and giant cells. The pathologist said it could be an endometrial stromal sarcoma or an undifferentiated uterine sarcoma, but they weren't sure.\n\nDoctor: I see. And what happened after that \u2014 did they do any procedure at the outside hospital?\n\nPatient: Yes, they took me to the operating room and found a hole in the back wall of my vagina that was bleeding. They stitched it closed. My cervix was closed and the baby was still okay.\n\nDoctor: Good. Can you tell me about your obstetric history?\n\nPatient: This is my fourth pregnancy. I've had two therapeutic abortions and one miscarriage.\n\nDoctor: Any prior gynecologic problems \u2014 abnormal pap smears, fibroids, infertility?\n\nPatient: No, nothing like that. My periods were always regular, no pain with sex, no unusual bleeding before this pregnancy.\n\nDoctor: Any family history of cancer?\n\nPatient: Yes, actually. Two of my family members had cervical cancer and two had endometrial cancer.\n\nDoctor: That's important to know. We'll order an MRI today to get a better picture of what's happening. Has the fetus had any issues noted on ultrasound?\n\nPatient: Yes, one of the baby's kidneys looks abnormal \u2014 they said it's dysplastic.\n\nDoctor: Okay. And how are you feeling now at 27 weeks?\n\nPatient: I feel okay. No more bleeding, no pelvic pain. I'm just worried about what this mass was.\n\nDoctor: Understood. We're going to coordinate with our gynecologic oncology and maternal-fetal medicine teams to make the best plan for you and your baby.\n\nPatient: Thank you, doctor. I just want to make sure we're both safe.",
+  "clinical_summary": "A 31-year-old G4P0 woman, currently 27 weeks pregnant, presented with vaginal bleeding and expulsion of a large pelvic mass at 22 weeks gestation. The mass was identified as a highly cellular tumor, with differential diagnosis including endometrial stromal sarcoma or undifferentiated uterine sarcoma. Her obstetric history includes two therapeutic abortions and one miscarriage, and her family history is significant for cervical and endometrial cancer. Current management involves coordination with gynecologic oncology and maternal-fetal medicine, with plans for a cesarean hysterectomy at 36 weeks due to the sarcoma diagnosis.",
+  "differential_diagnosis": [
+    {
+      "condition": "Undifferentiated Uterine Sarcoma",
+      "pmid": null,
+      "rationale": "The expulsion of a large pelvic mass during pregnancy, combined with the histological findings of a highly cellular tumor, strongly suggests an aggressive uterine sarcoma, particularly given the patient's family history of endometrial cancer."
+    },
+    {
+      "condition": "Endometrial Stromal Sarcoma",
+      "pmid": null,
+      "rationale": "The differential diagnosis includes endometrial stromal sarcoma due to the cellular nature of the tumor and the patient's age, which is consistent with the typical presentation of this rare uterine malignancy."
+    },
+    {
+      "condition": "Choriocarcinoma",
+      "pmid": null,
+      "rationale": "Although less likely, choriocarcinoma should be considered due to the patient's history of multiple pregnancies and the presentation of vaginal bleeding with a pelvic mass, which can mimic other uterine tumors."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "betamethasone 12 mg intramuscularly",
+      "rxnorm_id": null,
+      "ingredient": "betamethasone"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient is a 31-year-old gravida 4 para 0 woman who is currently 27 weeks pregnant. She was referred from another hospital after experiencing a significant episode of vaginal bleeding at 22 weeks gestation, during which she expelled a large pelvic mass. She reports that the mass was identified as a highly cellular tumor, with a differential diagnosis of endometrial stromal sarcoma or undifferentiated uterine sarcoma. She has a history of two therapeutic abortions and one miscarriage. Her family history is notable for cervical and endometrial cancer. She expresses concern about the nature of the mass and the safety of her pregnancy. Currently, she reports no further bleeding or pelvic pain.",
+    "objective": "On examination, the patient appears well and is in no acute distress. Her vital signs are stable. A pelvic examination reveals no residual vaginal mass, and her cervix is long, closed, and high. An ultrasound has shown a fetal anomaly, specifically a unilateral multi-cystic dysplastic kidney. An MRI of the pelvis, abdomen, and chest without contrast at 27 weeks gestation revealed no metastatic disease, but confirmed the presence of a Nabothian cyst in the cervix and an anterior placenta. The fetal heart tones are normal, and there are no signs of intrauterine myomas.",
+    "assessment": "The patient presents with a complex case of a highly cellular tumor expelled during pregnancy, with a differential diagnosis of endometrial stromal sarcoma versus undifferentiated uterine sarcoma. Given her family history of gynecological cancers, this raises the suspicion of a malignant process. The absence of fetal parts in the expelled mass and the normal fetal heart tones are reassuring for the ongoing pregnancy. The fetal anomaly of a dysplastic kidney is noted but does not currently require intervention. The plan for a cesarean hysterectomy at 36 weeks is appropriate given the potential malignancy and the need to ensure maternal and fetal safety.",
+    "plan": "The immediate plan involves close monitoring of the pregnancy and coordination with gynecologic oncology and maternal-fetal medicine specialists. An MRI has been ordered to further evaluate the extent of the tumor. The patient will receive betamethasone at 35 weeks to promote fetal lung maturity in preparation for a planned cesarean hysterectomy at 36 weeks. This procedure will include a bilateral salpingectomy and peritoneal biopsies to assess for any metastatic disease. Postpartum, the patient will be closely monitored for any recurrence of the tumor, and further treatment will be guided by the final pathology results. The neonate will be evaluated for the dysplastic kidney and managed accordingly."
+  }
+}

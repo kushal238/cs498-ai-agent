@@ -1,0 +1,102 @@
+{
+  "case_id": "case_06",
+  "transcription_cleaned": "Doctor: Good morning, how can I help you today?\nPatient: Good morning, I have been having some increasing shortness of breath, dizziness, and weakness lately.\nDoctor: I see. Can you tell me a little bit about your medical history?\nPatient: Sure, I am an African American male and I have a history of non-ischemic cardiomyopathy. I underwent orthotopic heart transplantation 5 years ago.\nDoctor: Okay, that's good to know. And what happened before you started experiencing these symptoms?\nPatient: Six months ago, I was diagnosed with cryptococcal meningitis.\nDoctor: I see. What kind of treatment did you receive for that?\nPatient: I was given amphotericin B and flucytosine initially, and then I was put on chronic suppressive fluconazole therapy.\nDoctor: Okay, and did you have any changes to your immunosuppression as a result of the infection?\nPatient: Yes, my mycophenolate mofetil dose was reduced from 750 mg BID to 500 mg BID, and my cyclosporine dose from 125 mg BID to 75 mg BID.\nDoctor: I see. And what was your cyclosporine level on admission and discharge?\nPatient: On admission, it was 90 ng/mL, and on discharge, it was 142 ng/mL.\nDoctor: Okay, and did you have any other symptoms before you presented with shortness of breath, dizziness, and weakness?\nPatient: Five months ago, I started to have bilateral hand numbness and tingling, and two weeks ago, I developed imbalance.\nDoctor: I see. During your evaluation, were you found to be in atrial flutter with rapid ventricular response?\nPatient: Yes, that's correct.\nDoctor: And was that rate controlled with diltiazem?\nPatient: Yes, it was.\nDoctor: And what did the echocardiogram show?\nPatient: It showed normal left and right ventricular size and systolic function, with normal diastolic function.\nDoctor: Okay, and while you were in the hospital, did you develop any other symptoms?\nPatient: Yes, I developed progressive dysphagia, gait instability, and profound weakness of my bilateral lower extremities.\nDoctor: I see. And were the head CT and brain MRI unremarkable?\nPatient: Yes, they were.\nDoctor: And what did the lumbar puncture reveal?\nPatient: It showed clear, colorless fluid with an elevated protein level of 147 mg/dL, a normal glucose level of 67 mg/dL, and 5 nucleated cells/mL, of which 85% were lymphocytes.\nDoctor: I see. And what did the nerve conduction studies and electromyogram show?\nPatient: They showed conduction block and prolonged distal latencies, which was suggestive of IDP.\nDoctor: And did you have a positive IgM antibody to Trisulfated Heparan Disaccharide (TS-HDS)?\nPatient: Yes, I did.\nDoctor: Okay, so as treatment for IDP, you underwent four sessions of plasmapheresis and started on high-dose oral dexamethasone, correct?\nPatient: Yes, that's correct.\nDoctor: And did you have significant improvement in your neurologic symptoms?\nPatient: Yes, I did.\nDoctor: Okay, that's great to hear. You were discharged one week later to a physical, correct?\nPatient: Yes, that's correct.\nDoctor: Okay, I would like to see you back in two weeks for a follow-up appointment. We will monitor your progress and make any necessary adjustments to your treatment plan.\nPatient: Okay, thank you.",
+  "clinical_summary": "A 58-year-old African American male with a history of non-ischemic cardiomyopathy and heart transplantation presented with worsening dyspnea, dizziness, and weakness. He had a recent history of cryptococcal meningitis, leading to reduced immunosuppression, and developed demyelinating polyneuropathy treated with plasmapheresis and dexamethasone. He was readmitted with cardiac allograft rejection, treated with plasmapheresis and IVIG, and continued immunosuppression.",
+  "differential_diagnosis": [
+    {
+      "condition": "Cardiac Allograft Rejection",
+      "pmid": "42079979",
+      "rationale": "The patient has a recent history of cardiac allograft rejection, and his symptoms of dyspnea and weakness could indicate ongoing or recurrent rejection despite treatment."
+    },
+    {
+      "condition": "Infection due to Immunosuppression",
+      "pmid": "42084518",
+      "rationale": "Given the patient's reduced immunosuppression following cryptococcal meningitis, he is at increased risk for opportunistic infections, which could explain his systemic symptoms."
+    },
+    {
+      "condition": "Heart Failure",
+      "pmid": "42084676",
+      "rationale": "The patient's history of non-ischemic cardiomyopathy and heart transplantation, combined with symptoms of dyspnea and weakness, suggest possible heart failure exacerbation."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "fluconazole",
+      "rxnorm_id": "4450",
+      "ingredient": "fluconazole"
+    },
+    {
+      "original": "cyclosporine",
+      "rxnorm_id": "3008",
+      "ingredient": "cyclosporine"
+    },
+    {
+      "original": "diltiazem",
+      "rxnorm_id": "3443",
+      "ingredient": "diltiazem"
+    },
+    {
+      "original": "dexamethasone",
+      "rxnorm_id": "3264",
+      "ingredient": "dexamethasone"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "fluconazole",
+      "drug_b": "cyclosporine",
+      "severity": "moderate",
+      "recommendation": "Cyclosporine: Fluconazole significantly increases cyclosporine levels in renal transplant patients with or without renal impairment."
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "diltiazem",
+      "severity": "moderate",
+      "recommendation": "Increase Cyclosporine Concentrations Calcium Channel Blockers Antifungals Antibiotics Glucocorticoids Other Drugs diltiazem fluconazole azithromycin methylprednisolone Allopurinol nicardipine itraconazole clarithromycin Amiodarone verapamil ketoconazole erythromycin Bromocriptine voriconazole quinupristin/"
+    },
+    {
+      "drug_a": "cyclosporine",
+      "drug_b": "dexamethasone",
+      "severity": "moderate",
+      "recommendation": "Cyclosporine: Increased activity of both cyclosporine and corticosteroids may occur when the two are used concurrently."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, a 58-year-old African American male, reports experiencing increasing shortness of breath, dizziness, and generalized weakness. He has a significant medical history of non-ischemic cardiomyopathy and underwent orthotopic heart transplantation five years ago. Six months prior, he was diagnosed with cryptococcal meningitis and treated with amphotericin B and flucytosine, followed by chronic suppressive fluconazole therapy. His immunosuppressive regimen was adjusted due to the infection. The patient also reports bilateral hand numbness and tingling that began five months ago, and more recently, imbalance and progressive dysphagia. He was found to have atrial flutter, which was managed with diltiazem.",
+    "objective": "On examination, the patient was found to have atrial flutter with a rapid ventricular response, which was controlled with diltiazem. An echocardiogram revealed normal left and right ventricular size and systolic function, with normal diastolic function. Neurological evaluation showed progressive dysphagia, gait instability, and profound weakness of the bilateral lower extremities. A lumbar puncture revealed clear, colorless fluid with elevated protein levels, normal glucose, and a predominance of lymphocytes. Nerve conduction studies and electromyography indicated conduction block and prolonged distal latencies, suggestive of inflammatory demyelinating polyneuropathy (IDP). The patient tested positive for IgM antibody to Trisulfated Heparan Disaccharide (TS-HDS).",
+    "assessment": "The patient presents with a complex clinical picture involving multiple systems. The primary concerns include potential cardiac allograft rejection, given his history of heart transplantation and recent readmission with worsening graft function and acute renal failure. The symptoms of dyspnea and weakness could indicate ongoing or recurrent rejection. Additionally, the history of cryptococcal meningitis and reduced immunosuppression raises the risk of opportunistic infections. The neurological symptoms and positive TS-HDS IgM antibody suggest a diagnosis of inflammatory demyelinating polyneuropathy, which has shown improvement with plasmapheresis and dexamethasone treatment.",
+    "plan": "The patient will continue on his current immunosuppressive regimen, with careful monitoring of cyclosporine levels due to potential drug interactions with fluconazole and diltiazem. Plasmapheresis and IVIG will be continued as needed to manage cardiac allograft rejection. The patient should be monitored closely for signs of infection due to his immunocompromised state. Follow-up appointments will be scheduled every two weeks to assess his response to treatment and adjust the management plan as necessary. The patient is advised to report any new or worsening symptoms immediately. Rehabilitation therapy will continue to address gait instability and weakness."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}

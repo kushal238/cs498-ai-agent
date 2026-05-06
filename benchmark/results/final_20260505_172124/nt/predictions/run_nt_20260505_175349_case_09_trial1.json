@@ -1,0 +1,79 @@
+{
+  "case_id": "case_09",
+  "transcription_cleaned": "Doctor: Hi, I am Dr. [Name]. How are you feeling today?  \nPatient: Not so good. I have chest pain and shortness of breath.  \nDoctor: I see. Can you tell me a bit about your history?  \nPatient: I was diagnosed with lupus when I was 12 years old, and I have severe thrombocytopenic purpura.  \nDoctor: Hmm, okay. And how long have you been experiencing these symptoms?  \nPatient: Just today, when I was visiting my baby in the Neonatal Intensive Care Unit.  \nDoctor: I see. And what happened during the examination?  \nPatient: They found that I had tachycardia, but my blood pressure and oxygen saturation were normal.  \nDoctor: Okay. And what medications were you taking at the time?  \nPatient: I was taking enoxaparin and aspirin, and I was going to transition to warfarin in 2 weeks.  \nDoctor: Okay. And what was your immunosuppression regime like?  \nPatient: I was taking hydroxychloroquine, azathioprine, and prednisone, and some other medications like calcitriol and calcium carbonate.  \nDoctor: I see. And what did the Electrocardiogram show?  \nPatient: It showed sinus tachycardia but no ischemic changes.  \nDoctor: Okay. And the Chest X-ray?  \nPatient: It showed cardiomegaly with increased interstitial markings.  \nDoctor: I see. And what happened after that?  \nPatient: I deteriorated rapidly over the next hour with climbing oxygen requirements and hypotension.  \nDoctor: Okay. And were you investigated for pulmonary embolism?  \nPatient: Yes, I was. And I was treated with morphine and enoxaparin.  \nDoctor: Okay. And then you had a CT pulmonary angiography, right?  \nPatient: Yes, I did.  \nDoctor: And what did that show?  \nPatient: It showed pulmonary edema but no PE.  \nDoctor: Okay. And then you were admitted to the cardiovascular intensive care, right?  \nPatient: Yes, I was.  \nDoctor: And were you intubated for respiratory distress?  \nPatient: Yes, I was.  \nDoctor: And did you have a transthoracic echocardiogram?  \nPatient: No, I didn't. But I had a transesophageal echocardiogram which demonstrated the posterolateral papillary muscle rupture and flail anterior leaflet.  \nDoctor: I see. And then you proceeded to emergency mitral valve replacement, right?  \nPatient: Yes, I did.  \nDoctor: And what happened during the operation?  \nPatient: I had a pulseless electrical activity arrest and was resuscitated with adrenaline and CPR.  \nDoctor: I see. And what was the result of the intervention?  \nPatient: The posterolateral papillary muscle was pale and sheared off the ventricular wall, and they replaced my mitral valve with a mechanical valve.  \nDoctor: And after the procedure?  \nPatient: They had to put me on ECMO because of severe pulmonary edema and heart failure.  \nDoctor: Okay. And the histology of the valve?  \nPatient: It showed deposits consistent with Libman-Sacks endocarditis, and the papillary muscle showed infarction several days old.  \nDoctor: I see. And after ECMO was removed?  \nPatient: I had some abnormal movements, so they did an MRI which showed hypoxic brain injury, but my neurological function recovered to normal before discharge.  \nDoctor: And your medications at discharge?  \nPatient: They added metoprolol and cilazapril, and transitioned me from heparin to warfarin with aspirin.",
+  "clinical_summary": "A 29-year-old woman with a history of systemic lupus erythematosus, severe idiopathic thrombocytopenic purpura, and antiphospholipid syndrome presented with sudden chest pain and dyspnea postpartum. She was on enoxaparin, aspirin, hydroxychloroquine, azathioprine, and prednisone. Examination revealed tachycardia and cardiomegaly with increased interstitial markings on CXR. She rapidly deteriorated, requiring intubation and emergency mitral valve replacement due to papillary muscle rupture, followed by ECMO for heart failure. Postoperatively, she experienced hypoxic brain injury but recovered neurologically and was discharged on metoprolol, cilazapril, warfarin, and aspirin.",
+  "differential_diagnosis": [
+    {
+      "condition": "Antiphospholipid syndrome-related thromboembolism",
+      "pmid": null,
+      "rationale": "The patient's history of antiphospholipid syndrome and sudden onset of chest pain and dyspnea postpartum suggest a thromboembolic event, such as pulmonary embolism, which is common in this condition."
+    },
+    {
+      "condition": "Lupus-related cardiac involvement",
+      "pmid": null,
+      "rationale": "Systemic lupus erythematosus can lead to cardiac complications, including valvular heart disease and myocarditis, which could explain the papillary muscle rupture and subsequent heart failure."
+    },
+    {
+      "condition": "Peripartum cardiomyopathy",
+      "pmid": null,
+      "rationale": "The postpartum period is a risk factor for peripartum cardiomyopathy, which could account for the acute heart failure and need for mitral valve replacement in this young woman."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "enoxaparin 100mg daily",
+      "rxnorm_id": null,
+      "ingredient": "enoxaparin"
+    },
+    {
+      "original": "aspirin 100mg daily",
+      "rxnorm_id": null,
+      "ingredient": "aspirin"
+    },
+    {
+      "original": "hydroxychloroquine 400mg daily",
+      "rxnorm_id": null,
+      "ingredient": "hydroxychloroquine"
+    },
+    {
+      "original": "azathioprine 150mg daily",
+      "rxnorm_id": null,
+      "ingredient": "azathioprine"
+    },
+    {
+      "original": "prednisone 5mg daily",
+      "rxnorm_id": null,
+      "ingredient": "prednisone"
+    },
+    {
+      "original": "calcitriol 0.25 mcg daily",
+      "rxnorm_id": null,
+      "ingredient": "calcitriol"
+    },
+    {
+      "original": "calcium carbonate 1.25g daily",
+      "rxnorm_id": null,
+      "ingredient": "calcium carbonate"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "enoxaparin",
+      "drug_b": "aspirin",
+      "severity": "major",
+      "recommendation": "Concomitant use increases the risk of bleeding. Monitor for signs of bleeding and consider dose adjustment or alternative therapy."
+    },
+    {
+      "drug_a": "azathioprine",
+      "drug_b": "prednisone",
+      "severity": "moderate",
+      "recommendation": "Concomitant use may increase the risk of immunosuppression and infection. Monitor for signs of infection and adjust doses if necessary."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, a 29-year-old woman, presented with sudden onset chest pain and shortness of breath while visiting her baby in the Neonatal Intensive Care Unit. She has a significant medical history of systemic lupus erythematosus (SLE), severe idiopathic thrombocytopenic purpura, and antiphospholipid syndrome. She reported that these symptoms began acutely on the day of presentation. Her medication regimen included enoxaparin, aspirin, hydroxychloroquine, azathioprine, and prednisone, among others. She was scheduled to transition from enoxaparin to warfarin in two weeks. The patient also mentioned experiencing tachycardia during the examination, although her blood pressure and oxygen saturation were initially normal.",
+    "objective": "Upon examination, the patient was found to have tachycardia, with an ECG showing sinus tachycardia but no ischemic changes. A chest X-ray revealed cardiomegaly with increased interstitial markings. Despite initial normal oxygen saturation, she rapidly deteriorated, requiring increased oxygen and eventually intubation due to respiratory distress. A CT pulmonary angiography showed pulmonary edema but no evidence of pulmonary embolism. A transesophageal echocardiogram revealed a posterolateral papillary muscle rupture with a flail anterior mitral leaflet, leading to torrential mitral regurgitation. During emergency mitral valve replacement surgery, she experienced a pulseless electrical activity arrest but was successfully resuscitated. Postoperatively, she was placed on ECMO due to severe pulmonary edema and heart failure.",
+    "assessment": "The patient\u2019s acute presentation of chest pain and dyspnea, combined with her history of SLE and antiphospholipid syndrome, suggests a complex interplay of autoimmune and thromboembolic processes. The rupture of the papillary muscle and subsequent mitral valve failure are likely related to Libman-Sacks endocarditis, a known complication of lupus, as confirmed by histological findings. The presence of pulmonary edema without pulmonary embolism indicates cardiac failure as the primary cause of her respiratory distress. The hypoxic brain injury observed postoperatively was likely secondary to the cardiac arrest and subsequent ECMO support, but she fortunately recovered neurologically before discharge.",
+    "plan": "The patient was discharged with a comprehensive medication regimen to manage her complex condition. This includes metoprolol and cilazapril for cardiac support, and warfarin and aspirin for anticoagulation, transitioning from enoxaparin. Her immunosuppressive therapy with hydroxychloroquine, azathioprine, and prednisone was continued to manage her SLE. Close monitoring for signs of bleeding is essential due to the combination of anticoagulants. Regular follow-up appointments are necessary to monitor her cardiac function, manage her lupus, and adjust medications as needed. Additionally, she should be monitored for any signs of infection due to her immunosuppressive therapy. Neurological assessments should continue to ensure no long-term deficits from the hypoxic injury."
+  }
+}

@@ -1,0 +1,127 @@
+  ERROR scoring case_02 trial 1: The expanded size of the tensor (564) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 564].  Tensor sizes: [1, 512]
+  ERROR scoring case_02 trial 2: The expanded size of the tensor (564) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 564].  Tensor sizes: [1, 512]
+  ERROR scoring case_02 trial 3: The expanded size of the tensor (564) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 564].  Tensor sizes: [1, 512]
+  ERROR scoring case_03 trial 1: The expanded size of the tensor (582) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 582].  Tensor sizes: [1, 512]
+  ERROR scoring case_03 trial 2: The expanded size of the tensor (582) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 582].  Tensor sizes: [1, 512]
+  ERROR scoring case_03 trial 3: The expanded size of the tensor (582) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 582].  Tensor sizes: [1, 512]
+  ERROR scoring case_05 trial 1: The expanded size of the tensor (684) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 684].  Tensor sizes: [1, 512]
+  ERROR scoring case_05 trial 2: The expanded size of the tensor (684) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 684].  Tensor sizes: [1, 512]
+  ERROR scoring case_05 trial 3: The expanded size of the tensor (684) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 684].  Tensor sizes: [1, 512]
+  ERROR scoring case_06 trial 1: The expanded size of the tensor (814) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 814].  Tensor sizes: [1, 512]
+  ERROR scoring case_06 trial 2: The expanded size of the tensor (814) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 814].  Tensor sizes: [1, 512]
+  ERROR scoring case_06 trial 3: The expanded size of the tensor (814) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 814].  Tensor sizes: [1, 512]
+  ERROR scoring case_07 trial 1: The expanded size of the tensor (607) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 607].  Tensor sizes: [1, 512]
+  ERROR scoring case_07 trial 2: The expanded size of the tensor (607) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 607].  Tensor sizes: [1, 512]
+  ERROR scoring case_07 trial 3: The expanded size of the tensor (607) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 607].  Tensor sizes: [1, 512]
+  ERROR scoring case_08 trial 1: The expanded size of the tensor (635) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 635].  Tensor sizes: [1, 512]
+  ERROR scoring case_08 trial 2: The expanded size of the tensor (635) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 635].  Tensor sizes: [1, 512]
+  ERROR scoring case_08 trial 3: The expanded size of the tensor (635) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 635].  Tensor sizes: [1, 512]
+  ERROR scoring case_09 trial 1: The expanded size of the tensor (798) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 798].  Tensor sizes: [1, 512]
+  ERROR scoring case_09 trial 2: The expanded size of the tensor (798) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 798].  Tensor sizes: [1, 512]
+  ERROR scoring case_09 trial 3: The expanded size of the tensor (798) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 798].  Tensor sizes: [1, 512]
+  ERROR scoring case_10 trial 1: The expanded size of the tensor (852) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 852].  Tensor sizes: [1, 512]
+  ERROR scoring case_10 trial 2: The expanded size of the tensor (852) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 852].  Tensor sizes: [1, 512]
+  ERROR scoring case_10 trial 3: The expanded size of the tensor (852) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 852].  Tensor sizes: [1, 512]
+[Harness] Found 10 case(s): ['case_01_template', 'case_02', 'case_03', 'case_04', 'case_05', 'case_06', 'case_07', 'case_08', 'case_09', 'case_10']
+[Harness] Trials per case: 3
+
+[Harness] Running case: case_01_template
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_02
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_03
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_04
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_05
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_06
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_07
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_08
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_09
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_10
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+
+========================================================================
+BENCHMARK RESULTS
+========================================================================
+
+Case: case_01_template
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.638  rouge2=0.350  rougeL=0.543  bertscore_p=0.811  bertscore_r=0.861  bertscore_f1=0.835
+  clinical_summarization             rouge1=0.487  rouge2=0.299  rougeL=0.410  bertscore_p=0.817  bertscore_r=0.735  bertscore_f1=0.774
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=1.000
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=0.136
+  final_report_generation            subjective_rougeL=0.349  subjective_bertscore_f1=0.768  objective_rougeL=0.430  objective_bertscore_f1=0.747  assessment_rougeL=0.170  assessment_bertscore_f1=0.657  plan_rougeL=0.181  plan_bertscore_f1=0.679
+
+Case: case_02
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (564) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 564].  Tensor sizes: [1, 512]
+
+Case: case_03
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (582) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 582].  Tensor sizes: [1, 512]
+
+Case: case_04
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.976  rouge2=0.938  rougeL=0.965  bertscore_p=0.979  bertscore_r=0.982  bertscore_f1=0.981
+  clinical_summarization             rouge1=0.548  rouge2=0.267  rougeL=0.355  bertscore_p=0.836  bertscore_r=0.721  bertscore_f1=0.774
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=1.000
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=1.000
+  final_report_generation            subjective_rougeL=0.373  subjective_bertscore_f1=0.796  objective_rougeL=0.510  objective_bertscore_f1=0.819  assessment_rougeL=0.201  assessment_bertscore_f1=0.726  plan_rougeL=0.189  plan_bertscore_f1=0.650
+
+Case: case_05
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (684) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 684].  Tensor sizes: [1, 512]
+
+Case: case_06
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (814) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 814].  Tensor sizes: [1, 512]
+
+Case: case_07
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (607) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 607].  Tensor sizes: [1, 512]
+
+Case: case_08
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (635) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 635].  Tensor sizes: [1, 512]
+
+Case: case_09
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (798) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 798].  Tensor sizes: [1, 512]
+
+Case: case_10
+----------------------------------------------------
+  ERROR: The expanded size of the tensor (852) must match the existing size (512) at non-singleton dimension 1.  Target sizes: [2, 852].  Tensor sizes: [1, 512]
+
+========================================================================
+
+[Harness] Results written to:
+  benchmark/results/final_20260505_172124/agent/run_agent_20260505_172125_raw.csv
+  benchmark/results/final_20260505_172124/agent/run_agent_20260505_172125_summary.csv
