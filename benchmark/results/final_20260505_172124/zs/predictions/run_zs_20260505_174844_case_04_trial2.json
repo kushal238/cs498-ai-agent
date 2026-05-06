@@ -1,0 +1,41 @@
+{
+  "case_id": "case_04",
+  "transcription_cleaned": "Doctor: Hello, what brings you in today?\nPatient: I lost vision in my right eye after sinus surgery yesterday.\nDoctor: Did the vision loss happen immediately after the surgery?\nPatient: Yes. Right after the operation I had no light perception in that eye.\nDoctor: Have you had sinus surgery before?\nPatient: Yes, I had endoscopic sinus surgery about 15 years ago and did not have any vision problems then.\nDoctor: Were any scans done at the outside clinic?\nPatient: Yes, an orbital CT showed a small fracture in the medial wall on the right and a thick bony septum in the ethmoid area.\nDoctor: Since admission we started steroid pulse therapy because we are worried about a severe postoperative orbital or optic nerve injury.\nPatient: Yes.\nDoctor: What did the other tests show?\nPatient: The visual evoked potential test showed no right optic nerve activity, and the MRI showed enhancement around the posterior optic nerve sheath with an abnormal focus near the medial rectus close to the orbital apex.\nDoctor: Has your vision improved at all after treatment?\nPatient: No, I still cannot perceive light in the right eye.",
+  "clinical_summary": "A 53-year-old woman experienced acute complete vision loss in her right eye immediately following revision endoscopic sinus surgery. Imaging revealed a small fracture in the right medial orbital wall and enhancement along the posterior right optic nerve sheath. Despite treatment with intravenous methylprednisolone and oral prednisolone, her vision did not recover. Visual evoked potential testing showed no activity in the right optic nerve.",
+  "differential_diagnosis": [
+    {
+      "condition": "Postoperative optic nerve injury",
+      "pmid": null,
+      "rationale": "The immediate onset of vision loss after surgery, absent optic nerve activity on VEP, and MRI findings suggest optic nerve injury."
+    },
+    {
+      "condition": "Orbital apex syndrome",
+      "pmid": null,
+      "rationale": "The MRI findings of enhancement near the orbital apex and the presence of a fracture could indicate orbital apex syndrome."
+    },
+    {
+      "condition": "Retrobulbar hemorrhage",
+      "pmid": null,
+      "rationale": "Acute vision loss post-surgery with orbital fracture could be due to retrobulbar hemorrhage, although imaging did not confirm this."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "intravenous methylprednisolone pulse therapy",
+      "rxnorm_id": null,
+      "ingredient": "methylprednisolone"
+    },
+    {
+      "original": "oral prednisolone for 10 days",
+      "rxnorm_id": null,
+      "ingredient": "prednisolone"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient reports complete vision loss in the right eye immediately following sinus surgery. She has no light perception in the affected eye and has not experienced any improvement since the onset.",
+    "objective": "The patient is a 53-year-old female with a history of chronic rhinosinusitis and prior sinus surgery. Orbital CT showed a small fracture in the right medial orbital wall. MRI indicated enhancement along the posterior right optic nerve sheath. Visual evoked potential testing showed no activity in the right optic nerve.",
+    "assessment": "The patient likely has a postoperative optic nerve injury, possibly complicated by orbital apex syndrome. The absence of optic nerve activity and MRI findings support this diagnosis.",
+    "plan": "Continue monitoring the patient's vision and consider further imaging or surgical consultation if no improvement is observed. Evaluate the need for additional interventions to address potential orbital apex syndrome."
+  }
+}

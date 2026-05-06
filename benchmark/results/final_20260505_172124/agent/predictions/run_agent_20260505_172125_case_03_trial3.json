@@ -1,0 +1,78 @@
+{
+  "case_id": "case_03",
+  "transcription_cleaned": "Doctor: Hi, I'm your doctor. Can you tell me about your symptoms?\nPatient: Yes, I had a bump on my hip and felt a lot of pain after I fell 11 months ago.\nDoctor: Hmm, I see. What did the emergency room diagnose you with?\nPatient: They said it was a hematoma around my hip.\nDoctor: I understand. And did your symptoms worsen over time?\nPatient: Yes, I had recurrent falls.\nDoctor: Okay. Did you have any radiographic imaging done?\nPatient: Yes, I had a CT scan without intravenous contrast done six weeks before I was diagnosed with cancer.\nDoctor: And what did the CT scan show?\nPatient: It confirmed that I didn't have a displaced fracture, but it indicated a tissue collection that was suspicious for a hematoma.\nDoctor: I see. And then, did you have an MRI done?\nPatient: Yes, I did. The MRI demonstrated a soft-tissue mass in my left hip that was suspicious for sarcoma.\nDoctor: Okay, got it. And then you had a consultation with an orthopedic oncologic specialist, right?\nPatient: Yes, I did. And I underwent a radical resection of the sarcoma the next day.\nDoctor: Okay. I have your pathology report here. It says that you were diagnosed with a high-grade undifferentiated pleomorphic sarcoma. The margins were negative and the closest evidence of cancer was 2 mm within surgical margins.\nPatient: Hmm.\nDoctor: And after the surgery, you had a chest CT that showed two tiny lung nodules with the larger nodule measuring 4 mm. This indicates a recommended follow-up of three to six months.\nPatient: Okay.\nDoctor: Also, there was a small hypodense lesion in your spleen that was inadequately visualized.\nPatient: Hmm.\nDoctor: The tumor stage was established to be Stage III measuring 13.5 cm at its greatest dimension. And the TNM staging was established to be pT2a, cN0, cM0 without evidence of lymph node involvement or distant metastases.\nPatient: Okay.\nDoctor: You had two follow-up appointments with the surgeon, who recommended a consult to medical and radiation oncology. And you had consultations at two other institutions including a sarcoma clinic.\nPatient: Yes, I did.\nDoctor: And they recommended adjuvant chemotherapy for you.\nPatient: Yes, they did.\nDoctor: Okay, I will schedule a follow-up appointment for you. It's important that you follow the recommendations of the medical and radiation oncologists.\nPatient: Yes, I will. Thank you, doctor.",
+  "clinical_summary": "A 67-year-old woman with a history of high-grade undifferentiated pleomorphic sarcoma of the left hip, initially misdiagnosed as a hematoma, underwent radical resection with negative margins. Post-operative imaging revealed Stage III disease with two small lung nodules and a splenic lesion. She has received adjuvant radiation therapy and presents with new pulmonary nodules and a large hip fluid collection, managed with Percocet and acetaminophen for pain. Follow-up with oncology is recommended for further management.",
+  "differential_diagnosis": [
+    {
+      "condition": "Metastatic undifferentiated pleomorphic sarcoma",
+      "pmid": "42048298",
+      "rationale": "The new pulmonary nodules and splenic lesion in a patient with a history of high-grade sarcoma are highly suggestive of metastatic spread."
+    },
+    {
+      "condition": "Local recurrence of sarcoma",
+      "pmid": "42084452",
+      "rationale": "The large hip fluid collection could represent a local recurrence of the sarcoma, especially given the aggressive nature of the tumor."
+    },
+    {
+      "condition": "Post-surgical infection or seroma",
+      "pmid": "42060006",
+      "rationale": "The hip fluid collection could also be due to a post-surgical infection or seroma, common complications following extensive surgical procedures."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+      "rxnorm_id": "7804",
+      "ingredient": "oxycodone"
+    },
+    {
+      "original": "oxycodone/acetaminophen (Percocet 10/325 mg) twice daily",
+      "rxnorm_id": "161",
+      "ingredient": "acetaminophen"
+    },
+    {
+      "original": "acetaminophen 500mg as needed for pain",
+      "rxnorm_id": "161",
+      "ingredient": "acetaminophen"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient is a 67-year-old woman who reports experiencing significant pain and a bump on her left hip following a fall 11 months ago. Initially diagnosed with a hematoma, her symptoms worsened over time, leading to recurrent falls. She underwent a CT scan and MRI, which revealed a suspicious soft-tissue mass in her left hip. Following a consultation with an orthopedic oncologic specialist, she underwent radical resection of the mass, which was later identified as a high-grade undifferentiated pleomorphic sarcoma. Post-surgery, she has been experiencing pain in her left shoulder, flank, and hip, along with lymphedema and functional limitations in daily activities. She is currently managing her pain with Percocet and acetaminophen.",
+    "objective": "The patient's initial CT scan showed no displaced fracture but indicated a tissue collection suspicious for a hematoma. An MRI later demonstrated a soft-tissue mass in the left hip, suspicious for sarcoma. Pathology confirmed a high-grade undifferentiated pleomorphic sarcoma, 13.5 cm in size, with negative surgical margins. Post-operative chest CT revealed two small lung nodules, the largest measuring 4 mm, and a small hypodense lesion in the spleen. The tumor was staged as pT2a, cN0, cM0 (Stage III). Recent surveillance imaging has shown new pulmonary nodules and a large fluid collection in the left hip area.",
+    "assessment": "The patient has a history of high-grade undifferentiated pleomorphic sarcoma of the left hip, initially misdiagnosed as a hematoma. The current clinical picture suggests possible metastatic spread, given the new pulmonary nodules and splenic lesion. The large fluid collection in the hip could represent a local recurrence of the sarcoma or a post-surgical complication such as a seroma or infection. The differential diagnosis includes metastatic undifferentiated pleomorphic sarcoma, local recurrence, and post-surgical infection or seroma.",
+    "plan": "The patient should continue with her current pain management regimen, including Percocet and acetaminophen. Follow-up with oncology is crucial to address the potential metastatic spread and to evaluate the new pulmonary nodules and splenic lesion. Further imaging and possibly a biopsy may be necessary to assess the nature of the hip fluid collection. The patient should adhere to the recommendations of her medical and radiation oncologists, including any proposed adjuvant chemotherapy. Regular follow-up appointments should be scheduled to monitor her condition and adjust treatment as needed."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}

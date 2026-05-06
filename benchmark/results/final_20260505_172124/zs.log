@@ -1,0 +1,143 @@
+[Harness] Found 10 case(s): ['case_01_template', 'case_02', 'case_03', 'case_04', 'case_05', 'case_06', 'case_07', 'case_08', 'case_09', 'case_10']
+[Harness] Trials per case: 3
+
+[Harness] Running case: case_01_template
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_02
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_03
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_04
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_05
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_06
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_07
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_08
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_09
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+[Harness] Running case: case_10
+  Trial 1/3
+  Trial 2/3
+  Trial 3/3
+
+========================================================================
+BENCHMARK RESULTS
+========================================================================
+
+Case: case_01_template
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.638  rouge2=0.350  rougeL=0.543  bertscore_p=0.811  bertscore_r=0.861  bertscore_f1=0.835
+  clinical_summarization             rouge1=0.485  rouge2=0.216  rougeL=0.343  bertscore_p=0.801  bertscore_r=0.746  bertscore_f1=0.773
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=1.000
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=0.160
+  final_report_generation            subjective_rougeL=0.324  subjective_bertscore_f1=0.758  objective_rougeL=0.475  objective_bertscore_f1=0.764  assessment_rougeL=0.239  assessment_bertscore_f1=0.685  plan_rougeL=0.208  plan_bertscore_f1=0.738
+
+Case: case_02
+----------------------------------------------------
+  transcription_cleanup              rouge1=1.000  rouge2=1.000  rougeL=1.000  bertscore_p=1.000  bertscore_r=1.000  bertscore_f1=1.000
+  clinical_summarization             rouge1=0.510  rouge2=0.212  rougeL=0.405  bertscore_p=0.798  bertscore_r=0.769  bertscore_f1=0.783
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=0.895
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=1.000
+  final_report_generation            subjective_rougeL=0.327  subjective_bertscore_f1=0.759  objective_rougeL=0.217  objective_bertscore_f1=0.694  assessment_rougeL=0.250  assessment_bertscore_f1=0.721  plan_rougeL=0.353  plan_bertscore_f1=0.751
+
+Case: case_03
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.717  rouge2=0.478  rougeL=0.586  bertscore_p=0.849  bertscore_r=0.878  bertscore_f1=0.864
+  clinical_summarization             rouge1=0.547  rouge2=0.294  rougeL=0.436  bertscore_p=0.811  bertscore_r=0.772  bertscore_f1=0.791
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=0.961
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=1.000
+  final_report_generation            subjective_rougeL=0.226  subjective_bertscore_f1=0.736  objective_rougeL=0.171  objective_bertscore_f1=0.748  assessment_rougeL=0.279  assessment_bertscore_f1=0.741  plan_rougeL=0.171  plan_bertscore_f1=0.691
+
+Case: case_04
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.976  rouge2=0.938  rougeL=0.965  bertscore_p=0.979  bertscore_r=0.980  bertscore_f1=0.980
+  clinical_summarization             rouge1=0.535  rouge2=0.270  rougeL=0.364  bertscore_p=0.858  bertscore_r=0.738  bertscore_f1=0.794
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=1.000
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=1.000
+  final_report_generation            subjective_rougeL=0.283  subjective_bertscore_f1=0.759  objective_rougeL=0.276  objective_bertscore_f1=0.736  assessment_rougeL=0.163  assessment_bertscore_f1=0.710  plan_rougeL=0.159  plan_bertscore_f1=0.680
+
+Case: case_05
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.832  rouge2=0.682  rougeL=0.786  bertscore_p=0.895  bertscore_r=0.893  bertscore_f1=0.894
+  clinical_summarization             rouge1=0.573  rouge2=0.341  rougeL=0.528  bertscore_p=0.832  bertscore_r=0.814  bertscore_f1=0.823
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=0.986
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=0.000  recall=0.000  f1=0.000  recommendation_rougeL=0.000
+  final_report_generation            subjective_rougeL=0.471  subjective_bertscore_f1=0.776  objective_rougeL=0.405  objective_bertscore_f1=0.779  assessment_rougeL=0.460  assessment_bertscore_f1=0.773  plan_rougeL=0.320  plan_bertscore_f1=0.719
+
+Case: case_06
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.844  rouge2=0.695  rougeL=0.804  bertscore_p=0.910  bertscore_r=0.902  bertscore_f1=0.906
+  clinical_summarization             rouge1=0.506  rouge2=0.244  rougeL=0.402  bertscore_p=0.807  bertscore_r=0.765  bertscore_f1=0.785
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=1.000
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=0.500  f1=0.667  recommendation_rougeL=0.105
+  final_report_generation            subjective_rougeL=0.328  subjective_bertscore_f1=0.787  objective_rougeL=0.287  objective_bertscore_f1=0.738  assessment_rougeL=0.211  assessment_bertscore_f1=0.692  plan_rougeL=0.156  plan_bertscore_f1=0.682
+
+Case: case_07
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.913  rouge2=0.839  rougeL=0.899  bertscore_p=0.923  bertscore_r=0.932  bertscore_f1=0.927
+  clinical_summarization             rouge1=0.438  rouge2=0.242  rougeL=0.260  bertscore_p=0.802  bertscore_r=0.698  bertscore_f1=0.746
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=0.895
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=1.000
+  final_report_generation            subjective_rougeL=0.321  subjective_bertscore_f1=0.715  objective_rougeL=0.105  objective_bertscore_f1=0.655  assessment_rougeL=0.286  assessment_bertscore_f1=0.738  plan_rougeL=0.114  plan_bertscore_f1=0.674
+
+Case: case_08
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.706  rouge2=0.523  rougeL=0.661  bertscore_p=0.831  bertscore_r=0.841  bertscore_f1=0.836
+  clinical_summarization             rouge1=0.663  rouge2=0.371  rougeL=0.533  bertscore_p=0.897  bertscore_r=0.824  bertscore_f1=0.859
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=1.000
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=1.000  recall=1.000  f1=1.000  recommendation_rougeL=1.000
+  final_report_generation            subjective_rougeL=0.438  subjective_bertscore_f1=0.796  objective_rougeL=0.610  objective_bertscore_f1=0.847  assessment_rougeL=0.240  assessment_bertscore_f1=0.744  plan_rougeL=0.426  plan_bertscore_f1=0.759
+
+Case: case_09
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.975  rouge2=0.947  rougeL=0.975  bertscore_p=0.976  bertscore_r=0.979  bertscore_f1=0.978
+  clinical_summarization             rouge1=0.414  rouge2=0.154  rougeL=0.303  bertscore_p=0.750  bertscore_r=0.697  bertscore_f1=0.723
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=0.895
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=0.000  recall=0.000  f1=0.000  recommendation_rougeL=0.000
+  final_report_generation            subjective_rougeL=0.409  subjective_bertscore_f1=0.729  objective_rougeL=0.324  objective_bertscore_f1=0.760  assessment_rougeL=0.318  assessment_bertscore_f1=0.729  plan_rougeL=0.291  plan_bertscore_f1=0.745
+
+Case: case_10
+----------------------------------------------------
+  transcription_cleanup              rouge1=0.914  rouge2=0.859  rougeL=0.907  bertscore_p=0.929  bertscore_r=0.937  bertscore_f1=0.933
+  clinical_summarization             rouge1=0.579  rouge2=0.347  rougeL=0.487  bertscore_p=0.797  bertscore_r=0.742  bertscore_f1=0.768
+  differential_diagnosis             precision=1.000  recall=1.000  f1=1.000  ndcg=0.895
+  medication_normalization           precision=1.000  recall=1.000  f1=1.000
+  drug_interaction_check             precision=0.000  recall=0.000  f1=0.000  recommendation_rougeL=0.000
+  final_report_generation            subjective_rougeL=0.380  subjective_bertscore_f1=0.798  objective_rougeL=0.261  objective_bertscore_f1=0.724  assessment_rougeL=0.190  assessment_bertscore_f1=0.684  plan_rougeL=0.128  plan_bertscore_f1=0.659
+
+========================================================================
+
+[Harness] Results written to:
+  benchmark/results/final_20260505_172124/zs/run_zs_20260505_174844_raw.csv
+  benchmark/results/final_20260505_172124/zs/run_zs_20260505_174844_summary.csv

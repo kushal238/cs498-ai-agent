@@ -1,0 +1,36 @@
+{
+  "case_id": "case_07",
+  "transcription_cleaned": "Doctor: Good morning. How can I help you today?\nPatient: Good morning, doctor. I was referred here from another hospital. I'm 27 weeks pregnant and I had a very scary episode a few weeks ago.\nDoctor: I'm glad you came in. Can you walk me through what happened?\nPatient: At 22 weeks, I started having vaginal bleeding. I went to the emergency room and they admitted me for bedrest. About two days later, I got terrible pelvic pain and contractions, and I passed a large mass vaginally.\nDoctor: That sounds very distressing. Were there any fetal parts in the mass?\nPatient: No, the doctors said there were no fetal contents. The baby was fine \u2014 they checked the heart tones and everything was okay.\nDoctor: Do you know what the pathology showed on that mass?\nPatient: Yes, they told me it was a very aggressive-looking tumor under the microscope, with spindle-shaped cells and giant cells. The pathologist said it could be an endometrial stromal sarcoma or an undifferentiated uterine sarcoma, but they weren't sure.\nDoctor: I see. And what happened after that \u2014 did they do any procedure at the outside hospital?\nPatient: Yes, they took me to the operating room and found a hole in the back wall of my vagina that was bleeding. They stitched it closed. My cervix was closed and the baby was still okay.\nDoctor: Good. Can you tell me about your obstetric history?\nPatient: This is my fourth pregnancy. I've had two therapeutic abortions and one miscarriage.\nDoctor: Any prior gynecologic problems \u2014 abnormal pap smears, fibroids, infertility?\nPatient: No, nothing like that. My periods were always regular, no pain with sex, no unusual bleeding before this pregnancy.\nDoctor: Any family history of cancer?\nPatient: Yes, actually. Two of my family members had cervical cancer and two had endometrial cancer.\nDoctor: That's important to know. We'll order an MRI today to get a better picture of what's happening. Has the fetus had any issues noted on ultrasound?\nPatient: Yes, one of the baby's kidneys looks abnormal \u2014 they said it's dysplastic.\nDoctor: Okay. And how are you feeling now at 27 weeks?\nPatient: I feel okay. No more bleeding, no pelvic pain. I'm just worried about what this mass was.\nDoctor: Understood. We're going to coordinate with our gynecologic oncology and maternal-fetal medicine teams to make the best plan for you and your baby.\nPatient: Thank you, doctor. I just want to make sure we're both safe.",
+  "clinical_summary": "A 31-year-old pregnant woman at 27 weeks gestation presented with a history of vaginal bleeding and expulsion of a large pelvic mass at 22 weeks. Pathology suggested a high-grade sarcoma, and a posterior vaginal wall defect was repaired. The patient has a family history of cervical and endometrial cancer. An MRI and multidisciplinary evaluation were conducted, leading to a planned cesarean hysterectomy at 36 weeks. Postpartum, a high-grade sarcoma was confirmed, and the patient underwent further surgical and radiation treatment, remaining disease-free for 58 months.",
+  "differential_diagnosis": [
+    {
+      "condition": "Endometrial stromal sarcoma",
+      "pmid": null,
+      "rationale": "The pathology report indicated a highly cellular tumor with spindle-shaped cells and positive immunohistochemistry markers consistent with endometrial stromal sarcoma."
+    },
+    {
+      "condition": "Undifferentiated uterine sarcoma",
+      "pmid": null,
+      "rationale": "The aggressive nature of the tumor and the presence of spindle-shaped and giant cells suggest the possibility of an undifferentiated uterine sarcoma."
+    },
+    {
+      "condition": "Leiomyosarcoma",
+      "pmid": null,
+      "rationale": "Although less likely, the presence of spindle cells and the aggressive nature of the tumor could also suggest a leiomyosarcoma."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "betamethasone 12 mg intramuscularly",
+      "rxnorm_id": null,
+      "ingredient": "betamethasone"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient is a 31-year-old woman, 27 weeks pregnant, who experienced vaginal bleeding and expelled a large mass at 22 weeks. She reports no current bleeding or pelvic pain but is concerned about the nature of the mass.",
+    "objective": "The patient has a history of a posterior vaginal wall defect repair and a fetal anomaly (dysplastic kidney). Pathology suggested a high-grade sarcoma. MRI showed no metastatic disease. Family history includes cervical and endometrial cancer.",
+    "assessment": "The patient likely has a high-grade vaginal sarcoma, possibly endometrial stromal sarcoma or undifferentiated uterine sarcoma, given the pathology findings and clinical presentation.",
+    "plan": "Coordinate care with gynecologic oncology and maternal-fetal medicine. Plan for cesarean hysterectomy at 36 weeks. Administer betamethasone for fetal lung maturity. Postpartum, monitor for recurrence and consider adjuvant therapy as needed."
+  }
+}

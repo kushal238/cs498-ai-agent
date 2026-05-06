@@ -1,0 +1,59 @@
+{
+  "case_id": "case_02",
+  "transcription_cleaned": "Doctor: Good morning, sir. I'm Dr. Smith. How can I help you today?  \nPatient: Good morning, doctor. I came here to report my diabetes.  \nDoctor: I see. Can you tell me more about your diagnosis?  \nPatient: Yes, I was diagnosed with type 2 diabetes mellitus when I was 25 years old.  \nDoctor: I see. And what is your prior medical history?  \nPatient: Well, I had a dilated cardiomyopathy and was treated with a pacemaker when I was 42.  \nDoctor: Hmm, I see. And what about your family history?  \nPatient: My mother and maternal grandfather had type 2 diabetes, but my father died of natural causes and wasn't affected by diabetes. My brother and sister are healthy and don't have any signs of hyperglycemia.  \nDoctor: Are you experiencing any diabetic complications such as nephropathy, neuropathy, or retinopathy?  \nPatient: No, I'm not experiencing any of those complications.  \nDoctor: Okay, that's good to hear. And have you been experiencing any diabetic symptoms recently?  \nPatient: No, I haven't experienced any symptoms.  \nDoctor: I see. And what treatment have you been following for your diabetes?  \nPatient: I've been following a regular treatment with basal-bolus insulin and metformin.  \nDoctor: Okay, I understand. And have you had any tests done to detect insulin resistance?  \nPatient: No, I haven't had any tests done for that.  \nDoctor: I see. Well, we'll need to schedule an examination for you to monitor your blood glucose levels. Can you keep a diary of your morning and pre-meal levels?  \nPatient: Sure, I can do that.  \nDoctor: Great. And we'll also need to detect beta-cell antibodies to investigate the possibility of an autoimmune etiology of your diabetes.  \nPatient: Okay, I understand.  \nDoctor: Good morning, sir. How are you today?  \nPatient: Good morning, doctor. I'm doing well.  \nDoctor: Great to hear. And have you been monitoring your blood glucose levels?  \nPatient: Yes, I have.  \nDoctor: Okay, let's take a look at the results. I see that your blood test results were not significant for autoimmune diabetes. And your capillary blood glucose levels showed an acceptable trend for diabetes.  \nPatient: Okay.  \nDoctor: So, based on the reasonable glycemic control, we'll modify your treatment plan.  \nPatient: Okay, I understand.  \nDoctor: Great. I'll see you in another month for a follow-up appointment.  \nPatient: Okay, thank you, doctor.",
+  "clinical_summary": "The patient, a 48-year-old male with a history of type 2 diabetes mellitus diagnosed at age 25 and dilated cardiomyopathy treated with a pacemaker at age 42, presents for diabetes management. He has a family history of type 2 diabetes on the maternal side and was found to have a NEUROD1 mutation (MODY6). Current treatment includes metformin, gliclazide, and basal insulin, with improved glycemic control and no diabetic complications reported.",
+  "differential_diagnosis": [
+    {
+      "condition": "Maturity-Onset Diabetes of the Young (MODY6)",
+      "pmid": null,
+      "rationale": "The presence of a NEUROD1 mutation confirms a diagnosis of MODY6, which is a monogenic form of diabetes that can present similarly to type 2 diabetes but often requires different management strategies."
+    },
+    {
+      "condition": "Type 2 Diabetes Mellitus",
+      "pmid": null,
+      "rationale": "Despite the MODY6 diagnosis, the patient's long-standing history of type 2 diabetes and family history suggest a possible overlap or misclassification, which is common in clinical practice."
+    },
+    {
+      "condition": "Dilated Cardiomyopathy",
+      "pmid": null,
+      "rationale": "The patient's history of dilated cardiomyopathy, which required a pacemaker, is a significant comorbidity that can influence diabetes management and overall health outcomes."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "insulin glargine daily",
+      "rxnorm_id": null,
+      "ingredient": "insulin glargine"
+    },
+    {
+      "original": "metformin 500mg three times daily",
+      "rxnorm_id": null,
+      "ingredient": "metformin"
+    },
+    {
+      "original": "gliclazide 60mg daily",
+      "rxnorm_id": null,
+      "ingredient": "gliclazide"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "insulin glargine",
+      "drug_b": "gliclazide",
+      "severity": "unknown",
+      "recommendation": "Monitor blood glucose levels closely as both drugs can cause hypoglycemia. Adjust doses as necessary."
+    },
+    {
+      "drug_a": "metformin",
+      "drug_b": "gliclazide",
+      "severity": "unknown",
+      "recommendation": "Monitor blood glucose levels closely as both drugs can cause hypoglycemia. Adjust doses as necessary."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, a 48-year-old male, presented for a follow-up regarding his diabetes management. He was diagnosed with type 2 diabetes mellitus at the age of 25 and has a significant family history of diabetes on his maternal side. He reports no current symptoms of diabetic complications such as nephropathy, neuropathy, or retinopathy. The patient has been managing his diabetes with a regimen that includes basal-bolus insulin and metformin. He has not experienced any recent diabetic symptoms and has been compliant with monitoring his blood glucose levels as advised. He also has a history of dilated cardiomyopathy, for which he received a pacemaker at age 42.",
+    "objective": "Upon review of the patient's recent blood glucose monitoring, his capillary blood glucose levels have shown an acceptable trend, typically ranging between 90\u2013130 mg/dL. Laboratory tests for beta-cell antibodies were negative, ruling out autoimmune diabetes. Genetic testing revealed a NEUROD1 mutation, confirming a diagnosis of MODY6. The patient's HbA1c levels have been persistently high, indicating suboptimal glycemic control despite the current treatment regimen. There are no signs of diabetic complications, and the patient reports no episodes of hypoglycemia.",
+    "assessment": "The patient has a confirmed diagnosis of MODY6 due to a NEUROD1 mutation, which requires a tailored management approach distinct from typical type 2 diabetes treatment. Despite the presence of this mutation, the patient's long-standing history of type 2 diabetes and family history suggest a complex interplay of genetic and environmental factors. His current treatment regimen includes insulin glargine, metformin, and gliclazide, which has improved his glycemic control but not sufficiently to lower his HbA1c to target levels. The patient's history of dilated cardiomyopathy remains a significant comorbidity that must be considered in his overall management plan.",
+    "plan": "The treatment plan will continue to focus on optimizing glycemic control while minimizing the risk of hypoglycemia. The patient will remain on insulin glargine, metformin, and gliclazide, with close monitoring of blood glucose levels to adjust doses as necessary. Given the potential for hypoglycemia with the combination of insulin and gliclazide, the patient will be advised to monitor his blood glucose levels closely and report any episodes of hypoglycemia. Family counseling regarding the autosomal dominant nature of MODY6 has been provided, and genetic testing for family members has been discussed. The patient will be scheduled for a follow-up appointment in one month to reassess his glycemic control and adjust the treatment plan as needed."
+  }
+}

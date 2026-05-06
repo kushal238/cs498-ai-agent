@@ -1,0 +1,93 @@
+{
+  "case_id": "case_05",
+  "transcription_cleaned": "Doctor: Hi, how are you feeling today?\nPatient: I've been feeling short of breath for a week now, and I have a low-grade fever and some chest pain on the right side.\nDoctor: Okay, let me take a look at your medical history. You've been treated for bronchitis with azithromycin, but it didn't seem to help?\nPatient: Yes, that's right.\nDoctor: And you have a positive diagnosis of rheumatoid arthritis, which you've been managing well with hydroxychloroquine and low-dose prednisone.\nPatient: Yes, that's correct.\nDoctor: And you have some other medical problems, including osteopenia, reflux disease, and hypercholesterolemia.\nPatient: Yes, I take risedronate, calcium and vitamin D supplements, omeprazole, and atorvastatin for those.\nDoctor: Okay, let's take a look at your examination. Your vital signs are stable, and you don't have a fever right now. Your oxygen saturation is 95% on room air.\nPatient: Yes.\nDoctor: You look tired, but not in any distress. When I listened to your lungs, I heard wheezes bilaterally and a few crackles at the right base.\nPatient: Hmm, okay.\nDoctor: Your examination is otherwise unremarkable. You don't have any synovitis in your joints, and your range of motion is normal in all joints with no muscle wasting.\nPatient: That's good to hear.\nDoctor: I noticed some old hypopigmented macules over your neck and face, but no skin nodules.\nPatient: Yes, I've had those for a while.\nDoctor: Your white count was 7.8 with neutrophils of 84%. The ESR by Westergren's method was 46 mm at the end of one hour. The comprehensive metabolic profile was normal, and the urine analysis didn't show any sediment.\nPatient: Okay.\nDoctor: The chest radiograph showed streaky infiltrates at the right base. A high-resolution CT scan showed three lung nodules.\nPatient: Oh no.\nDoctor: An FDG PET scan was done, which showed avid uptake in all the nodules with an SUV value of 8.\nPatient: What does that mean?\nDoctor: A CT-guided lung biopsy of the right lung nodule was performed, and the lung biopsy showed fibrosis with acute and chronic inflammation and necrotizing vasculitis.\nPatient: Is that serious?\nDoctor: The biopsy specimen was examined for aerobic and anaerobic bacteria, acid-fast bacilli, and fungus, but it was negative on smear and culture. We also did a complete vasculitis panel, which included antinuclear antibodies, anti-dsDNA, anti-Smith, and anti-SSA.\nPatient: What happens next?\nDoctor: We need to monitor the situation and see if there are any changes. I'll schedule follow-up appointments with you to check on your progress.",
+  "clinical_summary": "A 60-year-old female with rheumatoid arthritis on hydroxychloroquine and low-dose prednisone presented with dyspnea, low-grade fever, and right-sided pleuritic chest pain, unresponsive to azithromycin. Examination revealed bilateral wheezes and right basilar crackles, with imaging showing lung nodules and PET scan indicating high uptake. Biopsy confirmed necrotizing vasculitis, and serologies supported granulomatosis with polyangiitis. Methotrexate was initiated, leading to symptom improvement and resolution of lung nodules.",
+  "differential_diagnosis": [
+    {
+      "condition": "Granulomatosis with polyangiitis",
+      "pmid": "42084883",
+      "rationale": "The biopsy confirmed necrotizing vasculitis, and serologies supported granulomatosis with polyangiitis, which aligns with the patient's symptoms and imaging findings."
+    },
+    {
+      "condition": "Rheumatoid arthritis-associated lung disease",
+      "pmid": "42051500",
+      "rationale": "The patient has rheumatoid arthritis, which can be associated with lung nodules and pleuritic chest pain, although the biopsy findings are more specific for vasculitis."
+    },
+    {
+      "condition": "Infectious pneumonia",
+      "pmid": "42084230",
+      "rationale": "Initially considered due to symptoms of fever and dyspnea, but less likely due to lack of response to azithromycin and biopsy findings of vasculitis."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "azithromycin",
+      "rxnorm_id": "18631",
+      "ingredient": "azithromycin"
+    },
+    {
+      "original": "hydroxychloroquine",
+      "rxnorm_id": "5521",
+      "ingredient": "hydroxychloroquine"
+    },
+    {
+      "original": "prednisone",
+      "rxnorm_id": "8640",
+      "ingredient": "prednisone"
+    },
+    {
+      "original": "risedronate",
+      "rxnorm_id": "73056",
+      "ingredient": "risedronate"
+    },
+    {
+      "original": "omeprazole",
+      "rxnorm_id": "7646",
+      "ingredient": "omeprazole"
+    },
+    {
+      "original": "atorvastatin",
+      "rxnorm_id": "83367",
+      "ingredient": "atorvastatin"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient, a 60-year-old female, reports experiencing shortness of breath for the past week, accompanied by a low-grade fever and right-sided pleuritic chest pain. She has a history of rheumatoid arthritis, which she manages with hydroxychloroquine and low-dose prednisone. Despite previous treatment with azithromycin for presumed bronchitis, her symptoms have not improved. Her medical history also includes osteopenia, gastroesophageal reflux disease, and hypercholesterolemia, for which she takes risedronate, calcium and vitamin D supplements, omeprazole, and atorvastatin. She denies any new allergies or changes in her medication regimen.",
+    "objective": "On examination, the patient's vital signs are stable, with an oxygen saturation of 95% on room air. She appears tired but is not in acute distress. Lung auscultation reveals bilateral wheezes and crackles at the right lung base. There is no evidence of active synovitis or muscle wasting, and her joint range of motion is normal. Laboratory tests show a white blood cell count of 7.8 with 84% neutrophils and an elevated ESR of 46 mm/h. A chest radiograph reveals streaky infiltrates at the right lung base, and a high-resolution CT scan shows three lung nodules. An FDG PET scan indicates high uptake in these nodules, with an SUV of 8. A CT-guided biopsy of a right lung nodule shows fibrosis, acute and chronic inflammation, and necrotizing vasculitis, with negative cultures for bacteria, mycobacteria, and fungi. Serological tests reveal a cANCA titer of 1:640 and elevated anti-proteinase 3 antibodies.",
+    "assessment": "The clinical presentation, imaging findings, and biopsy results are consistent with granulomatosis with polyangiitis (GPA), formerly known as Wegener's granulomatosis. The presence of necrotizing vasculitis on biopsy, along with positive cANCA and anti-proteinase 3 antibodies, supports this diagnosis. The patient's symptoms of dyspnea, pleuritic chest pain, and lung nodules align with GPA, and the lack of response to azithromycin suggests that an infectious etiology is less likely. The improvement in symptoms following the initiation of methotrexate further corroborates the diagnosis of GPA.",
+    "plan": "The patient has been started on methotrexate to manage the granulomatosis with polyangiitis, with continuation of low-dose prednisone to control inflammation. Regular follow-up appointments are necessary to monitor her response to treatment and adjust medications as needed. Repeat imaging studies, such as a chest CT, will be scheduled to assess the resolution of lung nodules. The patient should be advised to report any new or worsening symptoms, such as increased shortness of breath or chest pain. Additionally, she should continue her current medications for rheumatoid arthritis, osteopenia, gastroesophageal reflux disease, and hypercholesterolemia, and maintain regular check-ups with her rheumatologist and primary care physician."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "case_id": "case_08",
+  "transcription_cleaned": "Doctor: Hello, how can I help you today?  \nPatient: Hi, doctor. I have some lumps on my head that are painful and have pus discharge.  \nDoctor: Okay, let me take a look. Can you show me the lumps?  \nPatient: Yes, they are on the back of my head.  \nDoctor: Hmm, I see. Can you tell me more about your symptoms? Have you had any rashes or itching?  \nPatient: Yes, I have had rashes and itching for the past two weeks. They are especially severe in the afternoon and evening.  \nDoctor: I see. Have you been given any treatment for this?  \nPatient: No, I haven't.  \nDoctor: Okay. Did your mother notice anything about the rashes and itching?  \nPatient: Yes, she noticed that the alopecia in the pruritic area and the rash had increased. And I started to complain of pain in the head area.  \nDoctor: I see. That's why you decided to come for treatment today. Is that right?  \nPatient: Yes, that's right.  \nDoctor: Do you have a history of fever?  \nPatient: No, I don't.  \nDoctor: What about your twin? Do they have similar complaints?  \nPatient: Yes, they do. They have alopecia, red lumps, and pus discharge. But we did not find other family members with the same complaints.  \nDoctor: I see. Can you tell me more about your history? Have you been playing with stray cats in front of your house?  \nPatient: Yes, I have. And my family said that I have poor hygiene.  \nDoctor: Okay. I have obtained informed consent from you and your family for your case and images to be published in a manuscript. And it has been approved by the Department of Dermatology and Venereology, Faculty of Medicine, Universitas Sumatera Utara.  \nPatient: Okay.  \nDoctor: Now, let me examine you. During the dermatological examination, I found multiple erythematous nodules with sinuses in the scalp of the parieto-occipital area and alopecia. There is tenderness in the area of the lesion.  \nPatient: Hmm.  \nDoctor: On palpation, there is no palpable enlargement of the lymph nodes. And there is no lesion in the other parts of your body.  \nPatient: Okay.  \nDoctor: Based on the history and physical examination, the differential diagnosis in your case is kerion type tinea capitis and impetigenic scabies.  \nPatient: Hmm.  \nDoctor: We have examined skin scrapings in the lesion area using KOH 10% and examined it under a light microscope, which did not show any fungal elements. The culture also showed a negative result.  \nPatient: Okay.  \nDoctor: I would like to prescribe some medication for you. You need to take it regularly and come back for a follow-up in two weeks.  \nPatient: Okay, doctor. Thank you.",
+  "clinical_summary": "An 8-year-old male presented with a 2-week history of painful erythematous nodules with pus discharge and alopecia on the parieto-occipital scalp, accompanied by pruritus and rashes worsening in the afternoon and evening. The patient has a history of contact with stray cats and poor hygiene, and his twin brother exhibits identical symptoms. Dermatological examination revealed multiple erythematous nodules with sinuses and alopecia, with no lymphadenopathy or lesions elsewhere. Skin scraping microscopy confirmed Sarcoptes scabiei, leading to a diagnosis of impetigenic scabies. Treatment included permethrin 5% cream, cetirizine syrup, and oral amoxicillin, resulting in progressive improvement and complete hair regrowth by week 3.",
+  "differential_diagnosis": [
+    {
+      "condition": "Impetigenic Scabies",
+      "pmid": null,
+      "rationale": "The presence of erythematous nodules with pus discharge, alopecia, and confirmed Sarcoptes scabiei on skin scraping, along with the patient's history of contact with stray cats and poor hygiene, strongly supports impetigenic scabies."
+    },
+    {
+      "condition": "Tinea Capitis",
+      "pmid": null,
+      "rationale": "The presentation of alopecia and erythematous nodules could suggest a fungal infection like tinea capitis, especially given the history of contact with stray animals, although the confirmed scabies diagnosis makes this less likely."
+    },
+    {
+      "condition": "Bacterial Folliculitis",
+      "pmid": null,
+      "rationale": "The painful erythematous nodules with pus discharge could indicate bacterial folliculitis, but the confirmed diagnosis of scabies and the response to scabies treatment make this a secondary consideration."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "permethrin 5% cream topical",
+      "rxnorm_id": null,
+      "ingredient": "permethrin"
+    },
+    {
+      "original": "cetirizine syrup",
+      "rxnorm_id": null,
+      "ingredient": "cetirizine"
+    },
+    {
+      "original": "amoxicillin oral",
+      "rxnorm_id": null,
+      "ingredient": "amoxicillin"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient, an 8-year-old male, presented with a 2-week history of painful lumps on the back of his head, which were discharging pus. He reported associated symptoms of rashes and itching, particularly severe in the afternoons and evenings. The patient's mother observed an increase in alopecia and rash in the affected area, along with the onset of pain. The patient denied any history of fever. Notably, his twin brother exhibited similar symptoms, but no other family members were affected. The patient admitted to playing with stray cats and acknowledged poor hygiene practices.",
+    "objective": "On examination, the patient had multiple erythematous nodules with sinuses and alopecia in the parieto-occipital region of the scalp. The lesions were tender to touch, but there was no palpable lymphadenopathy or lesions elsewhere on the body. A dermatological examination was conducted, and skin scrapings from the lesion area were analyzed using KOH 10% and a light microscope, which did not reveal any fungal elements. However, microscopy confirmed the presence of Sarcoptes scabiei mites, leading to a diagnosis of impetigenic scabies.",
+    "assessment": "The clinical presentation and laboratory findings support a diagnosis of impetigenic scabies, characterized by erythematous nodules with pus discharge and alopecia, confirmed by the presence of Sarcoptes scabiei on skin scraping. The differential diagnosis included tinea capitis and bacterial folliculitis, but the absence of fungal elements and the confirmed scabies diagnosis make these less likely. The patient's history of contact with stray cats and poor hygiene further supports the diagnosis of scabies.",
+    "plan": "The treatment plan includes the application of permethrin 5% cream to be applied once for 8 hours, cetirizine syrup to manage itching, and oral amoxicillin to address any secondary bacterial infection. The patient is advised to maintain good hygiene and avoid contact with stray animals. A follow-up appointment is scheduled in two weeks to assess the response to treatment. The patient's twin brother, who exhibits similar symptoms, will receive the same treatment regimen. The family is educated on scabies prevention and hygiene practices to prevent recurrence."
+  }
+}

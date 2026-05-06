@@ -1,0 +1,101 @@
+{
+  "case_id": "case_10",
+  "transcription_cleaned": "Doctor: Good morning, I am Dr. Smith. Can you tell me what brings you in today?  \nPatient: Good morning, I have been having some abdominal pain for the past 4 days.  \nDoctor: I see. Can you describe the pain for me?  \nPatient: It's postprandial and sharp, and sometimes it radiates to my back.  \nDoctor: Hmm, okay. Can you tell me a little bit about your past medical history?  \nPatient: I am an African American male and I have a past medical history of chronic pancreatitis, insulin-dependent diabetes, hypertension, peripheral arterial disease, and gout.  \nDoctor: I see. And what medications are you currently taking?  \nPatient: I am taking insulin, metformin 500mg daily, lisinopril 40mg daily, amlodipine 10mg daily, metoprolol 25mg twice a day, rosuvastatin 40mg per day, aspirin 81mg, clopidogrel 75mg per day, and allopurinol 100mg.  \nDoctor: Okay. And can you tell me about your family history?  \nPatient: My mother had insulin-dependent diabetes and hypertension, and my father had hypertension.  \nDoctor: Alright. Can you tell me about your alcohol and smoking habits?  \nPatient: I used to smoke a few cigarettes a day, but I quit over 5 years prior to my initial presentation. I reported drinking around four alcoholic beverages daily.  \nDoctor: Okay. And can you tell me about your previous visits to the emergency room?  \nPatient: 18 months prior to my current presentation, I went to the emergency room with postprandial abdominal pain.  \nDoctor: I see. And what was the outcome of that visit?  \nPatient: I had a CT scan of my abdomen and it showed necrotizing acute pancreatitis and a fluid collection between my pancreas and stomach. I was managed supportively and discharged.  \nDoctor: Alright. And did you have any other visits to the emergency room after that?  \nPatient: A few months later, I was admitted for diabetic ketoacidosis secondary to pancreatic necrosis.  \nDoctor: Okay. And did you have any abdominal imaging done at that visit?  \nPatient: No, I didn't.  \nDoctor: Alright. And did you have any follow-up CT scans after your initial episode of acute pancreatitis?  \nPatient: Yes, I did. I had a repeat CT scan 5 months after my initial episode, or 2 months after my diabetic ketoacidosis admission, and it showed no change in size of the pancreatic pseudocyst.  \nDoctor: Okay. And can you describe the pain you are experiencing now compared to the pain you experienced 18 months ago?  \nPatient: The pain is of different character than the original episode of acute pancreatitis 18 months ago, but I am unable to specifically describe how.  \nDoctor: Alright. I am going to do a physical examination now. Is that okay?  \nPatient: Yes, that's fine.  \nDoctor: Okay, I have finished the examination. You are an alert patient, but you are tachycardic to 110 beats per minute and have decreased breath sounds at the bilateral lung bases. Your abdomen is nontender but mildly distended. Your neurologic examination is unremarkable.  \nPatient: Okay.  \nDoctor: Based on your symptoms and medical history, I think you may be experiencing another episode of acute pancreatitis. I am going to order a CT scan of your abdomen to confirm the diagnosis.  \nPatient: Okay.  \nDoctor: In the meantime, I want you to rest and avoid eating solid foods. I will also adjust your medications to help manage your pain.  \nDoctor: I will see you again after the results of the CT scan are back. Is there anything else you would like to ask me?  \nPatient: No, that's all. Thank you.  \nDoctor: You're welcome. Take care.",
+  "clinical_summary": "A 53-year-old African American male with a history of chronic pancreatitis, insulin-dependent diabetes, hypertension, peripheral arterial disease, and gout presented with 4 days of postprandial sharp LUQ abdominal pain radiating to the back. He has a history of necrotizing acute pancreatitis with a pancreatic pseudocyst, which was stable on follow-up imaging but has now enlarged, causing compression of the splenic vasculature. Current medications include insulin, metformin, lisinopril, amlodipine, metoprolol, rosuvastatin, aspirin, clopidogrel, and allopurinol. Examination revealed tachycardia, decreased breath sounds, and mild abdominal distension; imaging confirmed an enlarged pseudocyst, leading to endoscopic drainage and subsequent splenectomy due to complications.",
+  "differential_diagnosis": [
+    {
+      "condition": "Pancreatic Pseudocyst Complication",
+      "pmid": null,
+      "rationale": "The patient's history of necrotizing pancreatitis and imaging showing an enlarged pseudocyst causing splenic vasculature compression aligns with the presentation of postprandial LUQ pain radiating to the back."
+    },
+    {
+      "condition": "Splenic Vein Thrombosis",
+      "pmid": null,
+      "rationale": "Compression of the splenic vasculature by the enlarged pseudocyst can lead to splenic vein thrombosis, which is consistent with the patient's abdominal pain and the need for splenectomy."
+    },
+    {
+      "condition": "Recurrent Acute Pancreatitis",
+      "pmid": null,
+      "rationale": "The patient's history of chronic pancreatitis and current symptoms of sharp LUQ pain radiating to the back suggest a possible recurrence of acute pancreatitis, especially given the pseudocyst complications."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "insulin",
+      "rxnorm_id": null,
+      "ingredient": "insulin"
+    },
+    {
+      "original": "metformin 500mg daily",
+      "rxnorm_id": null,
+      "ingredient": "metformin"
+    },
+    {
+      "original": "lisinopril 40mg daily",
+      "rxnorm_id": null,
+      "ingredient": "lisinopril"
+    },
+    {
+      "original": "amlodipine 10mg daily",
+      "rxnorm_id": null,
+      "ingredient": "amlodipine"
+    },
+    {
+      "original": "metoprolol 25mg twice per day",
+      "rxnorm_id": null,
+      "ingredient": "metoprolol"
+    },
+    {
+      "original": "rosuvastatin 40mg per day",
+      "rxnorm_id": null,
+      "ingredient": "rosuvastatin"
+    },
+    {
+      "original": "aspirin 81mg",
+      "rxnorm_id": null,
+      "ingredient": "aspirin"
+    },
+    {
+      "original": "clopidogrel 75mg per day",
+      "rxnorm_id": null,
+      "ingredient": "clopidogrel"
+    },
+    {
+      "original": "allopurinol 100mg",
+      "rxnorm_id": null,
+      "ingredient": "allopurinol"
+    }
+  ],
+  "drug_interactions": [
+    {
+      "drug_a": "aspirin",
+      "drug_b": "clopidogrel",
+      "severity": "unknown",
+      "recommendation": "Monitor for increased risk of bleeding due to additive antiplatelet effects."
+    },
+    {
+      "drug_a": "metoprolol",
+      "drug_b": "amlodipine",
+      "severity": "unknown",
+      "recommendation": "Monitor for additive effects on blood pressure and heart rate."
+    },
+    {
+      "drug_a": "metoprolol",
+      "drug_b": "insulin",
+      "severity": "unknown",
+      "recommendation": "Monitor blood glucose levels as beta-blockers can mask hypoglycemia symptoms."
+    },
+    {
+      "drug_a": "lisinopril",
+      "drug_b": "allopurinol",
+      "severity": "unknown",
+      "recommendation": "Monitor for increased risk of hypersensitivity reactions."
+    }
+  ],
+  "final_report": {
+    "subjective": "The patient, a 53-year-old African American male, presented with a chief complaint of sharp left upper quadrant (LUQ) abdominal pain that has been ongoing for four days. The pain is described as postprandial, sharp, and radiates to the back. He has a significant past medical history including chronic pancreatitis, insulin-dependent diabetes, hypertension, peripheral arterial disease, and gout. The patient reports a history of necrotizing acute pancreatitis with a pancreatic pseudocyst, which was stable on follow-up imaging but has now enlarged. He consumes approximately four alcoholic beverages daily and quit smoking over five years ago. His family history includes diabetes and hypertension in his mother and hypertension in his father.",
+    "objective": "On physical examination, the patient was alert but exhibited tachycardia with a heart rate of 110 beats per minute. Breath sounds were decreased at the bilateral lung bases, and the abdomen was noted to be nontender but mildly distended. Neurological examination was unremarkable. Laboratory tests revealed a white blood cell count of 14.7, hemoglobin of 16.7, glucose level of 221, and HbA1c of 11.3%. Lipase was elevated at 145 U/L. A CT scan of the abdomen showed an enlarged pancreatic pseudocyst measuring 15.9x10.4 cm, displacing the stomach and compressing the splenic vasculature.",
+    "assessment": "The patient is likely experiencing complications from an enlarged pancreatic pseudocyst, which is causing compression of the splenic vasculature. This is consistent with his history of necrotizing pancreatitis and the current presentation of postprandial LUQ pain radiating to the back. Differential diagnoses include pancreatic pseudocyst complication, splenic vein thrombosis due to vascular compression, and recurrent acute pancreatitis. The imaging findings and clinical presentation support the diagnosis of a pseudocyst complication leading to splenic issues, necessitating further intervention.",
+    "plan": "The immediate plan involves confirming the diagnosis with a CT scan, which has already been performed, showing an enlarged pseudocyst. The patient will undergo endoscopic cystogastrostomy for drainage of the pseudocyst, and a stent will be placed to facilitate drainage. Clopidogrel will be held to reduce bleeding risk, while other home medications will be continued. The patient will receive IV fluids, acetaminophen, and oxycodone for pain management, with IV morphine available as needed. Post-procedure, the patient will be monitored for respiratory distress and new symptoms, with antibiotics initiated if infection is suspected. A splenectomy may be necessary if complications such as splenic vein thrombosis or abscess formation occur. Follow-up will include monitoring for surgical complications and ensuring resolution of the pleural effusion and abdominal collections."
+  }
+}

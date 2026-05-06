@@ -1,0 +1,73 @@
+{
+  "case_id": "case_04",
+  "transcription_cleaned": "Doctor: Hello, what brings you in today?\nPatient: I lost vision in my right eye after sinus surgery yesterday.\nDoctor: Did the vision loss happen immediately after the surgery?\nPatient: Yes. Right after the operation, I had no light perception in that eye.\nDoctor: Have you had sinus surgery before?\nPatient: Yes, I had endoscopic sinus surgery about 15 years ago and did not have any vision problems then.\nDoctor: Were any scans done at the outside clinic?\nPatient: Yes, an orbital CT showed a small fracture in the medial wall on the right and a thick bony septum in the ethmoid area.\nDoctor: Since admission, we started steroid pulse therapy because we are worried about a severe postoperative orbital or optic nerve injury.\nPatient: Yes.\nDoctor: What did the other tests show?\nPatient: The visual evoked potential test showed no right optic nerve activity, and the MRI showed enhancement around the posterior optic nerve sheath with an abnormal focus near the medial rectus close to the orbital apex.\nDoctor: Has your vision improved at all after treatment?\nPatient: No, I still cannot perceive light in the right eye.",
+  "clinical_summary": "A 53-year-old female presented with acute complete vision loss in the right eye following revision endoscopic sinus surgery. Imaging revealed a small medial orbital wall fracture and MRI showed enhancement around the posterior optic nerve sheath. Despite steroid pulse therapy, there was no improvement in vision, suggesting severe postoperative optic nerve injury.",
+  "differential_diagnosis": [
+    {
+      "condition": "Traumatic Optic Neuropathy",
+      "pmid": "41972858",
+      "rationale": "The acute vision loss following surgery, along with the medial orbital wall fracture and optic nerve sheath enhancement, strongly suggests traumatic optic neuropathy."
+    },
+    {
+      "condition": "Ischemic Optic Neuropathy",
+      "pmid": "42077692",
+      "rationale": "The sudden vision loss and lack of response to steroids could indicate ischemic damage to the optic nerve, possibly exacerbated by surgical manipulation or vascular compromise."
+    },
+    {
+      "condition": "Orbital Compartment Syndrome",
+      "pmid": "42063446",
+      "rationale": "The fracture and subsequent swelling could have led to increased orbital pressure, compromising optic nerve function, although this is less likely given the lack of improvement with steroids."
+    }
+  ],
+  "normalized_medications": [
+    {
+      "original": "intravenous methylprednisolone pulse therapy",
+      "rxnorm_id": "6902",
+      "ingredient": "methylprednisolone"
+    },
+    {
+      "original": "oral prednisolone for 10 days",
+      "rxnorm_id": "8638",
+      "ingredient": "prednisolone"
+    }
+  ],
+  "drug_interactions": [],
+  "final_report": {
+    "subjective": "The patient, a 53-year-old female, reports experiencing complete vision loss in her right eye immediately following revision endoscopic sinus surgery performed the previous day. She describes having no light perception in the affected eye since the operation. The patient has a history of chronic rhinosinusitis and underwent a similar sinus surgery approximately 15 years ago without any visual complications. She denies any improvement in vision despite ongoing treatment with steroids.",
+    "objective": "On examination, the patient exhibits no light perception in the right eye. An orbital CT scan performed at an outside clinic revealed a small fracture in the medial wall of the right orbit and a thick bony septum in the ethmoid region. An MRI of the orbit showed enhancement around the posterior optic nerve sheath and an abnormal focus near the medial rectus muscle close to the orbital apex. Visual evoked potential testing indicated no activity in the right optic nerve. The patient has been receiving intravenous methylprednisolone pulse therapy, followed by oral prednisolone, with no noted improvement in vision.",
+    "assessment": "The clinical presentation and imaging findings suggest a diagnosis of traumatic optic neuropathy, likely resulting from the medial orbital wall fracture sustained during the sinus surgery. The absence of visual improvement despite high-dose steroid therapy indicates a severe injury to the optic nerve, possibly due to direct trauma or ischemic insult. Other considerations include ischemic optic neuropathy or orbital compartment syndrome, although the latter is less likely given the lack of response to steroids.",
+    "plan": "The current management plan includes continuing oral prednisolone for a total of 10 days. Given the lack of improvement, further evaluation by an ophthalmologist specializing in neuro-ophthalmology is recommended to assess the potential for surgical intervention or alternative therapies. The patient should be monitored closely for any changes in vision or new symptoms. Follow-up imaging may be necessary to evaluate the progression of the optic nerve injury. The patient should be advised on the potential long-term implications of the injury and provided with support resources as needed."
+  },
+  "_debug_execution_log": [
+    {
+      "stage": "transcription",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "summarization",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "diagnosis",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "medications",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "interactions",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    },
+    {
+      "stage": "report",
+      "event": "success",
+      "detail": "completed on attempt 1"
+    }
+  ]
+}
