@@ -49,3 +49,9 @@ htmlcov/
 *.pem
 *.key
 .env.local
+
+# Generated benchmark outputs
+benchmark/results/*
+!benchmark/results/final_20260505_172124/
+!benchmark/results/final_20260505_172124/**
+stage_breakdown.png

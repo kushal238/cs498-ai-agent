@@ -1,206 +1,246 @@
-# CS498 Clinical Workflow AI Benchmark
+# CS498 Clinical Workflow Agent
 
-This repo benchmarks an agentic AI system that takes raw patient dialogue and chart notes and produces a SOAP clinical report. The agent runs inside a Docker container and goes through six sequential stages — transcription cleanup, clinical summarization, differential diagnosis, medication normalization, drug interaction checking, and final report generation. A host-side harness scores the output against ground truth without the agent ever seeing the answer key.
+This repository contains the complete agent implementation and benchmark package for
+the clinical workflow agent paper. The agent takes synthetic patient dialogue and
+chart notes, runs a six-stage clinical pipeline, and returns a SOAP-style report.
+A host-side benchmark harness runs the agent in Docker and scores the output against
+ground truth that never enters the container.
 
-The benchmark is modeled after SWE-bench. We run three comparison agents (baselines) against the main tool-augmented pipeline to isolate what's actually doing the heavy lifting.
+The package includes:
 
----
+- Agent source code in `benchmark/runner/` and `benchmark/agent/`
+- Baseline agents in `benchmark/baselines/`
+- Synthetic benchmark cases and ground truths in `benchmark/cases/` and `benchmark/ground_truths/`
+- Host-side scoring and evaluation code in `benchmark/harness/` and `benchmark/shared/scoring/`
+- Experiment scripts in `scripts/`
+- Final paper run outputs in `benchmark/results/final_20260505_172124/`
+
+## Current Agent
+
+The production container entrypoint is `benchmark/agent/agent_main.py`. It runs
+`ClinicalAgent` from `benchmark/runner/agent.py`, which uses:
+
+- Conditional planning in `benchmark/runner/planner.py`
+- Per-stage execution, retries, validation, and fallbacks in `benchmark/runner/executor.py`
+- Shared working memory and execution logs in `benchmark/runner/state.py`
+- Stage implementations in `benchmark/runner/stage_*.py`
+- OpenAI structured outputs via `benchmark/runner/llm_client.py`
+- PubMed, RxNorm, and OpenFDA helper tools in `benchmark/shared/tools/`
+
+The six evaluated stages are:
+
+1. Transcription cleanup
+2. Clinical summarization
+3. Differential diagnosis
+4. Medication normalization
+5. Drug interaction checking
+6. Final SOAP report generation
 
 ## Setup
 
-**Clone and install host-side dependencies (harness, scoring, and tests):**
+Requirements:
+
+- Python 3.11 recommended
+- Docker
+- OpenAI API key
+- Bash-compatible shell for the scripts in `scripts/` (Git Bash, WSL, macOS, or Linux)
+
+Install host-side dependencies:
+
+```bash
+python -m pip install -r benchmark/requirements.txt
+```
+
+Set your OpenAI API key before running agents or full benchmark experiments:
+
+```bash
+export OPENAI_API_KEY="<your-openai-api-key>"
+```
+
+PowerShell equivalent:
 
 ```powershell
-pip install -r benchmark/requirements.txt
+$env:OPENAI_API_KEY="<your-openai-api-key>"
 ```
 
-> The Docker containers use a separate, minimal `benchmark/agent/requirements.txt` that excludes
-> large scoring-only libraries (e.g. `sentence-transformers`) to keep image sizes small.
-> You don't need to manage this manually — the Dockerfiles reference it automatically.
+The agent Docker image uses the smaller dependency file
+`benchmark/agent/requirements.txt`. Host-only scoring dependencies such as
+BERTScore, sentence-transformers, and pytest stay in `benchmark/requirements.txt`.
 
-**Set your OpenAI API key** (all agents use GPT-4o):
+## Build Docker Images
 
-```powershell
-# PowerShell
-$env:OPENAI_API_KEY="sk-..."
+Build all evaluated systems from the repository root:
 
-# bash/zsh
-export OPENAI_API_KEY="sk-..."
+```bash
+bash scripts/build_images.sh
 ```
 
----
+This creates:
 
-## Docker Images
+- `clinical-agent:latest` - full tool-augmented agent
+- `zero-shot-baseline:latest` - one-shot GPT baseline
+- `no-tools-baseline:latest` - six-stage pipeline without external tools
 
-There are four Docker images — one for each agent. All use the same build context (`benchmark/`).
+Manual build commands:
 
-**Main agent** (full pipeline + RxNorm, PubMed, OpenFDA):
-```powershell
-docker build -t clinical-agent:latest -f benchmark/agent/Dockerfile benchmark/
+```bash
+cd benchmark
+docker build -t clinical-agent:latest -f agent/Dockerfile .
+docker build -t zero-shot-baseline:latest -f baselines/zero_shot/Dockerfile .
+docker build -t no-tools-baseline:latest -f baselines/no_tools/Dockerfile .
 ```
 
-**Zero-shot baseline** (single GPT-4o prompt, no pipeline, no tools):
-```powershell
-docker build -t clinical-zero-shot:latest -f benchmark/baselines/zero_shot/Dockerfile benchmark/
+## Run The Agent
+
+The benchmark harness is the easiest way to run the agent on one or more cases.
+It pipes each `input.json` into the selected Docker image, captures the JSON
+prediction, scores it, and writes CSV outputs.
+
+Run the full agent on all cases:
+
+```bash
+python benchmark/harness/harness.py \
+  --image clinical-agent:latest \
+  --timeout 180 \
+  --save-predictions
 ```
 
-**No-tools baseline** (same 6-stage pipeline, LLM only — no API calls):
-```powershell
-docker build -t clinical-no-tools:latest -f benchmark/baselines/no_tools/Dockerfile benchmark/
+Run a single case:
+
+```bash
+python benchmark/harness/harness.py \
+  --cases-dir benchmark/cases/case_02 \
+  --image clinical-agent:latest \
+  --timeout 180 \
+  --save-predictions
 ```
 
----
+Run a baseline:
 
-## Running the Harness
-
-The harness is the main entry point. It finds all cases in `benchmark/cases/`, runs the agent container on each one, scores against `benchmark/ground_truths/`, prints a results table, and writes CSVs to `benchmark/results/`.
-
-**Basic run (main agent, all cases):**
-```powershell
-python benchmark/harness/harness.py
+```bash
+python benchmark/harness/harness.py --image zero-shot-baseline:latest --timeout 180
+python benchmark/harness/harness.py --image no-tools-baseline:latest --timeout 180
 ```
 
-**Run with a specific image:**
-```powershell
-python benchmark/harness/harness.py --image clinical-zero-shot:latest
+By default, outputs are written to `benchmark/results/`:
+
+- `run_<timestamp>_raw.csv` - one row per case, trial, stage, and metric
+- `run_<timestamp>_summary.csv` - mean and standard deviation across trials
+- `predictions/*.json` - saved raw model outputs when `--save-predictions` is used
+
+## Reproduce Experiments
+
+The final paper run compares three systems across 10 cases with 3 trials per
+case, for 90 total container invocations.
+
+From the repository root:
+
+```bash
+bash scripts/build_images.sh
+bash scripts/run_full_benchmark.sh
 ```
 
-**Run 3 trials per case and save raw predictions:**
-```powershell
-python benchmark/harness/harness.py --trials 3 --save-predictions
+The full script writes a timestamped directory:
+
+```text
+benchmark/results/final_<YYYYMMDD_HHMMSS>/
 ```
 
-**Full example — comparing all three agents:**
-```powershell
-# Main agent
-python benchmark/harness/harness.py --image clinical-agent:latest --trials 3 --output-dir benchmark/results --save-predictions --timeout 300
+To recompute scores from saved predictions:
 
-# Zero-shot
-python benchmark/harness/harness.py --image clinical-zero-shot:latest --trials 3 --output-dir benchmark/results --timeout 300
-
-# No-tools
-python benchmark/harness/harness.py --image clinical-no-tools:latest --trials 3 --output-dir benchmark/results --timeout 300
+```bash
+python scripts/rescore_predictions.py benchmark/results/final_<YYYYMMDD_HHMMSS>
 ```
 
-Results land in timestamped CSVs in `benchmark/results/`. Each run produces two files:
-- `run_YYYYMMDD_HHMMSS_raw.csv` — one row per (case, trial, stage, metric)
-- `run_YYYYMMDD_HHMMSS_summary.csv` — mean and stddev across trials
+To regenerate the comparison table and stage-breakdown figure:
 
-### All harness flags
-
-| Flag | Default | What it does |
-|------|---------|--------------|
-| `--image` | `clinical-agent:latest` | Which Docker image to run |
-| `--cases-dir` | `benchmark/cases/` | Where to look for case folders |
-| `--trials` | `1` | How many times to run each case (scores are averaged) |
-| `--output-dir` | `benchmark/results/` | Where to write CSV results |
-| `--save-predictions` | off | Saves each agent's raw JSON output to `output-dir/predictions/` — useful for debugging |
-| `--timeout` | `120` | Seconds to wait per container before giving up. Increase to `300` if hitting timeouts (each case makes several API calls) |
-| `--build` | off | Rebuilds the Docker image before running |
-| `--network` | `bridge` | Docker network mode. Use `none` for locked-down final evaluation (blocks all outbound traffic — note this will break the tool-augmented agent's API calls) |
-
----
-
-## The Three Baselines
-
-All baselines use the same GPT-4o model. The only variable is the architecture.
-
-### 1. Zero-shot (`clinical-zero-shot:latest`)
-Sends a single prompt with all patient data and asks GPT-4o to produce all six pipeline outputs in one shot. No stages, no tools. Tests whether pipeline decomposition adds anything at all.
-
-### 2. No-tools pipeline (`clinical-no-tools:latest`)
-Runs the same six stages as the main agent but skips every external API call. Stages 3, 4, and 5 use GPT-4o's internal medical knowledge instead of PubMed, RxNorm, and OpenFDA. All `rxnorm_id` and `pmid` fields come back as `null`. Tests whether the grounded tool calls (not just the pipeline structure) are what's driving performance.
-
-### 3. Main agent (`clinical-agent:latest`)
-The full system. Six stages with real API calls to PubMed for DDx citations, NIH RxNav for medication normalization, and OpenFDA for drug interaction checking.
-
----
-
-## Running Tests
-
-Unit tests (no network, no Docker required):
-```powershell
-pytest benchmark/tests/test_harness.py benchmark/tests/test_baselines.py benchmark/tests/test_scoring.py -v
+```bash
+python scripts/aggregate_results.py benchmark/results/final_<YYYYMMDD_HHMMSS>
 ```
 
-Integration tests (hit real APIs — needs internet):
-```powershell
-pytest benchmark/tests/test_tools.py -m integration -v
+Expected generated files:
+
+- `comparison_summary.csv`
+- `comparison_summary.md`
+- `stage_breakdown.png`
+- `<system>/run_<system>_<timestamp>_raw.csv`
+- `<system>/run_<system>_<timestamp>_summary.csv`
+- `<system>/run_<system>_<timestamp>_rescored_raw.csv`
+- `<system>/run_<system>_<timestamp>_rescored_summary.csv`
+- `<system>/predictions/*.json`
+
+## Final Results Included
+
+The packaged final run is:
+
+```text
+benchmark/results/final_20260505_172124/
 ```
 
-All tests:
-```powershell
-pytest benchmark/tests/ -v
+Important files:
+
+- `comparison_summary.csv` - wide table used for paper numbers
+- `comparison_summary.md` - readable summary table
+- `stage_breakdown.png` - figure generated from final results
+- `agent/`, `zs/`, `nt/` - per-system raw outputs, summaries, rescored summaries, and predictions
+
+Headline result: the tool-augmented agent reaches perfect F1 on drug interaction
+checking in the final run and is strongest on differential-diagnosis ranking
+nDCG, while final SOAP report scores vary by section.
+
+## Evaluation Metrics
+
+- Transcription cleanup: ROUGE and clinical BERTScore
+- Clinical summarization: ROUGE and clinical BERTScore
+- Differential diagnosis: semantic Concept F1 and nDCG
+- Medication normalization: Concept F1 over ingredients
+- Drug interaction checking: Concept F1 over drug pairs and recommendation ROUGE-L
+- Final SOAP report generation: ROUGE-L and clinical BERTScore per SOAP section
+
+BERTScore uses `emilyalsentzer/Bio_ClinicalBERT` by default. It can be changed with:
+
+```bash
+export BERTSCORE_MODEL="microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract-fulltext"
+export BERTSCORE_LAYER="9"
 ```
 
----
+## Tests
 
-## Adding a New Benchmark Case
+Run unit tests without live external APIs:
 
-1. Copy the template folder:
-   ```powershell
-   cp -r benchmark/cases/case_01_template benchmark/cases/case_XX
-   ```
-
-2. Edit `benchmark/cases/case_XX/input.json` with the patient data. The `case_id` field must match the folder name.
-
-3. Edit `benchmark/cases/case_XX/metadata.json` with the case title, description, and difficulty.
-
-4. Create `benchmark/ground_truths/case_XX.json` with the expected outputs for all six stages. Use the existing ground truth files (e.g. `case_02.json`) as a reference for the format.
-
-5. Validate the input against the schema:
-   ```powershell
-   python -c "
-   import json, jsonschema, pathlib
-   schema = json.loads(pathlib.Path('benchmark/shared/schemas/input_schema.json').read_text())
-   data = json.loads(pathlib.Path('benchmark/cases/case_XX/input.json').read_text())
-   jsonschema.validate(data, schema)
-   print('Valid')
-   "
-   ```
-
-6. Run the harness on just the new case to check it loads cleanly:
-   ```powershell
-   python benchmark/harness/harness.py --cases-dir benchmark/cases/case_XX --timeout 300
-   ```
-
----
-
-## Folder Structure
-
-```
-benchmark/
-├── cases/                    ← one folder per benchmark case (input + metadata)
-├── ground_truths/            ← answer keys, host-side only
-├── shared/
-│   ├── schemas/              ← JSON Schema files for input, ground truth, metadata
-│   ├── tools/                ← PubMed, RxNorm, OpenFDA API wrappers
-│   └── scoring/              ← ROUGE, Concept F1, nDCG
-├── runner/
-│   ├── langgraph_runner.py   ← main pipeline (6 LangGraph nodes)
-│   └── llm.py                ← shared GPT-4o client
-├── agent/
-│   ├── agent_main.py         ← container entrypoint for main agent
-│   ├── Dockerfile
-│   └── requirements.txt      ← minimal container deps (no scoring libs)
-├── baselines/
-│   ├── zero_shot/            ← single-prompt baseline
-│   └── no_tools/             ← pipeline without API calls
-├── harness/
-│   └── harness.py            ← host-side orchestrator
-├── tests/                    ← unit and integration tests
-├── results/                  ← CSV outputs from harness runs (gitignored except .gitkeep)
-└── requirements.txt          ← host-side deps (harness, scoring, tests)
+```bash
+pytest benchmark/tests/ -m "not integration" -v
 ```
 
----
+Run integration tests that hit live PubMed, RxNorm, or OpenFDA endpoints:
 
-## Environment Variables
+```bash
+pytest benchmark/tests/ -m integration -v
+```
 
-| Variable | Required | Where it's used |
-|----------|----------|-----------------|
-| `OPENAI_API_KEY` | Yes | All agents — passed from host into container by the harness |
-| `NCBI_API_KEY` | No | PubMed — increases rate limit from 3 to 10 req/s. Get one at ncbi.nlm.nih.gov/account |
-| `BENCHMARK_ROOT` | No | Set automatically to `/app` inside containers. Override on host if running outside the repo root |
-| `SCORING_EMBED_MODEL` | No | HuggingFace model for differential diagnosis semantic scoring. Default: `pritamdeka/S-PubMedBert-MS-MARCO`. Set to `all-MiniLM-L6-v2` for a lighter alternative |
-| `SCORING_EMBED_THRESHOLD` | No | Cosine similarity threshold for condition matching. Default: `0.90`. Lower = more partial credit |
+Run the lightweight BERTScore sanity checks:
+
+```bash
+python scripts/sanity_bertscore.py
+python scripts/test_bertscore_long.py
+```
+
+The first BERTScore run downloads the selected Hugging Face model.
+
+## Change Summary
+
+This final package includes:
+
+- Full ClinicalAgent source code and baseline implementations
+- Host-side benchmark harness and scoring code
+- Clinical BERTScore as a supplemental semantic metric for free-text stages
+- Docker build script for all evaluated systems
+- Full benchmark orchestration script for the 3-system, 10-case, 3-trial run
+- Re-scoring script for saved predictions
+- Aggregation script for final comparison tables and figures
+- Final paper results under `benchmark/results/final_20260505_172124/`
+
+## Data Policy
+
+The benchmark cases in this repository are synthetic or de-identified. Do not
+commit real patient data, private notes, API keys, or local runtime state.
