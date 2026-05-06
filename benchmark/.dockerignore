@@ -1,0 +1,18 @@
+# Keep Docker build contexts focused on runtime code.
+cases/
+ground_truths/
+harness/
+results/
+tests/
+
+README.md
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+.env
+.env.*
+*.pem
+*.key
