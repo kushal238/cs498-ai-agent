@@ -202,40 +202,33 @@ class TestNormalizeMedicationList:
 class TestCheckInteractions:
     @network_rxnav
     def test_warfarin_aspirin_interaction_detected(self):
-        from benchmark.shared.tools.rxnorm import get_rxcui, check_interactions
-        warfarin_rxcui = get_rxcui("warfarin")["rxnorm_id"]
-        aspirin_rxcui  = get_rxcui("aspirin")["rxnorm_id"]
-        if not warfarin_rxcui or not aspirin_rxcui:
-            pytest.skip("Could not resolve RxCUIs")
-        interactions = check_interactions([warfarin_rxcui, aspirin_rxcui])
+        from benchmark.shared.tools.rxlist import check_rxlist_interactions
+        interactions = check_rxlist_interactions([
+            {"ingredient": "warfarin"},
+            {"ingredient": "aspirin"},
+        ])
         assert isinstance(interactions, list)
-        # Known major interaction — should be detected
         assert len(interactions) > 0
 
     @network_rxnav
     def test_single_drug_returns_empty(self):
-        from benchmark.shared.tools.rxnorm import get_rxcui, check_interactions
-        rxcui = get_rxcui("aspirin")["rxnorm_id"]
-        if not rxcui:
-            pytest.skip("Could not resolve RxCUI for aspirin")
-        interactions = check_interactions([rxcui])
-        assert interactions == []
+        from benchmark.shared.tools.rxlist import check_rxlist_interactions
+        assert check_rxlist_interactions([{"ingredient": "aspirin"}]) == []
 
     @network_rxnav
     def test_empty_list_returns_empty(self):
-        from benchmark.shared.tools.rxnorm import check_interactions
-        assert check_interactions([]) == []
+        from benchmark.shared.tools.rxlist import check_rxlist_interactions
+        assert check_rxlist_interactions([]) == []
 
     @network_rxnav
     def test_interaction_has_required_keys(self):
-        from benchmark.shared.tools.rxnorm import get_rxcui, check_interactions
-        warfarin_rxcui = get_rxcui("warfarin")["rxnorm_id"]
-        aspirin_rxcui  = get_rxcui("aspirin")["rxnorm_id"]
-        if not warfarin_rxcui or not aspirin_rxcui:
-            pytest.skip("Could not resolve RxCUIs")
-        interactions = check_interactions([warfarin_rxcui, aspirin_rxcui])
+        from benchmark.shared.tools.rxlist import check_rxlist_interactions
+        interactions = check_rxlist_interactions([
+            {"ingredient": "warfarin"},
+            {"ingredient": "aspirin"},
+        ])
         if not interactions:
-            pytest.skip("No interactions detected (OpenFDA label may have changed)")
+            pytest.skip("No interactions detected")
         for ix in interactions:
             assert "drug_a" in ix
             assert "drug_b" in ix

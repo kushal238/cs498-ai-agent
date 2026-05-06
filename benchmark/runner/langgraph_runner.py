@@ -56,7 +56,8 @@ INPUT_SCHEMA_PATH = SCHEMAS_DIR / "input_schema.json"
 sys.path.insert(0, str(BENCHMARK_ROOT))
 
 from llm import get_llm  # noqa: E402
-from shared.tools.rxnorm import get_rxcui, normalize_medication_list, check_interactions  # noqa: E402
+from shared.tools.rxnorm import get_rxcui, normalize_medication_list  # noqa: E402
+from shared.tools.rxlist import check_rxlist_interactions  # noqa: E402
 from shared.tools.pubmed import search_pubmed  # noqa: E402
 
 WORKFLOW_STAGES = [
@@ -299,18 +300,14 @@ def node_medication_normalization(state: dict) -> dict:
 
 
 def node_drug_interaction_check(state: dict) -> dict:
-    """Stage 5: Check for drug-drug interactions via NIH RxNav.
+    """Stage 5: Check for drug-drug interactions via RxList.
 
     Input state keys:  normalized_medications
     Output key:        drug_interactions (list[dict])
     """
     print("[Stage 5] drug_interaction_check", file=sys.stderr)
     normalized = state.get("normalized_medications", [])
-    rxcui_list = [m["rxnorm_id"] for m in normalized if m.get("rxnorm_id")]
-    interactions = check_interactions(rxcui_list)
-    # Strip "description" key -- ground_truth_schema has additionalProperties: false
-    for interaction in interactions:
-        interaction.pop("description", None)
+    interactions = check_rxlist_interactions(normalized)
     return {"drug_interactions": interactions}
 
 

@@ -31,7 +31,14 @@
       "ingredient": "prednisolone"
     }
   ],
-  "drug_interactions": [],
+  "drug_interactions": [
+    {
+      "drug_a": "methylprednisolone",
+      "drug_b": "prednisolone",
+      "severity": "moderate",
+      "recommendation": "methylprednisolone oral will decrease the level or effect of prednisolone oral by affecting hepatic/intestinal enzyme CYP3A4 metabolism."
+    }
+  ],
   "final_report": {
     "subjective": "A 53-year-old woman presents after revision right endoscopic sinus surgery with sudden complete vision loss in the right eye. She reports that the loss of vision occurred immediately after the procedure and that she has had no light perception since then. She had undergone endoscopic sinus surgery about 15 years earlier without visual complications. Despite treatment with steroid pulse therapy followed by oral prednisolone, she reports no improvement in right eye vision.",
     "objective": "Outside orbital CT demonstrated a small right medial orbital wall fracture and a thick bony septum in the right ethmoid region. Visual evoked potential testing showed absent right optic nerve activity, and orbital MRI demonstrated mild enhancement along the posterior right optic nerve sheath with an abnormal signal focus near the medial rectus at the orbital apex. She was treated with intravenous methylprednisolone pulse therapy followed by oral prednisolone for 10 days. Right eye vision remained no light perception after 2 weeks of treatment and was still absent at 2-month follow-up.",
