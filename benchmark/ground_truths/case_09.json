@@ -56,7 +56,26 @@
       "ingredient": "calcium carbonate"
     }
   ],
-  "drug_interactions": [],
+  "drug_interactions": [
+    {
+      "drug_a": "enoxaparin subq",
+      "drug_b": "prednisone",
+      "severity": "moderate",
+      "recommendation": "enoxaparin subq , prednisone oral Other (see comment). Corticosteroids may decrease anticoagulant effects by increasing blood coagulability; conversely, they may impair vascular integrity, thus increasing bleeding risk. Monitor INR closely."
+    },
+    {
+      "drug_a": "aspirin",
+      "drug_b": "calcium carbonate-magnesium hydroxide",
+      "severity": "minor",
+      "recommendation": "aspirin oral , calcium carbonate-magnesium hydroxide oral Mechanism: passive renal tubular reabsorption due to increased pH. Salicylate levels increased at moderate doses; salicylate levels decreased at large doses (d/t increased renal excretion of unchanged salicylic acid)."
+    },
+    {
+      "drug_a": "calcium carbonate-magnesium hydroxide",
+      "drug_b": "prednisone",
+      "severity": "minor",
+      "recommendation": "calcium carbonate-magnesium hydroxide oral decreases levels of prednisone oral by increasing elimination."
+    }
+  ],
   "final_report": {
     "subjective": "29-year-old postpartum woman with SLE (diagnosed age 12), severe ITP, triple-positive antiphospholipid syndrome, Class IV lupus nephritis, and prior spontaneous DVT reported sudden onset chest pain and shortness of breath while visiting her baby in the NICU. She was on enoxaparin 100mg and aspirin 100mg daily with planned transition to warfarin at 2 weeks postpartum. Her immunosuppression regimen included hydroxychloroquine 400mg, azathioprine 150mg, and prednisone 5mg daily, along with calcitriol and calcium carbonate.",
     "objective": "Initially tachycardic, normotensive, normal O2 saturation with clear chest and dual heart sounds. ECG: sinus tachycardia without ischemic changes. CXR: cardiomegaly with increased interstitial markings. Rapid deterioration with climbing O2 requirements and hypotension over one hour. CTPA: pulmonary edema, no PE. TEE: posterolateral papillary muscle rupture with flail anterior mitral leaflet and torrential mitral regurgitation, preserved LV function. Intraoperative: PEA arrest resuscitated, pale papillary muscle sheared from ventricular wall. MV replaced with 29mm St Jude mechanical valve. VA-ECMO required for 2 days for biventricular failure. Histology: fibrinous deposits and focal vegetation consistent with chronic Libman-Sacks endocarditis; papillary muscle with extensive central necrosis and intramyocardial artery thrombi consistent with infarction. MRI brain: widespread hypoxic injury. Post-ECMO: paroxysmal atrial fibrillation, mild LV impairment. Neurological function normalized prior to discharge.",

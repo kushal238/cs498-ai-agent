@@ -120,8 +120,16 @@ def check_fda_interactions(
             ingredient_b = (med_b.get("ingredient") or "").strip()
             if not ingredient_a or not ingredient_b:
                 continue
-            app_a = med_a.get("openfda_application_number") or med_a.get("fda_id")
-            app_b = med_b.get("openfda_application_number") or med_b.get("fda_id")
+            app_a = (
+                med_a.get("openfda_application_number")
+                or med_a.get("fda_id")
+                or get_fda_id(ingredient_a)
+            )
+            app_b = (
+                med_b.get("openfda_application_number")
+                or med_b.get("fda_id")
+                or get_fda_id(ingredient_b)
+            )
             tokens_a = _ingredient_tokens(ingredient_a)
             tokens_b = _ingredient_tokens(ingredient_b)
             excerpt = None

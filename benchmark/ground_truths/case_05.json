@@ -51,7 +51,20 @@
       "ingredient": "atorvastatin"
     }
   ],
-  "drug_interactions": [],
+  "drug_interactions": [
+    {
+      "drug_a": "hydroxychloroquine",
+      "drug_b": "azithromycin",
+      "severity": "major",
+      "recommendation": "hydroxychloroquine oral and azithromycin oral both increase QTc interval."
+    },
+    {
+      "drug_a": "atorvastatin",
+      "drug_b": "azithromycin",
+      "severity": "moderate",
+      "recommendation": "atorvastatin oral will increase the level or effect of azithromycin oral by P-glycoprotein (MDR1) efflux transporter."
+    }
+  ],
   "final_report": {
     "subjective": "60-year-old woman with rheumatoid arthritis reported one week of shortness of breath, low-grade fever, and right-sided pleuritic chest pain despite a trial of azithromycin for presumed bronchitis. She takes hydroxychloroquine and low-dose prednisone for rheumatoid arthritis and also uses risedronate, calcium/vitamin D, omeprazole, and atorvastatin for chronic comorbidities. She denied improvement with empiric antibiotics.",
     "objective": "Vital signs were stable with oxygen saturation 95% on room air. Lung exam revealed bilateral wheezes and right basilar crackles without active synovitis. ESR was 46 mm/h; metabolic profile and urinalysis were unremarkable. Chest radiograph showed streaky right basilar infiltrates, high-resolution CT showed three pulmonary nodules, FDG PET showed avid uptake with SUV 8, and CT-guided biopsy showed fibrosis with acute and chronic inflammation plus necrotizing vasculitis. Bacterial, mycobacterial, and fungal studies were negative. Vasculitis serologies showed cANCA 1:640 and anti-proteinase 3 antibody 118 units. Sinus CT and echocardiogram were normal.",
