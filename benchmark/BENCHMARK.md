@@ -126,7 +126,8 @@ See `benchmark/cases/case_02/input.json` for a worked example.
 
 The container must write **a single JSON object on the last non-empty line of stdout** matching `shared/schemas/ground_truth_schema.json`. All debugging output must go to stderr. Required keys:
 
-- `transcription_cleaned` (string)
+- case_id (string, must match the input case_id)
+- transcription_cleaned (string)
 - `clinical_summary` (string)
 - `differential_diagnosis` (array of `{condition, pmid, rationale}`)
 - `normalized_medications` (array of `{original, rxnorm_id, ingredient}`)
