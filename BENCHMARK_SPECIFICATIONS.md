@@ -576,40 +576,6 @@ None identified.
 
 ---
 
-## Difficulty Distribution Summary
-
-| Difficulty | Cases | Count |
-|---|---|---|
-| Simple | 01_template, 08 | 2 |
-| Moderate | 10 | 1 |
-| Complex | 02, 03, 04, 05, 06, 07, 09 | 7 |
-
-## Drug Interaction Complexity Summary
-
-| Case | Interaction Count | Highest Severity |
-|---|---|---|
-| 01 | 1 | MAJOR |
-| 02 | 1 | MODERATE |
-| 03 | 0 | — |
-| 04 | 1 | MODERATE |
-| 05 | 2 | MAJOR |
-| 06 | 3 | MODERATE |
-| 07 | 0 | — |
-| 08 | 0 | — |
-| 09 | 3 | MODERATE |
-| 10 | 2 | MODERATE |
-
-## Medication Normalization Complexity Summary
-
-| Case | Drug Count |
-|---|---|
-| 01 | 4 |
-| 02 | 3 |
-| 03 | 2 |
-| 04 | 2 |
-| 05 | 6 |
-| 06 | 4 |
-| 07 | 1 |
 | 08 | 3 |
 | 09 | 7 |
 | 10 | 9 |
